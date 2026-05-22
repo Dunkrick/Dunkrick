@@ -189,6 +189,12 @@ nav.scrolled {
 }
 
 /* ── 3C: Hero number slow drift oscillation ── */
+@keyframes spinBadge {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes heroDrift {
 
   0%,
