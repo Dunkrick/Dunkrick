@@ -116,6 +116,7 @@
 
     if (slider && beforeImg && line && handle) {
       let isDragging = false;
+      let hasDragged = false;
       let targetX = null;
       let rafId = null;
 
@@ -144,22 +145,33 @@
       slider.addEventListener('mousedown', (e) => {
         e.preventDefault(); // Stop native drag
         isDragging = true;
+        hasDragged = false; // Reset drag state
         requestUpdate(e.clientX);
       });
       window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
+        hasDragged = true; // Mark as dragged
         requestUpdate(e.clientX);
       });
       window.addEventListener('mouseup', () => {
         isDragging = false;
       });
 
+      // Prevent link click if it was a drag
+      slider.addEventListener('click', (e) => {
+        if (hasDragged) {
+          e.preventDefault();
+        }
+      });
+
       slider.addEventListener('touchstart', (e) => {
         isDragging = true;
+        hasDragged = false;
         requestUpdate(e.touches[0].clientX);
       }, { passive: true });
       window.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
+        hasDragged = true;
         requestUpdate(e.touches[0].clientX);
       }, { passive: true });
       window.addEventListener('touchend', () => {
