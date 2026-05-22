@@ -116,10 +116,13 @@
 
     if (slider && beforeImg && line && handle) {
       let isDragging = false;
+      let targetX = null;
+      let rafId = null;
 
-      const updateSlider = (clientX) => {
+      const renderSlider = () => {
+        if (targetX === null) return;
         const rect = slider.getBoundingClientRect();
-        let x = clientX - rect.left;
+        let x = targetX - rect.left;
         x = Math.max(0, Math.min(x, rect.width)); // clamp
         const percent = (x / rect.width) * 100;
         
@@ -127,15 +130,25 @@
         beforeImg.style.webkitClipPath = `inset(0 ${100 - percent}% 0 0)`;
         line.style.left = `${percent}%`;
         handle.style.left = `${percent}%`;
+        
+        rafId = null;
+      };
+
+      const requestUpdate = (clientX) => {
+        targetX = clientX;
+        if (!rafId) {
+          rafId = requestAnimationFrame(renderSlider);
+        }
       };
 
       slider.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // Stop native drag
         isDragging = true;
-        updateSlider(e.clientX);
+        requestUpdate(e.clientX);
       });
       window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        updateSlider(e.clientX);
+        requestUpdate(e.clientX);
       });
       window.addEventListener('mouseup', () => {
         isDragging = false;
@@ -143,11 +156,11 @@
 
       slider.addEventListener('touchstart', (e) => {
         isDragging = true;
-        updateSlider(e.touches[0].clientX);
+        requestUpdate(e.touches[0].clientX);
       }, { passive: true });
       window.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
-        updateSlider(e.touches[0].clientX);
+        requestUpdate(e.touches[0].clientX);
       }, { passive: true });
       window.addEventListener('touchend', () => {
         isDragging = false;
