@@ -107,3 +107,49 @@
     }, { threshold: 0.5 });
     
     titleEls.forEach(el => titleObs.observe(el));
+
+    // ── 4. HAPPICLAP SLIDER ──
+    const slider = document.getElementById('hc-slider');
+    const beforeImg = document.getElementById('hc-before-img');
+    const line = document.getElementById('hc-line');
+    const handle = document.getElementById('hc-handle');
+
+    if (slider && beforeImg && line && handle) {
+      let isDragging = false;
+
+      const updateSlider = (clientX) => {
+        const rect = slider.getBoundingClientRect();
+        let x = clientX - rect.left;
+        x = Math.max(0, Math.min(x, rect.width)); // clamp
+        const percent = (x / rect.width) * 100;
+        
+        beforeImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        beforeImg.style.webkitClipPath = `inset(0 ${100 - percent}% 0 0)`;
+        line.style.left = `${percent}%`;
+        handle.style.left = `${percent}%`;
+      };
+
+      slider.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        updateSlider(e.clientX);
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        updateSlider(e.clientX);
+      });
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      slider.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        updateSlider(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        updateSlider(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+    }

@@ -12,7 +12,7 @@
   --surface: #1E293B;
   --border: rgba(255, 255, 255, 0.08);
   --text: #F8FAFC;
-  --muted: #858da3;
+  --muted: #565c6c;
   --accent: #3B82F6;
   --white: #FFFFFF;
   --sp: 8px;
@@ -270,7 +270,7 @@ nav.scrolled {
 }
 
 .btn-primary {
-  border: 2px solid var(--accent);
+  border: 1.5px solid var(--accent);
   color: var(--accent);
   padding: calc(var(--sp)*1.5) calc(var(--sp)*3);
   font-family: 'Inter', sans-serif;
@@ -426,7 +426,8 @@ section {
 }
 
 .about-editorial-headline .name-line {
-  display: block;
+  display: inline-block;
+  position: relative;
 }
 
 /* ── Ink-stamp imperfection on the name ── */
@@ -486,11 +487,11 @@ section {
 .about-spread-right {
   position: relative;
   overflow: hidden;
-  background: var(--surface);
-  /* matches #work for a cohesive lighter section */
+  background: transparent;
+  /* photo floats on its own */
   min-height: 85vh;
   /* explicit height so child percentages resolve */
-  border-left: 1px solid var(--border);
+  border-left: none;
 }
 
 .about-photo-hero {
