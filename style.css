@@ -31,8 +31,8 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.65;
-  /* more organic spacing */
+  line-height: 1.7;
+  /* clean, breathable reading rhythm */
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -174,6 +174,18 @@ nav.scrolled {
     radial-gradient(ellipse at 65% 55%, rgba(59, 130, 246, 0.10) 0%, transparent 55%),
     radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
     var(--bg);
+}
+
+/* Halftone texture overlay for Hero */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.04;
 }
 
 /* ── 3C: Hero number slow drift oscillation ── */
@@ -611,13 +623,13 @@ section {
   z-index: 1;
 }
 
-/* ── 1B: SVG drawn underline on 'Creativity.' title ── */
-.creativity-title {
+/* ── 1B: SVG drawn underline on titles ── */
+.draw-trigger {
   position: relative;
   display: inline-block;
 }
 
-.creativity-title svg.drawn-underline {
+.draw-trigger svg.drawn-underline {
   position: absolute;
   bottom: -6px;
   left: 0;
@@ -626,7 +638,7 @@ section {
   overflow: visible;
 }
 
-.creativity-title svg.drawn-underline path {
+.draw-trigger svg.drawn-underline path {
   stroke: var(--accent);
   stroke-width: 2;
   fill: none;
@@ -636,7 +648,7 @@ section {
   transition: stroke-dashoffset 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 }
 
-.creativity-title.drawn .drawn-underline path {
+.draw-trigger.drawn .drawn-underline path {
   stroke-dashoffset: 0;
 }
 

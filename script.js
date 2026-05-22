@@ -96,15 +96,14 @@
     document.querySelectorAll('.creativity-card').forEach(el => ccObs.observe(el));
 
     // ── 1B: SVG DRAWN UNDERLINE TRIGGER ──
-    const titleEl = document.getElementById('creativity-title');
-    if (titleEl) {
-      const titleObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('drawn');
-            titleObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      titleObs.observe(titleEl);
-    }
+    const titleEls = document.querySelectorAll('.draw-trigger');
+    const titleObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('drawn');
+          titleObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    titleEls.forEach(el => titleObs.observe(el));
