@@ -364,7 +364,7 @@
 
     /* ── WORK / PROJECTS ── */
     #work {
-      background: #152036; /* Subtle lighter transition for alternating sections */
+      background: var(--surface); /* noticeably lighter than hero for contrast */
     }
 
     /* ── ABOUT ── */
@@ -473,8 +473,8 @@
     .about-spread-right {
       position: relative;
       overflow: hidden;
-      background: #151E32;
-      /* dark slate backing — photo lives here even before image loads */
+      background: var(--surface);
+      /* matches #work for a cohesive lighter section */
       min-height: 85vh;
       /* explicit height so child percentages resolve */
       border-left: 1px solid var(--border);
@@ -494,65 +494,7 @@
       user-select: none;
     }
 
-    /* Polaroid secondary photo */
-    .about-photo-polaroid {
-      position: absolute;
-      bottom: 28px;
-      left: 28px;
-      /* kept INSIDE the container — no negative left */
-      width: 148px;
-      background: #fff;
-      padding: 10px 10px 34px;
-      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.08);
-      transform: rotate(3.2deg);
-      transform-origin: bottom left;
-      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-      z-index: 3;
-    }
-
-    .about-photo-polaroid:hover {
-      transform: rotate(0deg) scale(1.04);
-      box-shadow: 0 20px 56px rgba(15, 23, 42, 0.18);
-    }
-
-    .about-photo-polaroid img {
-      width: 100%;
-      display: block;
-      height: auto;
-      max-height: 240px;
-      object-fit: contain;
-      object-position: top center;
-      background: transparent;
-    }
-
-    .about-photo-polaroid .polaroid-caption {
-      font-family: 'Newsreader', Georgia, serif;
-      font-style: italic;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-
-    /* AR glasses Easter egg */
-    .about-photo-ar {
-      position: absolute;
-      top: 24px;
-      right: 48px;
-      width: 90px;
-      opacity: 0.18;
-      filter: blur(0.5px);
-      pointer-events: none;
-      user-select: none;
-      transform: rotate(-8deg);
-      transition: opacity 0.4s var(--ease), filter 0.4s var(--ease);
-    }
-
-    .about-spread-right:hover .about-photo-ar {
-      opacity: 0.55;
-      filter: blur(0px);
-    }
+    /* Removed polaroid and ar glasses CSS */
 
     /* ── Stats + Skills below the spread ── */
     .about-lower {
@@ -646,7 +588,7 @@
 
     /* ── 5A: Creativity section dark tint ── */
     #creativity {
-      background: #152036; /* matches #work for alternating pattern */
+      background: var(--surface); /* matches #work for alternating pattern */
       position: relative;
     }
 
@@ -900,9 +842,9 @@
     #cursor.hovered {
       width: 48px;
       height: 48px;
-      background: rgba(15, 23, 42, 0.05);
-      /* Match the new slate text color */
-      border-color: transparent;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(2px);
     }
 
     /* ── ANIMATIONS ── */
