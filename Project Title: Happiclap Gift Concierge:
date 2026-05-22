@@ -1,0 +1,30 @@
+Project Title: Happiclap Gift Concierge: Driving Conversions with AI
+
+Problem: Visitors to personalized gifting sites like Happiclap often suffer from choice overload. They want a unique, emotional gift but get lost in the diverse catalog of custom experiences and products. This friction in product discovery leads to abandoned sessions and lost conversions.
+
+Solution: An embeddable AI concierge agent designed for the Happiclap storefront. The user provides a Relation (e.g., "Wife"), Occasion (e.g., "1st Anniversary"), and Vibe/Budget. The agent acts as a virtual sales assistant, mapping these inputs directly to Happiclap's unique inventory to recommend 3 perfect, highly personalized gift options.
+
+Why Agents? A multi-agent architecture is essential here. A StorefrontAgent interacts with the user to gather constraints, while a backend CatalogAgent specifically queries the Happiclap inventory constraints. A final PitchAgent formulates the recommendation, explaining why this specific Happiclap product is the perfect emotional fit for the user's loved one.
+
+
+## System Architecture
+
+The Happiclap Gift Concierge utilizes a sequential, multi-agent architecture to break down the complex task of personalized gift recommendation into three specialized, manageable steps. 
+
+By avoiding a single, monolithic prompt, we reduce hallucination and ensure the final output is tightly constrained to the user's actual needs and the store's real inventory.
+
+### The Agent Pipeline
+
+1. **User Input:** The user provides an unstructured request (e.g., "I need a romantic 1st-anniversary gift for my wife").
+2. **StorefrontAgent (Information Extraction):** 
+   - **Role:** Acts as the intake coordinator.
+   - **Function:** Parses the messy user input and extracts structured state data (Relation, Occasion, Budget, Vibe).
+3. **CatalogAgent (Tool Execution):**
+   - **Role:** Acts as the inventory specialist.
+   - **Function:** Takes the structured data from the state memory and uses the `Google Search Tool` (scoped specifically to `site:happiclap.com`) to retrieve real, available products matching the constraints.
+4. **PitchAgent (Synthesis):**
+   - **Role:** Acts as the final sales assistant.
+   - **Function:** Takes the raw product data and the original user constraints to craft a highly personalized, emotional sales pitch explaining *why* these specific items are perfect for their loved one.
+
+### Memory & State Management
+We use a centralized **Session State** to pass information sequentially. The `StorefrontAgent` writes the constraints to the state, the `CatalogAgent` reads those constraints and writes the product list to the state, and the `PitchAgent` reads both to generate the final output.
