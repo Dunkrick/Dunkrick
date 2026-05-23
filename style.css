@@ -12,7 +12,7 @@
   --surface: #1E293B;
   --border: rgba(255, 255, 255, 0.08);
   --text: #F8FAFC;
-  --muted: #b6bcce;
+  --muted: #cbd5e1; /* Brightened for better WCAG AA contrast on dark backgrounds */
   --accent: #3B82F6;
   --white: #FFFFFF;
   --sp: 8px;
@@ -91,7 +91,7 @@ body::after {
 
 .bento-cell {
   background: var(--bg);
-  padding: calc(var(--sp)*4);
+  padding: 48px; /* More breathable internal spacing */
   transition: background 0.6s var(--ease), transform 0.6s var(--ease);
 }
 
@@ -166,7 +166,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 48px 80px;
+  padding: 0 48px 120px; /* Lifted bottom padding for a more majestic landing */
   position: relative;
   overflow: hidden;
   /* Subtle gradient: dark glow */
@@ -229,8 +229,8 @@ nav.scrolled {
 
 
 .hero-eyebrow {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
@@ -243,8 +243,7 @@ nav.scrolled {
   font-weight: 625;
   font-size: clamp(56px, 8vw, 120px);
   line-height: 0.95;
-  letter-spacing: -0.03em;
-  /* Slightly tighter for precision */
+  letter-spacing: -0.04em; /* Sharper tracking for editorial feel */
   color: var(--text);
   text-shadow: 0 0 12px rgba(29, 29, 31, 0.15);
   /* Soft, glowing bleed */
@@ -254,16 +253,16 @@ nav.scrolled {
 }
 
 .hero-sub {
-  margin-top: 32px;
-  max-width: 480px;
-  font-size: 16px;
+  margin-top: 36px;
+  max-width: 520px;
+  font-size: 17px; /* Slightly larger base for hero sub */
   font-weight: 400;
   color: var(--muted);
   line-height: 1.7;
   position: relative;
   z-index: 1;
-  filter: blur(0.6px);
-  opacity: 0.85;
+  filter: blur(0.4px); /* Reduced blur for sharper legibility */
+  opacity: 0.9;
 }
 
 .hero-cta-row {
@@ -350,28 +349,28 @@ nav.scrolled {
 
 /* ── SECTION BASE ── */
 section {
-  padding: 120px 48px;
+  padding: 160px 48px; /* Increased vertical rhythm */
 }
 
 .section-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  font-weight: 600; /* Bolder for structural hierarchy */
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 16px;
-  filter: blur(0.6px);
-  opacity: 0.85;
+  margin-bottom: 20px;
+  filter: blur(0.4px);
+  opacity: 0.9;
 }
 
 .section-title {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(36px, 5vw, 64px);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em; /* Tighter tracking for cleaner headings */
   line-height: 1;
   color: var(--text);
-  margin-bottom: 64px;
+  margin-bottom: 80px; /* More space before content blocks */
 }
 
 .divider {
@@ -455,8 +454,8 @@ section {
 .about-spread-bio {
   font-size: 16px;
   color: var(--muted);
-  line-height: 1.8;
-  max-width: 420px;
+  line-height: 1.85; /* Highly composed reading block */
+  max-width: 460px;
 }
 
 .about-spread-bio p {
