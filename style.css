@@ -936,7 +936,18 @@ footer p {
   }
 
   #hero {
-    padding: 0 24px 64px;
+    padding: 0 24px 80px; /* Slightly more breathing room at bottom */
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch; /* Stack buttons for better touch targets */
+    gap: 16px;
+  }
+
+  .hero-cta-row .btn-primary, .hero-cta-row .btn-ghost {
+    text-align: center;
+    justify-content: center;
   }
 
   /* Hide the giant "27" bg number on mobile — it clips and looks broken */
@@ -953,6 +964,10 @@ footer p {
     grid-template-columns: 1fr;
   }
 
+  .bento-cell {
+    padding: 32px; /* Scale down internal padding from 48px desktop */
+  }
+
   /* About editorial: stack to single column */
   .about-spread {
     grid-template-columns: 1fr;
@@ -964,9 +979,8 @@ footer p {
   }
 
   .about-spread-right {
-    min-height: 56vw;
-    /* explicit height on mobile too */
-    height: 56vw;
+    min-height: 70vw; /* Give the floating photo more space on mobile */
+    height: 70vw;
     border-left: none;
     border-top: 1px solid var(--border);
   }
@@ -1036,6 +1050,10 @@ footer p {
 
   .contact-right {
     padding: 64px 24px 0;
+  }
+  
+  .social-link {
+    padding: 20px 24px; /* Slightly tighter touch targets to avoid squeezing */
   }
 
   footer {
