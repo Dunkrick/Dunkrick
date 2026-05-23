@@ -162,7 +162,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 48px 120px; /* Lifted bottom padding for a more majestic landing */
+  padding: 140px 48px 120px; /* Lifted bottom padding, added top padding to clear fixed nav */
   position: relative;
   overflow: hidden;
   /* Subtle gradient: dark glow */
@@ -586,13 +586,19 @@ section {
 }
 
 .skill-row:hover {
-  background: #F0F0F2;
+  background: var(--white);
+}
+
+.skill-row:hover .skill-name,
+.skill-row:hover .skill-level {
+  color: var(--accent);
 }
 
 .skill-name {
   font-size: 14px;
   font-weight: 500;
   color: var(--text);
+  transition: color 0.4s var(--ease);
 }
 
 /* ── 4A: Frame counter tags ── */
@@ -602,6 +608,7 @@ section {
   letter-spacing: 0.06em;
   font-family: 'Courier New', monospace;
   filter: blur(0.4px);
+  transition: color 0.4s var(--ease);
 }
 
 /* ── 5A: Creativity section dark tint ── */
@@ -932,7 +939,7 @@ footer p {
   }
 
   #hero {
-    padding: 0 24px 80px; /* Slightly more breathing room at bottom */
+    padding: 120px 24px 80px; /* Top padding to clear nav, more breathing room at bottom */
   }
 
   .hero-cta-row {
