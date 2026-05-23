@@ -161,8 +161,8 @@ nav.scrolled {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 140px 48px 120px; /* Lifted bottom padding, added top padding to clear fixed nav */
+  justify-content: center;
+  padding: 80px 48px; /* Centered content, no excess padding needed */
   position: relative;
   overflow: hidden;
   /* Subtle gradient: dark glow */
@@ -939,7 +939,8 @@ footer p {
   }
 
   #hero {
-    padding: 120px 24px 80px; /* Top padding to clear nav, more breathing room at bottom */
+    padding: 80px 24px;
+    justify-content: center;
   }
 
   .hero-cta-row {
