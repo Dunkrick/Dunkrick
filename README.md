@@ -12,7 +12,7 @@ I work at the intersection of Product Design and AI-assisted workflows. I choose
 
 ### ✦ Portfolio
 Check out my latest work, including UX Audits and deep dives into Conversion Design & WCAG:  
-🌐 **[View My Portfolio](https://dunkrick.github.io/Dunkrick/))**
+🌐 **[View My Portfolio](https://dunkrick.github.io/Dunkrick/)**
 
 ### ✦ Stack & Tools
 - **Design:** Figma, Prototyping, Interaction Design
