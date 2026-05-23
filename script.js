@@ -41,7 +41,7 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-up').forEach((el, i) => {
-      el.style.transitionDelay = (i * 80) + 'ms';
+      el.style.transitionDelay = (i * 50) + 'ms'; // Snappier stagger (was 80ms)
       obs.observe(el);
     });
 

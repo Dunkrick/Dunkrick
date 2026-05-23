@@ -19,7 +19,7 @@
   --font-display: 'Clash Display', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1); /* Refined, highly responsive easing */
 }
 
 html {
@@ -92,13 +92,13 @@ body::after {
 .bento-cell {
   background: var(--bg);
   padding: 48px; /* More breathable internal spacing */
-  transition: background 0.6s var(--ease), transform 0.6s var(--ease);
+  transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 
 .bento-cell:hover {
   background: var(--surface);
-  transform: translateY(-2px);
-  /* subtle organic lift */
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
 
 .bento-projects {
@@ -285,12 +285,14 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   background: transparent;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .btn-primary:hover {
   background: var(--accent);
   color: var(--surface);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
 }
 
 .btn-ghost {
@@ -301,13 +303,14 @@ nav.scrolled {
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.4s var(--ease);
+  transition: color 0.4s var(--ease), transform 0.4s var(--ease);
   border-bottom: 1px solid var(--border);
   padding-bottom: 2px;
 }
 
 .btn-ghost:hover {
   color: var(--text);
+  transform: translateX(4px);
 }
 
 .hero-scroll-indicator {
@@ -870,8 +873,8 @@ footer p {
 /* ── ANIMATIONS ── */
 .fade-up {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transform: translateY(24px); /* Tighter distance to prevent floating */
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .fade-up.visible {
