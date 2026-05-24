@@ -67,20 +67,19 @@
     </div>
 
     <!-- HAPPICLAP -->
-    <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer"
-      class="bento-grid bento-projects fade-up" style="margin-bottom:24px;text-decoration:none;">
-      <div class="bento-cell">
+    <div class="bento-grid bento-projects fade-up" style="margin-bottom:24px;">
+      <div class="bento-cell" style="cursor: pointer;" onclick="window.open('https://happiclap-ebon.vercel.app', '_blank')">
         <p
           style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Courier New',monospace;">
           01 // E-Commerce Experience</p>
         <p class="heading-sans" style="font-size:clamp(1.4rem,2.8vw,2.2rem);color:var(--text);">
-          Happiclap: Designing for Trust <span class="accent-arrow">↗</span>
+          <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;pointer-events:none;">Happiclap: Designing for Trust <span class="accent-arrow">↗</span></a>
         </p>
         <p style="color:var(--muted);font-family:'Inter',sans-serif;margin-top:14px;font-size:14px;line-height:1.7;">
           A gifting platform burying its best products under confusing navigation. I bought a gift, documented the friction, and entirely rebuilt the browsing and checkout flows. The focus was on making the experience feel accessible, calm, and trustworthy.
         </p>
         <div
-          style="margin-top:24px;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05);">
+          style="margin-top:24px;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05);" onclick="event.stopPropagation()">
           <div id="hc-slider"
             style="position:relative;width:100%;user-select:none;cursor:ew-resize;line-height:0;touch-action:none;">
             <!-- AFTER (bottom layer, full width - visible on the right) -->
@@ -125,11 +124,16 @@
               style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;">
               <span>Core Focus</span> <span style="color:var(--text);font-weight:500;">Accessibility &amp; Trust</span>
             </div>
-            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);"><span>Result</span> <span style="color:var(--text);font-weight:500;">Live Prototype Deployed ↗</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;">
+              <span>Result</span> <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--text);font-weight:500;text-decoration:none;">Live Prototype ↗</a>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);">
+              <span>Case Study</span> <a href="https://www.notion.com/" target="_blank" rel="noopener noreferrer" style="color:var(--text);font-weight:500;text-decoration:none;">Read on Notion ↗</a>
+            </div>
           </div>
         </div>
       </div>
-    </a>
+    </div>
 
     <!-- DASHBOARD -->
     <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" rel="noopener noreferrer"
