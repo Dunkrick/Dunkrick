@@ -183,7 +183,14 @@
     const cmdBackdrop = document.getElementById('cmd-palette-backdrop');
     const cmdInput = document.getElementById('cmd-input');
     const navCmdTrigger = document.getElementById('nav-cmd-trigger');
+    const cmdKeyHint = document.getElementById('cmd-key-hint');
     const cmdToggleRaw = document.getElementById('cmd-toggle-raw');
+
+    // OS detection for shortcut text
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    if (!isMac && cmdKeyHint) {
+      cmdKeyHint.textContent = 'Ctrl K';
+    }
 
     function toggleCmdPalette(forceOpen) {
       if (!cmdBackdrop) return;
