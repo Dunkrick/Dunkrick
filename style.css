@@ -877,12 +877,14 @@ footer p {
 .fade-up {
   opacity: 0;
   transform: translateY(24px); /* Tighter distance to prevent floating */
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  filter: blur(8px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease);
 }
 
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 /* ── 1A: Chromatic offset on a key word ── */
@@ -1063,7 +1065,158 @@ footer p {
   footer {
     padding: 24px;
     flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
   }
+}
+
+/* ── COMMAND PALETTE ── */
+#cmd-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 1;
+  transition: opacity 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
+}
+
+#cmd-palette-backdrop.cmd-hidden {
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+#cmd-palette {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transform: scale(1) translateY(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#cmd-palette-backdrop.cmd-hidden #cmd-palette {
+  transform: scale(0.96) translateY(12px);
+}
+
+.cmd-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 12px;
+}
+
+#cmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  outline: none;
+}
+
+#cmd-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.cmd-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.cmd-body {
+  padding: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cmd-section {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 8px 12px;
+}
+
+.cmd-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.cmd-item:hover, .cmd-item:focus {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  outline: none;
+}
+
+.cmd-item-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cmd-item-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}
+
+/* ── WIREFRAME RAW MODE (EASTER EGG) ── */
+body.raw-mode {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+body.raw-mode * {
+  outline: 1px solid rgba(59, 130, 246, 0.2) !important;
+  transition: outline 0.3s ease;
+}
+
+body.raw-mode .fade-up, body.raw-mode img {
+  filter: grayscale(100%) contrast(1.2) !important;
+}
+
+body.raw-mode::after {
+  content: "DEVELOPER WIREFRAME MODE ACTIVE";
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  z-index: 9999;
+  pointer-events: none;
 }

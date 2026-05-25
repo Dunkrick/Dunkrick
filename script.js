@@ -174,7 +174,77 @@
         hasDragged = true;
         requestUpdate(e.touches[0].clientX);
       }, { passive: true });
-      window.addEventListener('touchend', () => {
+      slider.addEventListener('touchend', () => {
         isDragging = false;
       });
     }
+
+    // ── COMMAND PALETTE & EASTER EGG ──
+    const cmdBackdrop = document.getElementById('cmd-palette-backdrop');
+    const cmdInput = document.getElementById('cmd-input');
+    const navCmdTrigger = document.getElementById('nav-cmd-trigger');
+    const cmdToggleRaw = document.getElementById('cmd-toggle-raw');
+
+    function toggleCmdPalette(forceOpen) {
+      if (!cmdBackdrop) return;
+      const isHidden = cmdBackdrop.classList.contains('cmd-hidden');
+      const shouldOpen = forceOpen !== undefined ? forceOpen : isHidden;
+      
+      if (shouldOpen) {
+        cmdBackdrop.classList.remove('cmd-hidden');
+        setTimeout(() => cmdInput.focus(), 50);
+      } else {
+        cmdBackdrop.classList.add('cmd-hidden');
+        cmdInput.blur();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleCmdPalette();
+      }
+      if (e.key === 'Escape') {
+        toggleCmdPalette(false);
+      }
+    });
+
+    if (navCmdTrigger) navCmdTrigger.addEventListener('click', () => toggleCmdPalette(true));
+    if (cmdBackdrop) {
+      cmdBackdrop.addEventListener('click', (e) => {
+        if (e.target === cmdBackdrop) toggleCmdPalette(false);
+      });
+    }
+
+    if (cmdToggleRaw) {
+      cmdToggleRaw.addEventListener('click', () => {
+        document.body.classList.toggle('raw-mode');
+        toggleCmdPalette(false);
+      });
+    }
+
+    document.querySelectorAll('.cmd-link').forEach(link => {
+      link.addEventListener('click', () => toggleCmdPalette(false));
+    });
+
+    // ── MAGNETIC BUTTONS ──
+    const magneticButtons = document.querySelectorAll('.btn-primary');
+
+    magneticButtons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // Subtle pull
+        const pullX = x * 0.15;
+        const pullY = y * 0.15;
+        
+        btn.style.transform = `translate(${pullX}px, ${pullY}px)`;
+      });
+      
+      btn.addEventListener('mouseleave', () => {
+        // Reset to allow CSS :hover to take over or return to default
+        btn.style.transform = '';
+      });
+    });

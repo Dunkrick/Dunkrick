@@ -32,6 +32,11 @@
       <li><a href="#about">About</a></li>
       <li><a href="#creativity">Creativity</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li>
+        <button id="nav-cmd-trigger" aria-label="Open Command Palette" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);border-radius:6px;padding:4px 8px;font-family:var(--font-body);font-size:11px;font-weight:600;cursor:pointer;transition:background 0.3s, color 0.3s;display:flex;align-items:center;">
+          ⌘K
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -421,6 +426,39 @@
     <p>© 2026 Rithwick Gurram.</p>
     <span class="footer-accent" style="color:var(--accent);font-weight:500;">Designed &amp; coded with intent.</span>
   </footer>
+
+  <!-- ── COMMAND PALETTE (EASTER EGG / SEARCH) ── -->
+  <div id="cmd-palette-backdrop" class="cmd-hidden">
+    <div id="cmd-palette">
+      <div class="cmd-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off" spellcheck="false" />
+        <div class="cmd-badge">ESC</div>
+      </div>
+      <div class="cmd-body">
+        <div class="cmd-section">Actions</div>
+        <button class="cmd-item" id="cmd-toggle-raw">
+          <span class="cmd-item-label">Toggle Wireframe Mode</span>
+          <span class="cmd-item-desc">Reveal the raw structure</span>
+        </button>
+        <a href="mailto:rithwickgurram05@gmail.com" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Send an Email</span>
+          <span class="cmd-item-desc">Start a conversation</span>
+        </a>
+        
+        <div class="cmd-section" style="margin-top: 12px;">Navigation</div>
+        <a href="#work" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to Projects</span>
+        </a>
+        <a href="#about" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to About</span>
+        </a>
+        <a href="#contact" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to Contact</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
