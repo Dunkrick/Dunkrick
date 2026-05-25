@@ -162,7 +162,7 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 48px 80px; /* Increased top padding to push it safely below nav */
+  padding: 120px 48px 80px; /* Tweaked top padding */
   position: relative;
   overflow: hidden;
   /* Subtle gradient: dark glow */
@@ -939,7 +939,7 @@ footer p {
   }
 
   #hero {
-    padding: 140px 24px 80px;
+    padding: 120px 24px 80px;
     justify-content: center;
   }
 
