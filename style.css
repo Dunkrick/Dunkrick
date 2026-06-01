@@ -673,11 +673,7 @@ section {
   stroke-linecap: round;
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
-  transition: stroke-dashoffset 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-
-.draw-trigger.drawn .drawn-underline path {
-  stroke-dashoffset: 0;
+  /* transition removed for GSAP Scrubbing */
 }
 
 /* ── 2B: Rotated quote block ── */

@@ -69,9 +69,10 @@
           opacity: 1, 
           y: 0, 
           filter: "blur(0px)", 
-          stagger: 0.15, 
-          duration: 1, 
-          ease: "power3.out"
+          stagger: 0.1, 
+          duration: 0.7, 
+          ease: "back.out(1.5)",
+          overwrite: "auto"
         }),
         start: "top 90%"
       });
@@ -86,7 +87,7 @@
             trigger: trigger,
             start: "top 85%",
             end: "bottom 50%",
-            scrub: 1.5 // smooth scrubbing
+            scrub: 0.5 // snappy, playful scrubbing
           }
         });
       });
@@ -101,7 +102,7 @@
             trigger: ".about-spread",
             start: "top bottom",
             end: "bottom top",
-            scrub: true
+            scrub: true // instant response
           }
         });
       }
@@ -157,18 +158,7 @@
 
     document.querySelectorAll('.creativity-card').forEach(el => ccObs.observe(el));
 
-    // ── 1B: SVG DRAWN UNDERLINE TRIGGER ──
-    const titleEls = document.querySelectorAll('.draw-trigger');
-    const titleObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('drawn');
-          titleObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    titleEls.forEach(el => titleObs.observe(el));
+    // (Old SVG IntersectionObserver removed in favor of GSAP ScrollTrigger)
 
     // ── 4. HAPPICLAP SLIDER ──
     const slider = document.getElementById('hc-slider');

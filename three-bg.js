@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ── 2. Create the Object ──
     // Minimalist, abstract geometric sphere
-    const geometry = new THREE.IcosahedronGeometry(2.5, 2); // Radius, Detail
+    const geometry = new THREE.IcosahedronGeometry(1.8, 2); // Radius, Detail
     
     // Wireframe material with the accent color
     // Accent color from CSS: --accent: #3B82F6 (blue)
@@ -33,8 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const mesh = new THREE.Mesh(geometry, material);
     
-    // Move the mesh slightly off-center (to the right) to balance text
-    mesh.position.x = 2;
+    // Stretch slightly on X-axis to cover both "8" and "9"
+    mesh.scale.set(1.5, 1, 1);
+    // Move the mesh off-center to fully surround the "89" on the right side
+    mesh.position.x = 3.6;
     scene.add(mesh);
 
     // ── 3. Interaction & Animation Variables ──
