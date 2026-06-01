@@ -895,13 +895,6 @@ footer p {
   transform: translateY(24px);
   /* Tighter distance to prevent floating */
   filter: blur(8px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease);
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0px);
 }
 
 /* ── 1A: Chromatic offset on a key word ── */

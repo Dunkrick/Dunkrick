@@ -1,28 +1,57 @@
-// ── 1. CUSTOM CURSOR LERP LOGIC ──
+// ── 1. GSAP MAGNETIC CURSOR ──
     const cursor = document.getElementById('cursor');
-    let mx = 0, my = 0, cx = 0, cy = 0;
+    
+    if (typeof gsap !== 'undefined') {
+      const xTo = gsap.quickTo(cursor, "x", {duration: 0.4, ease: "power3"});
+      const yTo = gsap.quickTo(cursor, "y", {duration: 0.4, ease: "power3"});
+      
+      let isMagnetic = false;
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-    });
+      document.addEventListener('mousemove', e => {
+        if (!isMagnetic) {
+          xTo(e.clientX - 14);
+          yTo(e.clientY - 14);
+        }
+      });
 
-    // Grow cursor on links and buttons
-    document.querySelectorAll('a, button, .bento-cell').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-    });
+      document.querySelectorAll('a, button, .bento-cell').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('hovered');
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hovered');
+          isMagnetic = false;
+        });
 
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    function tick() {
-      cx = lerp(cx, mx, 0.12);   // 0.12 smooth lag
-      cy = lerp(cy, my, 0.12);
-      // Center the 28px cursor (subtract half the width/height)
-      cursor.style.transform = `translate(${cx - 14}px, ${cy - 14}px)`;
-      requestAnimationFrame(tick);
+        // Apply magnetic pull to buttons and specific links
+        if (el.tagName.toLowerCase() === 'button' || el.classList.contains('cmd-link') || el.classList.contains('contact-email')) {
+          el.addEventListener('mousemove', e => {
+            isMagnetic = true;
+            const rect = el.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            
+            const pullX = (e.clientX - cx) * 0.15;
+            const pullY = (e.clientY - cy) * 0.15;
+            
+            xTo(cx + pullX - 14);
+            yTo(cy + pullY - 14);
+            
+            gsap.to(el, {
+              x: pullX,
+              y: pullY,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          });
+          
+          el.addEventListener('mouseleave', () => {
+            gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+          });
+        }
+      });
     }
-    tick(); // Start the loop
 
     // ── 2. NAV SCROLL ──
     const nav = document.getElementById('nav');
@@ -30,20 +59,53 @@
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // ── 3. FADE-UP OBSERVER ──
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    // ── 3. GSAP SCROLLTRIGGERS ──
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll('.fade-up').forEach((el, i) => {
-      el.style.transitionDelay = (i * 50) + 'ms'; // Snappier stagger (was 80ms)
-      obs.observe(el);
-    });
+      // Staggered fade-ups using batch
+      ScrollTrigger.batch(".fade-up", {
+        onEnter: batch => gsap.to(batch, {
+          opacity: 1, 
+          y: 0, 
+          filter: "blur(0px)", 
+          stagger: 0.15, 
+          duration: 1, 
+          ease: "power3.out"
+        }),
+        start: "top 90%"
+      });
+
+      // Scrubbing SVG Underlines
+      document.querySelectorAll('.drawn-underline path').forEach(path => {
+        const trigger = path.closest('.draw-trigger') || path;
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: trigger,
+            start: "top 85%",
+            end: "bottom 50%",
+            scrub: 1.5 // smooth scrubbing
+          }
+        });
+      });
+
+      // Parallax on About Photo
+      const aboutPhoto = document.querySelector('.about-photo-hero');
+      if (aboutPhoto) {
+        gsap.to(aboutPhoto, {
+          yPercent: 12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".about-spread",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      }
+    }
 
     // ── 3A: COUNT-UP WITH END GLITCH on stat numbers ──
     function animateCount(el, target, suffix, duration) {
