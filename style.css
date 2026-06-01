@@ -30,10 +30,12 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  /* clean, breathable reading rhythm */
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
@@ -67,6 +69,7 @@ body::after {
 .heading-sans {
   font-family: var(--font-display);
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .heading-serif,
@@ -74,11 +77,12 @@ body::after {
 .contact-headline em {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 450;
+  font-weight: 500;
   color: var(--accent);
-  font-size: 1.05em;
-  letter-spacing: -0.01em;
+  font-size: 1.1em;
+  letter-spacing: -0.02em;
   display: inline-block;
+  padding-right: 0.1em;
 }
 
 /* ── BENTO GRID UTILITIES ── */
@@ -225,9 +229,10 @@ nav.scrolled {
 
 
 .hero-eyebrow {
-  font-size: 13px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 24px;
@@ -236,10 +241,10 @@ nav.scrolled {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-weight: 625;
+  font-weight: 600;
   font-size: clamp(56px, 8vw, 120px);
-  line-height: 0.95;
-  letter-spacing: -0.04em; /* Sharper tracking for editorial feel */
+  line-height: 0.92;
+  letter-spacing: -0.05em;
   color: var(--text);
   text-shadow: 0 0 12px rgba(29, 29, 31, 0.15);
   /* Soft, glowing bleed */
@@ -251,13 +256,14 @@ nav.scrolled {
 .hero-sub {
   margin-top: 36px;
   max-width: 520px;
-  font-size: 17px; /* Slightly larger base for hero sub */
+  font-size: 16px;
   font-weight: 400;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   position: relative;
   z-index: 1;
-  filter: blur(0.4px); /* Reduced blur for sharper legibility */
+  filter: blur(0.4px);
   opacity: 0.9;
 }
 
@@ -352,8 +358,9 @@ section {
 }
 
 .section-label {
+  font-family: 'Courier New', monospace;
   font-size: 12px;
-  font-weight: 600; /* Bolder for structural hierarchy */
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -364,12 +371,12 @@ section {
 
 .section-title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(36px, 5vw, 64px);
-  letter-spacing: -0.03em; /* Tighter tracking for cleaner headings */
+  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--text);
-  margin-bottom: 80px; /* More space before content blocks */
+  margin-bottom: 80px;
 }
 
 .divider {
@@ -409,10 +416,10 @@ section {
 
 .about-editorial-headline {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(48px, 7vw, 96px);
   line-height: 0.92;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
   color: var(--text);
   margin-bottom: 36px;
   position: relative;
