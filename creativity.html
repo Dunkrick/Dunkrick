@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rithwick Gurram — Creativity</title>
+  <meta name="description" content="Experiments, Writing, and Films by Rithwick Gurram." />
+  <meta name="author" content="Rithwick Gurram" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="cursor"></div>
+
+  <nav id="nav">
+    <a href="index.html" class="heading-sans"
+      style="font-size: clamp(1rem, 2vw, 1.25rem); letter-spacing: 0.12em; color: var(--text); text-decoration: none;">
+      RITHWICK
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="#">Creativity</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li>
+        <button id="nav-cmd-trigger" aria-label="Open Command Palette" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);border-radius:6px;padding:4px 8px;font-family:var(--font-body);font-size:11px;font-weight:600;cursor:pointer;transition:background 0.3s, color 0.3s;display:flex;align-items:center;">
+          <span id="cmd-key-hint">⌘K</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <section id="creativity" style="padding:160px 48px;">
+    <div class="section-label">Beyond the work</div>
+    <!-- 1B: SVG drawn underline on title -->
+    <div class="section-title draw-trigger" style="margin-bottom:40px;">Creativity.
+      <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
+        <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
+      </svg>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:860px;">
+
+      <!-- 3B: Film card — slides in from left -->
+      <div class="creativity-card reveal-left" id="cc-film">
+        <p
+          style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-family:'Courier New',monospace;font-weight:600;">
+          Film</p>
+        <p style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:12px;">Two films selected for
+          festivals.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.75;">Directing taught me that the best edit is always
+          a cut, never a fade. That instinct shows up in everything I design.</p>
+        <a href="https://www.youtube.com/@DunkRick" target="_blank" rel="noopener noreferrer"
+          style="display:inline-block;margin-top:20px;font-size:12px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:opacity 0.4s var(--ease);">YouTube
+          ↗</a>
+      </div>
+
+      <!-- 3B: Writing card — drops in from top -->
+      <div class="creativity-card reveal-drop" id="cc-writing">
+        <p
+          style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-family:'Courier New',monospace;font-weight:600;">
+          Writing</p>
+        <p style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:12px;">Things I keep thinking about.
+        </p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.75;">Most interfaces fail at the exact moment someone
+          feels slightly foolish - when the thing they expected to happen, <em
+            style="font-family:'Newsreader',serif;font-style:italic;">didn't.</em> I write about this.</p>
+        <a href="#"
+          style="display:inline-block;margin-top:20px;font-size:12px;color:rgba(59,130,246,0.5);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(59,130,246,0.25);padding-bottom:2px;">Coming
+          soon</a>
+      </div>
+
+      <!-- 3B: Experiments card — scales in -->
+      <div class="creativity-card reveal-scale" id="cc-experiments">
+        <p
+          style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-family:'Courier New',monospace;font-weight:600;">
+          Experiments</p>
+        <p style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:12px;">Things I build.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.75;">Side projects, tools, UI experiments that go
+          nowhere useful but teach something real. This section grows.</p>
+        <a href="https://github.com/Dunkrick" target="_blank" rel="noopener noreferrer"
+          style="display:inline-block;margin-top:20px;font-size:12px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:opacity 0.4s var(--ease);">GitHub
+          ↗</a>
+      </div>
+
+      <!-- 3B: Currently card — slides up + 2B: rotated quote -->
+      <div class="creativity-card reveal-up" id="cc-currently"
+        style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <p
+            style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-family:'Courier New',monospace;font-weight:600;">
+            Currently</p>
+          <!-- 2B: Slightly rotated quote -->
+          <p class="rotated-quote"
+            style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:18px;color:var(--text);line-height:1.5;">
+            "Why does the best edit always feel like loss and why is that the right feeling?"
+          </p>
+        </div>
+        <p
+          style="font-size:12px;color:var(--muted);font-family:'Courier New',monospace;margin-top:24px;font-weight:500;filter:blur(0.4px);">
+          June 2026</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <p>© 2026 Rithwick Gurram.</p>
+    <span class="footer-accent" style="color:var(--accent);font-weight:500;">Designed &amp; coded with intent.</span>
+  </footer>
+
+  <!-- ── COMMAND PALETTE (EASTER EGG / SEARCH) ── -->
+  <div id="cmd-palette-backdrop" class="cmd-hidden">
+    <div id="cmd-palette">
+      <div class="cmd-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off" spellcheck="false" />
+        <div class="cmd-badge">ESC</div>
+      </div>
+      <div class="cmd-body">
+        <div class="cmd-section">Actions</div>
+        <button class="cmd-item" id="cmd-toggle-raw">
+          <span class="cmd-item-label">Toggle Wireframe Mode</span>
+          <span class="cmd-item-desc">Reveal the raw structure</span>
+        </button>
+        <a href="mailto:rithwickgurram05@gmail.com" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Send an Email</span>
+          <span class="cmd-item-desc">Start a conversation</span>
+        </a>
+        
+        <div class="cmd-section" style="margin-top: 12px;">Navigation</div>
+        <a href="index.html#work" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to Projects</span>
+        </a>
+        <a href="index.html#about" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to About</span>
+        </a>
+        <a href="index.html#contact" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Go to Contact</span>
+        </a>
+        <div class="cmd-section" style="margin-top: 12px;">Projects</div>
+        <a href="https://happiclap-ebon.vercel.app" target="_blank" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Happiclap — E-Commerce Redesign</span>
+        </a>
+        <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" class="cmd-item cmd-link">
+          <span class="cmd-item-label">Mapping the Churn — Analytics</span>
+        </a>
+        <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank" class="cmd-item cmd-link">
+          <span class="cmd-item-label"> x Rithwick — Creative Showcase</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

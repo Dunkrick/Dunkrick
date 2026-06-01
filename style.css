@@ -12,14 +12,16 @@
   --surface: #1E293B;
   --border: rgba(255, 255, 255, 0.08);
   --text: #F8FAFC;
-  --muted: #cbd5e1; /* Brightened for better WCAG AA contrast on dark backgrounds */
+  --muted: #cbd5e1;
+  /* Brightened for better WCAG AA contrast on dark backgrounds */
   --accent: #3B82F6;
   --white: #FFFFFF;
   --sp: 8px;
   --font-display: 'Clash Display', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1); /* Refined, highly responsive easing */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Refined, highly responsive easing */
 }
 
 html {
@@ -95,7 +97,8 @@ body::after {
 
 .bento-cell {
   background: var(--bg);
-  padding: 48px; /* More breathable internal spacing */
+  padding: 48px;
+  /* More breathable internal spacing */
   transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 
@@ -166,7 +169,8 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px 48px 80px; /* Tweaked top padding */
+  padding: 120px 48px 80px;
+  /* Tweaked top padding */
   position: relative;
   overflow: hidden;
   /* Subtle gradient: dark glow */
@@ -217,7 +221,7 @@ nav.scrolled {
   font-size: clamp(280px, 30vw, 480px);
   /* Wireframe / Blueprint aesthetic instead of blurry blob */
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.04);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.17);
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -244,7 +248,7 @@ nav.scrolled {
   font-weight: 600;
   font-size: clamp(56px, 8vw, 120px);
   line-height: 0.92;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.035em;
   color: var(--text);
   text-shadow: 0 0 12px rgba(29, 29, 31, 0.15);
   /* Soft, glowing bleed */
@@ -354,7 +358,8 @@ nav.scrolled {
 
 /* ── SECTION BASE ── */
 section {
-  padding: 160px 48px; /* Increased vertical rhythm */
+  padding: 160px 48px;
+  /* Increased vertical rhythm */
 }
 
 .section-label {
@@ -373,7 +378,7 @@ section {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(36px, 5vw, 64px);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   line-height: 1;
   color: var(--text);
   margin-bottom: 80px;
@@ -388,6 +393,8 @@ section {
 /* ── WORK / PROJECTS ── */
 #work {
   background: var(--surface);
+  padding-top: 70px;
+  padding-bottom: 30px;
   /* noticeably lighter than hero for contrast */
 }
 
@@ -395,6 +402,7 @@ section {
 #about {
   padding: 0;
   overflow: hidden;
+  background: var(--surface);
 }
 
 /* ── Editorial Spread ── */
@@ -419,7 +427,7 @@ section {
   font-weight: 600;
   font-size: clamp(48px, 7vw, 96px);
   line-height: 0.92;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.035em;
   color: var(--text);
   margin-bottom: 36px;
   position: relative;
@@ -460,7 +468,8 @@ section {
 .about-spread-bio {
   font-size: 16px;
   color: var(--muted);
-  line-height: 1.85; /* Highly composed reading block */
+  line-height: 1.85;
+  /* Highly composed reading block */
   max-width: 460px;
 }
 
@@ -545,7 +554,7 @@ section {
 }
 
 .stat-block {
-  background: var(--surface);
+  background: var(--bg);
   padding: 32px;
   transition: transform 0.6s var(--ease);
 }
@@ -559,7 +568,7 @@ section {
   font-weight: 700;
   font-size: 48px;
   color: var(--text);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -584,7 +593,7 @@ section {
 }
 
 .skill-row {
-  background: var(--surface);
+  background: var(--bg);
   padding: 16px 32px;
   display: flex;
   align-items: center;
@@ -738,7 +747,7 @@ section {
   font-family: var(--font-display);
   font-weight: 625;
   font-size: clamp(40px, 5vw, 72px);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   line-height: 1;
   color: #F5F5F7;
   /* near-white on dark */
@@ -883,7 +892,8 @@ footer p {
 /* ── ANIMATIONS ── */
 .fade-up {
   opacity: 0;
-  transform: translateY(24px); /* Tighter distance to prevent floating */
+  transform: translateY(24px);
+  /* Tighter distance to prevent floating */
   filter: blur(8px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease);
 }
@@ -934,9 +944,15 @@ footer p {
     padding: 20px 24px;
   }
 
-  /* Hide nav links on small screens, show only logo */
+  /* Keep nav links visible but compact on smaller screens */
   .nav-links {
-    display: none;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav-links a {
+    font-size: 11px;
   }
 
   section {
@@ -954,11 +970,13 @@ footer p {
 
   .hero-cta-row {
     flex-direction: column;
-    align-items: stretch; /* Stack buttons for better touch targets */
+    align-items: stretch;
+    /* Stack buttons for better touch targets */
     gap: 16px;
   }
 
-  .hero-cta-row .btn-primary, .hero-cta-row .btn-ghost {
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-ghost {
     text-align: center;
     justify-content: center;
   }
@@ -978,7 +996,8 @@ footer p {
   }
 
   .bento-cell {
-    padding: 32px; /* Scale down internal padding from 48px desktop */
+    padding: 32px;
+    /* Scale down internal padding from 48px desktop */
   }
 
   /* About editorial: stack to single column */
@@ -992,7 +1011,8 @@ footer p {
   }
 
   .about-spread-right {
-    min-height: 70vw; /* Give the floating photo more space on mobile */
+    min-height: 70vw;
+    /* Give the floating photo more space on mobile */
     height: 70vw;
     border-left: none;
     border-top: 1px solid var(--border);
@@ -1064,9 +1084,10 @@ footer p {
   .contact-right {
     padding: 64px 24px 0;
   }
-  
+
   .social-link {
-    padding: 20px 24px; /* Slightly tighter touch targets to avoid squeezing */
+    padding: 20px 24px;
+    /* Slightly tighter touch targets to avoid squeezing */
   }
 
   footer {
@@ -1075,6 +1096,57 @@ footer p {
     gap: 8px;
     align-items: center;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-headline {
+    font-size: clamp(40px, 12vw, 56px);
+    /* Prevent word break */
+    letter-spacing: -0.025em;
+  }
+
+  .about-editorial-headline {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+
+  .bento-cell {
+    padding: 24px;
+    /* Maximize screen real estate on phones */
+  }
+
+  .about-spread-left {
+    padding: 48px 24px 32px;
+  }
+
+  .about-lower-stats,
+  .about-lower-skills {
+    padding: 32px 24px;
+  }
+
+  #contact {
+    padding: 64px 0;
+  }
+
+  .contact-left {
+    padding: 0 24px 48px;
+  }
+
+  .contact-right {
+    padding: 48px 24px 0;
+  }
+
+  #creativity {
+    padding: 64px 24px !important;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 8vw, 48px);
+    margin-bottom: 48px;
+  }
+
+  .stat-number {
+    font-size: 36px;
   }
 }
 
@@ -1179,7 +1251,8 @@ footer p {
   text-align: left;
 }
 
-.cmd-item:hover, .cmd-item:focus {
+.cmd-item:hover,
+.cmd-item:focus {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   outline: none;
@@ -1199,7 +1272,7 @@ footer p {
 
 /* ── WIREFRAME RAW MODE (EASTER EGG) ── */
 body.raw-mode {
-  background-image: 
+  background-image:
     linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
@@ -1210,7 +1283,8 @@ body.raw-mode * {
   transition: outline 0.3s ease;
 }
 
-body.raw-mode .fade-up, body.raw-mode img {
+body.raw-mode .fade-up,
+body.raw-mode img {
   filter: grayscale(100%) contrast(1.2) !important;
 }
 
