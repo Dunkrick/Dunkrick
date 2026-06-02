@@ -7,6 +7,14 @@
   cursor: none !important;
 }
 
+@font-face {
+  font-family: 'Ricks';
+  src: url('Ricks-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #0F172A;
   --surface: #1E293B;
@@ -20,6 +28,7 @@
   --font-display: 'Clash Display', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
+  --font-handwriting: 'Ricks', cursive;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   /* Refined, highly responsive easing */
 }
@@ -87,6 +96,17 @@ body::after {
   padding-right: 0.1em;
 }
 
+.handwriting-accent {
+  font-family: var(--font-handwriting);
+  color: var(--accent);
+  transform: rotate(-3deg);
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 1.25em; /* handwriting fonts usually need to be bigger */
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
 /* ── BENTO GRID UTILITIES ── */
 .bento-grid {
   display: grid;
@@ -97,7 +117,7 @@ body::after {
 
 .bento-cell {
   background: var(--bg);
-  padding: 48px;
+  padding: 32px;
   /* More breathable internal spacing */
   transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
@@ -108,8 +128,67 @@ body::after {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
 
-.bento-projects {
-  grid-template-columns: 2fr 1fr;
+.projects-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-chip {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.stat-chip span {
+  color: var(--accent);
 }
 
 .accent-arrow {
