@@ -805,17 +805,12 @@ section {
 
 /* ── CONTACT ── */
 #contact {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  min-height: 60vh;
-  padding: 120px 0;
-}
-
-.contact-left {
-  padding: 0 48px;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 50vh;
+  padding: 160px 24px;
 }
 
 .contact-headline {
@@ -863,22 +858,19 @@ section {
   color: var(--accent);
 }
 
-.contact-right {
-  padding: 0 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
 .social-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 24px 32px;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.04);
   text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  margin-bottom: 2px;
   transition: background 0.4s var(--ease), transform 0.4s var(--ease);
 }
 
@@ -888,7 +880,12 @@ section {
 }
 
 .social-link:hover .social-arrow {
-  transform: translate(4px, -4px);
+  transform: translate(3px, -3px);
+}
+
+.social-arrow {
+  color: var(--muted);
+  transition: transform 0.4s var(--ease);
 }
 
 .social-name {
@@ -1139,23 +1136,12 @@ footer p {
 
   /* Contact: stack, even padding */
   #contact {
-    grid-template-columns: 1fr;
-    padding: 80px 0;
-  }
-
-  .contact-left {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px 64px;
-  }
-
-  .contact-right {
-    padding: 64px 24px 0;
+    padding: 100px 24px;
   }
 
   .social-link {
-    padding: 20px 24px;
-    /* Slightly tighter touch targets to avoid squeezing */
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
   footer {
@@ -1193,15 +1179,7 @@ footer p {
   }
 
   #contact {
-    padding: 64px 0;
-  }
-
-  .contact-left {
-    padding: 0 24px 48px;
-  }
-
-  .contact-right {
-    padding: 48px 24px 0;
+    padding: 80px 24px;
   }
 
   #creativity {
