@@ -159,7 +159,13 @@
             <div class="stat-chip">Trust Design</div>
           </div>
           
-          <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Prototype →</a>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Prototype →</a>
+            <button class="like-button" data-project="happiclap" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span class="like-count">0</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -179,7 +185,13 @@
             <div class="stat-chip">Data Visualization</div>
           </div>
           
-          <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Dashboard →</a>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Dashboard →</a>
+            <button class="like-button" data-project="churn" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span class="like-count">0</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -201,7 +213,13 @@
             <div class="stat-chip">React</div>
           </div>
           
-          <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Showcase →</a>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Showcase →</a>
+            <button class="like-button" data-project="gsap" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span class="like-count">0</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -435,10 +453,14 @@
       </div>
     </div>
   </div>
+  
   <!-- GSAP & Three.js Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Supabase Backend (Using Native Fetch) -->
+  <script src="backend.js"></script>
 
   <script src="script.js"></script>
   <script src="three-bg.js"></script>
