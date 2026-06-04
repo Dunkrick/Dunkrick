@@ -24,12 +24,19 @@
   <meta name="twitter:title" content="Rithwick Gurram" />
   <meta name="twitter:description"
     content="I find where products break. And make them flow. Bridging the gap between systems thinking and visual craft." />
+  <!-- Resource Hints (CDN Optimizations) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cadazfnomibslxomgnnz.supabase.co" />
+  <link rel="preconnect" href="https://cadazfnomibslxomgnnz.supabase.co" crossorigin />
+
+  <!-- Fonts -->
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
@@ -364,16 +371,18 @@
     </div>
   </div>
   
-  <!-- GSAP & Three.js Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- GSAP & Three.js Libraries (Deferred to prevent render blocking) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Custom Logic -->
+  <script defer src="script.js"></script>
+  <script defer src="three-bg.js"></script>
   
   <!-- Supabase Backend (Using Native Fetch) -->
-  <script src="backend.js"></script>
+  <script defer src="backend.js"></script>
 
-  <script src="script.js"></script>
-  <script src="three-bg.js"></script>
 </body>
 
 </html>
