@@ -127,102 +127,8 @@
       </svg>
     </div>
 
-    <div class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
-      
-      <!-- HAPPICLAP -->
-      <div class="bento-cell project-layout">
-        <div class="project-media" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
-          <div id="hc-slider" style="position:relative;width:100%;height:100%;user-select:none;cursor:ew-resize;line-height:0;touch-action:none;">
-            <!-- AFTER -->
-            <img src="after-hero.png" alt="Happiclap redesigned homepage" style="width:100%;height:100%;object-fit:cover;display:block;opacity:1;pointer-events:none;" draggable="false" />
-            <!-- BEFORE -->
-            <img src="before-hero.png" alt="Happiclap original homepage" style="width:100%;height:100%;object-fit:cover;display:block;opacity:1;position:absolute;top:0;left:0;clip-path:inset(0 50% 0 0);-webkit-clip-path:inset(0 50% 0 0);pointer-events:none;" id="hc-before-img" draggable="false" />
-            <!-- Divider line -->
-            <div id="hc-line" style="position:absolute;top:0;left:50%;width:2px;height:100%;background:var(--accent);transform:translateX(-50%);pointer-events:none;"></div>
-            <!-- Handle -->
-            <div id="hc-handle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;pointer-events:none;box-shadow:0 4px 12px rgba(15,23,42,0.1), 0 0 0 1px var(--border);transition:transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-              <svg width="12" height="8" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 1L1 5L5 9M11 1L15 5L11 9" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-info">
-          <p class="project-eyebrow">01 // E-Commerce</p>
-          <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">Happiclap: Designing for Trust</p>
-          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;">Rebuilt confusing e-commerce flows to prioritize accessibility and trust. Fixed 7+ major friction points across browsing and checkout.</p>
-          
-          <div class="stat-chips">
-            <div class="stat-chip"><span>7+</span> Flows Fixed</div>
-            <div class="stat-chip">Accessibility</div>
-            <div class="stat-chip">Trust Design</div>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-            <a href="https://happiclap-ebon.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Prototype →</a>
-            <button class="like-button" data-project="happiclap" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              <span class="like-count">0</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- DASHBOARD -->
-      <div class="bento-cell project-layout">
-        <div class="project-media" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
-          <img src="dashboard-cover.png" alt="Customer Churn Risk Dashboard" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;" />
-        </div>
-
-        <div class="project-info">
-          <p class="project-eyebrow">02 // Systems & Data</p>
-          <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">Mapping the Churn</p>
-          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;">Translated 50,000+ rows of messy customer records into an actionable visual narrative to highlight exactly where users abandon carts.</p>
-          
-          <div class="stat-chips">
-            <div class="stat-chip"><span>50K</span> Data Points</div>
-            <div class="stat-chip">Data Visualization</div>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-            <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Dashboard →</a>
-            <button class="like-button" data-project="churn" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              <span class="like-count">0</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- GSAP MACBOOK LANDING PAGE -->
-      <div class="bento-cell project-layout">
-        <div class="project-media" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
-          <img src="GSAP_Landing.jpg" alt="GSAP MacBook Landing Page Cover" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;" />
-        </div>
-
-        <div class="project-info">
-          <p class="project-eyebrow">03 // Creative Showcase</p>
-          <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;"> x Rithwick</p>
-          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;">An Apple-inspired creative showcase featuring interactive 3D WebGL rendering and complex scroll-linked animations.</p>
-          
-          <div class="stat-chips">
-            <div class="stat-chip"><span>3D</span> WebGL</div>
-            <div class="stat-chip">GSAP</div>
-            <div class="stat-chip">Three.js</div>
-            <div class="stat-chip">React</div>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-            <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Showcase →</a>
-            <button class="like-button" data-project="gsap" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              <span class="like-count">0</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
+    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
+      <!-- Projects will be dynamically injected here by backend.js -->
     </div>
 
   </section>
@@ -362,7 +268,7 @@
         problem worth solving, let's figure it out together.
       </p>
       <div style="margin-top: 40px;">
-        <a href="mailto:rithwickgurram05@gmail.com" class="btn-primary" style="padding: 16px 32px; font-size: 15px;">
+        <a href="contact.html" class="btn-primary" style="padding: 16px 32px; font-size: 15px;">
           Start a conversation ↗
         </a>
       </div>
@@ -428,6 +334,10 @@
         <a href="mailto:contact.rithwick@gmail.com" class="cmd-item cmd-link">
           <span class="cmd-item-label">Send an Email</span>
           <span class="cmd-item-desc">Start a conversation</span>
+        </a>
+        <a href="admin.html" class="cmd-item cmd-link">
+          <span class="cmd-item-label" style="color: var(--accent);">Admin Login</span>
+          <span class="cmd-item-desc">Access the CMS Dashboard</span>
         </a>
 
         <div class="cmd-section" style="margin-top: 12px;">Navigation</div>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Rithwick</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+    }
+    
+    .contact-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 24px;
+      text-align: center;
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 480px;
+      margin-top: 48px;
+      text-align: left;
+    }
+    
+    .contact-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .contact-input:focus {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    
+    .contact-input::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    
+    #contact-status {
+      font-size: 14px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Subtle SVG animations */
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(10px) scale(1.05); }
+    }
+    
+    .svg-accent-1 {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      opacity: 0.4;
+      animation: float1 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .svg-accent-2 {
+      position: absolute;
+      bottom: 20%;
+      right: 15%;
+      opacity: 0.3;
+      animation: float2 10s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .contact-container {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+
+  <!-- Navbar -->
+  <nav id="nav">
+    <a href="index.html" class="heading-sans"
+      style="font-size: clamp(1rem, 2vw, 1.25rem); letter-spacing: 0.12em; color: var(--text); text-decoration: none; position: relative; z-index: 200;">
+      RITHWICK
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="creativity.html">Creativity</a></li>
+    </ul>
+  </nav>
+
+  <main class="contact-container">
+    <!-- Background Floating SVGs -->
+    <svg class="svg-accent-1" width="64" height="64" viewBox="0 0 100 100">
+      <path d="M50 10 C 60 10, 60 40, 90 50 C 60 60, 60 90, 50 90 C 40 90, 40 60, 10 50 C 40 40, 40 10, 50 10" fill="none" stroke="var(--accent)" stroke-width="2" />
+    </svg>
+    <svg class="svg-accent-2" width="120" height="120" viewBox="0 0 100 100">
+      <path d="M50 50 C 50 30, 70 30, 70 50 C 70 80, 30 80, 30 50 C 30 10, 80 10, 80 50 C 80 100, 10 100, 10 50" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" />
+    </svg>
+
+    <div class="section-label" style="margin-bottom: 24px;">Connect</div>
+    
+    <h1 class="hero-headline" style="font-size: clamp(40px, 8vw, 80px); margin: 0; line-height: 1.1;">Start a<br><em>conversation</em></h1>
+    <div class="handwriting-accent" style="font-size: clamp(24px, 4vw, 32px); color: var(--accent); transform: rotate(-6deg); margin-top: -5px; margin-left: clamp(100px, 15vw, 180px); opacity: 0.9;">
+      (say hi!)
+    </div>
+    
+    <p style="color: var(--muted); font-family: var(--font-body); font-size: 18px; margin-top: 40px; max-width: 500px; line-height: 1.6;">
+      If you have a problem worth solving, let's figure it out together. Drop me a message below.
+    </p>
+    
+    <form id="contact-form" class="contact-form" style="position: relative; z-index: 10;">
+      <input type="text" id="contact-name" name="name" placeholder="Your Name" required class="contact-input" />
+      <input type="email" id="contact-email" name="email" placeholder="Email Address" required class="contact-input" />
+      <textarea id="contact-message" name="message" placeholder="What's on your mind?" rows="5" required class="contact-input" style="resize: vertical;"></textarea>
+      
+      <button type="submit" id="contact-submit" class="btn-primary" style="align-self: center; margin-top: 16px; padding: 16px 40px; font-size: 15px; border: none; cursor: pointer; width: 100%; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); transition: transform 0.3s, box-shadow 0.3s;">
+        Send Message ↗
+      </button>
+      <p id="contact-status" style="display: none;"></p>
+    </form>
+    
+    <div style="margin-top: 48px;">
+      <a href="index.html" style="color: var(--muted); text-decoration: none; font-size: 15px; transition: color 0.3s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">
+        ← Back to Home
+      </a>
+    </div>
+  </main>
+
+  <footer style="position: relative; padding: 60px 48px; overflow: hidden;">
+    <p style="position: relative; z-index: 1;">© 2026 Rithwick Gurram.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <script src="backend.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
