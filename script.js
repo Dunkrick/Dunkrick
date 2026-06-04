@@ -160,76 +160,9 @@
 
     // (Old SVG IntersectionObserver removed in favor of GSAP ScrollTrigger)
 
-    // ── 4. HAPPICLAP SLIDER ──
-    const slider = document.getElementById('hc-slider');
-    const beforeImg = document.getElementById('hc-before-img');
-    const line = document.getElementById('hc-line');
-    const handle = document.getElementById('hc-handle');
-
-    if (slider && beforeImg && line && handle) {
-      let isDragging = false;
-      let hasDragged = false;
-      let targetX = null;
-      let rafId = null;
-
-      const renderSlider = () => {
-        if (targetX === null) return;
-        const rect = slider.getBoundingClientRect();
-        let x = targetX - rect.left;
-        x = Math.max(0, Math.min(x, rect.width)); // clamp
-        const percent = (x / rect.width) * 100;
-        
-        beforeImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-        beforeImg.style.webkitClipPath = `inset(0 ${100 - percent}% 0 0)`;
-        line.style.left = `${percent}%`;
-        handle.style.left = `${percent}%`;
-        
-        rafId = null;
-      };
-
-      const requestUpdate = (clientX) => {
-        targetX = clientX;
-        if (!rafId) {
-          rafId = requestAnimationFrame(renderSlider);
-        }
-      };
-
-      slider.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // Stop native drag
-        isDragging = true;
-        hasDragged = false; // Reset drag state
-        requestUpdate(e.clientX);
-      });
-      window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        hasDragged = true; // Mark as dragged
-        requestUpdate(e.clientX);
-      });
-      window.addEventListener('mouseup', () => {
-        isDragging = false;
-      });
-
-      // Prevent link click if it was a drag
-      slider.addEventListener('click', (e) => {
-        if (hasDragged) {
-          e.preventDefault();
-        }
-      });
-
-      slider.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        hasDragged = false;
-        requestUpdate(e.touches[0].clientX);
-      }, { passive: true });
-      window.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        hasDragged = true;
-        requestUpdate(e.touches[0].clientX);
-      }, { passive: true });
-      slider.addEventListener('touchend', () => {
-        isDragging = false;
-      });
-    }
+    // ── 4. HAPPICLAP SLIDER (REMOVED) ──
+    // The Happiclap before/after slider logic has been removed because 
+    // projects are now rendered dynamically via the CMS in standard bento-cells.
 
     // ── COMMAND PALETTE & EASTER EGG ──
     const cmdBackdrop = document.getElementById('cmd-palette-backdrop');
