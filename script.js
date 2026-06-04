@@ -242,9 +242,9 @@
     });
 
 // ── MAGNETIC BUTTON EFFECT ──
-const magneticButtons = document.querySelectorAll('.magnetic-btn');
+const magneticBtnsGsap = document.querySelectorAll('.magnetic-btn');
 
-magneticButtons.forEach(btn => {
+magneticBtnsGsap.forEach(btn => {
   btn.addEventListener('mousemove', (e) => {
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
