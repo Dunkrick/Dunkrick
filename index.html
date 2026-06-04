@@ -243,7 +243,7 @@
           <span class="who">// Who is</span>
           <span class="name-line draw-trigger"><span class="name-ink">Rithwick</span><span
               style="color:var(--accent);">?</span>
-            <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none" style="bottom: 8px;">
+            <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
               <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
             </svg>
           </span>
@@ -275,7 +275,7 @@
       <div class="about-spread-right">
         <!-- Creative Doodles -->
         <svg width="48" height="48" viewBox="0 0 24 24"
-          style="position:absolute; top:14%; right:10%; opacity:0.7; animation: spinBadge 20s linear infinite; pointer-events:none;">
+          style="position:absolute; top:14%; right:10%; z-index:2; opacity:0.7; animation: spinBadge 20s linear infinite; pointer-events:none;">
           <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="none" stroke="var(--accent)"
             stroke-width="1.5" stroke-linejoin="round" />
         </svg>
@@ -290,7 +290,7 @@
         </svg>
 
         <!-- Hero cutout: plaid shirt, anchored to bottom-right -->
-        <img src="rithwick-plaid.png" alt="Rithwick Gurram" class="about-photo-hero" />
+        <img src="rithwick-plaid.png" alt="Rithwick Gurram" class="about-photo-hero" style="z-index:1;" />
       </div>
     </div>
 
@@ -350,7 +350,7 @@
 
   <div class="divider"></div>
 
-  <section id="contact" style="padding: 0;">
+  <section id="contact">
     <div class="contact-left fade-up">
       <div class="section-label">Connect</div>
       <h2 class="contact-headline">
