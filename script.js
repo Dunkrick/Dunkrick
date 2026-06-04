@@ -77,17 +77,17 @@
         start: "top 90%"
       });
 
-      // Scrubbing SVG Underlines
+      // Drawing SVG Underlines
       document.querySelectorAll('.drawn-underline path').forEach(path => {
         const trigger = path.closest('.draw-trigger') || path;
         gsap.to(path, {
           strokeDashoffset: 0,
-          ease: "none",
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: trigger,
             start: "top 85%",
-            end: "bottom 50%",
-            scrub: 0.5 // snappy, playful scrubbing
+            toggleActions: "play none none reverse"
           }
         });
       });

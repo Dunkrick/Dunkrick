@@ -36,13 +36,15 @@
 
   <!-- Fonts -->
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
+    rel="stylesheet" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
 
   <link rel="stylesheet" href="style.css" />
-  
+
   <!-- Structured Data for SEO -->
   <script type="application/ld+json">
   {
@@ -99,7 +101,8 @@
 
   <section id="hero">
     <!-- WebGL Background -->
-    <canvas id="hero-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;"></canvas>
+    <canvas id="hero-canvas"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;"></canvas>
 
     <!-- Massive wireframe blueprint number -->
     <div class="hero-bg-number" aria-hidden="true">89</div>
@@ -128,7 +131,9 @@
   <section id="work">
     <div class="section-label">Selected Work</div>
     <div class="section-title draw-trigger">Projects
-      <span class="handwriting-accent" style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(the good stuff)</span>
+      <span class="handwriting-accent"
+        style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(the
+        good stuff)</span>
       <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
         <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
       </svg>
@@ -181,11 +186,6 @@
             systems - mostly driven by curiosity and the love of making things.
             That side lives on the <a href="creativity.html">Creativity</a> page.
           </p>
-          <div style="margin-top: 32px;">
-            <a href="resume.pdf" target="_blank" class="btn-primary" style="padding: 12px 24px; font-size: 14px;">
-              View Resume ↗
-            </a>
-          </div>
         </div>
       </div>
 
@@ -319,9 +319,12 @@
   </section>
 
   <footer style="position: relative; padding: 60px 48px; overflow: hidden;">
-    <div class="handwriting-accent" style="font-size: clamp(40px, 8vw, 80px); opacity: 0.04; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; pointer-events: none;">RITHWICK</div>
+    <div class="handwriting-accent"
+      style="font-size: clamp(40px, 8vw, 80px); opacity: 0.04; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; pointer-events: none;">
+      RITHWICK</div>
     <p style="position: relative; z-index: 1;">© 2026 Rithwick Gurram.</p>
-    <span class="footer-accent" style="position: relative; z-index: 1; color:var(--accent);font-weight:500;">Designed &amp; coded with intent.</span>
+    <span class="footer-accent" style="position: relative; z-index: 1; color:var(--accent);font-weight:500;">Designed
+      &amp; coded with intent.</span>
   </footer>
 
   <!-- ── COMMAND PALETTE (EASTER EGG / SEARCH) ── -->
@@ -375,16 +378,16 @@
       </div>
     </div>
   </div>
-  
+
   <!-- GSAP & Three.js Libraries (Deferred to prevent render blocking) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+
   <!-- Custom Logic -->
   <script defer src="script.js"></script>
   <script defer src="three-bg.js"></script>
-  
+
   <!-- Supabase Backend (Using Native Fetch) -->
   <script defer src="backend.js"></script>
 
