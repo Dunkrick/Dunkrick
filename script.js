@@ -240,3 +240,32 @@
         btn.style.transform = '';
       });
     });
+
+// ── MAGNETIC BUTTON EFFECT ──
+const magneticButtons = document.querySelectorAll('.magnetic-btn');
+
+magneticButtons.forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Pull the button towards the cursor
+    gsap.to(btn, {
+      x: x * 0.4,
+      y: y * 0.4,
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    // Snap back to original position
+    gsap.to(btn, {
+      x: 0,
+      y: 0,
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.3)'
+    });
+  });
+});

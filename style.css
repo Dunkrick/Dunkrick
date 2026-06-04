@@ -370,13 +370,16 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   background: transparent;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  cursor: pointer;
+  border-radius: 6px;
+  /* explicitly omit 'transform' so GSAP magnetic effect is perfectly smooth */
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 .btn-primary:hover {
   background: var(--accent);
   color: var(--surface);
-  transform: translateY(-2px);
+  /* removed CSS translateY so it doesn't fight with JS GSAP */
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
 }
 
