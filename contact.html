@@ -35,8 +35,6 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--text);
-      /* Add subtle noise to match the reference */
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
     .contact-container {
@@ -52,13 +50,15 @@
       box-sizing: border-box;
     }
 
-    /* ── LEFT: WHITE FORM CARD ── */
+    /* ── LEFT: DARK FORM CARD ── */
     .contact-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 16px;
       padding: 48px 40px;
-      color: #111111;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .contact-card-header {
@@ -78,24 +78,24 @@
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .input-label {
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 500;
-      color: #333333;
+      color: var(--muted);
     }
 
     .contact-input {
-      background: #F4F4F5;
-      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 14px 16px;
       font-family: var(--font-body);
       font-size: 15px;
-      color: #111111;
+      color: var(--text);
       outline: none;
       transition: border-color 0.3s, background 0.3s;
       width: 100%;
@@ -103,36 +103,37 @@
     }
 
     .contact-input:focus {
-      border-color: #A1A1AA;
-      background: #ffffff;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .contact-input::placeholder {
-      color: #A1A1AA;
+      color: rgba(255, 255, 255, 0.3);
     }
 
     #contact-submit {
-      background: #111111;
-      color: #ffffff;
+      background: var(--accent);
+      color: var(--surface);
       border: none;
-      border-radius: 24px;
+      border-radius: 8px;
       padding: 16px;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       margin-top: 8px;
-      transition: transform 0.3s, background 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     }
 
     #contact-submit:hover {
-      background: #000000;
       transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
     }
     
     .form-footer {
-      font-size: 11px;
-      color: #71717A;
+      font-size: 12px;
+      color: var(--muted);
       margin-top: 16px;
+      text-align: center;
     }
 
     /* ── RIGHT: TYPOGRAPHY ── */
@@ -172,8 +173,8 @@
       font-family: var(--font-display);
       font-size: 16px;
       font-weight: 500;
-      color: #F5F5F7;
-      margin: 0 0 8px 0;
+      color: var(--accent);
+      margin: 0 0 12px 0;
       display: flex;
       align-items: center;
       gap: 8px;
