@@ -210,6 +210,73 @@
         linkEl.style.display = 'none';
       }
       
+      // Inject specific case study narratives based on project
+      const contentContainer = document.querySelector('.case-study-content');
+      
+      if (data.title && data.title.includes('Happiclap')) {
+        contentContainer.innerHTML = `
+          <div class="content-section">
+            <h3>The Problem</h3>
+            <p>E-commerce interfaces often optimize for the business at the expense of the user. In this redesign, the existing platform had a convoluted checkout flow that forced users to make too many decisions before completing a purchase, resulting in significant friction.</p>
+          </div>
+          <div class="content-section">
+            <h3>The System Insight</h3>
+            <p>I mapped the architecture and realized the core issue wasn't the UI elements themselves, but the cognitive load required to navigate them. By collapsing the checkout steps into a linear, predictable system, the user's journey became frictionless.</p>
+          </div>
+          <div class="content-section">
+            <h3>The Build</h3>
+            <p>This wasn't just a Figma exercise. I built the redesigned interface as a functioning prototype, validating the new component architecture and ensuring the logic held up under actual interaction.</p>
+          </div>
+        `;
+      } else if (data.title && data.title.includes('Churn')) {
+        contentContainer.innerHTML = `
+          <div class="content-section">
+            <h3>The Problem</h3>
+            <p>Data without a narrative is just noise. The challenge here was a dataset of 50,000 records showing high user churn. The business knew *that* people were leaving, but the system didn't show *why*.</p>
+          </div>
+          <div class="content-section">
+            <h3>The System Insight</h3>
+            <p>By mapping the churn patterns against user behavior milestones, I isolated the exact points of friction. The system was breaking down not because of a bad product, but because the onboarding flow misaligned with user expectations around Day 14.</p>
+          </div>
+          <div class="content-section">
+            <h3>The Build</h3>
+            <p>I used Python and SQL to structure the data pipeline, and then built a Streamlit dashboard to make the insights visible and actionable for stakeholders. It turned a messy problem into a clear operational directive.</p>
+          </div>
+        `;
+      } else if (data.title && data.title.includes('Showcase')) {
+        contentContainer.innerHTML = `
+          <div class="content-section">
+            <h3>The Problem</h3>
+            <p>Standard landing pages often fail to capture the physical essence of a product. The goal was to build a digital experience that felt as tactile and precise as hardware design, specifically using GSAP to control the scroll narrative.</p>
+          </div>
+          <div class="content-section">
+            <h3>The System Insight</h3>
+            <p>Motion isn't just decoration; it's a system for controlling attention. The insight was tying the animation timeline directly to the user's scroll position, turning the act of reading a page into the act of revealing a product.</p>
+          </div>
+          <div class="content-section">
+            <h3>The Build</h3>
+            <p>I engineered the scroll-triggers and WebGL rendering to perform flawlessly without dropping frames. It's a tight integration of visual craft and frontend logic.</p>
+          </div>
+        `;
+      } else {
+        // Fallback for new projects
+        contentContainer.innerHTML = `
+          <div class="content-section">
+            <h3>The Problem</h3>
+            <p>Every system has friction. The goal here wasn't just to redesign the interface, but to map where the user flow was breaking down and understand why.</p>
+            <p><em>(Detailed case study content will be added here soon.)</em></p>
+          </div>
+          <div class="content-section">
+            <h3>The System Insight</h3>
+            <p>Instead of adding more features, the solution required reducing the cognitive load. By mapping the architecture, we could remove decisions that the user shouldn't have to make.</p>
+          </div>
+          <div class="content-section">
+            <h3>The Build</h3>
+            <p>I built this ensuring that the technical architecture supported the simplified flow. It's not just a design—it's a working proof of concept.</p>
+          </div>
+        `;
+      }
+
       // Show content
       document.getElementById('loading-state').style.display = 'none';
       document.getElementById('project-content').style.display = 'block';
