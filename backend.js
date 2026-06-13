@@ -172,7 +172,7 @@ async function fetchProjects() {
       
       const html = `
       <div class="bento-cell project-layout">
-        <div class="project-media" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
+        <div class="project-media" style="border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
           <img src="${proj.image_url}" alt="${proj.title}" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Missing'"/>
         </div>
 
