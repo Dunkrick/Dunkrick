@@ -179,10 +179,11 @@ async function fetchProjects() {
         <div class="project-info">
           <p class="project-eyebrow">${num} // ${proj.role || 'Project'}</p>
           <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">${proj.title}</p>
-          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;">${proj.description}</p>
+          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;margin-bottom:12px;">${proj.description}</p>
+          <p style="color:var(--accent);font-family:var(--font-handwriting);font-size:18px;line-height:1.4;opacity:0.85;">${proj.thinking || 'Mapping the system to find the core friction.'}</p>
           
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px;">
-            <a href="${proj.project_url || '#'}" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">View Project →</a>
+            <a href="project.html?id=${projId}" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">Read Case Study →</a>
             <button class="like-button" data-project="${projId}" style="background:none; border:none; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:13px; transition:color 0.3s; padding:0;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
               <span class="like-count">0</span>

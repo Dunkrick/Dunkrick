@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Case Study — Rithwick Gurram</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@1,400&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Specific styles for the case study layout */
+    .case-study-hero {
+      padding: 160px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .case-study-meta {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      font-family: var(--font-body);
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .case-study-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    .case-study-description {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      color: var(--muted);
+      max-width: 800px;
+      margin-bottom: 48px;
+    }
+    .case-study-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 80px;
+      border: 1px solid var(--border);
+    }
+    .case-study-content {
+      max-width: 800px;
+      margin: 0 auto 120px;
+    }
+    .content-section {
+      margin-bottom: 64px;
+    }
+    .content-section h3 {
+      font-family: var(--font-handwriting);
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+    .content-section p {
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    
+    /* Loading state */
+    #loading-state {
+      padding: 200px 48px;
+      text-align: center;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cursor"></div>
+
+  <!-- Navbar -->
+  <nav id="nav">
+    <a href="index.html" class="heading-sans"
+      style="font-size: clamp(1rem, 2vw, 1.25rem); letter-spacing: 0.12em; color: var(--text); text-decoration: none; position: relative; z-index: 200;">
+      RITHWICK
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="creativity.html">Creativity</a></li>
+      <li><a href="resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li>
+        <button id="nav-cmd-trigger" aria-label="Open Command Palette" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);border-radius:6px;padding:4px 8px;font-family:var(--font-body);font-size:11px;font-weight:600;cursor:pointer;transition:background 0.3s, color 0.3s;display:flex;align-items:center;">
+          <span id="cmd-key-hint">⌘K</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="project-container">
+    <div id="loading-state">
+      <p>Loading project data...</p>
+    </div>
+    
+    <!-- Content injected via JS -->
+    <div id="project-content" style="display: none;">
+      <section class="case-study-hero">
+        <div class="case-study-meta">
+          <span id="proj-role">Role</span>
+          <span>·</span>
+          <span>Systems & Craft</span>
+        </div>
+        <h1 class="heading-sans case-study-title" id="proj-title">Project Title</h1>
+        <p class="case-study-description" id="proj-desc">Project description goes here.</p>
+        
+        <div style="margin-bottom: 48px;">
+          <a href="#" id="proj-link" target="_blank" class="btn-primary" style="display: inline-block;">View Live Project ↗</a>
+        </div>
+        
+        <img src="" id="proj-image" class="case-study-image" alt="Project Hero Image" />
+        
+        <div class="case-study-content">
+          <div class="content-section">
+            <h3>The Problem</h3>
+            <p>Every system has friction. The goal here wasn't just to redesign the interface, but to map where the user flow was breaking down and understand why.</p>
+            <p><em>(Detailed case study content will be added here based on the project insights.)</em></p>
+          </div>
+          
+          <div class="content-section">
+            <h3>The System Insight</h3>
+            <p>Instead of adding more features, the solution required reducing the cognitive load. By mapping the architecture, we could remove decisions that the user shouldn't have to make.</p>
+          </div>
+          
+          <div class="content-section">
+            <h3>The Build</h3>
+            <p>I built this using a modern stack, ensuring that the technical architecture supported the simplified user flow. The prototype isn't just a Figma file—it's a working proof of concept.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    style="position: relative; overflow: hidden; padding: 120px 48px 80px; text-align: center; border-top: 1px solid var(--border); font-family: var(--font-body); color: var(--muted); font-size: 14px;">
+    <div class="heading-sans"
+      style="font-size: clamp(40px, 8vw, 80px); opacity: 0.04; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; pointer-events: none;">
+      RITHWICK</div>
+    <p style="position: relative; z-index: 1;">© 2026 Rithwick Gurram.</p>
+    <span class="footer-accent" style="position: relative; z-index: 1; color:var(--accent);font-weight:500;">Built from
+      scratch because I needed to understand how it works.</span>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+  
+  <!-- Supabase Fetch Logic -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    
+    // Use the same keys as backend.js
+    const SUPABASE_URL = 'https://cadazfnomibslxomgnnz.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_1WZ0O5UKoFqeKslq1nmOpQ_EySifkQm';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    
+    async function loadProject() {
+      // Get ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('id');
+      
+      if (!projectId) {
+        document.getElementById('loading-state').innerHTML = '<p>Project not found. <a href="index.html#work" style="color:var(--accent)">Return to work</a>.</p>';
+        return;
+      }
+      
+      // Fetch from Supabase
+      const { data, error } = await supabase
+        .from('portfolio_projects')
+        .select('*')
+        .eq('id', projectId)
+        .single();
+        
+      if (error || !data) {
+        console.error("Error fetching project:", error);
+        document.getElementById('loading-state').innerHTML = '<p>Could not load project details. <a href="index.html#work" style="color:var(--accent)">Return to work</a>.</p>';
+        return;
+      }
+      
+      // Populate DOM
+      document.title = `${data.title} — Rithwick Gurram`;
+      document.getElementById('proj-title').textContent = data.title;
+      document.getElementById('proj-role').textContent = data.role || 'Project';
+      document.getElementById('proj-desc').textContent = data.description;
+      
+      const imgEl = document.getElementById('proj-image');
+      imgEl.src = data.image_url;
+      imgEl.onerror = () => { imgEl.style.display = 'none'; };
+      
+      const linkEl = document.getElementById('proj-link');
+      if (data.project_url) {
+        linkEl.href = data.project_url;
+      } else {
+        linkEl.style.display = 'none';
+      }
+      
+      // Show content
+      document.getElementById('loading-state').style.display = 'none';
+      document.getElementById('project-content').style.display = 'block';
+      
+      // Basic entry animation
+      gsap.from(".case-study-hero > *", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+    }
+    
+    loadProject();
+  </script>
+</body>
+</html>
