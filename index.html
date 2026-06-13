@@ -86,14 +86,13 @@
       RITHWICK
     </a>
     <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
       <li><a href="creativity.html">Creativity</a></li>
       <li><a href="resume.pdf" target="_blank">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
-        <button id="nav-cmd-trigger" aria-label="Open Command Palette"
-          style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);border-radius:6px;padding:4px 8px;font-family:var(--font-body);font-size:11px;font-weight:600;cursor:pointer;transition:background 0.3s, color 0.3s;display:flex;align-items:center;">
+        <button id="nav-cmd-trigger" class="nav-cmd-btn" aria-label="Open Command Palette">
           <span id="cmd-key-hint">⌘K</span>
         </button>
       </li>
@@ -106,7 +105,7 @@
       style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;"></canvas>
 
     <!-- Massive wireframe blueprint number -->
-    <div class="hero-bg-number" aria-hidden="true">89</div>
+    <div id="bg-number-parallax" class="hero-bg-number" aria-hidden="true">89</div>
 
     <div class="hero-eyebrow">Rithwick Gurram · Systems & Craft</div>
     <h1 class="hero-headline fade-up">
@@ -126,25 +125,6 @@
       <div class="scroll-line"></div>
       <span>scroll</span>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section id="work">
-    <div class="section-label">Selected Work</div>
-    <div class="section-title draw-trigger">Projects
-      <span class="handwriting-accent"
-        style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(how
-        I think)</span>
-      <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
-        <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
-      </svg>
-    </div>
-
-    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
-      <!-- Projects will be dynamically injected here by backend.js -->
-    </div>
-
   </section>
 
   <div class="divider"></div>
@@ -280,6 +260,41 @@
           </div>
         </div>
       </div>
+    </div>
+
+  </section>
+
+
+  <!-- ── CREATIVE INTERLUDE ── -->
+  <section id="interlude" style="background:var(--bg); padding: 80px 48px; display: flex; justify-content: center; position: relative;">
+    <div style="max-width: 800px; text-align: center; position: relative;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="position: absolute; top: -20px; left: -30px; opacity: 0.4; transform: rotate(-15deg);">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="var(--accent)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <p class="heading-serif" style="font-size: clamp(24px, 4vw, 36px); color: var(--text); line-height: 1.4;">
+        But mapping the system is only half the job.
+      </p>
+      <p class="handwriting-accent" style="color: var(--accent); font-size: 24px; transform: rotate(2deg); margin-top: 16px; display: inline-block;">
+        Here is what I built when I found the friction:
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="work">
+    <div class="section-label">Selected Work</div>
+    <div class="section-title draw-trigger">Projects
+      <span class="handwriting-accent"
+        style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(how
+        I think)</span>
+      <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
+        <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
+      </svg>
+    </div>
+
+    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
+      <!-- Projects will be dynamically injected here by backend.js -->
     </div>
 
   </section>

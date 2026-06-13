@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Minimalist, abstract geometric sphere
     const geometry = new THREE.IcosahedronGeometry(1.8, 2); // Radius, Detail
     
-    // Wireframe material with the accent color
-    // Accent color from CSS: --accent: #3B82F6 (blue)
+    // Wireframe material with the charcoal color
+    // Accent color from CSS: --text: #1A1A1A
     const material = new THREE.MeshBasicMaterial({
-        color: 0x3b82f6,
+        color: 0x1A1A1A,
         wireframe: true,
         transparent: true,
-        opacity: 0.15
+        opacity: 0.1
     });
 
     const mesh = new THREE.Mesh(geometry, material);

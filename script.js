@@ -7,10 +7,24 @@
       
       let isMagnetic = false;
 
+      const bgNumber = document.getElementById('bg-number-parallax');
+      let bgXTo, bgYTo;
+      if (bgNumber) {
+        bgXTo = gsap.quickTo(bgNumber, "x", {duration: 1, ease: "power2.out"});
+        bgYTo = gsap.quickTo(bgNumber, "y", {duration: 1, ease: "power2.out"});
+      }
+
       document.addEventListener('mousemove', e => {
         if (!isMagnetic) {
           xTo(e.clientX - 14);
           yTo(e.clientY - 14);
+        }
+        if (bgNumber) {
+          // Move opposite to mouse direction at 3% speed for a deep parallax feel
+          const xMove = (e.clientX - window.innerWidth / 2) * -0.03;
+          const yMove = (e.clientY - window.innerHeight / 2) * -0.03;
+          bgXTo(xMove);
+          bgYTo(yMove);
         }
       });
 
