@@ -41,9 +41,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
+  font-size: 15.5px;
+  line-height: 1.75;
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -1375,4 +1375,47 @@ body.raw-mode::after {
   letter-spacing: 0.1em;
   z-index: 9999;
   pointer-events: none;
+}
+
+/* ── PREMIUM POLISH & MICRO-ANIMATIONS ── */
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 68, 227, 0.4);
+}
+
+/* Inline text link hover animation */
+p a, .note-content a {
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+}
+
+p a::after, .note-content a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+p a:hover::after, .note-content a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
