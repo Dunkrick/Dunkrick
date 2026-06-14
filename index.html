@@ -160,8 +160,42 @@
       </svg>
     </div>
 
-    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
-      <!-- Projects will be dynamically injected here by backend.js -->
+    <div id="projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
+      
+      <!-- PROJECT 01: Mapping the Churn -->
+      <div class="bento-cell project-layout">
+        <div class="project-media" style="border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
+          <img src="dashboard-cover.png" alt="Data Architecture: Churn Analytics Pipeline" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;" onerror="this.src='https://via.placeholder.com/600x400?text=Data+Architecture'"/>
+        </div>
+        <div class="project-info">
+          <p class="project-eyebrow">01 // Data Architecture</p>
+          <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">Data Architecture: Churn Analytics Pipeline</p>
+          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;margin-bottom:12px;">Architected a data pipeline that processed 50,000+ customer records to isolate and visualize checkout abandonment.</p>
+          <p style="color:var(--accent);font-family:var(--font-handwriting);font-size:18px;line-height:1.4;opacity:0.85;">Data without a narrative is just noise.</p>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px;">
+            <a href="project.html?id=d8bab1ba-e04d-42de-a3a9-4fd215a31c76" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">Read Case Study →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 02: Happiclap -->
+      <div class="bento-cell project-layout">
+        <div class="project-media" style="border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
+          <img src="before-hero.png" alt="E-Commerce Architecture: Checkout Optimization" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;" onerror="this.src='https://via.placeholder.com/600x400?text=Checkout+Optimization'"/>
+        </div>
+        <div class="project-info">
+          <p class="project-eyebrow">02 // Systems Architecture</p>
+          <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">E-Commerce Architecture: Checkout Optimization</p>
+          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;margin-bottom:12px;">Re-engineered a legacy e-commerce checkout flow to eliminate 7 major user drop-off points.</p>
+          <p style="color:var(--accent);font-family:var(--font-handwriting);font-size:18px;line-height:1.4;opacity:0.85;">The best interfaces happen in state management.</p>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px;">
+            <a href="project.html?id=eda1108c-989a-4d5e-8e5b-c54909b50851" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">Read Case Study →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </section>
@@ -179,7 +213,7 @@
         3. Wrap it in an obsessive, high-craft interface.
       </p>
       <p class="handwriting-accent" style="color: var(--accent); font-size: 24px; transform: rotate(2deg); margin-top: 24px; display: inline-block;">
-        The Frictionless Methodology
+        The Friction-Driven Approach
       </p>
     </div>
   </section>
@@ -229,10 +263,10 @@
             <strong>I am a Product Engineer focused on eliminating bottlenecks.</strong> My work exists at the intersection of deep systems architecture and high-fidelity interaction design.
           </p>
           <p>
-            I build data pipelines and backend infrastructure with rigorous engineering discipline, but I approach the UI with an artist's obsession for detail. I believe the best software doesn't just run fast—it feels alive.
+            I build data pipelines and backend infrastructure with <strong>rigorous engineering discipline</strong>, but I approach the UI with an <strong>artist's obsession for detail</strong>. I believe the best software doesn't just run fast—it feels alive.
           </p>
           <p>
-            Currently seeking a high-impact team where I can take ownership of the entire product experience.
+            Currently seeking a high-impact team where I can <strong>take ownership of the entire product experience.</strong>
           </p>
         </div>
       </div>
@@ -379,6 +413,10 @@
           <span class="cmd-item-label">Toggle Wireframe Mode</span>
           <span class="cmd-item-desc">Reveal the raw structure</span>
         </button>
+        <a href="resume.json" class="cmd-item cmd-link" target="_blank" onclick="alert('Creating resume.json is left as an exercise for the user, but you found the easter egg!'); return false;">
+          <span class="cmd-item-label">View raw resume.json</span>
+          <span class="cmd-item-desc">[ Easter Egg ] Inspect data structure</span>
+        </a>
         <a href="mailto:contact.rithwick@gmail.com" class="cmd-item cmd-link">
           <span class="cmd-item-label">Send an Email</span>
           <span class="cmd-item-desc">Let's think out loud</span>
@@ -409,9 +447,6 @@
   <!-- Custom Logic -->
   <script defer src="script.js"></script>
   <script defer src="three-bg.js"></script>
-
-  <!-- Supabase Backend (Using Native Fetch) -->
-  <script defer src="backend.js"></script>
 
 </body>
 
