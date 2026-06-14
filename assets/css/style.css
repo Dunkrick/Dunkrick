@@ -1549,6 +1549,11 @@ p a:hover::after, .note-content a:hover::after {
   }
   
   /* ── MOBILE BUG FIXES ── */
+  #three-container {
+    transform: translateY(15vh);
+    opacity: 0.3;
+  }
+  
   #cmd-trigger {
     display: none !important;
   }
