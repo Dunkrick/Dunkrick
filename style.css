@@ -1419,3 +1419,132 @@ p a:hover::after, .note-content a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+/* ── MOBILE RESPONSIVENESS & SIDE MENU ── */
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1001; /* Above overlay */
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger active state */
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(244, 244, 240, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-menu-overlay.active {
+  transform: translateX(0);
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.mobile-link:hover {
+  color: var(--accent);
+}
+
+/* Base studio grid for explore.html */
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── GLOBAL MOBILE ADJUSTMENTS ── */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important; /* Hide standard links */
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  nav {
+    padding: 16px 24px !important;
+  }
+  
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  
+  footer {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  
+  .bento-cell {
+    padding: 24px !important;
+  }
+  
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  
+  .hero-cta-row .btn-primary, .hero-cta-row .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-spread-left {
+    padding: 40px 24px !important;
+  }
+}

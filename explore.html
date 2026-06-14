@@ -65,7 +65,25 @@
         </button>
       </li>
     </ul>
+    <!-- Hamburger Button (Mobile only) -->
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+    <div class="mobile-menu-content">
+      <a href="index.html#work" class="mobile-link">Work</a>
+      <a href="index.html#about" class="mobile-link">About</a>
+      <a href="explore.html" class="mobile-link">Studio</a>
+      <a href="notes.html" class="mobile-link">Notes</a>
+      <a href="resume.pdf" target="_blank" class="mobile-link" style="color:var(--accent);">Resume</a>
+      <a href="mailto:contact.rithwick@gmail.com" class="mobile-link">Contact</a>
+    </div>
+  </div>
 
   <section id="creativity" style="padding:160px 48px;">
     <div class="section-label">Beyond the work</div>
@@ -77,7 +95,7 @@
       </svg>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:860px;">
+    <div class="studio-grid" style="gap:2px;max-width:860px;">
 
       <!-- 3B: Film card — slides in from left -->
       <div class="creativity-card reveal-left" id="cc-film">
