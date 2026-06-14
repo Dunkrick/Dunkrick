@@ -2,6 +2,7 @@
     const cursor = document.getElementById('cursor');
     
     if (typeof gsap !== 'undefined') {
+      gsap.set(cursor, {xPercent: -50, yPercent: -50});
       const xTo = gsap.quickTo(cursor, "x", {duration: 0.4, ease: "power3"});
       const yTo = gsap.quickTo(cursor, "y", {duration: 0.4, ease: "power3"});
       
@@ -16,8 +17,8 @@
 
       document.addEventListener('mousemove', e => {
         if (!isMagnetic) {
-          xTo(e.clientX - 14);
-          yTo(e.clientY - 14);
+          xTo(e.clientX);
+          yTo(e.clientY);
         }
         if (bgNumber) {
           // Move opposite to mouse direction at 3% speed for a deep parallax feel
