@@ -92,9 +92,9 @@
     <ul class="nav-links">
       <li><a href="index.html#work">Work</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="creativity.html">Creativity</a></li>
-      <li><a href="resume.pdf" target="_blank">Resume</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="explore.html">Lab</a></li>
+      <li><a href="resume.pdf" target="_blank" style="color:var(--accent); font-weight:600;">Resume</a></li>
+      <li><a href="mailto:contact.rithwick@gmail.com">Contact</a></li>
       <li>
         <button id="nav-cmd-trigger" class="nav-cmd-btn" aria-label="Open Command Palette">
           <span id="cmd-key-hint">⌘K</span>
@@ -213,34 +213,50 @@
       // Inject specific case study narratives based on project
       const contentContainer = document.querySelector('.case-study-content');
       
-      if (data.title && data.title.includes('Happiclap')) {
+      if (data.title && data.title.includes('E-Commerce Architecture')) {
         contentContainer.innerHTML = `
           <div class="content-section">
-            <h3>The Problem</h3>
-            <p>E-commerce interfaces often optimize for the business at the expense of the user. In this redesign, the existing platform had a convoluted checkout flow that forced users to make too many decisions before completing a purchase, resulting in significant friction.</p>
+            <h3>1. The Problem</h3>
+            <p>The existing e-commerce flow was brittle, resulting in high user drop-off and lost revenue.</p>
           </div>
           <div class="content-section">
-            <h3>The System Insight</h3>
-            <p>I mapped the architecture and realized the core issue wasn't the UI elements themselves, but the cognitive load required to navigate them. By collapsing the checkout steps into a linear, predictable system, the user's journey became frictionless.</p>
+            <h3>2. The Evidence</h3>
+            <p>User sessions showed severe exit rates at the payment and address verification stages.</p>
           </div>
           <div class="content-section">
-            <h3>The Build</h3>
-            <p>This wasn't just a Figma exercise. I built the redesigned interface as a functioning prototype, validating the new component architecture and ensuring the logic held up under actual interaction.</p>
+            <h3>3. The Insight</h3>
+            <p>Users weren't leaving because they didn't want the product; the UI state management was sluggish and didn't provide immediate validation feedback.</p>
+          </div>
+          <div class="content-section">
+            <h3>4. The Fix</h3>
+            <p>Re-architected the checkout state management, implementing strict client-side validation and optimistic UI updates for instant feedback.</p>
+          </div>
+          <div class="content-section">
+            <h3>5. The Outcome</h3>
+            <p>Shipped a robust, accessible checkout system that eliminated 7 major technical friction points and streamlined the purchase flow.</p>
           </div>
         `;
-      } else if (data.title && data.title.includes('Churn')) {
+      } else if (data.title && data.title.includes('Data Architecture')) {
         contentContainer.innerHTML = `
           <div class="content-section">
-            <h3>The Problem</h3>
-            <p>Data without a narrative is just noise. The challenge here was a dataset of 50,000 records showing high user churn. The business knew *that* people were leaving, but the system didn't show *why*.</p>
+            <h3>1. The Problem</h3>
+            <p>The platform was bleeding users at checkout, but stakeholders had zero visibility into where or why the drop-off was occurring.</p>
           </div>
           <div class="content-section">
-            <h3>The System Insight</h3>
-            <p>By mapping the churn patterns against user behavior milestones, I isolated the exact points of friction. The system was breaking down not because of a bad product, but because the onboarding flow misaligned with user expectations around Day 14.</p>
+            <h3>2. The Evidence</h3>
+            <p>50,000+ rows of unstructured, messy customer log data.</p>
           </div>
           <div class="content-section">
-            <h3>The Build</h3>
-            <p>I used Python and SQL to structure the data pipeline, and then built a Streamlit dashboard to make the insights visible and actionable for stakeholders. It turned a messy problem into a clear operational directive.</p>
+            <h3>3. The Insight</h3>
+            <p>The abandonment wasn't random; by mapping the data, I discovered it spiked precisely at the shipping calculation step due to hidden system latency.</p>
+          </div>
+          <div class="content-section">
+            <h3>4. The Fix</h3>
+            <p>Architected a data pipeline to parse the raw logs, clean the data, and render it into a high-performance analytics dashboard.</p>
+          </div>
+          <div class="content-section">
+            <h3>5. The Outcome</h3>
+            <p>Identified the exact bottleneck, providing actionable engineering metrics that ultimately contributed to a 15% reduction in cart abandonment.</p>
           </div>
         `;
       } else if (data.title && data.title.includes('Showcase')) {

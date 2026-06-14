@@ -154,8 +154,9 @@ async function fetchProjects() {
 
     if (!response.ok) throw new Error(await response.text());
     
-    const projects = await response.json();
-    logDebug("Fetched " + projects.length + " projects from CMS!");
+    const rawProjects = await response.json();
+    const projects = rawProjects.filter(p => p.title !== ' x Rithwick');
+    logDebug("Fetched " + rawProjects.length + " projects from CMS! Filtered down to " + projects.length + " BUILD projects.");
     
     if (projects.length === 0) {
       container.innerHTML = '<p style="color: var(--muted); padding: 24px;">No projects found yet. Add some in the Admin Portal!</p>';
@@ -180,7 +181,7 @@ async function fetchProjects() {
           <p class="project-eyebrow">${num} // ${proj.role || 'Project'}</p>
           <p class="heading-sans" style="font-size:clamp(1.4rem, 2.5vw, 2rem);color:var(--text);line-height:1.1;margin-bottom:16px;">${proj.title}</p>
           <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;margin-bottom:12px;">${proj.description}</p>
-          <p style="color:var(--accent);font-family:var(--font-handwriting);font-size:18px;line-height:1.4;opacity:0.85;">${proj.thinking || 'Mapping the system to find the core friction.'}</p>
+          <p style="color:var(--accent);font-family:var(--font-handwriting);font-size:18px;line-height:1.4;opacity:0.85;">${proj.thinking || 'System Architecture & Performance Optimization'}</p>
           
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px;">
             <a href="project.html?id=${projId}" class="btn-ghost" style="padding-bottom:4px; font-size:13px;">Read Case Study →</a>
