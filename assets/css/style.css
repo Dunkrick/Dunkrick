@@ -1550,8 +1550,7 @@ p a:hover::after, .note-content a:hover::after {
   
   /* ── MOBILE BUG FIXES ── */
   #three-container {
-    transform: translateY(15vh);
-    opacity: 0.3;
+    display: none !important; /* Hide 3D model entirely on mobile for clean typography */
   }
   
   #cmd-trigger {
