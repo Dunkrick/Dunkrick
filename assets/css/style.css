@@ -1547,4 +1547,29 @@ p a:hover::after, .note-content a:hover::after {
   .about-spread-left {
     padding: 40px 24px !important;
   }
+  
+  /* ── MOBILE BUG FIXES ── */
+  #cmd-trigger {
+    display: none !important;
+  }
+  
+  .hero-headline {
+    line-height: 1.05 !important;
+  }
+  
+  .hero-cta-row .btn-ghost {
+    justify-content: center;
+  }
+  
+  .stat-block {
+    padding: 24px 16px !important;
+  }
+  
+  .stat-number {
+    font-size: clamp(36px, 10vw, 48px) !important;
+  }
+  
+  .stat-label {
+    font-size: 11px !important;
+  }
 }
