@@ -1,19 +1,21 @@
 ## Rithwick Gurram
-**Product • CS Undergrad • Builder**
+**Product Engineer • CS Undergrad**  
+🌐 [rithwick.me](https://rithwick.me)
 
-I work at the intersection of Product Design and AI-assisted workflows. I choose a product, find what breaks, redesign the flow, and ship the proof. That's the loop.
+I build products with the discipline of an engineer and explore ideas with the curiosity of an artist. I choose a product, find what breaks, redesign the flow, and ship the proof. That's the loop.
 
 ---
 
 ### ✦ Currently
 - 🎓 CS Undergrad at **IIITDM Kancheepuram**
-- 💻 Building and designing seamless, friction-less product experiences.
+- 💻 Applying a friction-driven approach to product engineering.
 - 🎬 Directing films and exploring visual grammar in my free time.
 
 ### ✦ Stack & Tools
+- **Engineering:** React, Node.js, Python, Supabase, API Integration
 - **Design:** Figma, Prototyping, Interaction Design
-- **Frontend:** HTML, CSS, JavaScript (Vanilla & Frameworks)
-- **Concepts:** Human-Computer Interaction (HCI), Heuristic Evaluation, Accessibility, Systems Thinking
+- **Frontend:** HTML, CSS, JavaScript (Vanilla, GSAP & Frameworks)
+- **Concepts:** Human-Computer Interaction (HCI), Systems Thinking, Heuristic Evaluation
 
 ### ✦ Let's Connect
 - **Email:** contact.rithwick@gmail.com
