@@ -89,7 +89,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="creativity.html">Creativity</a></li>
-      <li><a href="resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="resume.pdf" target="_blank" style="color:var(--accent); font-weight:600;">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
         <button id="nav-cmd-trigger" class="nav-cmd-btn" aria-label="Open Command Palette">
@@ -107,29 +107,85 @@
     <!-- Massive wireframe blueprint number -->
     <div id="bg-number-parallax" class="hero-bg-number" aria-hidden="true">89</div>
 
-    <div class="hero-eyebrow">Rithwick Gurram · Systems & Craft</div>
+    <div class="hero-eyebrow">Product Engineer</div>
     <h1 class="hero-headline fade-up">
-      I study how things<br /><span class="name-ink" style="transform: rotate(-1.5deg);">work.</span> <em>Then I make
-        them simpler.</em>
+      I engineer the elimination of <br /><span class="name-ink" style="transform: rotate(-1.5deg);">friction.</span>
     </h1>
     <p class="hero-sub fade-up">
-      CS undergrad at IIITDM. I write code, design interfaces, and analyze systems - not because I couldn't pick one,
-      but because they're all the same work: understanding something complex and making it clear. Sometimes I use a
-      camera too.
+      I build high-performance software by mapping complex systems and architecting out the bottlenecks.
     </p>
     <div class="hero-cta-row fade-up">
-      <a href="#work" class="btn-primary">See how I think ↓</a>
-      <a href="#about" class="btn-ghost">About me →</a>
+      <a href="#work" class="btn-primary">Proof of Work ↓</a>
+      <a href="resume.pdf" target="_blank" class="btn-ghost">Download Resume →</a>
     </div>
     <div class="hero-scroll-indicator" aria-hidden="true">
       <div class="scroll-line"></div>
       <span>scroll</span>
     </div>
   </section>
+  <section id="proof-bar" style="padding: 40px 48px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="about-lower-stats">
+        <div class="about-stats">
+          <div class="stat-block">
+            <div class="stat-number" data-target="50" data-suffix="ms"><50<span>ms</span></div>
+            <div class="stat-label">API Latency Achieved</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number" data-target="50" data-suffix="k+">50<span>k+</span></div>
+            <div class="stat-label">Database Rows Parsed</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number" data-target="60" data-suffix="fps">60<span>fps</span></div>
+            <div class="stat-label">WebGL Render Performance</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number" data-target="-15" data-suffix="%">-15<span>%</span></div>
+            <div class="stat-label">Cart Abandonment Reduction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="divider"></div>
+<section id="work">
+    <div class="section-label">Selected Work</div>
+    <div class="section-title draw-trigger">Projects
+      <span class="handwriting-accent"
+        style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(how
+        I think)</span>
+      <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
+        <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
+      </svg>
+    </div>
 
-  <section id="about">
+    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
+      <!-- Projects will be dynamically injected here by backend.js -->
+    </div>
+
+  </section>
+  <div class="divider"></div>
+
+  <!-- ── METHODOLOGY ── -->
+  <section id="interlude" style="background:var(--bg); padding: 80px 48px; display: flex; justify-content: center; position: relative;">
+    <div style="max-width: 800px; text-align: center; position: relative;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="position: absolute; top: -20px; left: -30px; opacity: 0.4; transform: rotate(-15deg);">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="var(--accent)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <p class="heading-serif" style="font-size: clamp(24px, 4vw, 32px); color: var(--text); line-height: 1.4;">
+        1. Map the system to find the friction.<br/>
+        2. Architect scalable backends to solve it.<br/>
+        3. Wrap it in an obsessive, high-craft interface.
+      </p>
+      <p class="handwriting-accent" style="color: var(--accent); font-size: 24px; transform: rotate(2deg); margin-top: 24px; display: inline-block;">
+        The Frictionless Methodology
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+<section id="about">
 
     <!-- ── EDITORIAL SPREAD ── -->
     <div class="about-spread">
@@ -156,22 +212,13 @@
 
         <div class="about-spread-bio">
           <p>
-            <strong>CS undergrad at IIITDM Kancheepuram,</strong> based in Chennai.
-            I spend most of my time trying to understand how systems
-            work - products, data pipelines, user flows, visual
-            narratives - and then building things that make those
-            systems clearer, simpler, or more honest.
+            <strong>Software Engineer studying at IIITDM Kancheepuram.</strong> My work exists at the intersection of scalable data architecture and high-craft interfaces.
           </p>
           <p>
-            My loop: find friction → map the system → redesign
-            the flow → ship working proof. I've done this with
-            e-commerce platforms, growth analytics dashboards,
-            and interfaces that needed fewer decisions, not more features.
+            I am a builder who understands systems, and I am currently looking for my next high-impact engineering team where I can take ownership of complex bottlenecks.
           </p>
           <p>
-            I also make films. Not because it's related to product
-            work - but because editing a film and editing an interface
-            require the same instinct: knowing what to cut.
+            Before I write a line of code, I map the entire system to find exactly where the friction lives. I don't just build features; I architect solutions that eliminate user drop-off.
           </p>
         </div>
       </div>
@@ -202,26 +249,7 @@
 
     <!-- ── STATS + SKILLS BELOW SPREAD ── -->
     <div class="about-lower">
-      <div class="about-lower-stats">
-        <div class="about-stats">
-          <div class="stat-block">
-            <div class="stat-number" data-target="50" data-suffix="K">50<span>K</span></div>
-            <div class="stat-label">Records mapped for churn patterns</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-number" data-target="50" data-suffix="%">50<span>%</span></div>
-            <div class="stat-label">Navigation simplified</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-number" data-target="7" data-suffix="+">7<span>+</span></div>
-            <div class="stat-label">Systems studied & rebuilt</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-number" data-target="27" data-suffix="">27</div>
-            <div class="stat-label">Class of</div>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="about-lower-skills">
         <div class="skills-list" style="position: relative;">
@@ -239,23 +267,23 @@
           </style>
 
           <div class="skill-row">
-            <span class="skill-name">Systems mapping · Product teardowns</span>
+            <span class="skill-name">Systems Architecture (Node.js, PostgreSQL)</span>
             <span class="skill-level">/ 01</span>
           </div>
           <div class="skill-row">
-            <span class="skill-name">Interface design · Prototyping (Figma)</span>
+            <span class="skill-name">Frontend Craft (React, Next.js, WebGL)</span>
             <span class="skill-level">/ 02</span>
           </div>
           <div class="skill-row">
-            <span class="skill-name">Python · SQL · Data analysis</span>
+            <span class="skill-name">Data Engineering (Python, SQL, Pipelines)</span>
             <span class="skill-level">/ 03</span>
           </div>
           <div class="skill-row">
-            <span class="skill-name">React · Node.js · Full-stack prototyping</span>
+            <span class="skill-name">Product Strategy (System Mapping, Churn Analysis)</span>
             <span class="skill-level">/ 04</span>
           </div>
           <div class="skill-row">
-            <span class="skill-name">Film editing · Motion design</span>
+            <span class="skill-name">Performance Metrics (Lighthouse, Profiling)</span>
             <span class="skill-level">/ 05</span>
           </div>
         </div>
@@ -263,56 +291,16 @@
     </div>
 
   </section>
-
-
-  <!-- ── CREATIVE INTERLUDE ── -->
-  <section id="interlude" style="background:var(--bg); padding: 80px 48px; display: flex; justify-content: center; position: relative;">
-    <div style="max-width: 800px; text-align: center; position: relative;">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="position: absolute; top: -20px; left: -30px; opacity: 0.4; transform: rotate(-15deg);">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="var(--accent)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
-      </svg>
-      <p class="heading-serif" style="font-size: clamp(24px, 4vw, 36px); color: var(--text); line-height: 1.4;">
-        But mapping the system is only half the job.
-      </p>
-      <p class="handwriting-accent" style="color: var(--accent); font-size: 24px; transform: rotate(2deg); margin-top: 16px; display: inline-block;">
-        Here is what I built when I found the friction:
-      </p>
-    </div>
-  </section>
-
   <div class="divider"></div>
-
-  <section id="work">
-    <div class="section-label">Selected Work</div>
-    <div class="section-title draw-trigger">Projects
-      <span class="handwriting-accent"
-        style="position:absolute; right:-140px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(how
-        I think)</span>
-      <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
-        <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
-      </svg>
-    </div>
-
-    <div id="dynamic-projects-grid" class="bento-grid projects-grid fade-up" style="margin-bottom:24px;">
-      <!-- Projects will be dynamically injected here by backend.js -->
-    </div>
-
-  </section>
-
-
-
-  <div class="divider"></div>
-
-  <section id="contact">
+<section id="contact">
     <div class="contact-content fade-up"
       style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; margin: 40px auto;">
       <div class="section-label" style="margin-bottom: 16px;">Connect</div>
       <h2 class="contact-headline">
-        Have a system that needs
-        <em>untangling?</em>
+        Ready to eliminate<br/><em>friction?</em>
       </h2>
       <p class="contact-sub" style="margin-left: auto; margin-right: auto; max-width: 640px;">
-        Or just want to think out loud about something?
+        Currently interviewing for Summer 2025 Product Engineering roles.
       </p>
       <div style="margin-top: 24px; margin-bottom: 64px; position: relative;">
         <!-- Handwriting annotation for contact -->
@@ -328,9 +316,9 @@
           }
         </style>
 
-        <a href="contact.html" class="btn-primary cta-pulse"
+        <a href="mailto:contact.rithwick@gmail.com" class="btn-primary cta-pulse"
           style="display: inline-block; padding: 14px 32px; font-size: 16px; font-weight: 600; letter-spacing: 0.02em; border-radius: 0;">
-          Let's talk
+          Email Me Directly
         </a>
       </div>
 
@@ -342,11 +330,8 @@
         <a href="https://www.github.com/dunkrick" target="_blank" class="social-link">
           GitHub <span class="social-arrow">↗</span>
         </a>
-        <a href="https://www.twitter.com/RithwickGurram" target="_blank" class="social-link">
-          Twitter <span class="social-arrow">↗</span>
-        </a>
-        <a href="https://www.youtube.com/@DunkRick" target="_blank" class="social-link">
-          YouTube <span class="social-arrow">↗</span>
+                <a href="resume.pdf" target="_blank" class="social-link">
+          Resume <span class="social-arrow">↗</span>
         </a>
       </div>
     </div>
