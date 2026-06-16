@@ -1573,7 +1573,7 @@ p a:hover::after, .note-content a:hover::after {
 /* ── TABLET / TOUCH DEVICES OVERRIDES ── */
 @media (max-width: 1024px) {
   /* Hide the 3D model to prevent overlapping text on iPads */
-  #three-container {
+  #hero-canvas {
     display: none !important;
   }
   
