@@ -12,19 +12,28 @@
     content="Rithwick Gurram, Systems Thinker, Product Manager, Builder, CS Student, Portfolio, India, Full Stack, Film" />
   <meta name="author" content="Rithwick Gurram" />
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rithwick.me/index.html" />
+
   <!-- Open Graph / LinkedIn / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rithwick.me/index.html" />
   <meta property="og:title" content="Rithwick Gurram - Systems, Code, Craft" />
   <meta property="og:description"
     content="I study how things work. Then I make them simpler. CS undergrad building at the intersection of systems thinking and visual craft." />
+  <meta property="og:image" content="https://rithwick.me/assets/images/og-image.jpg" />
   <meta property="og:site_name" content="Rithwick Gurram Portfolio" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://rithwick.me/index.html" />
   <meta name="twitter:title" content="Rithwick Gurram - Systems, Code, Craft" />
   <meta name="twitter:description"
     content="I study how things work. Then I make them simpler. CS undergrad building at the intersection of systems thinking and visual craft." />
+  <meta name="twitter:image" content="https://rithwick.me/assets/images/og-image.jpg" />
+
   <!-- Resource Hints (CDN Optimizations) -->
+  <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://api.fontshare.com" />
@@ -188,6 +197,7 @@
         <div class="project-media"
           style="border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
           <img src="assets/images/dashboard-cover.png" alt="Data Architecture: Churn Analytics Pipeline"
+            loading="lazy"
             style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;"
             onerror="this.src='https://via.placeholder.com/600x400?text=Data+Architecture'" />
         </div>
@@ -217,6 +227,7 @@
         <div class="project-media"
           style="border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,0.05); height: 220px;">
           <img src="assets/images/after-hero.png" alt="E-Commerce Architecture: Checkout Optimization"
+            loading="lazy"
             style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.92;"
             onerror="this.src='https://via.placeholder.com/600x400?text=Checkout+Optimization'" />
         </div>
@@ -344,7 +355,7 @@
         </svg>
 
         <!-- Hero cutout: plaid shirt, anchored to bottom-right -->
-        <img src="assets/images/rithwick-plaid.png" alt="Rithwick Gurram" class="about-photo-hero" style="z-index:1;" />
+        <img src="assets/images/rithwick-plaid.png" alt="Rithwick Gurram" loading="lazy" class="about-photo-hero" style="z-index:1;" />
       </div>
     </div>
 

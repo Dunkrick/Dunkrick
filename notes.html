@@ -4,13 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rithwick Gurram — Field Notes</title>
+  <title>Rithwick Gurram - Field Notes</title>
   <meta name="description" content="Engineering reflections, architectural decisions, and design observations." />
   <meta name="author" content="Rithwick Gurram" />
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rithwick.me/notes.html" />
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rithwick.me/notes.html" />
+  <meta property="og:title" content="Rithwick Gurram — Field Notes" />
+  <meta property="og:description" content="Thoughts on systems architecture, interfaces, and product design by Rithwick Gurram." />
+  <meta property="og:image" content="https://rithwick.me/assets/images/og-image.jpg" />
+  <meta property="og:site_name" content="Rithwick Gurram Portfolio" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://rithwick.me/notes.html" />
+  <meta name="twitter:title" content="Rithwick Gurram — Field Notes" />
+  <meta name="twitter:description" content="Thoughts on systems architecture, interfaces, and product design by Rithwick Gurram." />
+  <meta name="twitter:image" content="https://rithwick.me/assets/images/og-image.jpg" />
+
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
     rel="stylesheet" />
@@ -18,7 +39,6 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/favicon.svg">
 
-  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     /* Specific styles for the Notes layout */
     .notes-container {
@@ -26,7 +46,7 @@
       margin: 0 auto;
       padding-top: 40px;
     }
-    
+
     .note-row {
       display: flex;
       flex-direction: column;
@@ -34,11 +54,11 @@
       border-bottom: 1px solid var(--border);
       transition: border-color 0.4s var(--ease);
     }
-    
+
     .note-row:hover {
       border-bottom-color: var(--accent);
     }
-    
+
     .note-date {
       font-family: 'Courier New', monospace;
       font-size: 12px;
@@ -48,7 +68,7 @@
       color: var(--muted);
       margin-bottom: 16px;
     }
-    
+
     .note-title {
       font-family: var(--font-display);
       font-size: 24px;
@@ -57,18 +77,18 @@
       margin-bottom: 16px;
       line-height: 1.3;
     }
-    
+
     .note-content {
       font-size: 16px;
       color: var(--text);
       line-height: 1.7;
       opacity: 0.85;
     }
-    
+
     .note-content p {
       margin-bottom: 16px;
     }
-    
+
     .note-content p:last-child {
       margin-bottom: 0;
     }
@@ -119,26 +139,33 @@
   <section id="notes" style="padding:160px 48px;">
     <div class="section-label">Field Notes</div>
     <div class="section-title draw-trigger" style="margin-bottom:20px;">Observations.
-      <span class="handwriting-accent" style="position:absolute; right:-200px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(thinking out loud)</span>
+      <span class="handwriting-accent"
+        style="position:absolute; right:-200px; top:-10px; font-size:clamp(16px, 2vw, 24px); opacity:0.6; transform:rotate(5deg); white-space:nowrap;">(thinking
+        out loud)</span>
       <svg class="drawn-underline" viewBox="0 0 220 10" preserveAspectRatio="none">
         <path d="M2,7 C40,2 80,9 120,5 C160,1 195,8 218,5" />
       </svg>
     </div>
-    
+
     <p class="fade-up" style="color: var(--muted); font-size: 16px; margin-bottom: 60px; max-width: 600px;">
       Engineering reflections, architectural decisions, and design observations.
     </p>
 
     <div class="notes-container fade-up">
-      
+
       <!-- Note 3 -->
       <article class="note-row">
         <div class="note-date">003 // June 14, 2026</div>
         <h2 class="note-title">Latency is a UX problem, not just an engineering problem.</h2>
         <div class="note-content">
-          <p>We often treat performance metrics like backend latency as a purely operational concern. If the API responds in 200ms instead of 50ms, the system still technically "works."</p>
-          <p>But that 150ms difference is exactly where user trust erodes. When a checkout flow hesitates, the user hesitates. By treating latency as a critical user experience metric, we stop optimizing for server costs and start optimizing for human confidence.</p>
-          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20Latency%20is%20a%20UX%20problem" style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[ Discuss this thought → ]</a>
+          <p>We often treat performance metrics like backend latency as a purely operational concern. If the API
+            responds in 200ms instead of 50ms, the system still technically "works."</p>
+          <p>But that 150ms difference is exactly where user trust erodes. When a checkout flow hesitates, the user
+            hesitates. By treating latency as a critical user experience metric, we stop optimizing for server costs and
+            start optimizing for human confidence.</p>
+          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20Latency%20is%20a%20UX%20problem"
+            style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[
+            Discuss this thought → ]</a>
         </div>
       </article>
 
@@ -147,9 +174,14 @@
         <div class="note-date">002 // May 28, 2026</div>
         <h2 class="note-title">The false dichotomy between logic and craft.</h2>
         <div class="note-content">
-          <p>There is a prevailing myth that engineers shouldn't care about pixels, and designers shouldn't care about state management. This division creates brittle products.</p>
-          <p>The best software is built when the person writing the database query also deeply cares about the easing curve of the success notification. Craft isn't something you slap on at the end; it's a byproduct of rigorous, disciplined execution from the ground up.</p>
-          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20The%20false%20dichotomy" style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[ Discuss this thought → ]</a>
+          <p>There is a prevailing myth that engineers shouldn't care about pixels, and designers shouldn't care about
+            state management. This division creates brittle products.</p>
+          <p>The best software is built when the person writing the database query also deeply cares about the easing
+            curve of the success notification. Craft isn't something you slap on at the end; it's a byproduct of
+            rigorous, disciplined execution from the ground up.</p>
+          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20The%20false%20dichotomy"
+            style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[
+            Discuss this thought → ]</a>
         </div>
       </article>
 
@@ -158,9 +190,13 @@
         <div class="note-date">001 // April 10, 2026</div>
         <h2 class="note-title">Why the best edit is always a cut.</h2>
         <div class="note-content">
-          <p>Whether in film or in code, amateurs rely on fades and cross-dissolves to mask a lack of conviction. A hard cut forces you to be confident in your narrative.</p>
-          <p>In software architecture, this translates to removing features entirely rather than hiding them behind a settings toggle. If the feature isn't essential, cut it. Don't fade it out.</p>
-          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20Why%20the%20best%20edit%20is%20always%20a%20cut" style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[ Discuss this thought → ]</a>
+          <p>Whether in film or in code, amateurs rely on fades and cross-dissolves to mask a lack of conviction. A hard
+            cut forces you to be confident in your narrative.</p>
+          <p>In software architecture, this translates to removing features entirely rather than hiding them behind a
+            settings toggle. If the feature isn't essential, cut it. Don't fade it out.</p>
+          <a href="mailto:contact.rithwick@gmail.com?subject=Re:%20Why%20the%20best%20edit%20is%20always%20a%20cut"
+            style="display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;">[
+            Discuss this thought → ]</a>
         </div>
       </article>
 
@@ -170,16 +206,20 @@
   <div class="divider"></div>
 
   <footer style="position: relative; padding: 60px 48px; overflow: hidden;">
-    <div class="handwriting-accent" style="font-size: clamp(40px, 8vw, 80px); opacity: 0.04; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; pointer-events: none;">RITHWICK</div>
+    <div class="handwriting-accent"
+      style="font-size: clamp(40px, 8vw, 80px); opacity: 0.04; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; pointer-events: none;">
+      RITHWICK</div>
     <p style="position: relative; z-index: 1;">© 2026 Rithwick Gurram.</p>
-    <span class="footer-accent" style="position: relative; z-index: 1; color:var(--accent);font-weight:500;">Built with discipline.</span>
+    <span class="footer-accent" style="position: relative; z-index: 1; color:var(--accent);font-weight:500;">Built with
+      discipline.</span>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="assets/js/script.js"></script>
 
 </body>
+
 </html>

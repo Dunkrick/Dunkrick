@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://dunkrick.github.io/Dunkrick/sitemap.xml
+
+Sitemap: https://rithwick.me/sitemap.xml
