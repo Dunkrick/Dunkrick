@@ -79,6 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
         return group;
     }
 
+    // Helper for non-box geometries (spheres, cylinders) with clean wireframes
+    function createShape(geometry, x, y, z, material, rx=0, ry=0, rz=0) {
+        const group = new THREE.Group();
+        const mesh = new THREE.Mesh(geometry, material);
+        group.add(mesh);
+        
+        const edges = new THREE.EdgesGeometry(geometry, 30); // 30 deg threshold for cleaner curves
+        const lines = new THREE.LineSegments(edges, lineMaterial);
+        group.add(lines);
+
+        group.position.set(x, y, z);
+        group.rotation.set(rx, ry, rz);
+        return group;
+    }
+
     // ── DESK ──
     // Desk Top
     const deskTop = createBox(5, 0.2, 2.5, 0, 2, 0, deskMaterial);
@@ -91,32 +106,81 @@ document.addEventListener("DOMContentLoaded", () => {
     const leg4 = createBox(0.2, 2, 0.2, 2.3, 1, 1.05, deskMaterial);
     statureGroup.add(leg1, leg2, leg3, leg4);
 
-    // ── LAPTOP ──
-    const laptopBase = createBox(1.2, 0.05, 0.8, 0, 2.125, -0.2, deskMaterial);
+    // ── NOTEBOOK & PEN (Thinking Tools) ──
+    // Notebook placed on the far left side of the desk to avoid overlapping laptop
+    const notebook = createBox(0.8, 0.05, 1.0, -1.6, 2.125, 0.2, deskMaterial, 0, 0.2, 0);
+    
+    // Pen resting on the notebook
+    // Keeping it sharp (using createBox) to match the faceted aesthetic
+    const pen = createBox(0.04, 0.04, 0.6, -1.4, 2.16, 0.2, new THREE.MeshStandardMaterial({color: 0x1A1A1A}), 0, -0.2, 0);
+    statureGroup.add(notebook, pen);
+
+    // ── WATER BOTTLE (Hydration) ──
+    // Using BoxGeometry instead of Cylinder for a sharp, faceted design
+    const bottleBase = createBox(0.25, 0.7, 0.25, 2.0, 2.45, 0.5, new THREE.MeshStandardMaterial({
+        color: 0xEAEAEA, 
+        transparent: true, 
+        opacity: 0.85,
+        roughness: 0.1,
+        metalness: 0.2
+    }));
+    const bottleCap = createBox(0.12, 0.1, 0.12, 2.0, 2.85, 0.5, new THREE.MeshStandardMaterial({color: 0x1A1A1A}));
+    statureGroup.add(bottleBase, bottleCap);
+
+    // ── LAPTOP (Center) ──
+    const laptopBase = createBox(1.2, 0.05, 0.8, -0.5, 2.125, -0.1, deskMaterial, 0, 0.1, 0);
     statureGroup.add(laptopBase);
 
-    // Laptop Screen
+    // Electric Klein Blue glowing screen material
+    const screenMaterials = [
+        new THREE.MeshBasicMaterial({ color: 0x1A1A1A }), // right
+        new THREE.MeshBasicMaterial({ color: 0x1A1A1A }), // left
+        new THREE.MeshBasicMaterial({ color: 0x1A1A1A }), // top
+        new THREE.MeshBasicMaterial({ color: 0x1A1A1A }), // bottom
+        new THREE.MeshBasicMaterial({ color: 0x0A44E3, transparent: true, opacity: 0.95 }), // front (screen)
+        new THREE.MeshBasicMaterial({ color: 0x1A1A1A })  // back
+    ];
+
     const screenGroup = new THREE.Group();
     const screenGeom = new THREE.BoxGeometry(1.2, 0.8, 0.05);
-    
-    // Electric Klein Blue glowing screen
-    const screenMaterials = [
-        deskMaterial, // right
-        deskMaterial, // left
-        deskMaterial, // top
-        deskMaterial, // bottom
-        new THREE.MeshBasicMaterial({ color: 0x0A44E3, transparent: true, opacity: 0.95 }), // front (screen)
-        deskMaterial  // back
-    ];
     const screenMesh = new THREE.Mesh(screenGeom, screenMaterials);
-    const screenEdges = new THREE.EdgesGeometry(screenGeom);
-    const screenLines = new THREE.LineSegments(screenEdges, lineMaterial);
+    // Removed screenLines to remove the black border bar
     
     screenGroup.add(screenMesh);
-    screenGroup.add(screenLines);
-    screenGroup.position.set(0, 2.5, -0.6);
+    screenGroup.position.set(-0.5, 2.5, -0.5);
     screenGroup.rotation.x = -0.2; // tilted back
+    screenGroup.rotation.y = 0.1; // angled slightly right
     statureGroup.add(screenGroup);
+
+    // ── ACER MONITOR 24" (Right) ──
+    // Monitor Base & Neck
+    const monitorStandBase = createBox(0.6, 0.05, 0.5, 1.6, 2.125, -0.4, deskMaterial, 0, -0.1, 0);
+    const monitorNeck = createBox(0.1, 0.6, 0.1, 1.6, 2.4, -0.5, deskMaterial, 0, -0.1, 0);
+    
+    // Monitor Screen
+    const acerGroup = new THREE.Group();
+    const acerGeom = new THREE.BoxGeometry(2.0, 1.2, 0.05);
+    const acerMesh = new THREE.Mesh(acerGeom, screenMaterials);
+    // Removed acerLines to remove the black border bar
+    
+    acerGroup.add(acerMesh);
+    acerGroup.position.set(1.6, 3.0, -0.4);
+    acerGroup.rotation.y = -0.15; // angled slightly towards center
+    acerGroup.rotation.x = -0.05;
+    
+    statureGroup.add(monitorStandBase, monitorNeck, acerGroup);
+
+    // ── HDMI CABLE ──
+    const curve = new THREE.CubicBezierCurve3(
+        new THREE.Vector3(0.1, 2.15, -0.2), // right side of laptop
+        new THREE.Vector3(0.3, 2.15, -0.6), // control point 1
+        new THREE.Vector3(1.0, 2.15, -0.6), // control point 2
+        new THREE.Vector3(1.6, 2.15, -0.4)  // back of monitor stand
+    );
+    const tubeGeom = new THREE.TubeGeometry(curve, 20, 0.015, 4, false); // 4 radial segments for a sharp, square cable
+    const tubeMat = new THREE.MeshStandardMaterial({color: 0x1A1A1A});
+    const hdmiCable = new THREE.Mesh(tubeGeom, tubeMat);
+    statureGroup.add(hdmiCable);
 
     // ── AVATAR (Builder) ──
     // Body leaning forward slightly
@@ -146,8 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Position entire scene
     statureGroup.position.x = 2; // Shift right to balance typography
     statureGroup.position.y = -1; // Center vertically
-    // Tilt the entire scene slightly so it feels like a classic isometric angle
-    statureGroup.rotation.y = -0.5; 
+    // Tilt the entire scene to view from over the shoulder (back view of person)
+    statureGroup.rotation.y = 0.6; 
     
     scene.add(statureGroup);
 
@@ -155,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let mouseX = 0;
     let mouseY = 0;
     let targetRotX = 0;
-    let targetRotY = -0.5; // Base rotation
+    let targetRotY = 0.6; // Base rotation
 
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
@@ -184,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Parallax tracking (Gazi Jarin style tilt)
         // Adjust the base rotation with mouse influence
-        targetRotY = -0.5 + (mouseX * 0.0003);
+        targetRotY = 0.6 + (mouseX * 0.0003);
         targetRotX = (mouseY * 0.0003);
 
         // Smoothly interpolate rotation
@@ -198,17 +262,18 @@ document.addEventListener("DOMContentLoaded", () => {
     animate();
 
     // ── 5. Responsive Resize & Intersection Observer ──
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        
-        // Adjust position based on screen size (keep it from covering text on mobile)
+
         if(window.innerWidth < 900) {
             statureGroup.position.x = 0;
-            statureGroup.scale.set(0.7, 0.7, 0.7);
+            statureGroup.position.y = -1.5; // Push down on mobile to avoid text overlap
+            statureGroup.scale.set(0.6, 0.6, 0.6);
         } else {
-            statureGroup.position.x = 2;
+            statureGroup.position.x = 2; // Shift right for asymmetrical balance
+            statureGroup.position.y = 0; // Reset vertical
             statureGroup.scale.set(1, 1, 1);
         }
     });
@@ -216,7 +281,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial resize trigger
     if(window.innerWidth < 900) {
         statureGroup.position.x = 0;
-        statureGroup.scale.set(0.7, 0.7, 0.7);
+        statureGroup.position.y = -1.5;
+        statureGroup.scale.set(0.6, 0.6, 0.6);
+    } else {
+        statureGroup.position.x = 2;
+        statureGroup.position.y = 0;
+        statureGroup.scale.set(1, 1, 1);
     }
 
     // Performance optimization: Pause animation when canvas is not visible

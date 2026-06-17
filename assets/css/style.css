@@ -60,7 +60,7 @@ body::after {
   pointer-events: none;
   z-index: 9998;
   background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
-  opacity: 0.05;
+  opacity: 0.035; /* Refined down from 0.05 for a more subtle, premium film-grain feel */
   mix-blend-mode: multiply;
 }
 
@@ -89,7 +89,7 @@ body::after {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--text); /* Restraint: Using black instead of blue for serif flair */
   font-size: 1.1em;
   letter-spacing: -0.02em;
   display: inline-block;
@@ -110,15 +110,15 @@ body::after {
 /* ── BENTO GRID UTILITIES ── */
 .bento-grid {
   display: grid;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  gap: 24px; /* Proper whitespace between cards instead of 1px lines */
 }
 
 .bento-cell {
   background: var(--surface);
   padding: 48px;
-  /* More breathable internal spacing */
+  border-radius: 12px; /* Premium soft rounding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02); /* Base elevation */
+  border: 1px solid rgba(0,0,0,0.03); /* Barely visible hairline */
   transition: background 0.5s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 
@@ -160,7 +160,7 @@ body::after {
 .project-eyebrow {
   font-family: 'Courier New', monospace;
   font-size: 13px;
-  color: var(--accent);
+  color: var(--text); /* Restraint */
   margin-bottom: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -188,7 +188,7 @@ body::after {
 }
 
 .stat-chip span {
-  color: var(--accent);
+  color: var(--text); /* Restraint */
 }
 
 .accent-arrow {
@@ -285,27 +285,17 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px 48px 80px;
-  /* Tweaked top padding */
+  align-items: flex-start; /* Asymmetrical balance */
+  text-align: left;
+  padding: 120px 48px 80px; /* Restored side padding */
   position: relative;
   overflow: hidden;
-  /* Subtle gradient: dark glow */
-  background:
-    radial-gradient(ellipse at 65% 55%, rgba(10, 68, 227, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 80%, rgba(10, 68, 227, 0.03) 0%, transparent 50%),
-    var(--bg);
+  background: var(--bg);
 }
 
-/* Halftone texture overlay for Hero */
+/* Stripped halftone texture overlay for Hero */
 #hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 1;
+  display: none;
 }
 
 /* ── 3C: Hero number slow drift oscillation ── */
@@ -354,7 +344,7 @@ nav.scrolled {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text); /* Restraint */
   margin-bottom: 24px;
   opacity: 0.9;
 }
@@ -362,11 +352,11 @@ nav.scrolled {
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(56px, 8vw, 120px);
+  font-size: clamp(64px, 8vw, 130px); /* Massive, but slightly constrained to fit left column */
   line-height: 0.92;
   letter-spacing: -0.035em;
   color: var(--text);
-  max-width: 900px;
+  max-width: 900px; /* Constrain so it doesn't hit the 3D model on the right */
   position: relative;
   z-index: 1;
 }
@@ -374,7 +364,7 @@ nav.scrolled {
 .hero-sub {
   margin-top: 36px;
   max-width: 520px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--muted);
   line-height: 1.6;
@@ -382,12 +372,15 @@ nav.scrolled {
   position: relative;
   z-index: 1;
   opacity: 0.9;
+  margin-left: 0; /* Left align */
+  margin-right: auto;
 }
 
 .hero-cta-row {
   margin-top: 48px;
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Left align buttons */
   gap: 24px;
   position: relative;
   z-index: 1;
@@ -435,10 +428,11 @@ nav.scrolled {
 .hero-scroll-indicator {
   position: absolute;
   bottom: 32px;
-  right: 48px;
+  left: 48px; /* Move back to bottom left to match left alignment */
+  transform: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: var(--muted);
   font-size: 11px;
@@ -449,7 +443,7 @@ nav.scrolled {
 .scroll-line {
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  background: linear-gradient(to bottom, var(--text), transparent); /* Restraint */
   animation: scrollPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -471,8 +465,8 @@ nav.scrolled {
 
 /* ── SECTION BASE ── */
 section {
-  padding: 160px 48px;
-  /* Increased vertical rhythm */
+  padding: 240px 48px;
+  /* Massive Macro-Whitespace for a premium, unhurried pacing */
 }
 
 .section-label {
@@ -481,7 +475,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text); /* Restraint */
   margin-bottom: 20px;
   opacity: 0.9;
 }
@@ -504,10 +498,9 @@ section {
 
 /* ── WORK / PROJECTS ── */
 #work {
-  background: var(--surface);
-  padding-top: 70px;
-  padding-bottom: 30px;
-  /* noticeably lighter than hero for contrast */
+  background: var(--bg); /* Changed from --surface to --bg to make the white cards pop */
+  padding-top: 160px;
+  padding-bottom: 120px;
 }
 
 /* ── ABOUT ── */
@@ -551,7 +544,7 @@ section {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text); /* Restraint */
   font-family: 'Courier New', monospace;
   margin-bottom: 12px;
 }
@@ -686,7 +679,7 @@ section {
 }
 
 .stat-number span {
-  color: var(--accent);
+  color: var(--text); /* Restraint */
 }
 
 .stat-label {
@@ -798,16 +791,19 @@ section {
   transform: rotate(0deg);
 }
 
-/* ── 3B: Staggered creativity card entries ── */
 .creativity-card {
   background: var(--surface);
   padding: 32px;
+  border-radius: 12px; /* Soft rounding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02); /* Base elevation */
+  border: 1px solid rgba(0,0,0,0.03); /* Barely visible hairline */
   opacity: 0;
-  transition: box-shadow 0.4s var(--ease), opacity 0.7s var(--ease);
+  transition: box-shadow 0.4s var(--ease), opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .creativity-card:hover {
-  box-shadow: 0 8px 32px rgba(10, 68, 227, 0.08), 0 0 0 1px rgba(10, 68, 227, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px); /* Lift on hover */
 }
 
 .creativity-card.reveal-left {
@@ -1050,7 +1046,7 @@ footer p {
   }
 
   section {
-    padding: 80px 24px;
+    padding: 120px 24px;
   }
 
   .divider {
