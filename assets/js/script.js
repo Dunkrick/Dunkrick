@@ -97,12 +97,12 @@
         const trigger = path.closest('.draw-trigger') || path;
         gsap.to(path, {
           strokeDashoffset: 0,
-          duration: 1,
-          ease: "power2.out",
+          ease: "none",
           scrollTrigger: {
             trigger: trigger,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
+            start: "top 90%",
+            end: "bottom 70%",
+            scrub: 1
           }
         });
       });

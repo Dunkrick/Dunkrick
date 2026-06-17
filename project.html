@@ -199,12 +199,27 @@
         return;
       }
       
-      // Fetch from Supabase
-      const { data, error } = await supabase
-        .from('portfolio_projects')
-        .select('*')
-        .eq('id', projectId)
-        .single();
+      // Fetch from Supabase or use hardcoded data for happiclap
+      let data = null;
+      let error = null;
+
+      if (projectId === 'happiclap') {
+        data = {
+          title: "Happiclap: E-commerce Redesign",
+          role: "UX/UI Redesign",
+          description: "Redesigned the homepage of a gifting platform to reduce bounce rates, establish clear visual hierarchy, and streamline product discovery.",
+          image_url: "assets/images/after-hero.png",
+          project_url: ""
+        };
+      } else {
+        const result = await supabase
+          .from('portfolio_projects')
+          .select('*')
+          .eq('id', projectId)
+          .single();
+        data = result.data;
+        error = result.error;
+      }
         
       if (error || !data) {
         console.error("Error fetching project:", error);
@@ -232,7 +247,26 @@
       // Inject specific case study narratives based on project
       const contentContainer = document.querySelector('.case-study-content');
       
-      if (data.title && data.title.includes('E-Commerce Architecture')) {
+      if (projectId === 'happiclap') {
+        contentContainer.innerHTML = `
+          <div class="content-section">
+            <h3>1. The Friction</h3>
+            <p>Happiclap's original homepage suffered from high bounce rates due to cluttered navigation, unclear visual hierarchy, and confusing categorization. Users were overwhelmed by choices but lacked guidance.</p>
+          </div>
+          <div class="content-section">
+            <h3>2. The Insight</h3>
+            <p>Instead of adding more features, the solution required reducing cognitive load. We needed to restructure the architecture to prioritize "Bestsellers" and clear "Categories" to build immediate trust and simplify the shopping journey.</p>
+          </div>
+          <div class="content-section">
+            <h3>3. The Execution</h3>
+            <p>I shifted the layout from a chaotic grid to a highly structured, hierarchy-driven design using Figma. We implemented social proof and a clean, ultra-fast mobile-responsive interface.</p>
+          </div>
+          <div class="content-section">
+            <h3>4. The Result</h3>
+            <p>A streamlined user flow that guides customers directly from landing to checkout. Clarity creates conversions.</p>
+          </div>
+        `;
+      } else if (data.title && data.title.includes('E-Commerce Architecture')) {
         contentContainer.innerHTML = `
           <div class="content-section">
             <h3>1. The Problem</h3>

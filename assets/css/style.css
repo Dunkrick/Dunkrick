@@ -1553,6 +1553,13 @@ p a:hover::after, .note-content a:hover::after {
     line-height: 1.05 !important;
   }
   
+  /* Prevent handwriting accents from causing horizontal scroll overflow */
+  .handwriting-accent[style*="absolute"] {
+    right: 10px !important;
+    transform: rotate(-2deg) scale(0.85) !important;
+    opacity: 0.3 !important;
+  }
+  
   .hero-cta-row .btn-ghost {
     justify-content: center;
   }
