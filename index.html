@@ -364,46 +364,103 @@
     <div class="about-lower">
 
 
-      <div class="about-lower-skills">
-        <div class="skills-list" style="position: relative;">
-          <!-- Handwriting annotation for skills -->
-          <div class="handwriting-accent"
-            style="position: absolute; right: 20px; top: -40px; font-size: clamp(14px, 1.5vw, 18px); opacity: 0.5; transform: rotate(-2deg); max-width: 140px; text-transform: none; text-align: right; display: none;"
-            id="skills-annotation">
-            the tools change, the thinking doesn't.
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-              style="position: absolute; right: 20px; bottom: -20px; opacity: 0.6; transform: rotate(-110deg);">
-              <path d="M22 12C22 12 16 12 12 12C8 12 2 12 2 12M2 12L7 7M2 12L7 17" stroke="var(--accent)"
-                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <style>
-            @media (min-width: 1100px) {
-              #skills-annotation {
-                display: block !important;
-              }
-            }
-          </style>
+      <div class="about-lower-skills" style="position: relative; z-index: 1;">
+        <div class="skills-blueprint-wrapper" style="max-width: 900px; margin: 0 auto;">
+          <!-- Animated SVG Background Map -->
+          <svg class="blueprint-svg-bg" width="100%" height="100%">
+            <!-- Connecting dashed lines -->
+            <line x1="25%" y1="15%" x2="75%" y2="15%" class="blueprint-line" />
+            <line x1="25%" y1="50%" x2="75%" y2="50%" class="blueprint-line" />
+            <line x1="25%" y1="15%" x2="25%" y2="50%" class="blueprint-line" />
+            <line x1="75%" y1="15%" x2="75%" y2="50%" class="blueprint-line" />
+            <line x1="25%" y1="50%" x2="50%" y2="85%" class="blueprint-line" />
+            <line x1="75%" y1="50%" x2="50%" y2="85%" class="blueprint-line" />
 
-          <div class="skill-row">
-            <span class="skill-name">Systems Architecture (Node.js, PostgreSQL)</span>
-            <span class="skill-level">/ 01</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">Frontend Craft (React, Next.js, WebGL)</span>
-            <span class="skill-level">/ 02</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">Data Engineering (Python, SQL, Pipelines)</span>
-            <span class="skill-level">/ 03</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">Product Strategy (System Mapping, Churn Analysis)</span>
-            <span class="skill-level">/ 04</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-name">Performance Metrics (Lighthouse, Profiling)</span>
-            <span class="skill-level">/ 05</span>
+            <!-- Animated Data Packets -->
+            <circle r="3" class="blueprint-packet">
+              <animate attributeName="cx" values="25%;75%" dur="4s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="15%;15%" dur="4s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;1;0" dur="4s" keyTimes="0;0.1;0.9;1" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" class="blueprint-packet" style="animation-delay: 1.5s;">
+              <animate attributeName="cx" values="75%;75%" dur="3.5s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="15%;50%" dur="3.5s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;1;0" dur="3.5s" keyTimes="0;0.1;0.9;1" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" class="blueprint-packet" style="animation-delay: 0.5s;">
+              <animate attributeName="cx" values="25%;50%" dur="3s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="50%;85%" dur="3s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" keyTimes="0;0.1;0.9;1" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" class="blueprint-packet" style="animation-delay: 2s;">
+              <animate attributeName="cx" values="75%;50%" dur="3.2s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="50%;85%" dur="3.2s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;1;0" dur="3.2s" keyTimes="0;0.1;0.9;1" repeatCount="indefinite" />
+            </circle>
+          </svg>
+
+          <div class="skills-blueprint">
+            <!-- Node 1 -->
+            <div class="blueprint-node">
+              <div class="node-header">
+                <span class="node-title">Systems Architecture</span>
+                <span class="node-id">/ 01</span>
+              </div>
+              <div class="node-tags">
+                <span class="node-tag">Node.js</span>
+                <span class="node-tag">PostgreSQL</span>
+              </div>
+            </div>
+
+            <!-- Node 2 -->
+            <div class="blueprint-node">
+              <div class="node-header">
+                <span class="node-title">Frontend Craft</span>
+                <span class="node-id">/ 02</span>
+              </div>
+              <div class="node-tags">
+                <span class="node-tag">React</span>
+                <span class="node-tag">Next.js</span>
+                <span class="node-tag">WebGL</span>
+              </div>
+            </div>
+
+            <!-- Node 3 -->
+            <div class="blueprint-node">
+              <div class="node-header">
+                <span class="node-title">Data Engineering</span>
+                <span class="node-id">/ 03</span>
+              </div>
+              <div class="node-tags">
+                <span class="node-tag">Python</span>
+                <span class="node-tag">SQL</span>
+                <span class="node-tag">Pipelines</span>
+              </div>
+            </div>
+
+            <!-- Node 4 -->
+            <div class="blueprint-node">
+              <div class="node-header">
+                <span class="node-title">Product Strategy</span>
+                <span class="node-id">/ 04</span>
+              </div>
+              <div class="node-tags">
+                <span class="node-tag">System Mapping</span>
+                <span class="node-tag">Churn Analysis</span>
+              </div>
+            </div>
+
+            <!-- Node 5 -->
+            <div class="blueprint-node center-node">
+              <div class="node-header">
+                <span class="node-title">Performance Metrics</span>
+                <span class="node-id">/ 05</span>
+              </div>
+              <div class="node-tags">
+                <span class="node-tag">Lighthouse</span>
+                <span class="node-tag">Profiling</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
