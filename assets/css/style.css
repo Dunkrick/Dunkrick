@@ -644,19 +644,17 @@ section {
 
 /* ── Stats + Skills below the spread ── */
 .about-lower {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
+  display: block;
   border-top: 1px solid var(--border);
 }
 
 .about-lower-stats {
   padding: 64px 48px;
-  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .about-lower-skills {
-  padding: 64px 48px;
+  padding: 80px 48px;
 }
 
 .about-stats {
@@ -695,47 +693,117 @@ section {
   font-weight: 400;
 }
 
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 2px;
+/* ── System Blueprint Architecture Map ── */
+.skills-blueprint-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-.skill-row {
-  background: var(--bg);
-  padding: 16px 32px;
+.blueprint-svg-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blueprint-line {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-dasharray: 4 4;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.blueprint-packet {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 4px rgba(10, 68, 227, 0.5));
+}
+
+.skills-blueprint {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.blueprint-node {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  padding: 24px;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.blueprint-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(10, 68, 227, 0.3);
+}
+
+.center-node {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.node-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  transition: background 0.4s var(--ease), border-left-color 0.4s var(--ease);
-  border-left: 3px solid transparent;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 12px;
 }
 
-.skill-row:hover {
-  background: var(--white);
-  border-left-color: var(--accent);
-}
-
-.skill-row:hover .skill-name,
-.skill-row:hover .skill-level {
-  color: var(--accent);
-}
-
-.skill-name {
-  font-size: 14px;
-  font-weight: 500;
+.node-title {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--text);
-  transition: color 0.4s var(--ease);
 }
 
-/* ── 4A: Frame counter tags ── */
-.skill-level {
+.node-id {
+  font-family: 'Courier New', monospace;
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.06em;
+}
+
+.node-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.node-tag {
   font-family: 'Courier New', monospace;
-  transition: color 0.4s var(--ease);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: rgba(10, 68, 227, 0.04);
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(10, 68, 227, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.blueprint-node:hover .node-tag {
+  background: rgba(10, 68, 227, 0.08);
+  border-color: rgba(10, 68, 227, 0.2);
+}
+
+@media (max-width: 768px) {
+  .skills-blueprint {
+    grid-template-columns: 1fr;
+  }
+  .center-node {
+    max-width: 100%;
+  }
+  .blueprint-svg-bg {
+    display: none;
+  }
 }
 
 /* ── 5A: Creativity section dark tint ── */
@@ -1251,13 +1319,14 @@ footer p {
 #cmd-palette {
   width: 100%;
   max-width: 560px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background: rgba(10, 10, 10, 0.98);
+  border: 1px solid rgba(10, 68, 227, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(10, 68, 227, 0.1);
   overflow: hidden;
   transform: scale(1) translateY(0);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #cmd-palette-backdrop.cmd-hidden #cmd-palette {
@@ -1276,14 +1345,15 @@ footer p {
   flex: 1;
   background: transparent;
   border: none;
-  color: var(--text);
-  font-family: var(--font-body);
+  color: var(--white);
+  font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
   outline: none;
+  caret-color: var(--accent);
 }
 
 #cmd-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .cmd-badge {
@@ -1306,43 +1376,55 @@ footer p {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
   padding: 8px 12px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .cmd-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 12px;
-  border-radius: 8px;
-  color: var(--muted);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
   cursor: pointer;
   background: transparent;
   border: none;
   width: 100%;
   text-align: left;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .cmd-item:hover,
 .cmd-item:focus {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
+  background: rgba(10, 68, 227, 0.1);
+  color: var(--white);
   outline: none;
+  padding-left: 24px;
+}
+
+.cmd-item:hover::before {
+  content: ">";
+  position: absolute;
+  left: 10px;
+  color: var(--accent);
+  font-weight: bold;
 }
 
 .cmd-item-label {
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
+  font-weight: 600;
+  color: var(--white);
 }
 
 .cmd-item-desc {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
 }
 
 /* ── WIREFRAME RAW MODE (EASTER EGG) ── */
