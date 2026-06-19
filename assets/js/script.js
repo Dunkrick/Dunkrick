@@ -282,18 +282,17 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             ctx.textAlign = "left";
             ctx.textBaseline = "top";
             
-            // ── 3-Stage Mechanical Morph Math ──
+            // ── Option 1: Monochrome Data-Wipe Math ──
             const p = renderState.progress;
             
             // Stage 1 (0.0 -> 0.4): Scramble
             const scrambleIntensity = Math.max(0, 1 - (p / 0.4));
             
-            // Stage 2 (0.4 -> 0.7): Solidify Blocks & Fade Text
-            let blockScale = 0;
-            let textOpacity = 1;
+            // Stage 2 (0.4 -> 0.7): Color Wave Sweep
+            let waveProgress = 0;
             if (p > 0.4) {
-              blockScale = Math.min(1, (p - 0.4) / 0.3);
-              textOpacity = Math.max(0, 1 - blockScale); 
+              // Add a slight tilt to the wave by combining X and Y coordinates later
+              waveProgress = Math.min(1, (p - 0.4) / 0.3);
             }
             
             // Stage 3 (0.7 -> 1.0): Sharpen to High-Res Photo
@@ -314,28 +313,24 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 const cell = grid[y * cols + x];
                 if (cell.a < 0.1 || cell.char === ' ') continue;
                 
-                // 1. Draw Text (if visible)
-                if (textOpacity > 0) {
-                  let charToDraw = cell.char;
-                  if (scrambleIntensity > 0 && Math.random() < scrambleIntensity * 0.4) {
-                    charToDraw = wakandaChars[Math.floor(Math.random() * wakandaChars.length)];
-                  }
-                  ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a * textOpacity})`;
-                  ctx.fillText(charToDraw, x * cellWidth, y * cellHeight);
+                let charToDraw = cell.char;
+                if (scrambleIntensity > 0 && Math.random() < scrambleIntensity * 0.4) {
+                  charToDraw = wakandaChars[Math.floor(Math.random() * wakandaChars.length)];
                 }
                 
-                // 2. Draw Solidifying Block (if active)
-                if (blockScale > 0) {
-                  // Grow the pixel block from the center outwards
-                  const bw = cellWidth * blockScale;
-                  const bh = cellHeight * blockScale;
-                  // Subpixel overlap to prevent anti-aliasing gaps
-                  const bx = (x * cellWidth) + (cellWidth - bw) / 2;
-                  const by = (y * cellHeight) + (cellHeight - bh) / 2;
-                  
+                // Color Wave logic:
+                // We add a slight diagonal tilt to the sweep: (x/cols + y/rows)/2
+                const cellPosition = (x / cols * 0.8) + (y / rows * 0.2);
+                
+                if (cellPosition < waveProgress) {
+                  // True pixel color revealed behind the wave
                   ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a})`;
-                  ctx.fillRect(bx - 0.5, by - 0.5, bw + 1, bh + 1);
+                } else {
+                  // Raw monochrome data state (glowing blue)
+                  ctx.fillStyle = `rgba(10, 68, 227, ${Math.max(0.6, cell.a)})`;
                 }
+                
+                ctx.fillText(charToDraw, x * cellWidth, y * cellHeight);
               }
             }
           }
@@ -350,7 +345,7 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             onEnter: () => {
               gsap.to(renderState, {
                 progress: 1,
-                duration: 2.0, // Extended duration to let mechanics breathe
+                duration: 2.5, // 2.5s for an epic cinematic sweep
                 ease: "power2.inOut",
                 onUpdate: render
               });
