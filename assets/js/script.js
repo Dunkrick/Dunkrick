@@ -282,25 +282,60 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             ctx.textAlign = "left";
             ctx.textBaseline = "top";
             
-            // Scramble for the first 40% of the animation, then fade out text while fading in photo
-            const scrambleIntensity = Math.max(0, 1 - (renderState.progress / 0.4));
-            const textOpacity = renderState.progress < 0.4 ? 1 : 1 - ((renderState.progress - 0.4) / 0.6);
+            // ── 3-Stage Mechanical Morph Math ──
+            const p = renderState.progress;
             
-            realPhoto.style.opacity = 1 - textOpacity;
-            if (textOpacity <= 0) return; // Completely morphed
+            // Stage 1 (0.0 -> 0.4): Scramble
+            const scrambleIntensity = Math.max(0, 1 - (p / 0.4));
+            
+            // Stage 2 (0.4 -> 0.7): Solidify Blocks & Fade Text
+            let blockScale = 0;
+            let textOpacity = 1;
+            if (p > 0.4) {
+              blockScale = Math.min(1, (p - 0.4) / 0.3);
+              textOpacity = Math.max(0, 1 - blockScale); 
+            }
+            
+            // Stage 3 (0.7 -> 1.0): Sharpen to High-Res Photo
+            let canvasOpacity = 1;
+            let photoOpacity = 0;
+            if (p > 0.7) {
+              photoOpacity = Math.min(1, (p - 0.7) / 0.3);
+              canvasOpacity = Math.max(0, 1 - photoOpacity);
+            }
+            
+            canvas.style.opacity = canvasOpacity;
+            realPhoto.style.opacity = photoOpacity;
+            
+            if (canvasOpacity <= 0) return; // Completely morphed
             
             for (let y = 0; y < rows; y++) {
               for (let x = 0; x < cols; x++) {
                 const cell = grid[y * cols + x];
                 if (cell.a < 0.1 || cell.char === ' ') continue;
                 
-                let charToDraw = cell.char;
-                if (scrambleIntensity > 0 && Math.random() < scrambleIntensity * 0.4) {
-                  charToDraw = wakandaChars[Math.floor(Math.random() * wakandaChars.length)];
+                // 1. Draw Text (if visible)
+                if (textOpacity > 0) {
+                  let charToDraw = cell.char;
+                  if (scrambleIntensity > 0 && Math.random() < scrambleIntensity * 0.4) {
+                    charToDraw = wakandaChars[Math.floor(Math.random() * wakandaChars.length)];
+                  }
+                  ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a * textOpacity})`;
+                  ctx.fillText(charToDraw, x * cellWidth, y * cellHeight);
                 }
                 
-                ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a * textOpacity})`;
-                ctx.fillText(charToDraw, x * cellWidth, y * cellHeight);
+                // 2. Draw Solidifying Block (if active)
+                if (blockScale > 0) {
+                  // Grow the pixel block from the center outwards
+                  const bw = cellWidth * blockScale;
+                  const bh = cellHeight * blockScale;
+                  // Subpixel overlap to prevent anti-aliasing gaps
+                  const bx = (x * cellWidth) + (cellWidth - bw) / 2;
+                  const by = (y * cellHeight) + (cellHeight - bh) / 2;
+                  
+                  ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a})`;
+                  ctx.fillRect(bx - 0.5, by - 0.5, bw + 1, bh + 1);
+                }
               }
             }
           }
@@ -315,7 +350,7 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             onEnter: () => {
               gsap.to(renderState, {
                 progress: 1,
-                duration: 1.5,
+                duration: 2.0, // Extended duration to let mechanics breathe
                 ease: "power2.inOut",
                 onUpdate: render
               });
