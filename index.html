@@ -87,6 +87,18 @@
 
 <body>
 
+  <!-- Squigglevision Intro Overlay -->
+  <div id="intro-overlay">
+    <h1 id="intro-greeting">Hello</h1>
+  </div>
+  
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
+    <filter id="squiggle-0"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" /></filter>
+    <filter id="squiggle-1"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" /></filter>
+    <filter id="squiggle-2"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="3" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" /></filter>
+    <filter id="squiggle-3"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="4" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" /></filter>
+  </svg>
+
   <div id="cursor"></div>
 
   <nav id="nav">
@@ -137,8 +149,7 @@
 
     <div class="hero-eyebrow">Product Engineer</div>
     <h1 class="hero-headline fade-up">
-      I build complex systems and simple <br /><span class="name-ink"
-        style="transform: rotate(-1.5deg);">interfaces.</span>
+      I build complex systems and <span id="target-simple" style="display: inline-block; opacity: 0; transform-origin: center;">simple</span> <br /><span class="name-ink" style="transform: rotate(-1.5deg);">interfaces.</span>
     </h1>
     <p class="hero-sub fade-up">
       I map system architecture, optimize database bottlenecks, and ship production-ready applications.

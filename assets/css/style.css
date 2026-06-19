@@ -1676,3 +1676,33 @@ p a:hover::after, .note-content a:hover::after {
     display: none !important;
   }
 }
+
+/* ── SQUIGGLEVISION INTRO OVERLAY ── */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+#intro-greeting {
+  font-family: var(--font-handwriting);
+  font-size: clamp(60px, 12vw, 150px);
+  color: var(--text);
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  animation: boil 0.3s infinite;
+  transform-origin: center center;
+}
+
+@keyframes boil {
+  0%, 24% { filter: url(#squiggle-0); }
+  25%, 49% { filter: url(#squiggle-1); }
+  50%, 74% { filter: url(#squiggle-2); }
+  75%, 100% { filter: url(#squiggle-3); }
+}
