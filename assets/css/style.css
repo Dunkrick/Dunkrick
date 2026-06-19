@@ -626,18 +626,24 @@ section {
   border-left: none;
 }
 
-.about-photo-hero {
+.about-photo-wrapper {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 92%;
   /* resolves correctly because parent has min-height */
   width: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-photo-hero {
+  height: 100%;
+  width: auto;
   max-width: none;
   object-fit: contain;
   object-position: bottom right;
-  pointer-events: none;
-  user-select: none;
+  opacity: 0; /* Hidden initially, revealed by JS */
 }
 
 /* Removed polaroid and ar glasses CSS */

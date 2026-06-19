@@ -365,8 +365,10 @@
           <circle cx="12" cy="12" r="8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4" />
         </svg>
 
-        <!-- Hero cutout: plaid shirt, anchored to bottom-right -->
-        <img src="assets/images/rithwick-plaid.png" alt="Rithwick Gurram" loading="lazy" class="about-photo-hero" style="z-index:1;" />
+        <div class="about-photo-wrapper" id="about-photo-wrapper">
+          <canvas id="about-ascii-canvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none;"></canvas>
+          <img src="assets/images/rithwick-plaid.png" alt="Rithwick Gurram" loading="lazy" class="about-photo-hero" id="about-real-photo" style="z-index:1;" />
+        </div>
       </div>
     </div>
 

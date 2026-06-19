@@ -203,19 +203,127 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     });
   });
 
-  // Parallax on About Photo
-  const aboutPhoto = document.querySelector('.about-photo-hero');
-  if (aboutPhoto) {
-    gsap.to(aboutPhoto, {
+  // Parallax and Wakanda Decode on About Photo
+  const aboutPhotoWrapper = document.querySelector('.about-photo-wrapper');
+  if (aboutPhotoWrapper) {
+    // Parallax the wrapper
+    gsap.to(aboutPhotoWrapper, {
       yPercent: 12,
       ease: "none",
       scrollTrigger: {
         trigger: ".about-spread",
         start: "top bottom",
         end: "bottom top",
-        scrub: true // instant response
+        scrub: true
       }
     });
+
+    // True Canvas Matrix Morph
+    const canvas = document.getElementById('about-ascii-canvas');
+    const realPhoto = document.getElementById('about-real-photo');
+    
+    if (canvas && realPhoto) {
+      const ctx = canvas.getContext('2d');
+      
+      Promise.all([
+        fetch('assets/images/hero-plaid.txt').then(r => r.text()),
+        new Promise(resolve => {
+          if (realPhoto.complete && realPhoto.naturalHeight !== 0) resolve();
+          else realPhoto.addEventListener('load', resolve);
+        })
+      ]).then(([asciiText]) => {
+        // Parse the grid
+        const lines = asciiText.split('\n').filter(line => line.length > 0);
+        const rows = lines.length;
+        const cols = lines[0].length;
+        
+        // Wait a tick for layout to resolve
+        setTimeout(() => {
+          const rect = realPhoto.getBoundingClientRect();
+          if (rect.width === 0) return; // Prevent division by zero if hidden
+          
+          canvas.width = rect.width * window.devicePixelRatio;
+          canvas.height = rect.height * window.devicePixelRatio;
+          ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+          
+          const cellWidth = rect.width / cols;
+          const cellHeight = rect.height / rows;
+          
+          // Offscreen canvas to sample precise pixel colors
+          const offscreen = document.createElement('canvas');
+          offscreen.width = cols;
+          offscreen.height = rows;
+          const offCtx = offscreen.getContext('2d');
+          // Draw the image scaled to the grid dimensions to sample colors easily
+          offCtx.drawImage(realPhoto, 0, 0, cols, rows);
+          const imgData = offCtx.getImageData(0, 0, cols, rows).data;
+          
+          // Build the grid data array
+          const grid = [];
+          for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+              const i = (y * cols + x) * 4;
+              grid.push({
+                char: lines[y] ? (lines[y][x] || ' ') : ' ',
+                r: imgData[i],
+                g: imgData[i+1],
+                b: imgData[i+2],
+                a: imgData[i+3] / 255
+              });
+            }
+          }
+          
+          const renderState = { progress: 0 };
+          const wakandaChars = "!@#$%^&*()_+-=[]{}|;:,.<>?/`~";
+          
+          function render() {
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            ctx.font = `bold ${cellHeight * 1.15}px "Courier New", monospace`;
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            
+            // Scramble for the first 40% of the animation, then fade out text while fading in photo
+            const scrambleIntensity = Math.max(0, 1 - (renderState.progress / 0.4));
+            const textOpacity = renderState.progress < 0.4 ? 1 : 1 - ((renderState.progress - 0.4) / 0.6);
+            
+            realPhoto.style.opacity = 1 - textOpacity;
+            if (textOpacity <= 0) return; // Completely morphed
+            
+            for (let y = 0; y < rows; y++) {
+              for (let x = 0; x < cols; x++) {
+                const cell = grid[y * cols + x];
+                if (cell.a < 0.1 || cell.char === ' ') continue;
+                
+                let charToDraw = cell.char;
+                if (scrambleIntensity > 0 && Math.random() < scrambleIntensity * 0.4) {
+                  charToDraw = wakandaChars[Math.floor(Math.random() * wakandaChars.length)];
+                }
+                
+                ctx.fillStyle = `rgba(${cell.r}, ${cell.g}, ${cell.b}, ${cell.a * textOpacity})`;
+                ctx.fillText(charToDraw, x * cellWidth, y * cellHeight);
+              }
+            }
+          }
+          
+          // Initial static drawing
+          render();
+          
+          ScrollTrigger.create({
+            trigger: aboutPhotoWrapper,
+            start: "top 60%",
+            once: true,
+            onEnter: () => {
+              gsap.to(renderState, {
+                progress: 1,
+                duration: 1.5,
+                ease: "power2.inOut",
+                onUpdate: render
+              });
+            }
+          });
+        }, 150);
+      }).catch(err => console.error("Canvas matrix failed:", err));
+    }
   }
 }
 
