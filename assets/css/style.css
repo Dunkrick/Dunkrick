@@ -660,15 +660,6 @@ body.wireframe-mode .connect-dock {
   display: block;
 }
 
-.gh-stats-img {
-  display: block;
-  margin-bottom: 16px;
-}
-
-[data-theme="dark"] .gh-stats-img {
-  filter: invert(1) hue-rotate(180deg) brightness(1.5);
-}
-
 /* Architecture Dropdown */
 .arch-dropdown {
   border: 1px solid var(--border-soft);
