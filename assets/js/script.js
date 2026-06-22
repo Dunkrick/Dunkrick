@@ -153,19 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ── 7. RETRO AUDIO SYNTHESIS ──
+  // ── 7. MODERN AUDIO SYNTHESIS ──
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   let audioCtx;
-
-  function createNoiseBuffer() {
-    const bufferSize = audioCtx.sampleRate * 0.1; // 100ms
-    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const output = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
-    }
-    return buffer;
-  }
 
   function playClick(type) {
     if (!audioCtx) {
@@ -177,60 +167,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const now = audioCtx.currentTime;
 
-    const noise = audioCtx.createBufferSource();
-    noise.buffer = createNoiseBuffer();
-
-    const noiseFilter = audioCtx.createBiquadFilter();
-    const noiseEnvelope = audioCtx.createGain();
-
-    noise.connect(noiseFilter);
-    noiseFilter.connect(noiseEnvelope);
-    noiseEnvelope.connect(audioCtx.destination);
-
     const osc = audioCtx.createOscillator();
-    const oscEnvelope = audioCtx.createGain();
+    const gainNode = audioCtx.createGain();
 
-    osc.connect(oscEnvelope);
-    oscEnvelope.connect(audioCtx.destination);
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
 
     if (type === 'persuasive') {
-      // Chunky retro Mac button click
-      noiseFilter.type = 'bandpass';
-      noiseFilter.frequency.value = 1000;
+      // Modern, deep pop (e.g. for Theme Toggles, CTAs)
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(100, now + 0.03);
       
-      noiseEnvelope.gain.setValueAtTime(0.8, now);
-      noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
-
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(100, now);
-      osc.frequency.exponentialRampToValueAtTime(30, now + 0.04);
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.3, now + 0.005);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
       
-      oscEnvelope.gain.setValueAtTime(0.4, now);
-      oscEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
-
-      noise.start(now);
-      noise.stop(now + 0.05);
       osc.start(now);
-      osc.stop(now + 0.04);
+      osc.stop(now + 0.03);
     } else {
-      // Subtle mechanical switch click
-      noiseFilter.type = 'highpass';
-      noiseFilter.frequency.value = 4000;
-      
-      noiseEnvelope.gain.setValueAtTime(0.4, now);
-      noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.02);
-
+      // Modern, sharp minimalist tick (e.g. for standard links)
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(300, now);
-      osc.frequency.exponentialRampToValueAtTime(150, now + 0.01);
+      osc.frequency.setValueAtTime(1200, now);
+      osc.frequency.exponentialRampToValueAtTime(600, now + 0.015);
       
-      oscEnvelope.gain.setValueAtTime(0.2, now);
-      oscEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.01);
-
-      noise.start(now);
-      noise.stop(now + 0.02);
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.15, now + 0.002);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
+      
       osc.start(now);
-      osc.stop(now + 0.01);
+      osc.stop(now + 0.015);
     }
   }
 
