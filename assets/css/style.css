@@ -23,6 +23,25 @@
   --selection-bg: rgba(0,0,0,0.05);
 }
 
+[data-theme="dark"] {
+  --page: #0e0e0e;
+  --bg-surface: #111111;
+  --bg-icon: #171717;
+  --bg-icon-hover: #1f1f1f;
+  
+  --text: #b0b0b0;
+  --text-strong: #f0f0f0;
+  --text-muted: #6e6e6e;
+  
+  --border-soft: #1c1c1c;
+  --border-faint: #141414;
+  --border-divider: rgba(255,255,255,0.05);
+  
+  --accent: #fafafa;
+  
+  --selection-bg: rgba(255,255,255,0.1);
+}
+
 /* Base */
 * {
   box-sizing: border-box;
@@ -513,4 +532,62 @@ a {
   transform: translateY(6px);
   filter: blur(4px);
   will-change: opacity, transform, filter;
+}
+
+/* ==========================================================================
+   New Features: Avatar, Dock, Wireframe
+   ========================================================================== */
+
+.avatar-wrap {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.hero-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Connect Dock (Pill) */
+.connect-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 8px 16px 8px 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-icon);
+  color: var(--text-strong);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 8px;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-icon-hover);
+}
+
+/* Wireframe Mode */
+body.wireframe-mode * {
+  outline: 1px dashed var(--border-soft) !important;
+  background: transparent !important;
+}
+
+body.wireframe-mode .mini-bento-card,
+body.wireframe-mode .connect-dock {
+  box-shadow: none !important;
 }

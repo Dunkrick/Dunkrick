@@ -99,4 +99,119 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // ── 5. THEME TOGGLE ──
+  const themeToggle = document.getElementById('theme-toggle');
+  const iconSun = document.querySelector('.theme-icon-sun');
+  const iconMoon = document.querySelector('.theme-icon-moon');
+  const cmdActionTheme = document.querySelectorAll('.cmd-action-theme');
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (iconSun && iconMoon) {
+      if (theme === 'dark') {
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+      } else {
+        iconSun.style.display = 'block';
+        iconMoon.style.display = 'none';
+      }
+    }
+  }
+
+  // Init theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  cmdActionTheme.forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleTheme();
+      toggleCmdPalette(false);
+    });
+  });
+
+  // ── 6. WIREFRAME MODE TOGGLE ──
+  const cmdActionWireframe = document.querySelectorAll('.cmd-action-wireframe');
+  cmdActionWireframe.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('wireframe-mode');
+      toggleCmdPalette(false);
+    });
+  });
+
+  // ── 7. RETRO AUDIO SYNTHESIS ──
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  let audioCtx;
+
+  function playClick(type) {
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'persuasive') {
+      // Deeper, punchier "thwack"
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + 0.1);
+      
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.15, now + 0.01);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+      
+      osc.start(now);
+      osc.stop(now + 0.1);
+    } else {
+      // Very light, high "tic"
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+      
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.05, now + 0.005);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      
+      osc.start(now);
+      osc.stop(now + 0.05);
+    }
+  }
+
+  // Attach global click listener
+  document.addEventListener('click', (e) => {
+    // Check if clicked element or its parent is an interactive element
+    const interactiveEl = e.target.closest('a, button, .cmd-link');
+    
+    if (interactiveEl) {
+      if (interactiveEl.classList.contains('persuasive-click')) {
+        playClick('persuasive');
+      } else {
+        playClick('subtle');
+      }
+    }
+  });
+
 });
