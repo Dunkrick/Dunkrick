@@ -591,3 +591,100 @@ body.wireframe-mode .mini-bento-card,
 body.wireframe-mode .connect-dock {
   box-shadow: none !important;
 }
+
+/* ==========================================================================
+   Credibility Features: Stats Ledger & Architecture Dropdown
+   ========================================================================== */
+
+.stats-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 24px;
+}
+
+.stat-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.stat-year {
+  font-family: monospace;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+.stat-text {
+  font-size: 15px;
+  color: var(--text);
+  max-width: 500px;
+}
+
+.gh-graph-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--bg-surface);
+}
+
+.gh-graph-img {
+  width: 100%;
+  display: block;
+}
+
+[data-theme="dark"] .gh-graph-img {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+
+/* Architecture Dropdown */
+.arch-dropdown {
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  overflow: hidden;
+}
+
+.arch-dropdown summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-strong);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arch-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.arch-dropdown summary::after {
+  content: "+";
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.arch-dropdown[open] summary::after {
+  content: "-";
+}
+
+.arch-content {
+  padding: 0 20px 20px;
+  border-top: 1px dashed var(--border-soft);
+  margin-top: 8px;
+  padding-top: 16px;
+}
+
+.arch-content pre {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text);
+  white-space: pre-wrap;
+  line-height: 1.5;
+}

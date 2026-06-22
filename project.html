@@ -176,10 +176,22 @@
             <h3>3. The Execution</h3>
             <p>I shifted the layout from a chaotic grid to a highly structured, hierarchy-driven design using Figma. We implemented social proof and a clean, ultra-fast mobile-responsive interface.</p>
           </div>
-          <div class="content-section">
             <h3>4. The Result</h3>
             <p>A streamlined user flow that guides customers directly from landing to checkout. Clarity creates conversions.</p>
           </div>
+          <details class="arch-dropdown" style="margin-top: 32px;">
+            <summary class="persuasive-click">View System Architecture</summary>
+            <div class="arch-content">
+<pre><code>[Stack]
+- Interface: Figma -> Minimal HTML/CSS
+- Logic: Vanilla JS, GSAP (Subtle Motion)
+- Metrics Engine: Custom PostHog integration
+
+[Design Flow]
+User -> Landing -> Bestsellers (Primary Action) -> Checkout
+(Removed 3 intermediary decision steps)</code></pre>
+            </div>
+          </details>
         `;
       } else if (data.title && data.title.includes('Data Architecture')) {
         contentContainer.innerHTML = `
@@ -199,10 +211,22 @@
             <h3>4. The Fix</h3>
             <p>Architected a data pipeline to parse the raw logs, clean the data, and render it into a high-performance analytics dashboard.</p>
           </div>
-          <div class="content-section">
             <h3>5. The Outcome</h3>
             <p>Identified the exact bottleneck, providing actionable engineering metrics that ultimately contributed to a 15% reduction in cart abandonment.</p>
           </div>
+          <details class="arch-dropdown" style="margin-top: 32px;">
+            <summary class="persuasive-click">View System Architecture</summary>
+            <div class="arch-content">
+<pre><code>[Stack]
+- Pipeline: Python (Pandas) / SQL
+- Storage: PostgreSQL (Supabase)
+- Client: HTML/JS Dashboards
+
+[Data Flow]
+Raw Logs (50k+) -> Python Parser -> Cleansed DB Rows
+DB -> Supabase API -> Frontend Analytics Graph</code></pre>
+            </div>
+          </details>
         `;
       }
 

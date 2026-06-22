@@ -157,6 +157,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   let audioCtx;
 
+  function createNoiseBuffer() {
+    const bufferSize = audioCtx.sampleRate * 0.1; // 100ms
+    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const output = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      output[i] = Math.random() * 2 - 1;
+    }
+    return buffer;
+  }
+
   function playClick(type) {
     if (!audioCtx) {
       audioCtx = new AudioContext();
@@ -165,46 +175,68 @@ document.addEventListener("DOMContentLoaded", () => {
       audioCtx.resume();
     }
 
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
     const now = audioCtx.currentTime;
 
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = createNoiseBuffer();
+
+    const noiseFilter = audioCtx.createBiquadFilter();
+    const noiseEnvelope = audioCtx.createGain();
+
+    noise.connect(noiseFilter);
+    noiseFilter.connect(noiseEnvelope);
+    noiseEnvelope.connect(audioCtx.destination);
+
+    const osc = audioCtx.createOscillator();
+    const oscEnvelope = audioCtx.createGain();
+
+    osc.connect(oscEnvelope);
+    oscEnvelope.connect(audioCtx.destination);
+
     if (type === 'persuasive') {
-      // Deeper, punchier "thwack"
+      // Chunky retro Mac button click
+      noiseFilter.type = 'bandpass';
+      noiseFilter.frequency.value = 1000;
+      
+      noiseEnvelope.gain.setValueAtTime(0.8, now);
+      noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+
       osc.type = 'square';
-      osc.frequency.setValueAtTime(150, now);
-      osc.frequency.exponentialRampToValueAtTime(40, now + 0.1);
+      osc.frequency.setValueAtTime(100, now);
+      osc.frequency.exponentialRampToValueAtTime(30, now + 0.04);
       
-      gainNode.gain.setValueAtTime(0, now);
-      gainNode.gain.linearRampToValueAtTime(0.15, now + 0.01);
-      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-      
+      oscEnvelope.gain.setValueAtTime(0.4, now);
+      oscEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+
+      noise.start(now);
+      noise.stop(now + 0.05);
       osc.start(now);
-      osc.stop(now + 0.1);
+      osc.stop(now + 0.04);
     } else {
-      // Very light, high "tic"
+      // Subtle mechanical switch click
+      noiseFilter.type = 'highpass';
+      noiseFilter.frequency.value = 4000;
+      
+      noiseEnvelope.gain.setValueAtTime(0.4, now);
+      noiseEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.02);
+
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(600, now);
-      osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+      osc.frequency.setValueAtTime(300, now);
+      osc.frequency.exponentialRampToValueAtTime(150, now + 0.01);
       
-      gainNode.gain.setValueAtTime(0, now);
-      gainNode.gain.linearRampToValueAtTime(0.05, now + 0.005);
-      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-      
+      oscEnvelope.gain.setValueAtTime(0.2, now);
+      oscEnvelope.gain.exponentialRampToValueAtTime(0.01, now + 0.01);
+
+      noise.start(now);
+      noise.stop(now + 0.02);
       osc.start(now);
-      osc.stop(now + 0.05);
+      osc.stop(now + 0.01);
     }
   }
 
   // Attach global click listener
   document.addEventListener('click', (e) => {
-    // Check if clicked element or its parent is an interactive element
-    const interactiveEl = e.target.closest('a, button, .cmd-link');
-    
+    const interactiveEl = e.target.closest('a, button, .cmd-link, details');
     if (interactiveEl) {
       if (interactiveEl.classList.contains('persuasive-click')) {
         playClick('persuasive');
