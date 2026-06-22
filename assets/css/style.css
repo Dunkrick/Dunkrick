@@ -368,8 +368,8 @@ a {
 
 /* Footer */
 .site-footer {
-  padding: 48px 0;
-  text-align: left;
+  padding: 40px 0;
+  text-align: center;
   color: var(--text-muted);
   font-size: 13px;
 }
@@ -548,10 +548,12 @@ a {
 }
 
 .hero-avatar {
-  width: 48px;
-  height: 48px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* Connect Dock (Pill) */
@@ -656,6 +658,15 @@ body.wireframe-mode .connect-dock {
 .gh-graph-img {
   width: 100%;
   display: block;
+}
+
+.gh-stats-img {
+  display: block;
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .gh-stats-img {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
 }
 
 /* Architecture Dropdown */
