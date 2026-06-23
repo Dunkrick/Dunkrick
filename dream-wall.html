@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Dream-wall (Devlog) - Rithwick Gurram</title>
+  <meta name="description" content="A daily development log tracking architecture, learnings, and experiments for the Dream-wall project." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <nav id="nav" class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">RITHWICK</a>
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">Connect</a></li>
+        <li><a href="assets/docs/resume.pdf" target="_blank">Resume</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle persuasive-click" aria-label="Toggle Theme"
+            style="margin-left: 0;">
+            <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button id="nav-cmd-trigger" class="nav-cmd-btn" aria-label="Open Command Palette">
+            <span id="cmd-key-hint">⌘K</span>
+          </button>
+        </li>
+      </ul>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+    <div class="mobile-menu-content">
+      <a href="index.html#work" class="mobile-link">Work</a>
+      <a href="index.html#about" class="mobile-link">Connect</a>
+      <a href="assets/docs/resume.pdf" target="_blank" class="mobile-link">Resume</a>
+      <a href="mailto:contact.rithwick@gmail.com" class="mobile-link">Email</a>
+    </div>
+  </div>
+
+  <main class="site-main">
+    <section id="devlog" style="padding-bottom: 80px;">
+      <div class="container stack">
+        <div class="case-study-meta fade-up">
+          <span style="display: flex; align-items: center; gap: 4px;">
+            <span class="pulse-dot"></span> Active Build
+          </span>
+          <span>·</span>
+          <span>Systems & Architecture</span>
+        </div>
+
+        <h1 class="case-study-title fade-up">Building Dream-wall</h1>
+        <p class="case-study-description fade-up" style="margin-bottom: 24px;">
+          Documenting day-to-day lessons, technical experiments, and architectural decisions made while constructing the Dream-wall application.
+        </p>
+
+        <div class="fade-up" style="margin-bottom: 48px;">
+          <a href="https://github.com/dunkrick" target="_blank" class="case-study-link">View Repository ↗</a>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-container fade-up">
+          <!-- Active Entry / Day 04 -->
+          <article class="timeline-entry entry-active">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 23, 2026</time>
+              <span class="timeline-tag">Integration</span>
+            </div>
+            <h2 class="timeline-title">Day 04: UI Refinement and Local Pipeline Hookups</h2>
+            <div class="timeline-content">
+              <p>Today was all about optimizing visual performance and ensuring transitions feel buttery smooth. Hooked up the page structures with the command palette search routing.</p>
+              <ul>
+                <li>Connected devlog search indexing in the command palette.</li>
+                <li>Calibrated easing parameters for ScrollTrigger staggered fades.</li>
+                <li>Maintained strict color system compliance (zero color pollution, only leveraging design tokens).</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Day 03 -->
+          <article class="timeline-entry">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 22, 2026</time>
+              <span class="timeline-tag">Experiment</span>
+            </div>
+            <h2 class="timeline-title">Day 03: Performance Optimization & Theme Transitions</h2>
+            <div class="timeline-content">
+              <p>Investigated theme-switching transitions. Standard transitions created a jarring layout flash when changing background values under high GPU load.</p>
+              <p>Implemented a deferred CSS variables application pattern:</p>
+              <pre><code>function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}</code></pre>
+              <p>This avoids unnecessary style recalculation passes and ensures instantaneous response times.</p>
+            </div>
+          </article>
+
+          <!-- Day 02 -->
+          <article class="timeline-entry">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 21, 2026</time>
+              <span class="timeline-tag">Learning</span>
+            </div>
+            <h2 class="timeline-title">Day 02: Researching State Management & Persistence</h2>
+            <div class="timeline-content">
+              <p>Explored state management solutions for complex web applications. Compared local storage persistence overheads against lightweight reactive states.</p>
+              <p>Decided on a standard pub-sub custom event channel pattern to keep communication clean between independent UI micro-components without pulling in bloated framework dependencies.</p>
+            </div>
+          </article>
+
+          <!-- Day 01 -->
+          <article class="timeline-entry">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 20, 2026</time>
+              <span class="timeline-tag">Architecture</span>
+            </div>
+            <h2 class="timeline-title">Day 01: Concept, Repo Setup, & Directory Architecture</h2>
+            <div class="timeline-content">
+              <p>Kicked off the project. Established the core vision for Dream-wall: a self-expanding modular repository.</p>
+              <p>Configured initial environment settings, structured directory patterns, and aligned Git remote tracking branches to sync with existing project workspace configurations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer fade-up">
+    <div class="container">
+      <p>© 2026 Rithwick Gurram. Built to understand.</p>
+    </div>
+  </footer>
+
+  <!-- Command Palette -->
+  <div id="cmd-palette-backdrop" class="cmd-hidden">
+    <div id="cmd-palette">
+      <div class="cmd-header">
+        <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off"
+          spellcheck="false" />
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <div class="cmd-results">
+        <div class="cmd-group-label">Navigation</div>
+        <ul class="cmd-list">
+          <li><a href="index.html#about" class="cmd-link">Go to Connect</a></li>
+          <li><a href="index.html#work" class="cmd-link">Go to Work</a></li>
+          <li><a href="assets/docs/resume.pdf" target="_blank" class="cmd-link">View Resume</a></li>
+          <li><a href="mailto:contact.rithwick@gmail.com" class="cmd-link">Send Email</a></li>
+        </ul>
+        <div class="cmd-group-label">Projects</div>
+        <ul class="cmd-list">
+          <li><a href="project.html?id=d8bab1ba-e04d-42de-a3a9-4fd215a31c76" class="cmd-link">View Pipeline Case Study</a></li>
+          <li><a href="project.html?id=happiclap" class="cmd-link">View Happiclap Redesign</a></li>
+          <li><a href="dream-wall.html" class="cmd-link">View Dream-wall Devlog</a></li>
+        </ul>
+        <div class="cmd-group-label">System</div>
+        <ul class="cmd-list">
+          <li><button class="cmd-link cmd-action-theme"
+              style="width:100%;text-align:left;background:none;border:none;">Toggle Theme</button></li>
+          <li><button class="cmd-link cmd-action-wireframe"
+              style="width:100%;text-align:left;background:none;border:none;">Toggle Wireframe Mode</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>

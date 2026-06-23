@@ -214,6 +214,36 @@
       discipline.</span>
   </footer>
 
+  <!-- Command Palette -->
+  <div id="cmd-palette-backdrop" class="cmd-hidden">
+    <div id="cmd-palette">
+      <div class="cmd-header">
+        <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off" spellcheck="false" />
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <div class="cmd-results">
+        <div class="cmd-group-label">Navigation</div>
+        <ul class="cmd-list">
+          <li><a href="index.html#about" class="cmd-link">Go to Connect</a></li>
+          <li><a href="index.html#work" class="cmd-link">Go to Work</a></li>
+          <li><a href="assets/docs/resume.pdf" target="_blank" class="cmd-link">View Resume</a></li>
+          <li><a href="mailto:contact.rithwick@gmail.com" class="cmd-link">Send Email</a></li>
+        </ul>
+        <div class="cmd-group-label">Projects</div>
+        <ul class="cmd-list">
+          <li><a href="project.html?id=d8bab1ba-e04d-42de-a3a9-4fd215a31c76" class="cmd-link">View Pipeline Case Study</a></li>
+          <li><a href="project.html?id=happiclap" class="cmd-link">View Happiclap Redesign</a></li>
+          <li><a href="dream-wall.html" class="cmd-link">View Dream-wall Devlog</a></li>
+        </ul>
+        <div class="cmd-group-label">System</div>
+        <ul class="cmd-list">
+          <li><button class="cmd-link cmd-action-theme" style="width:100%;text-align:left;background:none;border:none;">Toggle Theme</button></li>
+          <li><button class="cmd-link cmd-action-wireframe" style="width:100%;text-align:left;background:none;border:none;">Toggle Wireframe Mode</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
