@@ -90,15 +90,19 @@
           <article class="timeline-entry entry-active">
             <div class="timeline-meta">
               <time class="timeline-date">June 23, 2026</time>
-              <span class="timeline-tag">Integration</span>
+              <span class="timeline-tag">Learning</span>
             </div>
-            <h2 class="timeline-title">Day 04: UI Refinement and Local Pipeline Hookups</h2>
+            <h2 class="timeline-title">Day 04: Mission 1 — The Journey of a Request</h2>
             <div class="timeline-content">
-              <p>Today was all about optimizing visual performance and ensuring transitions feel buttery smooth. Hooked up the page structures with the command palette search routing.</p>
+              <p>Explored the fundamentals of network requests by answering: <em>"What happens when a browser talks to a server?"</em></p>
+              <p>Developed a mental model of how V8 (Chrome's engine) executes JavaScript inside the Node.js runtime and routes external network payloads:</p>
+              <pre><code>Your Code ──> JS Engine (V8) ──> Node.js Runtime (Event Loop) ──> OS ──> Hardware</code></pre>
+              <p>Mapped out the flow of an HTTP request from a client browser down through the network stack to Port <code>3003</code>, triggering our JavaScript server loops.</p>
+              <p><strong>Remaining Questions:</strong></p>
               <ul>
-                <li>Connected devlog search indexing in the command palette.</li>
-                <li>Calibrated easing parameters for ScrollTrigger staggered fades.</li>
-                <li>Maintained strict color system compliance (zero color pollution, only leveraging design tokens).</li>
+                <li>Who stores waiting requests when the runtime is busy?</li>
+                <li>How does Node know which request to process next?</li>
+                <li>How does the browser perform DNS resolution to route requests correctly?</li>
               </ul>
             </div>
           </article>
@@ -107,17 +111,17 @@
           <article class="timeline-entry">
             <div class="timeline-meta">
               <time class="timeline-date">June 22, 2026</time>
-              <span class="timeline-tag">Experiment</span>
+              <span class="timeline-tag">Integration</span>
             </div>
-            <h2 class="timeline-title">Day 03: Performance Optimization & Theme Transitions</h2>
+            <h2 class="timeline-title">Day 03: Wiring Up the Express.js Backend API</h2>
             <div class="timeline-content">
-              <p>Investigated theme-switching transitions. Standard transitions created a jarring layout flash when changing background values under high GPU load.</p>
-              <p>Implemented a deferred CSS variables application pattern:</p>
-              <pre><code>function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-}</code></pre>
-              <p>This avoids unnecessary style recalculation passes and ensures instantaneous response times.</p>
+              <p>Implemented the backend server architecture in <code>server.js</code>. Used Express to serve static files from the <code>public/</code> folder and configured endpoints to handle CRUD commands:</p>
+              <ul>
+                <li><code>GET /dreams</code>: Fetches all pinned dreams from SQLite.</li>
+                <li><code>POST /dreams</code>: Accepts JSON payloads, trims input, and runs database insert statements.</li>
+                <li><code>DELETE /dreams/:id</code>: Deletes dream entries by ID once achieved.</li>
+              </ul>
+              <p>Configured the server to listen on port <code>3003</code>.</p>
             </div>
           </article>
 
@@ -125,12 +129,21 @@
           <article class="timeline-entry">
             <div class="timeline-meta">
               <time class="timeline-date">June 21, 2026</time>
-              <span class="timeline-tag">Learning</span>
+              <span class="timeline-tag">Integration</span>
             </div>
-            <h2 class="timeline-title">Day 02: Researching State Management & Persistence</h2>
+            <h2 class="timeline-title">Day 02: SQLite Database Initialization & Schema</h2>
             <div class="timeline-content">
-              <p>Explored state management solutions for complex web applications. Compared local storage persistence overheads against lightweight reactive states.</p>
-              <p>Decided on a standard pub-sub custom event channel pattern to keep communication clean between independent UI micro-components without pulling in bloated framework dependencies.</p>
+              <p>Created <code>db.js</code> to initialize the SQLite database connection using <code>sqlite3.verbose()</code>. Set up automatic table creation on runtime startup to guarantee clean workspace initialization.</p>
+              <p>Implemented database auto-creation sequence:</p>
+              <pre><code>const dbPath = process.env.DB_PATH || path.join(__dirname, "dreams.db");
+const db = new sqlite3.Database(dbPath, (err) => { ... });
+
+db.run(`
+  CREATE TABLE IF NOT EXISTS dreams (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    text TEXT NOT NULL
+  )
+`);</code></pre>
             </div>
           </article>
 
@@ -140,10 +153,14 @@
               <time class="timeline-date">June 20, 2026</time>
               <span class="timeline-tag">Architecture</span>
             </div>
-            <h2 class="timeline-title">Day 01: Concept, Repo Setup, & Directory Architecture</h2>
+            <h2 class="timeline-title">Day 01: ED-001 — Standardizing on Node.js</h2>
             <div class="timeline-content">
-              <p>Kicked off the project. Established the core vision for Dream-wall: a self-expanding modular repository.</p>
-              <p>Configured initial environment settings, structured directory patterns, and aligned Git remote tracking branches to sync with existing project workspace configurations.</p>
+              <p>Kicked off the project workspace. Documented architectural decision record <code>ED-001</code> detailing stack selections for the backend builder environment.</p>
+              <p><strong>Chosen Stack:</strong> Node.js and SQLite3.</p>
+              <ul>
+                <li><strong>Pros:</strong> Consistent JS usage across stack layers, rich package manager ecosystem, swift setup without database server hosting overhead.</li>
+                <li><strong>Trade-offs:</strong> Node's single-threaded nature requires careful thread management for CPU-intensive tasks, and asynchronous loops introduce a learning curve.</li>
+              </ul>
             </div>
           </article>
         </div>
