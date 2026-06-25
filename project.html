@@ -190,6 +190,14 @@
       document.getElementById('proj-role').textContent = data.role || 'Project';
       document.getElementById('proj-desc').textContent = data.description;
 
+      if (projectId === 'd8bab1ba-e04d-42de-a3a9-4fd215a31c76' || (data.title && data.title.includes('Churn'))) {
+        data.project_url = "https://github.com/Dunkrick/growth-analytics";
+        data.live_url = "https://growth-analytics-smoky.vercel.app/";
+        document.getElementById('proj-link').textContent = "View GitHub ↗";
+      } else {
+        document.getElementById('proj-link').textContent = "View Case Study ↗";
+      }
+
       const linkEl = document.getElementById('proj-link');
       if (data.project_url) {
         linkEl.href = data.project_url;
