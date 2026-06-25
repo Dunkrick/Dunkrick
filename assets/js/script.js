@@ -212,4 +212,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ── 6. DYNAMIC GREETING (IST) ──
+  const greetingEl = document.getElementById('dynamic-greeting');
+  if (greetingEl) {
+    const getISTHour = () => {
+      const now = new Date();
+      // 'en-US' locale with Asia/Kolkata timezone to extract the correct hour
+      const istString = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata", hour12: false, hour: 'numeric' });
+      return parseInt(istString, 10);
+    };
+    
+    const hour = getISTHour();
+    let greeting = "Good evening";
+    if (hour >= 5 && hour < 12) {
+      greeting = "Good morning";
+    } else if (hour >= 12 && hour < 17) {
+      greeting = "Good afternoon";
+    }
+    greetingEl.textContent = greeting;
+  }
+
+  // ── 7. LIVE GITHUB CONTRIBUTIONS ──
+  const ghCountEl = document.getElementById('gh-contributions-count');
+  if (ghCountEl) {
+    // We use a community API to bypass GitHub's client-side CORS restriction for free
+    fetch('https://github-contributions-api.jogruber.de/v4/dunkrick?y=last')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.total && data.total.lastYear !== undefined) {
+          ghCountEl.textContent = data.total.lastYear;
+        } else {
+          ghCountEl.textContent = "259";
+        }
+      })
+      .catch(() => {
+        ghCountEl.textContent = "259"; // Fallback if API fails
+      });
+  }
+
 });
