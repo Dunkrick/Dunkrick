@@ -93,38 +93,34 @@
     <!-- Hero / Intro -->
     <section id="hero" class="intro-section">
       <div class="container">
-        <div class="hero-arc fade-up">
-          <div class="hero-arc-img hero-arc-left">
-            <img src="assets/images/dashboard-cover.png" alt="Project" />
-          </div>
-          <div class="hero-arc-img hero-arc-center">
-            <img src="assets/images/rithwick-plaid.png" alt="Rithwick" />
-          </div>
-          <div class="hero-arc-img hero-arc-right">
-            <img src="assets/images/after-hero.png" alt="Work" />
-          </div>
+        <div class="avatar-wrap fade-up" style="justify-content: center;">
+          <img src="assets/images/rithwick-plaid.png" alt="Rithwick" class="hero-avatar" />
         </div>
 
         <h1 class="hero-headline fade-up">
-          Product engineer building<br />systems and interfaces.
+          Hey, I'm Rithwick
+          <svg class="hero-wave" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 22C4 22 7 14 10 14C13 14 12 20 15 18C18 16 16 8 19 8C22 8 21 16 24 14C27 12 26 6 29 8C32 10 30 18 30 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 28C12 30 20 32 28 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+          </svg>
         </h1>
 
         <p class="hero-subtext fade-up">
-          I map architectures, solve bottlenecks, and ship clean products.
+          I'm curious to understand how things work and build my own version. Right now I'm deep into backend systems, databases, and the craft of shipping real products.
         </p>
 
         <div class="hero-cta fade-up">
-          <a href="#work" class="hero-cta-btn">Explore Selected Work →</a>
+          <a href="#work" class="hero-cta-btn">See what I'm building →</a>
         </div>
       </div>
     </section>
 
     <div class="divider fade-up"></div>
 
-    <!-- Work Section -->
+    <!-- Currently Building -->
     <section id="work" class="work-section">
       <div class="container">
-        <h2 class="section-title fade-up">Projects</h2>
+        <h2 class="section-title fade-up">Currently Building</h2>
 
         <div class="mini-bento-stack">
           <!-- Project 01 (Active Build) -->
@@ -172,6 +168,30 @@
 
     <div class="divider fade-up"></div>
 
+    <!-- What I'm Learning -->
+    <section id="learning" class="work-section">
+      <div class="container fade-up">
+        <h2 class="section-title">What I'm Learning</h2>
+
+        <div class="learning-list">
+          <div class="learning-item">
+            <span class="learning-arrow">→</span>
+            <span>TypeScript migration patterns</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-arrow">→</span>
+            <span>PostgreSQL & relational data modeling</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-arrow">→</span>
+            <span>How HTTP requests actually travel through the stack</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider fade-up"></div>
+
     <!-- Open Source Activity -->
     <section id="proof" class="work-section">
       <div class="container fade-up">
@@ -185,9 +205,11 @@
 
     <div class="divider fade-up"></div>
 
-    <!-- About / Connect Section -->
+    <!-- Connect Section -->
     <section id="about" class="about-section">
-      <div class="container fade-up" style="display: flex; justify-content: center;">
+      <div class="container fade-up" style="text-align: center;">
+        <p class="connect-label">Want to build something together?</p>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
         <div class="connect-dock">
           <a href="mailto:contact.rithwick@gmail.com" class="connect-link persuasive-click" aria-label="Email">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -216,6 +238,7 @@
                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
           </a>
+        </div>
         </div>
       </div>
     </section>
