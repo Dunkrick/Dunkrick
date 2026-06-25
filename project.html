@@ -89,8 +89,9 @@
         <h1 class="case-study-title fade-up" id="proj-title">Project Title</h1>
         <p class="case-study-description fade-up" id="proj-desc">Project description goes here.</p>
 
-        <div class="fade-up" style="margin-bottom: 64px;">
-          <a href="#" id="proj-link" target="_blank" class="case-study-link">View Live Project ↗</a>
+        <div class="fade-up" style="margin-bottom: 64px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#" id="proj-link" target="_blank" class="case-study-link" style="display: none;">View Case Study ↗</a>
+          <a href="#" id="proj-live-link" target="_blank" class="case-study-link" style="display: none;">View Live Project ↗</a>
         </div>
 
         <div class="case-study-content fade-up">
@@ -102,7 +103,7 @@
 
   <footer class="site-footer fade-up">
     <div class="container">
-      <p>© 2024 Rithwick Gurram. Built with minimalism.</p>
+      <p>© 2026 Rithwick Gurram. Built with minimalism.</p>
     </div>
   </footer>
 
@@ -165,7 +166,8 @@
           title: "Happiclap: E-commerce Redesign",
           role: "UX/UI Redesign",
           description: "Redesigned the homepage of a gifting platform to reduce bounce rates, establish clear visual hierarchy, and streamline product discovery.",
-          project_url: "https://app.notion.com/p/Happiclap-Homepage-Redesign-3489d1ca459680c9b198cbea438954cb"
+          project_url: "https://app.notion.com/p/Happiclap-Homepage-Redesign-3489d1ca459680c9b198cbea438954cb",
+          live_url: "https://happiclap-ebon.vercel.app"
         };
       } else {
         const result = await supabase
@@ -191,8 +193,17 @@
       const linkEl = document.getElementById('proj-link');
       if (data.project_url) {
         linkEl.href = data.project_url;
+        linkEl.style.display = 'inline-block';
       } else {
         linkEl.style.display = 'none';
+      }
+
+      const liveLinkEl = document.getElementById('proj-live-link');
+      if (data.live_url) {
+        liveLinkEl.href = data.live_url;
+        liveLinkEl.style.display = 'inline-block';
+      } else {
+        liveLinkEl.style.display = 'none';
       }
 
       const contentContainer = document.querySelector('.case-study-content');
