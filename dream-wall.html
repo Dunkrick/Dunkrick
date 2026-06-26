@@ -119,15 +119,34 @@
               <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px;">
                 <span class="pulse-dot"></span> Active Build
               </span>
-              <h3 class="card-title">v2.0 — Scale & Refine</h3>
-              <p class="card-desc" style="margin-top: 8px;">Currently migrating backend architecture to TypeScript, enhancing type safety, and laying the groundwork for the next layer of features.</p>
+              <h3 class="card-title">v2.0 — Production Ready</h3>
+              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Currently focusing on making the API production-ready with strict validation and error handling.</p>
             </div>
           </div>
         </div>
 
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-          <!-- Active Entry / Day 04 -->
+          <!-- Day 05 -->
           <article class="timeline-entry entry-active">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 26, 2026</time>
+              <span class="timeline-tag">Architecture</span>
+            </div>
+            <h2 class="timeline-title">Day 05: The Great Migration & Clean Architecture</h2>
+            <div class="timeline-content">
+              <p>Overhauled the backend to establish a robust, production-ready foundation. The monolithic Express server has been refactored into a scalable 3-tier architecture:</p>
+              <ul>
+                <li><strong>Language:</strong> Migrated from Vanilla JS to TypeScript for end-to-end type safety.</li>
+                <li><strong>Database:</strong> Upgraded from SQLite to PostgreSQL for reliable, concurrent data storage.</li>
+                <li><strong>ORM:</strong> Integrated Prisma (<code>@prisma/client</code>) to provide type-safe database queries, replacing raw SQL strings.</li>
+                <li><strong>Structure:</strong> Separated concerns into Routes (HTTP Layer), Services (Business Logic), and Data access.</li>
+              </ul>
+              <p>This strictly adheres to the newly established engineering principles: <em>"Organize by feature, not generic names"</em> and <em>"Depend on abstractions, not implementations."</em></p>
+            </div>
+          </article>
+
+          <!-- Day 04 -->
+          <article class="timeline-entry">
             <div class="timeline-meta">
               <time class="timeline-date">June 23, 2026</time>
               <span class="timeline-tag">Learning</span>
