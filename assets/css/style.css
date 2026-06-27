@@ -87,8 +87,8 @@ body {
 }
 
 ::selection {
-  background: var(--selection-bg);
-  color: var(--text-strong);
+  background: #FF5722;
+  color: #FFFFFF;
 }
 
 a {
