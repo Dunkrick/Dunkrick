@@ -126,47 +126,70 @@
         </div>
 
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-          <!-- Day 05 -->
+        <!-- DEVLOG_ENTRIES_START -->
+
           <article class="timeline-entry entry-active">
             <div class="timeline-meta">
+              <time class="timeline-date">June 27, 2026</time>
+              <span class="timeline-tag">Engineering</span>
+            </div>
+            <h2 class="timeline-title">Day 07: v2.5.0 — Production Ready</h2>
+            <div class="timeline-content">
+              <p>We&#39;ve reached v2.5.0. The goal was never just to add features; it was to build a system the <em>right</em> way. </p>
+<p>Today, I implemented a global Error Handling middleware and strict route validation. </p>
+<p><em>EP-011: Code should be optimistic. Infrastructure should be defensive.</em></p>
+<p>I also took time to write out Architectural Decision Records (ADRs) to document <em>why</em> these systems were built this way. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend. </p>
+<p>Onwards to v3.</p>
+
+            </div>
+          </article>
+
+          <article class="timeline-entry ">
+            <div class="timeline-meta">
               <time class="timeline-date">June 26, 2026</time>
+              <span class="timeline-tag">Integration</span>
+            </div>
+            <h2 class="timeline-title">Day 06: Prisma ORM & End-to-End Type Safety</h2>
+            <div class="timeline-content">
+              <p>Writing raw SQL strings inside TypeScript defeats half the purpose of using TypeScript. </p>
+<p>Today, I migrated all database reads and writes to <strong>Prisma</strong>. </p>
+<p><em>EP-004: Depend on abstractions, not implementations.</em></p>
+<p>Prisma acts as an abstraction over PostgreSQL. Now, every single database query is fully type-checked. If I misspell a column name, the app won&#39;t even compile. The complete migration of the backend from JS to TS is finally done. We have officially removed all raw PostgreSQL access.</p>
+
+            </div>
+          </article>
+
+          <article class="timeline-entry ">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 25, 2026</time>
               <span class="timeline-tag">Architecture</span>
             </div>
-            <h2 class="timeline-title">Day 05: The Great Migration & Clean Architecture</h2>
+            <h2 class="timeline-title">Day 05: Clean Architecture & The Service Layer</h2>
             <div class="timeline-content">
-              <p>Overhauled the backend to establish a robust, production-ready foundation. The monolithic Express server has been refactored into a scalable 3-tier architecture:</p>
-              <ul>
-                <li><strong>Language:</strong> Migrated from Vanilla JS to TypeScript for end-to-end type safety.</li>
-                <li><strong>Database:</strong> Upgraded from SQLite to PostgreSQL for reliable, concurrent data storage.</li>
-                <li><strong>ORM:</strong> Integrated Prisma (<code>@prisma/client</code>) to provide type-safe database queries, replacing raw SQL strings.</li>
-                <li><strong>Structure:</strong> Separated concerns into Routes (HTTP Layer), Services (Business Logic), and Data access.</li>
-              </ul>
-              <p>This strictly adheres to the newly established engineering principles: <em>"Organize by feature, not generic names"</em> and <em>"Depend on abstractions, not implementations."</em></p>
+              <p>As the backend grew, the route files started doing too much. They were parsing requests, writing SQL queries, and handling responses. </p>
+<p><em>EP-003: Organize by feature, not by generic names.</em></p>
+<p>I introduced a dedicated <strong>Service Layer</strong>. Now, the route files strictly handle the HTTP context (req/res), and they pass the data down to the services which handle the actual business logic. </p>
+<p>By separating these concerns, the code is significantly easier to test, read, and maintain. The system is starting to feel incredibly solid.</p>
+
             </div>
           </article>
 
-          <!-- Day 04 -->
-          <article class="timeline-entry">
+          <article class="timeline-entry ">
             <div class="timeline-meta">
-              <time class="timeline-date">June 23, 2026</time>
-              <span class="timeline-tag">Learning</span>
+              <time class="timeline-date">June 24, 2026</time>
+              <span class="timeline-tag">Architecture</span>
             </div>
-            <h2 class="timeline-title">Day 04: Mission 1 — The Journey of a Request</h2>
+            <h2 class="timeline-title">Day 04: The Shift to TypeScript & PostgreSQL</h2>
             <div class="timeline-content">
-              <p>Explored the fundamentals of network requests by answering: <em>"What happens when a browser talks to a server?"</em></p>
-              <p>Developed a mental model of how V8 (Chrome's engine) executes JavaScript inside the Node.js runtime and routes external network payloads:</p>
-              <pre><code>Your Code ──> JS Engine (V8) ──> Node.js Runtime (Event Loop) ──> OS ──> Hardware</code></pre>
-              <p>Mapped out the flow of an HTTP request from a client browser down through the network stack to Port <code>3003</code>, triggering our JavaScript server loops.</p>
-              <p><strong>Remaining Questions:</strong></p>
-              <ul>
-                <li>Who stores waiting requests when the runtime is busy?</li>
-                <li>How does Node know which request to process next?</li>
-                <li>How does the browser perform DNS resolution to route requests correctly?</li>
-              </ul>
+              <p>The honeymoon phase of v1.0 is over. It&#39;s time to get serious. </p>
+<p>If this were a production system, JavaScript&#39;s dynamic typing and SQLite&#39;s file-based locking wouldn&#39;t cut it. Today, I began the great migration.</p>
+<p>First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. Catching errors at compile-time instead of runtime is a game changer. </p>
+<p>Then, I ripped out SQLite and connected the app to a robust PostgreSQL database. The code is getting stricter, and the infrastructure is getting stronger.</p>
+
             </div>
           </article>
-        </div>
 
+        </div>
         <!-- VERSION 1.0 -->
         <div class="fade-up" style="margin-bottom: 32px;">
           <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
@@ -179,64 +202,57 @@
             </div>
           </div>
         </div>
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
 
-        <div class="timeline-container fade-up">
-          <!-- Day 03 -->
-          <article class="timeline-entry">
+          <article class="timeline-entry ">
             <div class="timeline-meta">
-              <time class="timeline-date">June 22, 2026</time>
-              <span class="timeline-tag">Integration</span>
+              <time class="timeline-date">June 19, 2026</time>
+              <span class="timeline-tag">Product</span>
             </div>
-            <h2 class="timeline-title">Day 03: Wiring Up the Express.js Backend API</h2>
+            <h2 class="timeline-title">Day 03: The Cozy Frontend & v1.0 Launch</h2>
             <div class="timeline-content">
-              <p>Implemented the backend server architecture in <code>server.js</code>. Used Express to serve static files from the <code>public/</code> folder and configured endpoints to handle CRUD commands:</p>
-              <ul>
-                <li><code>GET /dreams</code>: Fetches all pinned dreams from SQLite.</li>
-                <li><code>POST /dreams</code>: Accepts JSON payloads, trims input, and runs database insert statements.</li>
-                <li><code>DELETE /dreams/:id</code>: Deletes dream entries by ID once achieved.</li>
-              </ul>
-              <p>Configured the server to listen on port <code>3003</code>.</p>
+              <p>I spent today polishing the interface. No heavy frameworks, just pure vanilla HTML, CSS, and JS magic to create a cozy, minimal vibe. </p>
+<p>With the frontend connected to our SQLite backend, Version 1.0 of Dream Wall is officially complete! </p>
+<p>It&#39;s a huge milestone. The app works, it&#39;s deployed, and it solves the problem it was meant to solve. But as I look at the monolithic <code>server.js</code> file, my &quot;systems builder&quot; brain is already thinking about how a senior engineer would structure this to scale...</p>
+
             </div>
           </article>
 
-          <!-- Day 02 -->
-          <article class="timeline-entry">
+          <article class="timeline-entry ">
             <div class="timeline-meta">
-              <time class="timeline-date">June 21, 2026</time>
+              <time class="timeline-date">June 14, 2026</time>
               <span class="timeline-tag">Integration</span>
             </div>
             <h2 class="timeline-title">Day 02: SQLite Database Initialization & Schema</h2>
             <div class="timeline-content">
-              <p>Created <code>db.js</code> to initialize the SQLite database connection using <code>sqlite3.verbose()</code>. Set up automatic table creation on runtime startup to guarantee clean workspace initialization.</p>
-              <p>Implemented database auto-creation sequence:</p>
-              <pre><code>const dbPath = process.env.DB_PATH || path.join(__dirname, "dreams.db");
-const db = new sqlite3.Database(dbPath, (err) => { ... });
-
-db.run(`
+              <p>Today was all about giving the dreams a place to live. I wired up a lightweight Express.js API and hooked it into SQLite.</p>
+<p>I wrote an auto-creation sequence in <code>db.js</code> so that the database initializes itself cleanly on startup. It’s a small detail, but it makes the developer experience so much smoother. </p>
+<pre><code class="language-javascript">db.run(`
   CREATE TABLE IF NOT EXISTS dreams (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     text TEXT NOT NULL
   )
-`);</code></pre>
+`);
+</code></pre>
+<p>It feels great to see the basic CRUD operations working. You can <code>POST</code> a dream, and it&#39;s safely tucked away in the local file system.</p>
+
             </div>
           </article>
 
-          <!-- Day 01 -->
-          <article class="timeline-entry">
+          <article class="timeline-entry ">
             <div class="timeline-meta">
-              <time class="timeline-date">June 20, 2026</time>
+              <time class="timeline-date">June 9, 2026</time>
               <span class="timeline-tag">Architecture</span>
             </div>
             <h2 class="timeline-title">Day 01: ED-001 — Standardizing on Node.js</h2>
             <div class="timeline-content">
-              <p>Kicked off the project workspace. Documented architectural decision record <code>ED-001</code> detailing stack selections for the backend builder environment.</p>
-              <p><strong>Chosen Stack:</strong> Node.js and SQLite3.</p>
-              <ul>
-                <li><strong>Pros:</strong> Consistent JS usage across stack layers, rich package manager ecosystem, swift setup without database server hosting overhead.</li>
-                <li><strong>Trade-offs:</strong> Node's single-threaded nature requires careful thread management for CPU-intensive tasks, and asynchronous loops introduce a learning curve.</li>
-              </ul>
+              <p>Every complex system starts with a single decision. For Dream Wall, the first architectural decision (ED-001) was choosing the foundation.</p>
+<p>I standardized on Node.js. Why? It&#39;s simple, it&#39;s everywhere, and it allows me to keep the mental model consistent between the frontend and backend. </p>
+<p>The goal here isn&#39;t to over-engineer on day one. It&#39;s about getting the environment ready for deployment. The initial setup is just a skeleton, but it&#39;s <em>my</em> skeleton.</p>
+
             </div>
           </article>
+        <!-- DEVLOG_ENTRIES_END -->
         </div>
       </div>
     </section>
