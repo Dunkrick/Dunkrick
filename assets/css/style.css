@@ -68,7 +68,12 @@
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
@@ -184,7 +189,7 @@ a {
 }
 
 .nav-links a {
-  font-family: var(--font-heading);
+  font-family: var(--font-sf);
   font-size: 15px;
   font-weight: 400;
   color: var(--text-muted);
@@ -313,9 +318,19 @@ a {
 }
 
 @keyframes wave-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-3px) rotate(6deg); }
-  75% { transform: translateY(2px) rotate(-4deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-3px) rotate(6deg);
+  }
+
+  75% {
+    transform: translateY(2px) rotate(-4deg);
+  }
 }
 
 .hero-subtext {
@@ -393,6 +408,7 @@ a {
   .hero-headline {
     font-size: 28px;
   }
+
   .hero-wave {
     width: 28px;
     height: 28px;
