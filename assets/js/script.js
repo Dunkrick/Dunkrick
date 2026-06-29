@@ -250,4 +250,57 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // ── 8. CURSOR IMAGE REVEAL (WORK PAGE) ──
+  const cursorImg = document.getElementById('cursor-img-reveal');
+  const projectRows = document.querySelectorAll('.project-row');
+
+  if (cursorImg && projectRows.length > 0) {
+    let isHovering = false;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      if (isHovering) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+      }
+    });
+
+    function animateCursor() {
+      if (isHovering) {
+        currentX += (targetX - currentX) * 0.15;
+        currentY += (targetY - currentY) * 0.15;
+        cursorImg.style.left = currentX + 'px';
+        cursorImg.style.top = currentY + 'px';
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    projectRows.forEach(row => {
+      row.addEventListener('mouseenter', (e) => {
+        isHovering = true;
+        const imgPath = row.getAttribute('data-image');
+        if (imgPath) {
+          cursorImg.style.backgroundImage = `url(${imgPath})`;
+        }
+        cursorImg.classList.add('active');
+        
+        currentX = e.clientX;
+        currentY = e.clientY;
+        targetX = e.clientX;
+        targetY = e.clientY;
+        cursorImg.style.left = currentX + 'px';
+        cursorImg.style.top = currentY + 'px';
+      });
+      
+      row.addEventListener('mouseleave', () => {
+        isHovering = false;
+        cursorImg.classList.remove('active');
+      });
+    });
+  }
+
 });

@@ -1041,3 +1041,126 @@ body.wireframe-mode .connect-dock {
   margin: 16px 0;
   color: var(--text-strong);
 }
+
+/* ==========================================================================
+   Showcase / Work Page
+   ========================================================================== */
+
+.work-main {
+  padding-top: 100px;
+  padding-bottom: 48px;
+}
+
+.project-showcase {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 64px 8%;
+  border-bottom: 1px solid var(--border-soft);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.project-row:hover {
+  background-color: var(--bg-icon);
+}
+
+.project-info {
+  max-width: 600px;
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  transition: transform 0.3s ease;
+}
+
+.project-row:hover .project-title {
+  transform: translateX(8px);
+}
+
+.project-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  color: var(--text);
+}
+
+.project-arrow {
+  color: var(--text-muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-row:hover .project-arrow {
+  color: var(--text-strong);
+  transform: translateX(8px);
+}
+
+/* Cursor Image Reveal */
+.cursor-img-reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 50;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.cursor-img-reveal.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 768px) {
+  .project-row {
+    padding: 40px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .project-title {
+    font-size: 32px;
+  }
+  .project-arrow {
+    align-self: flex-end;
+  }
+  /* Disable cursor reveal on mobile */
+  .cursor-img-reveal {
+    display: none !important;
+  }
+}
