@@ -1,0 +1,41 @@
+---
+title: "Day 08: Identity & Ownership (v3.0.0)"
+date: "June 29, 2026"
+tag: Engineering
+active: true
+---
+
+We've officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.
+
+While building this, the distinction between two often-confused concepts became crystal clear in the code:
+- **Authentication** asks: *"Who are you?"* (Handled by the `/auth/login` route generating a token).
+- **Authorization** asks: *"Does this resource belong to you?"* (Handled by strict Prisma queries tying dreams to a specific `userId`).
+
+To enforce this, I wrote an `authenticate` middleware. Here is how our protected data flow looks now:
+
+```text
+[ Browser ] 
+    │ (Bearer Token)
+    ▼
+[ Authorization Header ]
+    │
+    ▼
+[ authenticate Middleware ] ── (Validates JWT)
+    │
+    ▼
+[ req.user.id ] ── (Injects Identity)
+    │
+    ▼
+[ Route ] ── (Extracts req.body & req.user.id)
+    │
+    ▼
+[ Service ] ── (Business Logic)
+    │
+    ▼
+[ Prisma ORM ] ── (where: { id, userId })
+    │
+    ▼
+[ PostgreSQL Database ]
+```
+
+By passing `userId` all the way down to the database layer, we guarantee that users can only mutate their own dreams. The system isn't just functional anymore; it's secure.

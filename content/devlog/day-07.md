@@ -2,7 +2,6 @@
 title: "Day 07: v2.5.0 — Production Ready"
 date: "June 27, 2026"
 tag: Engineering
-active: true
 ---
 
 We've reached v2.5.0. The goal was never just to add features; it was to build a system the *right* way. 

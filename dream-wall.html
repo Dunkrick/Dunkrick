@@ -112,15 +112,15 @@
           <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">View Repository ↗</a>
         </div>
 
-        <!-- VERSION 2.0 -->
+        <!-- VERSION 3.0.0 -->
         <div class="fade-up" style="margin-bottom: 32px;">
           <div class="mini-bento-card" style="align-items: flex-start; cursor: default; border-color: var(--text-muted);">
             <div class="card-content">
               <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px;">
                 <span class="pulse-dot"></span> Active Build
               </span>
-              <h3 class="card-title">v2.0 — Production Ready</h3>
-              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Currently focusing on making the API production-ready with strict validation and error handling.</p>
+              <h3 class="card-title">v3.0.0 — Identity & Ownership</h3>
+              <p class="card-desc" style="margin-top: 8px;">Implementing full JWT authentication and authorization. Refactoring the architecture so every dream belongs to a specific user, making the system secure and multi-tenant ready.</p>
             </div>
           </div>
         </div>
@@ -129,6 +129,63 @@
         <!-- DEVLOG_ENTRIES_START -->
 
           <article class="timeline-entry entry-active">
+            <div class="timeline-meta">
+              <time class="timeline-date">June 29, 2026</time>
+              <span class="timeline-tag">Engineering</span>
+            </div>
+            <h2 class="timeline-title">Day 08: Identity & Ownership (v3.0.0)</h2>
+            <div class="timeline-content">
+              <p>We&#39;ve officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.</p>
+<p>While building this, the distinction between two often-confused concepts became crystal clear in the code:</p>
+<ul>
+<li><strong>Authentication</strong> asks: <em>&quot;Who are you?&quot;</em> (Handled by the <code>/auth/login</code> route generating a token).</li>
+<li><strong>Authorization</strong> asks: <em>&quot;Does this resource belong to you?&quot;</em> (Handled by strict Prisma queries tying dreams to a specific <code>userId</code>).</li>
+</ul>
+<p>To enforce this, I wrote an <code>authenticate</code> middleware. Here is how our protected data flow looks now:</p>
+<pre><code class="language-text">[ Browser ] 
+    │ (Bearer Token)
+    ▼
+[ Authorization Header ]
+    │
+    ▼
+[ authenticate Middleware ] ── (Validates JWT)
+    │
+    ▼
+[ req.user.id ] ── (Injects Identity)
+    │
+    ▼
+[ Route ] ── (Extracts req.body &amp; req.user.id)
+    │
+    ▼
+[ Service ] ── (Business Logic)
+    │
+    ▼
+[ Prisma ORM ] ── (where: { id, userId })
+    │
+    ▼
+[ PostgreSQL Database ]
+</code></pre>
+<p>By passing <code>userId</code> all the way down to the database layer, we guarantee that users can only mutate their own dreams. The system isn&#39;t just functional anymore; it&#39;s secure.</p>
+
+            </div>
+          </article>
+
+        </div>
+        <!-- VERSION 2.5.0 -->
+        <div class="fade-up" style="margin-bottom: 32px;">
+          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
+            <div class="card-content">
+              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
+                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
+              </span>
+              <h3 class="card-title">v2.5.0 — Production Ready</h3>
+              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
+
+          <article class="timeline-entry ">
             <div class="timeline-meta">
               <time class="timeline-date">June 27, 2026</time>
               <span class="timeline-tag">Engineering</span>

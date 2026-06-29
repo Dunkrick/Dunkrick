@@ -35,6 +35,26 @@ entries.sort((a, b) => b.filename.localeCompare(a.filename));
 let htmlOutput = '';
 
 entries.forEach((entry, index) => {
+  // If it's day-07, we insert the v2.5.0 card before it
+  if (entry.filename === 'day-07.md') {
+    htmlOutput += `
+        </div>
+        <!-- VERSION 2.5.0 -->
+        <div class="fade-up" style="margin-bottom: 32px;">
+          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
+            <div class="card-content">
+              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
+                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
+              </span>
+              <h3 class="card-title">v2.5.0 — Production Ready</h3>
+              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
+`;
+  }
+
   // If it's day-03, we insert the v1.0 card before it
   if (entry.filename === 'day-03.md') {
     htmlOutput += `
