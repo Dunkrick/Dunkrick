@@ -168,6 +168,12 @@ a {
   align-items: center;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .nav-logo {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -287,6 +293,10 @@ a {
 @media (max-width: 720px) {
   .nav-links {
     display: none;
+  }
+
+  .nav-right {
+    gap: 16px;
   }
 
   .mobile-menu-btn {
