@@ -142,7 +142,7 @@ a {
   left: 0;
   width: 100%;
   padding: 24px 0;
-  z-index: 100;
+  z-index: 200;
   background: transparent;
   transition: background-color 0.3s ease, padding 0.3s ease;
 }
