@@ -7,14 +7,23 @@
   <title>Building Dream-wall (Devlog) - Rithwick Gurram</title>
   <meta name="description" content="The unfiltered process of building a complex system." />
 
-  <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <!-- Favicons (Absolute Paths for Google Search reliability) -->
+  <link rel="icon" type="image/svg+xml" sizes="any" href="https://rithwick.me/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://rithwick.me/assets/images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://rithwick.me/assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="https://rithwick.me/assets/images/apple-touch-icon.png">
   
   
 
+  <!-- Performance & Styling -->
+  <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- GEO Metadata -->
+  <meta name="geo.region" content="IN-TN" />
+  <meta name="geo.placename" content="Chennai" />
+  <meta name="geo.position" content="12.8387;80.1506" />
+  <meta name="ICBM" content="12.8387, 80.1506" />
 
   <!-- SEO & Open Graph -->
   <meta property="og:title" content="Building Dream-wall (Devlog) - Rithwick Gurram" />
@@ -445,9 +454,9 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/script.js" defer></script>
   
 </body>
 </html>
