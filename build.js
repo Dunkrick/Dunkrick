@@ -69,7 +69,8 @@ const pageMeta = {
     id: 'project-container',
     progress: '',
     cta: '',
-    extraHead: ''
+    extraHead: '',
+    extraScripts: '<script type="module" src="assets/js/project.js"></script>'
   },
   'dream-wall.html': { 
     title: 'Building Dream-wall (Devlog) - Rithwick Gurram', 
@@ -197,8 +198,8 @@ for (const page of pages) {
   finalHtml = finalHtml.replace(/\{\{MAIN_ID\}\}/g, meta.id ? `id="${meta.id}" ` : '');
   finalHtml = finalHtml.replace(/\{\{PROGRESS_BAR\}\}/g, meta.progress);
   finalHtml = finalHtml.replace(/\{\{FOOTER_CTA\}\}/g, meta.cta);
-  finalHtml = finalHtml.replace(/\{\{EXTRA_HEAD\}\}/g, meta.extraHead);
-  finalHtml = finalHtml.replace(/\{\{EXTRA_SCRIPTS\}\}/g, '');
+  finalHtml = finalHtml.replace(/\{\{EXTRA_HEAD\}\}/g, meta.extraHead || '');
+  finalHtml = finalHtml.replace(/\{\{EXTRA_SCRIPTS\}\}/g, meta.extraScripts || '');
   finalHtml = finalHtml.replace(/\{\{CONTENT\}\}/g, content);
 
   fs.writeFileSync(path.join(__dirname, page), finalHtml, 'utf8');
