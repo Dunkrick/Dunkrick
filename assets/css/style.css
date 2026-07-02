@@ -1043,6 +1043,233 @@ body.wireframe-mode .connect-dock {
 }
 
 /* ==========================================================================
+   Devlog Narrative Enhancements
+   ========================================================================== */
+
+/* Reading Progress Bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--text-strong);
+  z-index: 300;
+  transition: width 0.1s linear;
+  opacity: 0.6;
+}
+
+/* Stats Bar */
+.devlog-hero-desc {
+  margin-bottom: 24px;
+}
+
+.devlog-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.devlog-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.devlog-stat-value {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-strong);
+  letter-spacing: -0.02em;
+}
+
+.devlog-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.devlog-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-soft);
+}
+
+@media (max-width: 480px) {
+  .devlog-stats {
+    gap: 16px;
+  }
+  .devlog-stat-value {
+    font-size: 18px;
+  }
+}
+
+/* Engineering Principle Callouts */
+.ep-callout {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--text-strong);
+  background: var(--bg-icon);
+  border-radius: 0 8px 8px 0;
+}
+
+.ep-callout .ep-label {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-strong);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* Act Break (Version Milestones) */
+.act-break {
+  text-align: center;
+  margin: 16px 0 32px;
+  padding: 0;
+}
+
+.act-break-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-soft) 20%,
+    var(--border-soft) 80%,
+    transparent
+  );
+}
+
+.act-break-content {
+  padding: 28px 0;
+}
+
+.act-break-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.act-break-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.act-break-desc {
+  font-size: 14px;
+  color: var(--text);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Reading Time Badge */
+.timeline-reading-time {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* Entry Collapse / Expand */
+.entry-collapsible .timeline-content {
+  position: relative;
+  max-height: 220px;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.entry-collapsible.entry-collapsed .timeline-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--page));
+  pointer-events: none;
+}
+
+.entry-collapsible:not(.entry-collapsed) .timeline-content {
+  max-height: 2000px;
+}
+
+.entry-expand-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-sf);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-strong);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.entry-expand-btn:hover {
+  opacity: 0.7;
+}
+
+/* Narrative Closing CTA */
+.devlog-closing {
+  padding: 64px 0 40px;
+  text-align: center;
+}
+
+.devlog-closing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.devlog-closing-text {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+}
+
+.devlog-closing-subtext {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.devlog-closing-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.devlog-closing-divider {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
    Showcase / Work Page
    ========================================================================== */
 

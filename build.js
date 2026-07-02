@@ -10,91 +10,122 @@ const __dirname = path.dirname(__filename);
 const CONTENT_DIR = path.join(__dirname, 'content', 'devlog');
 const HTML_FILE = path.join(__dirname, 'dream-wall.html');
 
-// Helper to format date
-function formatDate(dateStr) {
-  return dateStr;
+// ── Helpers ──
+
+function estimateReadingTime(text) {
+  const words = text.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / 200);
+  return `${minutes} min read`;
 }
 
-// Read all markdown files
+function countEPs(htmlBody) {
+  const matches = htmlBody.match(/EP-\d{3}/g);
+  return matches ? matches.length : 0;
+}
+
+function wrapEPCallouts(html) {
+  // Match <em>EP-XXX: ...</em> and wrap in a blockquote callout
+  return html.replace(
+    /<p>\s*<em>(EP-\d{3}:\s*[^<]+)<\/em>\s*<\/p>/g,
+    '<blockquote class="ep-callout"><span class="ep-label">$1</span></blockquote>'
+  );
+}
+
+// ── Read & Parse ──
+
 const files = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
 
 const entries = files.map(file => {
   const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8');
   const parsed = fm(content);
+  const htmlBody = wrapEPCallouts(marked.parse(parsed.body));
   return {
     filename: file,
     attributes: parsed.attributes,
-    body: marked.parse(parsed.body)
+    body: htmlBody,
+    rawBody: parsed.body,
+    readingTime: estimateReadingTime(parsed.body),
+    epCount: countEPs(htmlBody)
   };
 });
 
-// Sort entries descending by day (assuming format day-XX.md)
+// Sort entries descending by day (day-10.md before day-09.md, etc.)
 entries.sort((a, b) => b.filename.localeCompare(a.filename));
 
-// Generate HTML
+// ── Compute Stats ──
+
+const totalDays = entries.length;
+const totalEPs = entries.reduce((sum, e) => sum + e.epCount, 0);
+// Count version milestones (hardcoded markers + the active v3.0.0)
+const totalVersions = 3;
+
+// ── Generate Entry HTML ──
+
 let htmlOutput = '';
 
 entries.forEach((entry, index) => {
-  // If it's day-07, we insert the v2.5.0 card before it
+  // Insert v2.5.0 act break before day-07
   if (entry.filename === 'day-07.md') {
     htmlOutput += `
         </div>
-        <!-- VERSION 2.5.0 -->
-        <div class="fade-up" style="margin-bottom: 32px;">
-          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
-            <div class="card-content">
-              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
-              </span>
-              <h3 class="card-title">v2.5.0 — Production Ready</h3>
-              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
-            </div>
+        <div class="act-break fade-up">
+          <div class="act-break-rule"></div>
+          <div class="act-break-content">
+            <span class="act-break-status">Completed</span>
+            <h3 class="act-break-title">v2.5.0 — Production Ready</h3>
+            <p class="act-break-desc">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
           </div>
+          <div class="act-break-rule"></div>
         </div>
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
 `;
   }
 
-  // If it's day-03, we insert the v1.0 card before it
+  // Insert v1.0 act break before day-03
   if (entry.filename === 'day-03.md') {
     htmlOutput += `
         </div>
-        <!-- VERSION 1.0 -->
-        <div class="fade-up" style="margin-bottom: 32px;">
-          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
-            <div class="card-content">
-              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
-              </span>
-              <h3 class="card-title">v1.0 — Core Foundation</h3>
-              <p class="card-desc" style="margin-top: 8px;">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
-            </div>
+        <div class="act-break fade-up">
+          <div class="act-break-rule"></div>
+          <div class="act-break-content">
+            <span class="act-break-status">Completed</span>
+            <h3 class="act-break-title">v1.0 — Core Foundation</h3>
+            <p class="act-break-desc">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
           </div>
+          <div class="act-break-rule"></div>
         </div>
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
 `;
   }
 
   const isActive = entry.attributes.active ? 'entry-active' : '';
-  
+  const isCollapsible = !entry.attributes.active && entry.rawBody.trim().split(/\n\n+/).length > 3;
+
   htmlOutput += `
-          <article class="timeline-entry ${isActive}">
+          <article class="timeline-entry ${isActive}${isCollapsible ? ' entry-collapsible entry-collapsed' : ''}">
             <div class="timeline-meta">
               <time class="timeline-date">${entry.attributes.date}</time>
               <span class="timeline-tag">${entry.attributes.tag}</span>
+              <span class="timeline-reading-time">${entry.readingTime}</span>
             </div>
             <h2 class="timeline-title">${entry.attributes.title}</h2>
             <div class="timeline-content">
               ${entry.body}
-            </div>
+            </div>${isCollapsible ? '\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>' : ''}
           </article>
 `;
 });
 
-// Read the dream-wall.html
+// ── Inject into HTML ──
+
 let html = fs.readFileSync(HTML_FILE, 'utf8');
 
-// Replace everything between the markers
+// Replace stats placeholders
+html = html.replace(/data-stat-days="[^"]*"/, `data-stat-days="${totalDays}"`);
+html = html.replace(/data-stat-versions="[^"]*"/, `data-stat-versions="${totalVersions}"`);
+html = html.replace(/data-stat-eps="[^"]*"/, `data-stat-eps="${totalEPs}"`);
+
+// Replace devlog entries
 const startMarker = '<!-- DEVLOG_ENTRIES_START -->';
 const endMarker = '<!-- DEVLOG_ENTRIES_END -->';
 
@@ -113,4 +144,5 @@ const newHtml = before + '\n' + htmlOutput + '        ' + after;
 
 fs.writeFileSync(HTML_FILE, newHtml, 'utf8');
 
-console.log('Successfully built dream-wall.html devlog!');
+console.log(`Successfully built dream-wall.html devlog!`);
+console.log(`  → ${totalDays} entries, ${totalVersions} versions, ${totalEPs} engineering principles`);

@@ -10,7 +10,7 @@ With plain HTML, you're constantly *telling* the browser what to change. "Update
 
 *EP-012: Declare intent, don't dictate steps.*
 
-Today, I initiated the React architecture. The first thing that clicked was that React components are just **functions that return UI**. That's it. No magic. And once I saw it that way, a beautiful symmetry with the backend became impossible to unsee:
+Today, I initiated the React architecture. The first thing that clicked was that React components are just **functions that return UI**. That's it. No magic. And once I saw it that way, a symmetry with the backend became impossible to unsee:
 
 ```text
 Backend:  Input (Request)  →  Function (Route)     →  Output (JSON)
@@ -21,4 +21,4 @@ Both sides of the stack are just functions that transform inputs into outputs. T
 
 Even the orchestration mirrors itself. On the backend, the **Server** orchestrates and the **Routes** implement. On the frontend, the **App** orchestrates and the **Pages** implement. Same architecture, different rendering target.
 
-The migration is just getting started, but the mental model already feels right.
+The migration is just getting started, but the mental model already feels right. And when the mental model feels right, the code tends to follow.

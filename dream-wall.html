@@ -97,6 +97,9 @@
     </div>
   </div>
 
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress"></div>
+
   <main class="site-main">
     <section id="devlog" style="padding-bottom: 80px;">
       <div class="container stack">
@@ -109,29 +112,40 @@
         </div>
 
         <h1 class="case-study-title fade-up">Building Dream-wall</h1>
-        <p class="case-study-description fade-up" style="margin-bottom: 24px;">
-          Documenting day-to-day lessons, technical experiments, and architectural decisions made while constructing the
-          Dream-wall application.
+        <p class="case-study-description devlog-hero-desc fade-up">
+          Every system starts as a single decision. This is the story of how Dream Wall evolved from a 50-line script into a production-grade, authenticated application — and everything I learned along the way.
         </p>
+
+        <div class="devlog-stats fade-up">
+          <div class="devlog-stat">
+            <span class="devlog-stat-value" data-stat-days="10">10</span>
+            <span class="devlog-stat-label">Days</span>
+          </div>
+          <div class="devlog-stat-divider"></div>
+          <div class="devlog-stat">
+            <span class="devlog-stat-value" data-stat-versions="3">3</span>
+            <span class="devlog-stat-label">Versions</span>
+          </div>
+          <div class="devlog-stat-divider"></div>
+          <div class="devlog-stat">
+            <span class="devlog-stat-value" data-stat-eps="5">5</span>
+            <span class="devlog-stat-label">Engineering Principles</span>
+          </div>
+        </div>
 
         <div class="fade-up" style="margin-bottom: 48px;">
           <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">View Repository ↗</a>
         </div>
 
         <!-- VERSION 3.0.0 -->
-        <div class="fade-up" style="margin-bottom: 32px;">
-          <div class="mini-bento-card"
-            style="align-items: flex-start; cursor: default; border-color: var(--text-muted);">
-            <div class="card-content">
-              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px;">
-                <span class="pulse-dot"></span> Active Build
-              </span>
-              <h3 class="card-title">v3.0.0 - Identity & Ownership</h3>
-              <p class="card-desc" style="margin-top: 8px;">Implementing full JWT authentication and authorization.
-                Refactoring the architecture so every dream belongs to a specific user, making the system secure and
-                multi-tenant ready.</p>
-            </div>
+        <div class="act-break fade-up">
+          <div class="act-break-rule"></div>
+          <div class="act-break-content">
+            <span class="act-break-status"><span class="pulse-dot"></span> Active Build</span>
+            <h3 class="act-break-title">v3.0.0 — Identity & Ownership</h3>
+            <p class="act-break-desc">Implementing full JWT authentication and authorization. Refactoring the architecture so every dream belongs to a specific user, making the system secure and multi-tenant ready.</p>
           </div>
+          <div class="act-break-rule"></div>
         </div>
 
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
@@ -141,12 +155,13 @@
             <div class="timeline-meta">
               <time class="timeline-date">July 2, 2026</time>
               <span class="timeline-tag">Integration</span>
+              <span class="timeline-reading-time">2 min read</span>
             </div>
             <h2 class="timeline-title">Day 10: Wiring It All Together</h2>
             <div class="timeline-content">
               <p>Yesterday, React was just a mental model. Today, I needed to prove it works. I gave myself one goal for the day: one complete user journey. Open the app, log in, see the home page, log out. No shortcuts, no mocks.</p>
 <p>I started by building out the frontend&#39;s service layer — <code>api.ts</code> and <code>auth.ts</code>. And immediately, a pattern I&#39;ve been feeling all project long finally crystallized. <code>api.ts</code> is to the frontend what Prisma is to the backend. It&#39;s a data access layer. It shouldn&#39;t know about business logic, it shouldn&#39;t know about UI state. It should only know how to make HTTP requests. Same principle, different side of the stack.</p>
-<p><em>EP-013: Things that change together should live together.</em></p>
+<blockquote class="ep-callout"><span class="ep-label">EP-013: Things that change together should live together.</span></blockquote>
 <p>That&#39;s cohesion. When I noticed the token logic was scattered between <code>api.ts</code> and <code>auth.ts</code>, I extracted it into its own <code>storage.ts</code> module. One place that knows about <code>localStorage</code>. One place to change if we ever swap the storage mechanism. Things that change together, live together.</p>
 <p>Then came the wall. I wired the Login page to the backend, hit submit, and... CORS. The browser just silently refused to talk to my own server. The error message didn&#39;t scream &quot;you need a cors package.&quot; It just looked like the request vanished. It took me longer than I&#39;d like to admit to trace it back to a missing middleware on the Express side. A one-line fix after a not-so-one-line debugging session.</p>
 <p>But once CORS was resolved, something quietly remarkable happened. I typed in an email, entered a password, clicked Login — and the app navigated to the home page. A real JWT, stored in the browser, issued by my own backend, validated by my own middleware. For the first time, a user can actually <em>use</em> this thing end-to-end.</p>
@@ -155,41 +170,44 @@
             </div>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">July 1, 2026</time>
               <span class="timeline-tag">Architecture</span>
+              <span class="timeline-reading-time">2 min read</span>
             </div>
             <h2 class="timeline-title">Day 09: The React Migration</h2>
             <div class="timeline-content">
               <p>The frontend has been running on vanilla HTML, CSS, and JS since v1.0. It worked, but there was a fundamental friction I couldn&#39;t ignore any longer.</p>
 <p>With plain HTML, you&#39;re constantly <em>telling</em> the browser what to change. &quot;Update this div. Remove that element. Append this child.&quot; It&#39;s imperative, and it&#39;s exhausting. With <strong>React</strong>, you simply <em>describe</em> how the UI should look, and React figures out what to change. It&#39;s the difference between micromanaging and delegating.</p>
-<p><em>EP-012: Declare intent, don&#39;t dictate steps.</em></p>
-<p>Today, I initiated the React architecture. The first thing that clicked was that React components are just <strong>functions that return UI</strong>. That&#39;s it. No magic. And once I saw it that way, a beautiful symmetry with the backend became impossible to unsee:</p>
+<blockquote class="ep-callout"><span class="ep-label">EP-012: Declare intent, don&#39;t dictate steps.</span></blockquote>
+<p>Today, I initiated the React architecture. The first thing that clicked was that React components are just <strong>functions that return UI</strong>. That&#39;s it. No magic. And once I saw it that way, a symmetry with the backend became impossible to unsee:</p>
 <pre><code class="language-text">Backend:  Input (Request)  →  Function (Route)     →  Output (JSON)
 Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 </code></pre>
 <p>Both sides of the stack are just functions that transform inputs into outputs. The shapes are different, but the <em>pattern</em> is identical.</p>
 <p>Even the orchestration mirrors itself. On the backend, the <strong>Server</strong> orchestrates and the <strong>Routes</strong> implement. On the frontend, the <strong>App</strong> orchestrates and the <strong>Pages</strong> implement. Same architecture, different rendering target.</p>
-<p>The migration is just getting started, but the mental model already feels right.</p>
+<p>The migration is just getting started, but the mental model already feels right. And when the mental model feels right, the code tends to follow.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 29, 2026</time>
               <span class="timeline-tag">Engineering</span>
+              <span class="timeline-reading-time">2 min read</span>
             </div>
             <h2 class="timeline-title">Day 08: Identity & Ownership (v3.0.0)</h2>
             <div class="timeline-content">
               <p>We&#39;ve officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.</p>
-<p>While building this, the distinction between two often-confused concepts became crystal clear in the code:</p>
+<p>While building this, the distinction between two often-confused concepts became impossible to mix up — because the code forces them apart:</p>
 <ul>
 <li><strong>Authentication</strong> asks: <em>&quot;Who are you?&quot;</em> (Handled by the <code>/auth/login</code> route generating a token).</li>
 <li><strong>Authorization</strong> asks: <em>&quot;Does this resource belong to you?&quot;</em> (Handled by strict Prisma queries tying dreams to a specific <code>userId</code>).</li>
 </ul>
-<p>To enforce this, I wrote an <code>authenticate</code> middleware. Here is how our protected data flow looks now:</p>
+<p>To enforce this, I wrote an <code>authenticate</code> middleware. Here&#39;s how the protected data flow looks now:</p>
 <pre><code class="language-text">[ Browser ] 
     │ (Bearer Token)
     ▼
@@ -213,99 +231,103 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
     ▼
 [ PostgreSQL Database ]
 </code></pre>
-<p>By passing <code>userId</code> all the way down to the database layer, we guarantee that users can only mutate their own dreams. The system isn&#39;t just functional anymore; it&#39;s secure.</p>
+<p>By passing <code>userId</code> all the way down to the database layer, we guarantee that users can only ever touch their own dreams. Not through permission checks in the UI, not through frontend validation — through the query itself. The system isn&#39;t just functional anymore; it&#39;s secure by design.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
         </div>
-        <!-- VERSION 2.5.0 -->
-        <div class="fade-up" style="margin-bottom: 32px;">
-          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
-            <div class="card-content">
-              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
-              </span>
-              <h3 class="card-title">v2.5.0 — Production Ready</h3>
-              <p class="card-desc" style="margin-top: 8px;">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
-            </div>
+        <div class="act-break fade-up">
+          <div class="act-break-rule"></div>
+          <div class="act-break-content">
+            <span class="act-break-status">Completed</span>
+            <h3 class="act-break-title">v2.5.0 — Production Ready</h3>
+            <p class="act-break-desc">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
           </div>
+          <div class="act-break-rule"></div>
         </div>
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 27, 2026</time>
               <span class="timeline-tag">Engineering</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 07: v2.5.0 — Production Ready</h2>
             <div class="timeline-content">
-              <p>We&#39;ve reached v2.5.0. The goal was never just to add features; it was to build a system the <em>right</em> way. </p>
-<p>Today, I implemented a global Error Handling middleware and strict route validation. </p>
-<p><em>EP-011: Code should be optimistic. Infrastructure should be defensive.</em></p>
-<p>I also took time to write out Architectural Decision Records (ADRs) to document <em>why</em> these systems were built this way. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend. </p>
+              <p>We&#39;ve reached v2.5.0. The goal was never just to add features — it was to build a system the <em>right</em> way.</p>
+<p>Today, I implemented a global Error Handling middleware and strict route validation. Before this, a malformed request could slip through and cause cryptic failures deep in the service layer. Now, bad input gets caught at the door.</p>
+<blockquote class="ep-callout"><span class="ep-label">EP-011: Code should be optimistic. Infrastructure should be defensive.</span></blockquote>
+<p>The application code trusts its inputs — because the middleware has already validated them. The infrastructure assumes the worst — because users and networks are unpredictable. It&#39;s a clean separation of optimism and paranoia.</p>
+<p>I also took time to write out Architectural Decision Records (ADRs) to document <em>why</em> these systems were built this way. Not just what I chose, but what I considered and rejected. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend.</p>
 <p>Onwards to v3.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 26, 2026</time>
               <span class="timeline-tag">Integration</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 06: Prisma ORM & End-to-End Type Safety</h2>
             <div class="timeline-content">
-              <p>Writing raw SQL strings inside TypeScript defeats half the purpose of using TypeScript. </p>
-<p>Today, I migrated all database reads and writes to <strong>Prisma</strong>. </p>
-<p><em>EP-004: Depend on abstractions, not implementations.</em></p>
-<p>Prisma acts as an abstraction over PostgreSQL. Now, every single database query is fully type-checked. If I misspell a column name, the app won&#39;t even compile. The complete migration of the backend from JS to TS is finally done. We have officially removed all raw PostgreSQL access.</p>
+              <p>Writing raw SQL strings inside TypeScript felt like wearing a seatbelt with the buckle undone. You have type safety everywhere <em>except</em> the most dangerous part — the database boundary.</p>
+<blockquote class="ep-callout"><span class="ep-label">EP-004: Depend on abstractions, not implementations.</span></blockquote>
+<p>Today, I migrated every database read and write to <strong>Prisma</strong>. Prisma acts as an abstraction over PostgreSQL, and now every single query is fully type-checked. If I misspell a column name, the app won&#39;t even compile. That&#39;s not just convenient — it&#39;s a fundamentally different relationship with your data layer.</p>
+<p>With this, the complete migration from JavaScript to TypeScript is done. Every raw PostgreSQL call has been replaced. The backend is now strictly typed from the route handler all the way down to the database. No gaps, no escape hatches.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 25, 2026</time>
               <span class="timeline-tag">Architecture</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 05: Clean Architecture & The Service Layer</h2>
             <div class="timeline-content">
-              <p>As the backend grew, the route files started doing too much. They were parsing requests, writing SQL queries, and handling responses. </p>
-<p><em>EP-003: Organize by feature, not by generic names.</em></p>
-<p>I introduced a dedicated <strong>Service Layer</strong>. Now, the route files strictly handle the HTTP context (req/res), and they pass the data down to the services which handle the actual business logic. </p>
-<p>By separating these concerns, the code is significantly easier to test, read, and maintain. The system is starting to feel incredibly solid.</p>
+              <p>As the backend grew, the route files started doing too much. They were parsing requests, writing database queries, and handling responses — all in the same function. Every time I touched one thing, I risked breaking something else.</p>
+<blockquote class="ep-callout"><span class="ep-label">EP-003: Organize by feature, not by generic names.</span></blockquote>
+<p>I introduced a dedicated <strong>Service Layer</strong>. The route files now strictly handle the HTTP context — extracting <code>req.body</code>, setting status codes, sending responses. Everything else gets passed down to the services, which own the actual business logic.</p>
+<p>It&#39;s the kind of refactor that doesn&#39;t change what the app <em>does</em>, but fundamentally changes how it <em>feels</em> to work on. The code reads like clear responsibilities now, not tangled spaghetti. And for the first time, I can look at a route and know exactly where to find the logic it depends on.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 24, 2026</time>
               <span class="timeline-tag">Architecture</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 04: The Shift to TypeScript & PostgreSQL</h2>
             <div class="timeline-content">
-              <p>The honeymoon phase of v1.0 is over. It&#39;s time to get serious. </p>
-<p>If this were a production system, JavaScript&#39;s dynamic typing and SQLite&#39;s file-based locking wouldn&#39;t cut it. Today, I began the great migration.</p>
-<p>First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. Catching errors at compile-time instead of runtime is a game changer. </p>
-<p>Then, I ripped out SQLite and connected the app to a robust PostgreSQL database. The code is getting stricter, and the infrastructure is getting stronger.</p>
+              <p>The honeymoon phase of v1.0 is over. It&#39;s time to get serious.</p>
+<p>If this were a production system — the kind that handles real users, real data, real stakes — JavaScript&#39;s dynamic typing and SQLite&#39;s file-based locking wouldn&#39;t cut it. I&#39;ve been putting off this migration because everything &quot;works.&quot; But &quot;works&quot; and &quot;works correctly under pressure&quot; are two very different standards.</p>
+<p>Today, I began the great migration. First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. There&#39;s a specific kind of relief that comes from catching a misspelled property name at compile-time instead of discovering it in a 2 AM production bug.</p>
+<p>Then, I ripped out SQLite and connected the app to PostgreSQL. The code is getting stricter, and the infrastructure is getting stronger. It feels less like a side project now and more like a real system.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
         </div>
-        <!-- VERSION 1.0 -->
-        <div class="fade-up" style="margin-bottom: 32px;">
-          <div class="mini-bento-card" style="align-items: flex-start; cursor: default;">
-            <div class="card-content">
-              <span class="card-eyebrow" style="display: flex; align-items: center; gap: 6px; color: var(--text-muted);">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted);"></span> Completed
-              </span>
-              <h3 class="card-title">v1.0 — Core Foundation</h3>
-              <p class="card-desc" style="margin-top: 8px;">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
-            </div>
+        <div class="act-break fade-up">
+          <div class="act-break-rule"></div>
+          <div class="act-break-content">
+            <span class="act-break-status">Completed</span>
+            <h3 class="act-break-title">v1.0 — Core Foundation</h3>
+            <p class="act-break-desc">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
           </div>
+          <div class="act-break-rule"></div>
         </div>
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
 
@@ -313,25 +335,27 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
             <div class="timeline-meta">
               <time class="timeline-date">June 19, 2026</time>
               <span class="timeline-tag">Product</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 03: The Cozy Frontend & v1.0 Launch</h2>
             <div class="timeline-content">
-              <p>I spent today polishing the interface. No heavy frameworks, just pure vanilla HTML, CSS, and JS magic to create a cozy, minimal vibe. </p>
-<p>With the frontend connected to our SQLite backend, Version 1.0 of Dream Wall is officially complete! </p>
-<p>It&#39;s a huge milestone. The app works, it&#39;s deployed, and it solves the problem it was meant to solve. But as I look at the monolithic <code>server.js</code> file, my &quot;systems builder&quot; brain is already thinking about how a senior engineer would structure this to scale...</p>
+              <p>I spent today doing something that doesn&#39;t feel like &quot;real engineering&quot; but absolutely is — polishing the interface. No heavy frameworks, just vanilla HTML, CSS, and JS. I wanted the app to feel cozy and minimal, like a journal you actually want to open.</p>
+<p>With the frontend connected to the SQLite backend, Version 1.0 of Dream Wall is officially complete.</p>
+<p>It&#39;s a huge milestone. The app works, it&#39;s deployed, and it solves the problem it was meant to solve. But there&#39;s this nagging feeling I can&#39;t shake. The entire backend lives in one monolithic <code>server.js</code> file. It works <em>today</em>, but my &quot;systems builder&quot; brain is already running scenarios — what happens when I add authentication? What happens when I need to test one route without booting the whole server? The architecture needs to evolve. But that&#39;s a problem for future me.</p>
 
             </div>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">June 14, 2026</time>
               <span class="timeline-tag">Integration</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 02: SQLite Database Initialization & Schema</h2>
             <div class="timeline-content">
               <p>Today was all about giving the dreams a place to live. I wired up a lightweight Express.js API and hooked it into SQLite.</p>
-<p>I wrote an auto-creation sequence in <code>db.js</code> so that the database initializes itself cleanly on startup. It’s a small detail, but it makes the developer experience so much smoother. </p>
+<p>The first thing I wrote was an auto-creation sequence in <code>db.js</code> — a small script that initializes the database cleanly on startup, no manual setup required.</p>
 <pre><code class="language-javascript">db.run(`
   CREATE TABLE IF NOT EXISTS dreams (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -339,25 +363,43 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
   )
 `);
 </code></pre>
-<p>It feels great to see the basic CRUD operations working. You can <code>POST</code> a dream, and it&#39;s safely tucked away in the local file system.</p>
+<p>It&#39;s a small detail, but it makes a real difference. Anyone who clones this repo gets a working database on the first <code>npm start</code>. No README steps to miss, no &quot;did you run the migration?&quot; messages in Slack.</p>
+<p>There&#39;s something deeply satisfying about watching your first <code>POST</code> request land and knowing the data is safely persisted. The dreams have a home now.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry ">
             <div class="timeline-meta">
               <time class="timeline-date">June 9, 2026</time>
               <span class="timeline-tag">Architecture</span>
+              <span class="timeline-reading-time">1 min read</span>
             </div>
             <h2 class="timeline-title">Day 01: ED-001 — Standardizing on Node.js</h2>
             <div class="timeline-content">
               <p>Every complex system starts with a single decision. For Dream Wall, the first architectural decision (ED-001) was choosing the foundation.</p>
-<p>I standardized on Node.js. Why? It&#39;s simple, it&#39;s everywhere, and it allows me to keep the mental model consistent between the frontend and backend. </p>
-<p>The goal here isn&#39;t to over-engineer on day one. It&#39;s about getting the environment ready for deployment. The initial setup is just a skeleton, but it&#39;s <em>my</em> skeleton.</p>
+<p>I went with Node.js. Not because it&#39;s the fastest runtime or the trendiest choice, but because it lets me think in one language across the entire stack. Frontend and backend, same mental model. When you&#39;re building something alone, that consistency isn&#39;t a luxury — it&#39;s survival.</p>
+<p>The goal here isn&#39;t to over-engineer on day one. It&#39;s to get the skeleton standing. A clean project structure, a working dev environment, a server that starts. Nothing flashy. But it&#39;s <em>my</em> skeleton, and everything that comes after will grow from it.</p>
 
             </div>
           </article>
         <!-- DEVLOG_ENTRIES_END -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Closing CTA -->
+    <section class="devlog-closing fade-up">
+      <div class="container">
+        <div class="devlog-closing-content">
+          <p class="devlog-closing-text">The story is still being written.</p>
+          <p class="devlog-closing-subtext">Follow along as Dream Wall evolves from a side project into a production system.</p>
+          <div class="devlog-closing-actions">
+            <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">View on GitHub ↗</a>
+            <span class="devlog-closing-divider">·</span>
+            <a href="index.html" class="case-study-link">Back to Portfolio</a>
+          </div>
         </div>
       </div>
     </section>

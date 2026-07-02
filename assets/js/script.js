@@ -303,4 +303,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ── 9. READING PROGRESS BAR (devlog page only) ──
+  const progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+  }
+
+  // ── 10. DEVLOG ENTRY EXPAND / COLLAPSE ──
+  document.querySelectorAll('.entry-expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const entry = btn.closest('.timeline-entry');
+      if (entry) {
+        const isCollapsed = entry.classList.contains('entry-collapsed');
+        entry.classList.toggle('entry-collapsed');
+        btn.textContent = isCollapsed ? 'Show less' : 'Continue reading';
+      }
+    });
+  });
+
+  // ── 11. DEVLOG STATS AUTO-UPDATE ──
+  document.querySelectorAll('[data-stat-days]').forEach(el => {
+    el.textContent = el.getAttribute('data-stat-days');
+  });
+  document.querySelectorAll('[data-stat-versions]').forEach(el => {
+    el.textContent = el.getAttribute('data-stat-versions');
+  });
+  document.querySelectorAll('[data-stat-eps]').forEach(el => {
+    el.textContent = el.getAttribute('data-stat-eps');
+  });
+
 });

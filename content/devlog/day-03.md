@@ -4,8 +4,8 @@ date: "June 19, 2026"
 tag: Product
 ---
 
-I spent today polishing the interface. No heavy frameworks, just pure vanilla HTML, CSS, and JS magic to create a cozy, minimal vibe. 
+I spent today doing something that doesn't feel like "real engineering" but absolutely is — polishing the interface. No heavy frameworks, just vanilla HTML, CSS, and JS. I wanted the app to feel cozy and minimal, like a journal you actually want to open.
 
-With the frontend connected to our SQLite backend, Version 1.0 of Dream Wall is officially complete! 
+With the frontend connected to the SQLite backend, Version 1.0 of Dream Wall is officially complete.
 
-It's a huge milestone. The app works, it's deployed, and it solves the problem it was meant to solve. But as I look at the monolithic `server.js` file, my "systems builder" brain is already thinking about how a senior engineer would structure this to scale...
+It's a huge milestone. The app works, it's deployed, and it solves the problem it was meant to solve. But there's this nagging feeling I can't shake. The entire backend lives in one monolithic `server.js` file. It works *today*, but my "systems builder" brain is already running scenarios — what happens when I add authentication? What happens when I need to test one route without booting the whole server? The architecture needs to evolve. But that's a problem for future me.
