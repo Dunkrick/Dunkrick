@@ -2,7 +2,6 @@
 title: "Day 08: Identity & Ownership (v3.0.0)"
 date: "June 29, 2026"
 tag: Engineering
-active: true
 ---
 
 We've officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.
