@@ -8,7 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const CONTENT_DIR = path.join(__dirname, 'content', 'devlog');
-const HTML_FILE = path.join(__dirname, 'dream-wall.html');
+const TEMPLATES_DIR = path.join(__dirname, 'src', 'templates');
+const PAGES_DIR = path.join(__dirname, 'src', 'pages');
+
+const LAYOUT_FILE = path.join(TEMPLATES_DIR, 'layout.html');
+const layoutHtml = fs.readFileSync(LAYOUT_FILE, 'utf8');
 
 // ── Helpers ──
 
@@ -24,49 +28,105 @@ function countEPs(htmlBody) {
 }
 
 function wrapEPCallouts(html) {
-  // Match <em>EP-XXX: ...</em> and wrap in a blockquote callout
   return html.replace(
     /<p>\s*<em>(EP-\d{3}:\s*[^<]+)<\/em>\s*<\/p>/g,
     '<blockquote class="ep-callout"><span class="ep-label">$1</span></blockquote>'
   );
 }
 
-// ── Read & Parse ──
+// ── Page Metadata ──
+const pageMeta = {
+  'index.html': { 
+    title: 'Rithwick Gurram - Product Engineer', 
+    description: 'Product Engineer building complex systems and simple interfaces.', 
+    url: '', 
+    id: '',
+    progress: '',
+    cta: '',
+    extraHead: `<!-- Structured Data for Google Search (Logo & Site Name) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rithwick Gurram",
+    "url": "https://rithwick.me"
+  }
+  </script>`
+  },
+  'work.html': { 
+    title: 'Rithwick Gurram - Product Engineer', 
+    description: 'Product Engineer building complex systems and simple interfaces.', 
+    url: 'work.html', 
+    id: '',
+    progress: '',
+    cta: '',
+    extraHead: ''
+  },
+  'project.html': { 
+    title: 'Rithwick Gurram - Case Study', 
+    description: 'Product Engineer building complex systems and simple interfaces.', 
+    url: 'project.html', 
+    id: 'project-container',
+    progress: '',
+    cta: '',
+    extraHead: ''
+  },
+  'dream-wall.html': { 
+    title: 'Building Dream-wall (Devlog) - Rithwick Gurram', 
+    description: 'The unfiltered process of building a complex system.', 
+    url: 'dream-wall.html', 
+    id: '',
+    progress: '<div class="reading-progress" id="reading-progress"></div>',
+    cta: `  <section class="devlog-closing fade-up">
+    <div class="container devlog-closing-content">
+      <div class="devlog-closing-text">The story is still being written.</div>
+      <p class="devlog-closing-subtext">This system is an ongoing exploration of architecture and product engineering.</p>
+      <div class="devlog-closing-actions">
+        <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">Follow on GitHub</a>
+        <span class="devlog-closing-divider">·</span>
+        <a href="index.html" class="case-study-link">Back to Portfolio</a>
+      </div>
+    </div>
+  </section>`,
+    extraHead: ''
+  }
+};
 
-const files = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
+// ── Build Pages ──
 
-const entries = files.map(file => {
-  const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8');
-  const parsed = fm(content);
-  const htmlBody = wrapEPCallouts(marked.parse(parsed.body));
-  return {
-    filename: file,
-    attributes: parsed.attributes,
-    body: htmlBody,
-    rawBody: parsed.body,
-    readingTime: estimateReadingTime(parsed.body),
-    epCount: countEPs(htmlBody)
-  };
-});
+const pages = fs.readdirSync(PAGES_DIR).filter(f => f.endsWith('.html'));
 
-// Sort entries descending by day (day-10.md before day-09.md, etc.)
-entries.sort((a, b) => b.filename.localeCompare(a.filename));
+for (const page of pages) {
+  let content = fs.readFileSync(path.join(PAGES_DIR, page), 'utf8');
+  const meta = pageMeta[page] || { title: 'Rithwick Gurram', description: '', url: page, id: '', progress: '', cta: '', extraHead: '' };
 
-// ── Compute Stats ──
-
-const totalDays = entries.length;
-const totalEPs = entries.reduce((sum, e) => sum + e.epCount, 0);
-// Count version milestones (hardcoded markers + the active v3.0.0)
-const totalVersions = 3;
-
-// ── Generate Entry HTML ──
-
-let htmlOutput = '';
-
-entries.forEach((entry, index) => {
-  // Insert v2.5.0 act break before day-07
-  if (entry.filename === 'day-07.md') {
-    htmlOutput += `
+  // Special processing for devlog
+  if (page === 'dream-wall.html') {
+    const files = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
+    const entries = files.map(file => {
+      const parsedContent = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8');
+      const parsed = fm(parsedContent);
+      const htmlBody = wrapEPCallouts(marked.parse(parsed.body));
+      return {
+        filename: file,
+        attributes: parsed.attributes,
+        body: htmlBody,
+        rawBody: parsed.body,
+        readingTime: estimateReadingTime(parsed.body),
+        epCount: countEPs(htmlBody)
+      };
+    });
+    
+    entries.sort((a, b) => b.filename.localeCompare(a.filename));
+    
+    const totalDays = entries.length;
+    const totalEPs = entries.reduce((sum, e) => sum + e.epCount, 0);
+    const totalVersions = 3;
+    
+    let htmlOutput = '';
+    entries.forEach((entry) => {
+      if (entry.filename === 'day-07.md') {
+        htmlOutput += `
         </div>
         <div class="act-break fade-up">
           <div class="act-break-rule"></div>
@@ -77,13 +137,10 @@ entries.forEach((entry, index) => {
           </div>
           <div class="act-break-rule"></div>
         </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-`;
-  }
-
-  // Insert v1.0 act break before day-03
-  if (entry.filename === 'day-03.md') {
-    htmlOutput += `
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">\n`;
+      }
+      if (entry.filename === 'day-03.md') {
+        htmlOutput += `
         </div>
         <div class="act-break fade-up">
           <div class="act-break-rule"></div>
@@ -94,14 +151,13 @@ entries.forEach((entry, index) => {
           </div>
           <div class="act-break-rule"></div>
         </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-`;
-  }
-
-  const isActive = entry.attributes.active ? 'entry-active' : '';
-  const isCollapsible = !entry.attributes.active && entry.rawBody.trim().split(/\n\n+/).length > 3;
-
-  htmlOutput += `
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">\n`;
+      }
+      
+      const isActive = entry.attributes.active ? 'entry-active' : '';
+      const isCollapsible = !entry.attributes.active && entry.rawBody.trim().split(/\n\n+/).length > 3;
+      
+      htmlOutput += `
           <article class="timeline-entry ${isActive}${isCollapsible ? ' entry-collapsible entry-collapsed' : ''}">
             <div class="timeline-meta">
               <time class="timeline-date">${entry.attributes.date}</time>
@@ -111,38 +167,42 @@ entries.forEach((entry, index) => {
             <h2 class="timeline-title">${entry.attributes.title}</h2>
             <div class="timeline-content">
               ${entry.body}
-            </div>${isCollapsible ? '\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>' : ''}
-          </article>
-`;
-});
+            </div>${isCollapsible ? '\\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>' : ''}
+          </article>\n`;
+    });
+    
+    content = content.replace(/data-stat-days="[^"]*"/, `data-stat-days="${totalDays}"`);
+    content = content.replace(/data-stat-versions="[^"]*"/, `data-stat-versions="${totalVersions}"`);
+    content = content.replace(/data-stat-eps="[^"]*"/, `data-stat-eps="${totalEPs}"`);
+    
+    const startMarker = '<!-- DEVLOG_ENTRIES_START -->';
+    const endMarker = '<!-- DEVLOG_ENTRIES_END -->';
+    const startIndex = content.indexOf(startMarker);
+    const endIndex = content.indexOf(endMarker);
+    
+    if (startIndex !== -1 && endIndex !== -1) {
+      const before = content.substring(0, startIndex + startMarker.length);
+      const after = content.substring(endIndex);
+      content = before + '\\n' + htmlOutput + '        ' + after;
+    }
+    
+    console.log(`[dream-wall] -> ${totalDays} entries, ${totalVersions} versions, ${totalEPs} EPs`);
+  }
 
-// ── Inject into HTML ──
+  // Inject into Layout
+  let finalHtml = layoutHtml;
+  finalHtml = finalHtml.replace(/\{\{TITLE\}\}/g, meta.title);
+  finalHtml = finalHtml.replace(/\{\{DESCRIPTION\}\}/g, meta.description);
+  finalHtml = finalHtml.replace(/\{\{URL\}\}/g, meta.url);
+  finalHtml = finalHtml.replace(/\{\{MAIN_ID\}\}/g, meta.id ? `id="${meta.id}" ` : '');
+  finalHtml = finalHtml.replace(/\{\{PROGRESS_BAR\}\}/g, meta.progress);
+  finalHtml = finalHtml.replace(/\{\{FOOTER_CTA\}\}/g, meta.cta);
+  finalHtml = finalHtml.replace(/\{\{EXTRA_HEAD\}\}/g, meta.extraHead);
+  finalHtml = finalHtml.replace(/\{\{EXTRA_SCRIPTS\}\}/g, '');
+  finalHtml = finalHtml.replace(/\{\{CONTENT\}\}/g, content);
 
-let html = fs.readFileSync(HTML_FILE, 'utf8');
-
-// Replace stats placeholders
-html = html.replace(/data-stat-days="[^"]*"/, `data-stat-days="${totalDays}"`);
-html = html.replace(/data-stat-versions="[^"]*"/, `data-stat-versions="${totalVersions}"`);
-html = html.replace(/data-stat-eps="[^"]*"/, `data-stat-eps="${totalEPs}"`);
-
-// Replace devlog entries
-const startMarker = '<!-- DEVLOG_ENTRIES_START -->';
-const endMarker = '<!-- DEVLOG_ENTRIES_END -->';
-
-const startIndex = html.indexOf(startMarker);
-const endIndex = html.indexOf(endMarker);
-
-if (startIndex === -1 || endIndex === -1) {
-  console.error("Markers not found in dream-wall.html");
-  process.exit(1);
+  fs.writeFileSync(path.join(__dirname, page), finalHtml, 'utf8');
+  console.log(`Built ${page}`);
 }
 
-const before = html.substring(0, startIndex + startMarker.length);
-const after = html.substring(endIndex);
-
-const newHtml = before + '\n' + htmlOutput + '        ' + after;
-
-fs.writeFileSync(HTML_FILE, newHtml, 'utf8');
-
-console.log(`Successfully built dream-wall.html devlog!`);
-console.log(`  → ${totalDays} entries, ${totalVersions} versions, ${totalEPs} engineering principles`);
+console.log('Build completed successfully.');

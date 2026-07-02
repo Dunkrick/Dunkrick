@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rithwick Gurram - Case Study</title>
-  <meta name="description" content="Product Engineer building complex systems and simple interfaces." />
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}" />
 
   <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   
-  
+  {{EXTRA_HEAD}}
 
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- SEO & Open Graph -->
-  <meta property="og:title" content="Rithwick Gurram - Case Study" />
-  <meta property="og:description" content="Product Engineer building complex systems and simple interfaces." />
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{DESCRIPTION}}" />
   <meta property="og:image" content="https://rithwick.me/assets/images/rithwick-plaid.png" />
-  <meta property="og:url" content="https://rithwick.me/project.html" />
+  <meta property="og:url" content="https://rithwick.me/{{URL}}" />
   <meta property="og:type" content="website" />
 
   <!-- Structured Data for Google Search -->
@@ -47,7 +47,7 @@
 
 <body>
 
-  
+  {{PROGRESS_BAR}}
 
   <!-- Nav -->
   <nav id="nav" class="nav">
@@ -96,36 +96,11 @@
     </div>
   </div>
 
-  <main id="id="project-container" " class="site-main">
-<div class="container fade-up" id="loading-state" style="padding-top: 160px;">
-      <p>Loading project data...</p>
-    </div>
-
-    <!-- Content injected via JS -->
-    <div id="project-content" style="display: none;">
-      <article class="case-study-hero container">
-        <div class="case-study-meta fade-up">
-          <span id="proj-role">Role</span>
-          <span>·</span>
-          <span>Systems & Craft</span>
-        </div>
-        
-        <h1 class="case-study-title fade-up" id="proj-title">Project Title</h1>
-        <p class="case-study-description fade-up" id="proj-desc">Project description goes here.</p>
-
-        <div class="fade-up" style="margin-bottom: 64px; display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" id="proj-link" target="_blank" class="case-study-link" style="display: none;">View Case Study ↗</a>
-          <a href="#" id="proj-live-link" target="_blank" class="case-study-link" style="display: none;">View Live Project ↗</a>
-        </div>
-
-        <div class="case-study-content fade-up">
-          <!-- Populated by JS -->
-        </div>
-      </article>
-    </div>
+  <main id="{{MAIN_ID}}" class="site-main">
+{{CONTENT}}
   </main>
 
-  
+  {{FOOTER_CTA}}
 
   <footer class="site-footer fade-up">
     <div class="container">
@@ -170,6 +145,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="assets/js/script.js"></script>
-  
+  {{EXTRA_SCRIPTS}}
 </body>
 </html>
