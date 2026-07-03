@@ -78,17 +78,7 @@ const pageMeta = {
     url: 'dream-wall.html', 
     id: '',
     progress: '<div class="reading-progress" id="reading-progress"></div>',
-    cta: `  <section class="devlog-closing fade-up">
-    <div class="container devlog-closing-content">
-      <div class="devlog-closing-text">The story is still being written.</div>
-      <p class="devlog-closing-subtext">This system is an ongoing exploration of architecture and product engineering.</p>
-      <div class="devlog-closing-actions">
-        <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">Follow on GitHub</a>
-        <span class="devlog-closing-divider">·</span>
-        <a href="index.html" class="case-study-link">Back to Portfolio</a>
-      </div>
-    </div>
-  </section>`,
+    cta: '',
     extraHead: ''
   }
 };
@@ -138,7 +128,8 @@ for (const page of pages) {
           </div>
           <div class="act-break-rule"></div>
         </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">\n`;
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
+`;
       }
       if (entry.filename === 'day-03.md') {
         htmlOutput += `
@@ -152,7 +143,8 @@ for (const page of pages) {
           </div>
           <div class="act-break-rule"></div>
         </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">\n`;
+        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
+`;
       }
       
       const isActive = entry.attributes.active ? 'entry-active' : '';
@@ -168,8 +160,9 @@ for (const page of pages) {
             <h2 class="timeline-title">${entry.attributes.title}</h2>
             <div class="timeline-content">
               ${entry.body}
-            </div>${isCollapsible ? '\\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>' : ''}
-          </article>\n`;
+            </div>${isCollapsible ? '\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>' : ''}
+          </article>
+`;
     });
     
     content = content.replace(/data-stat-days="[^"]*"/, `data-stat-days="${totalDays}"`);
@@ -184,7 +177,7 @@ for (const page of pages) {
     if (startIndex !== -1 && endIndex !== -1) {
       const before = content.substring(0, startIndex + startMarker.length);
       const after = content.substring(endIndex);
-      content = before + '\\n' + htmlOutput + '        ' + after;
+      content = before + '\n' + htmlOutput + '        ' + after;
     }
     
     console.log(`[dream-wall] -> ${totalDays} entries, ${totalVersions} versions, ${totalEPs} EPs`);

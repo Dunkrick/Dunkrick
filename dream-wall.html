@@ -123,7 +123,7 @@
 
         <div class="devlog-stats fade-up">
           <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-days="10">10</span>
+            <span class="devlog-stat-value" data-stat-days="11">10</span>
             <span class="devlog-stat-label">Days</span>
           </div>
           <div class="devlog-stat-divider"></div>
@@ -133,7 +133,7 @@
           </div>
           <div class="devlog-stat-divider"></div>
           <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-eps="5">5</span>
+            <span class="devlog-stat-value" data-stat-eps="6">5</span>
             <span class="devlog-stat-label">Engineering Principles</span>
           </div>
         </div>
@@ -154,8 +154,27 @@
         </div>
 
         <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-          <!-- DEVLOG_ENTRIES_START -->\n
+          <!-- DEVLOG_ENTRIES_START -->
+
           <article class="timeline-entry entry-active">
+            <div class="timeline-meta">
+              <time class="timeline-date">July 3, 2026</time>
+              <span class="timeline-tag">Product</span>
+              <span class="timeline-reading-time">2 min read</span>
+            </div>
+            <h2 class="timeline-title">Day 11: Shipping v3.0.0</h2>
+            <div class="timeline-content">
+              <p>I started the day away from the code. Before writing another line, I wanted to ground myself in real user problems — scraping forums, reading threads, understanding the actual pain points people share online. It&#39;s easy to get lost in architecture and forget that systems exist to serve humans.</p>
+<p>That research clarified something I&#39;d been feeling for a while. Dream Wall started as a physical wall inside my room — sticky notes, scribbled ideas, things I wanted to see every day. The digital version should honor that origin. Not a task manager. Not a notes app. <strong>A visual wall for the ideas and dreams you want to see often.</strong></p>
+<blockquote class="ep-callout"><span class="ep-label">EP-014: Build for the human on the other side of the screen.</span></blockquote>
+<p>With that direction locked in, I moved to design. I used Claude to rapidly scaffold an MVP design foundation — colors, typography, spacing, component patterns. Having an AI pair for design is a genuine game changer. What would normally take days of iteration compressed into hours.</p>
+<p>Then came the final push to ship. The entire day funneled into getting <strong>v3.0.0</strong> live. And of course, the last boss before deployment was an old nemesis: CORS. The same class of error that bit me on Day 10, but this time with a twist — trailing slashes on the API URL were causing the preflight requests to fail silently on Render. A quick, clever fix to normalize the URLs, and the deploy went through.</p>
+<p>v3.0.0 is live and working. The system is secure, the architecture is clean, and for the first time, it actually <em>looks</em> like a product someone would want to use.</p>
+
+            </div>
+          </article>
+
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">July 2, 2026</time>
               <span class="timeline-tag">Integration</span>
@@ -172,6 +191,7 @@
 <p>I closed the loop with a logout button, then paused. The engineering is solid. The architecture is clean. But staring at the raw, unstyled React pages, I realized something: <em>nobody cares how clean your code is if the product doesn&#39;t feel real.</em> I started sketching out an MVP Design System. It&#39;s time to stop building only for the compiler and start building for the human on the other side of the screen.</p>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry  entry-collapsible entry-collapsed">
@@ -193,7 +213,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>Even the orchestration mirrors itself. On the backend, the <strong>Server</strong> orchestrates and the <strong>Routes</strong> implement. On the frontend, the <strong>App</strong> orchestrates and the <strong>Pages</strong> implement. Same architecture, different rendering target.</p>
 <p>The migration is just getting started, but the mental model already feels right. And when the mental model feels right, the code tends to follow.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry  entry-collapsible entry-collapsed">
@@ -236,7 +257,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 </code></pre>
 <p>By passing <code>userId</code> all the way down to the database layer, we guarantee that users can only ever touch their own dreams. Not through permission checks in the UI, not through frontend validation — through the query itself. The system isn&#39;t just functional anymore; it&#39;s secure by design.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
         </div>
@@ -266,7 +288,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>I also took time to write out Architectural Decision Records (ADRs) to document <em>why</em> these systems were built this way. Not just what I chose, but what I considered and rejected. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend.</p>
 <p>Onwards to v3.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry  entry-collapsible entry-collapsed">
@@ -282,7 +305,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>Today, I migrated every database read and write to <strong>Prisma</strong>. Prisma acts as an abstraction over PostgreSQL, and now every single query is fully type-checked. If I misspell a column name, the app won&#39;t even compile. That&#39;s not just convenient — it&#39;s a fundamentally different relationship with your data layer.</p>
 <p>With this, the complete migration from JavaScript to TypeScript is done. Every raw PostgreSQL call has been replaced. The backend is now strictly typed from the route handler all the way down to the database. No gaps, no escape hatches.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry  entry-collapsible entry-collapsed">
@@ -298,7 +322,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>I introduced a dedicated <strong>Service Layer</strong>. The route files now strictly handle the HTTP context — extracting <code>req.body</code>, setting status codes, sending responses. Everything else gets passed down to the services, which own the actual business logic.</p>
 <p>It&#39;s the kind of refactor that doesn&#39;t change what the app <em>does</em>, but fundamentally changes how it <em>feels</em> to work on. The code reads like clear responsibilities now, not tangled spaghetti. And for the first time, I can look at a route and know exactly where to find the logic it depends on.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry  entry-collapsible entry-collapsed">
@@ -314,7 +339,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>Today, I began the great migration. First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. There&#39;s a specific kind of relief that comes from catching a misspelled property name at compile-time instead of discovering it in a 2 AM production bug.</p>
 <p>Then, I ripped out SQLite and connected the app to PostgreSQL. The code is getting stricter, and the infrastructure is getting stronger. It feels less like a side project now and more like a real system.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
         </div>
@@ -364,7 +390,8 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>It&#39;s a small detail, but it makes a real difference. Anyone who clones this repo gets a working database on the first <code>npm start</code>. No README steps to miss, no &quot;did you run the migration?&quot; messages in Slack.</p>
 <p>There&#39;s something deeply satisfying about watching your first <code>POST</code> request land and knowing the data is safely persisted. The dreams have a home now.</p>
 
-            </div>\n            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry ">
@@ -402,17 +429,7 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
     </section>
   </main>
 
-    <section class="devlog-closing fade-up">
-    <div class="container devlog-closing-content">
-      <div class="devlog-closing-text">The story is still being written.</div>
-      <p class="devlog-closing-subtext">This system is an ongoing exploration of architecture and product engineering.</p>
-      <div class="devlog-closing-actions">
-        <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">Follow on GitHub</a>
-        <span class="devlog-closing-divider">·</span>
-        <a href="index.html" class="case-study-link">Back to Portfolio</a>
-      </div>
-    </div>
-  </section>
+  
 
   <footer class="site-footer fade-up">
     <div class="container">

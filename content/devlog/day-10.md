@@ -2,7 +2,6 @@
 title: "Day 10: Wiring It All Together"
 date: "July 2, 2026"
 tag: Integration
-active: true
 ---
 
 Yesterday, React was just a mental model. Today, I needed to prove it works. I gave myself one goal for the day: one complete user journey. Open the app, log in, see the home page, log out. No shortcuts, no mocks.
