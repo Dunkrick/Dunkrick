@@ -2,7 +2,6 @@
 title: "Day 11: Shipping v3.0.0"
 date: "July 3, 2026"
 tag: Product
-active: true
 ---
 
 I started the day away from the code. Before writing another line, I wanted to ground myself in real user problems — scraping forums, reading threads, understanding the actual pain points people share online. It's easy to get lost in architecture and forget that systems exist to serve humans.
