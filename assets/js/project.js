@@ -25,6 +25,14 @@ async function loadProject() {
       project_url: "https://app.notion.com/p/Happiclap-Homepage-Redesign-3489d1ca459680c9b198cbea438954cb",
       live_url: "https://happiclap-ebon.vercel.app"
     };
+  } else if (projectId === 'macbook-landing') {
+    data = {
+      title: "M3 Pro: One Machine. Everything.",
+      role: "Creative Development / GSAP",
+      description: "A highly personalized, Suburbia Skateboards-inspired brutalist landing page built as a creative showcase. Features interactive 3D MacBook Pro model rendering, scroll-bound typography reveals, and exploded component animations.",
+      project_url: "https://github.com/Dunkrick/gsap_macbook_landing",
+      live_url: "https://gsap-macbook-landing-tan-five.vercel.app/"
+    };
   } else {
     try {
       const result = await supabase
@@ -135,6 +143,34 @@ async function loadProject() {
 <pre><code>[Stack]
 - Jupyter Notebook
 - Python</code></pre>
+        </div>
+      </details>
+    `;
+  } else if (projectId === 'macbook-landing') {
+    contentContainer.innerHTML = `
+      <div class="content-section">
+        <h3>1. The Narrative</h3>
+        <p>Rather than standard Apple marketing copy, this page tells a raw, honest story. From tearing through 4K timelines in DaVinci Resolve, to laying down tracks in GarageBand, iterating UI in Figma, running dev servers with Antigravity IDE, and rendering 3D scenes in Blender. This machine handles the heavy stuff and breezes through the rest.</p>
+      </div>
+      <div class="content-section">
+        <h3>2. Design System & Aesthetics</h3>
+        <p>Inspired by the high-energy editorial style of Suburbia Skateboards, the page moves away from typical clean corporate templates in favor of a raw, analog street-style aesthetic. It features a color-blocked rhythm (Deep Black, Paper White, Electric Blue, and Burnt Orange), tactile screen-print grain overlays, sharp borders, and sticker-style buttons.</p>
+      </div>
+      <div class="content-section">
+        <h3>3. Key Features</h3>
+        <p><strong>3D Model Customizer:</strong> Interactive switches to toggle between 14" and 16" scaling, and real-time color swatches updating Three.js materials.</p>
+        <p><strong>Exploded Component Scroll:</strong> A scroll-controlled GSAP sequence that spins the MacBook 360° and systematically explodes it into its 5 hardware layers.</p>
+        <p><strong>Image Scatter Scroll:</strong> A floating showcase of creative renders that dynamically scatter into a clean board-style layout upon scroll.</p>
+      </div>
+      <details class="arch-dropdown" style="margin-top: 32px;">
+        <summary class="persuasive-click">View Tech Stack</summary>
+        <div class="arch-content">
+<pre><code>[Stack]
+- React.js & TypeScript
+- GSAP & ScrollTrigger
+- Three.js & React Three Fiber (R3F)
+- Tailwind CSS v4
+- Vite</code></pre>
         </div>
       </details>
     `;
