@@ -337,4 +337,41 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = el.getAttribute('data-stat-eps');
   });
 
+  // ── 12. FLOATING HOVER REVEAL ──
+  const hoverTrigger = document.querySelector('.hover-reveal-trigger');
+  const hoverImage = document.querySelector('.hover-reveal-image');
+
+  if (hoverTrigger && hoverImage && typeof gsap !== 'undefined') {
+    // We use GSAP quickTo for highly performant mouse tracking
+    const xTo = gsap.quickTo(hoverImage, "x", { duration: 0.4, ease: "power3" });
+    const yTo = gsap.quickTo(hoverImage, "y", { duration: 0.4, ease: "power3" });
+
+    hoverTrigger.addEventListener('mouseenter', () => {
+      gsap.to(hoverImage, {
+        opacity: 1,
+        autoAlpha: 1, // handles visibility too
+        scale: 1,
+        duration: 0.4,
+        ease: "back.out(1.5)"
+      });
+    });
+
+    hoverTrigger.addEventListener('mousemove', (e) => {
+      // Offset by half width/height so mouse is centered, but we do that in CSS with translate(-50%, -50%). 
+      // Actually quickTo just sets the x/y properties. We need to pass clientX and clientY.
+      xTo(e.clientX);
+      yTo(e.clientY);
+    });
+
+    hoverTrigger.addEventListener('mouseleave', () => {
+      gsap.to(hoverImage, {
+        opacity: 0,
+        autoAlpha: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in"
+      });
+    });
+  }
+
 });
