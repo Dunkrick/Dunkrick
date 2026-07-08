@@ -222,8 +222,8 @@
 }
 
 .hero-avatar-container {
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--border-soft);
@@ -237,8 +237,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
-  transform: scale(1.7);
+  object-position: center 0%;
+  transform: scale(1.35);
 }
 
 /* Connect Dock (Pill) */
@@ -392,6 +392,12 @@
   position: relative;
   cursor: crosshair;
   display: inline-block;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+  transition: opacity 0.2s;
+}
+
+.hover-reveal-trigger:hover {
+  opacity: 0.8;
 }
 
 .hover-reveal-image {
@@ -408,7 +414,8 @@
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--border-soft);
-  transform: scale(0.8) translate(-50%, -50%); /* Start slightly smaller and centered on cursor */
+  transform: scale(0.8) translate(-50%, -50%);
+  /* Start slightly smaller and centered on cursor */
   transform-origin: center;
 }
 
