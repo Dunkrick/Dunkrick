@@ -221,13 +221,24 @@
   margin-bottom: 16px;
 }
 
-.hero-avatar {
+.hero-avatar-container {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transform: scale(1.7);
 }
 
 /* Connect Dock (Pill) */
