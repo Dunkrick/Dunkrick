@@ -2,7 +2,6 @@
 title: "Days 12–17: The Reality Check"
 date: "July 7, 2026"
 tag: Product
-active: true
 ---
 
 I've stepped away from the codebase for the last few days. It's dangerously easy to get trapped in the momentum of shipping — building feature after feature, refining the architecture, tweaking the design. But building for the sake of building leads to products that look great on a shelf but never get used. 
