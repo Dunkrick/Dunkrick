@@ -1,36 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <defs>
-    <!-- Background Gradient for depth -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#121214" />
-      <stop offset="100%" stop-color="#09090B" />
-    </linearGradient>
-    
-    <!-- Fluid Accent Gradient representing "Flow" -->
-    <linearGradient id="flowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FAFAFA" />
-      <stop offset="100%" stop-color="#8B8B93" />
-    </linearGradient>
+  <!-- No background — completely free, unboxed -->
 
-    <!-- Vibrant accent for the "Creative/Filmmaking" spark -->
-    <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4F46E5" />
-      <stop offset="100%" stop-color="#818CF8" />
-    </linearGradient>
-  </defs>
+  <!-- Exclamation bar: flat orange -->
+  <rect x="196" y="64" width="120" height="250" rx="60" fill="#F97316"/>
 
-  <!-- Sleek, dark rounded canvas -->
-  <rect width="512" height="512" rx="120" fill="url(#bgGrad)"/>
-
-  <!-- The Structural Stem (CS / Engineering / Logic) -->
-  <rect x="160" y="140" width="48" height="232" rx="12" fill="#FAFAFA" />
-
-  <!-- The Loop (Design / UI / The User Journey) -->
-  <path d="M 208 140 H 280 C 335.228 140 380 184.772 380 240 C 380 295.228 335.228 340 280 340 H 208 V 292 H 280 C 308.719 292 332 268.719 332 240 C 332 211.281 308.719 188 280 188 H 208 V 140 Z" fill="url(#flowGrad)"/>
-
-  <!-- The Forward Leg (Momentum / Cinematography / Shipping the Proof) -->
-  <path d="M 240 280 L 320 280 L 370 372 L 290 372 Z" fill="url(#sparkGrad)" rx="8"/>
-  
-  <!-- Subtle structural dot (The "Node" or "Lens") -->
-  <circle cx="208" cy="240" r="12" fill="#09090B" />
+  <!-- Exclamation dot: flat green -->
+  <circle cx="256" cy="416" r="60" fill="#10B981"/>
 </svg>
