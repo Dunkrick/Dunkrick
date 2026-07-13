@@ -6,7 +6,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--text-strong);
+  background: #10B981; /* Vibrant neon green */
   position: relative;
   margin-right: 4px;
 }

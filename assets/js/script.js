@@ -374,4 +374,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ── 13. CTA BUTTON RAINBOW POP ──
+  const ctaBtn = document.querySelector('.hero-cta-btn');
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', function(e) {
+      if (this.getAttribute('href') === '#') {
+        e.preventDefault();
+      }
+      
+      this.classList.remove('cta-color-pop');
+      void this.offsetWidth; 
+      this.classList.add('cta-color-pop');
+      
+      const href = this.getAttribute('href');
+      if (href && href !== '#' && !href.startsWith('#')) {
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      } else if (href && href.startsWith('#') && href !== '#') {
+        const target = document.querySelector(href);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }, 300);
+        }
+      }
+    });
+  }
+
 });
