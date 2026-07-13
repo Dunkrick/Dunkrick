@@ -37,18 +37,6 @@
   gap: 24px;
 }
 
-.nav-logo {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--text-strong);
-  letter-spacing: 0.04em;
-  font-size: 18px;
-  transition: opacity 0.2s ease;
-}
-
-.nav-logo:hover {
-  opacity: 0.75;
-}
 
 .nav-links {
   display: flex;
