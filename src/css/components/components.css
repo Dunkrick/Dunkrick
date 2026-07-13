@@ -244,32 +244,49 @@
   transform: scale(1.35);
 }
 
-/* Connect Dock (Pill) */
-.connect-dock {
+/* Fixed Social Dock (Pill) */
+.fixed-social-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
   display: inline-flex;
   align-items: center;
   gap: 24px;
-  background: var(--text-strong);
+  background: var(--text-strong); /* Opaque background */
   color: var(--page);
   border-radius: 999px;
   padding: 12px 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-.connect-dock .connect-link {
+/* Add a pseudo-element if we want true glassmorphism, or we can just use rgba for background */
+@supports (backdrop-filter: blur(8px)) {
+  .fixed-social-dock {
+    background: rgba(14, 14, 14, 0.85); /* Works for light and dark if we want it to adapt, but let's stick to text-strong */
+    backdrop-filter: blur(12px);
+  }
+  [data-theme="dark"] .fixed-social-dock {
+    background: rgba(240, 240, 240, 0.85);
+  }
+}
+
+.fixed-social-dock .connect-link {
   color: var(--page);
-  opacity: 0.9;
+  opacity: 0.85;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-.connect-dock .connect-link:hover {
+.fixed-social-dock .connect-link:hover {
   opacity: 1;
+  transform: translateY(-2px);
 }
 
-.connect-dock .connect-link::after {
+.fixed-social-dock .connect-link::after {
   display: none;
 }
 
