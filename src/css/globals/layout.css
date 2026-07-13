@@ -27,7 +27,7 @@
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
