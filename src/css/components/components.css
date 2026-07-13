@@ -290,6 +290,14 @@
   display: none;
 }
 
+@media (max-width: 600px) {
+  .fixed-social-dock {
+    padding: 10px 24px;
+    gap: 16px;
+    bottom: 16px;
+  }
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
