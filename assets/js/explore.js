@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 3. MASONRY FILTERING WITH GSAP
-  const filterBtns = document.querySelectorAll(".filter-btn");
+  const filterBtns = document.querySelectorAll(".studio-filter-btn");
   const masonryItems = document.querySelectorAll(".masonry-item");
 
   filterBtns.forEach(btn => {

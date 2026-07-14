@@ -1,50 +1,61 @@
-<section class="explore-hero fade-up">
-  <div class="container">
-    <h1 class="hero-headline">The Studio</h1>
-    <p class="hero-subtext" style="max-width: 600px;">
-      A visual archive of experiments, unstructured thoughts, and things built strictly to understand how they work.
-    </p>
-  </div>
-</section>
-
-<!-- Actions Section (Terminal / Dashboard style) -->
-<section class="explore-actions fade-up">
-  <div class="container">
-    <h2 class="section-title">Current Status</h2>
-    <div class="status-dashboard">
-      <div class="status-item">
-        <span class="status-label">Building</span>
-        <span class="status-value scramble-text" data-text="Dream-wall V2">Dream-wall V2</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">Learning</span>
-        <span class="status-value scramble-text" data-text="WebGL & Shaders">WebGL & Shaders</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">Reading</span>
-        <span class="status-value scramble-text" data-text="System Design Interview">System Design Interview</span>
+<div class="studio-wrapper">
+  <!-- The Boxed Hero -->
+  <section class="studio-header fade-up">
+    <div class="studio-header-left">
+      <!-- Minimal Cross/Target Icon -->
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="16"></line>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+      </svg>
+    </div>
+    <div class="studio-header-right">
+      <div class="studio-title-wrapper">
+        <h1 class="studio-headline">Studio</h1>
+        <!-- Playful SVG Doodle (Inspired by The Studio banner) -->
+        <svg class="studio-doodle" width="120" height="80" viewBox="0 0 120 80" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <!-- Abstract person/camera scribble -->
+          <path d="M20,60 Q30,30 50,40 T80,30 Q90,50 100,70" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" fill="none" />
+          <circle cx="50" cy="25" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+          <path d="M45,25 L55,25 M50,20 L50,30" stroke="currentColor" stroke-width="2" />
+          <path d="M65,45 L85,35 L90,50 Z" stroke="var(--text-muted)" stroke-width="2" fill="none" />
+          <path d="M75,40 L70,60 M85,45 L90,65" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider fade-up"></div>
-
-<!-- Work Section (Masonry Grid) -->
-<section class="explore-work fade-up">
-  <div class="container">
-    <div class="explore-header">
-      <h2 class="section-title" style="margin: 0;">Archive</h2>
-      <div class="explore-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="engineering">Engineering</button>
-        <button class="filter-btn" data-filter="creative">Creative</button>
-      </div>
+  <!-- Filter Navigation (Horizontal Sub-nav) -->
+  <nav class="studio-nav fade-up">
+    <div class="studio-filters">
+      <button class="studio-filter-btn active" data-filter="all">ALL</button>
+      <button class="studio-filter-btn" data-filter="engineering">ENGINEERING</button>
+      <button class="studio-filter-btn" data-filter="creative">CREATIVE</button>
     </div>
+    <div class="studio-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </div>
+  </nav>
 
-    <div class="masonry-grid">
+  <!-- Work Section (Strict 3-Column Grid) -->
+  <section class="explore-work fade-up" style="margin-top: 40px;">
+    <div class="masonry-grid studio-grid">
+
       <!-- Item 1: MacBook Landing -->
-      <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank" class="masonry-item creative magnetic-wrap">
+      <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank"
+        class="masonry-item creative magnetic-wrap">
+        <!-- Playful Squiggle SVG Background -->
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M10,30 Q30,10 50,50 T90,70" opacity="0.3" />
+        </svg>
         <div class="masonry-content">
           <div class="masonry-eyebrow">[ 48 Hours ] WebGL</div>
           <h3 class="masonry-title"> Interactive Showcase</h3>
@@ -53,7 +64,12 @@
       </a>
 
       <!-- Item 2: Happiclap -->
-      <a href="https://happiclap-ebon.vercel.app" target="_blank" class="masonry-item creative engineering magnetic-wrap">
+      <a href="https://happiclap-ebon.vercel.app" target="_blank"
+        class="masonry-item creative engineering magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
+        </svg>
         <div class="masonry-content">
           <div class="masonry-eyebrow">UX/UI Redesign</div>
           <h3 class="masonry-title">Happiclap E-commerce</h3>
@@ -63,6 +79,10 @@
 
       <!-- Item 3: Film -->
       <a href="https://www.youtube.com/@DunkRick" target="_blank" class="masonry-item creative magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M10,50 Q20,20 50,50 T90,30" opacity="0.3" />
+        </svg>
         <div class="masonry-content">
           <div class="masonry-eyebrow">[ Ongoing ] Film</div>
           <h3 class="masonry-title">Cinematography</h3>
@@ -73,21 +93,48 @@
       <!-- Item 4: Thoughts snippet -->
       <div class="masonry-item thoughts magnetic-wrap" style="background: var(--text-strong); color: var(--page);">
         <div class="masonry-content">
-          <p class="rotated-quote" style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.4; margin-top: 12px; font-style: italic;">
+          <p class="rotated-quote"
+            style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.4; margin-top: 12px; font-style: italic;">
             "Why does the best edit always feel like loss and why is that the right feeling?"
           </p>
-          <div class="masonry-eyebrow" style="color: var(--page); opacity: 0.7; margin-top: 32px;">Note / June 2026</div>
+          <div class="masonry-eyebrow" style="color: var(--page); opacity: 0.7; margin-top: 32px;">Note / July 2026
+          </div>
         </div>
       </div>
 
       <!-- Item 5: Growth Analytics -->
-      <a href="https://github.com/Dunkrick/growth-analytics" target="_blank" class="masonry-item engineering magnetic-wrap">
+      <a href="https://github.com/Dunkrick/growth-analytics" target="_blank"
+        class="masonry-item engineering magnetic-wrap">
         <div class="masonry-content">
           <div class="masonry-eyebrow">Data Systems</div>
           <h3 class="masonry-title">Mapping the Churn</h3>
           <p class="masonry-desc">Analytics dashboard exploring user retention.</p>
         </div>
       </a>
+
+      <!-- Actions Section moved into a grid item to save space and integrate -->
+      <div class="masonry-item status-block magnetic-wrap">
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">Terminal Status</div>
+          <div class="status-dashboard" style="margin-top: 16px;">
+            <div class="status-item" style="padding: 12px; margin-bottom: 8px;">
+              <span class="status-label" style="font-size: 10px;">Building</span>
+              <span class="status-value scramble-text" data-text="Dream-wall V2" style="font-size: 12px;">Dream-wall
+                V2</span>
+            </div>
+            <div class="status-item" style="padding: 12px; margin-bottom: 8px;">
+              <span class="status-label" style="font-size: 10px;">Learning</span>
+              <span class="status-value scramble-text" data-text="WebGL & Shaders" style="font-size: 12px;">WebGL</span>
+            </div>
+            <div class="status-item" style="padding: 12px;">
+              <span class="status-label" style="font-size: 10px;">Reading</span>
+              <span class="status-value scramble-text" data-text="System Design" style="font-size: 12px;">System
+                Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
+</div>

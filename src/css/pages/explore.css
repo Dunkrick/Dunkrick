@@ -1,105 +1,203 @@
 /* ==========================================================================
-   Explore Page Styles
+   Explore Page Redesign Styles (Studio Layout)
    ========================================================================== */
 
-.explore-hero {
-  padding-top: 120px;
-  padding-bottom: 64px;
+/* Subtle Noise Texture Overlay */
+.explore-page {
+  position: relative;
 }
 
-/* Actions Dashboard */
-.status-dashboard {
+.explore-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.studio-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 20;
+}
+
+/* Boxed Hero Layout */
+.studio-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--text-strong);
+  margin-top: 120px;
+  margin-bottom: 32px;
+  min-height: 200px;
+  background: var(--bg-surface);
+}
+
+.studio-header-left {
+  border-right: 2px solid var(--text-strong);
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 600px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 0;
+  color: var(--text-strong);
 }
 
-.status-item {
+.studio-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.studio-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.studio-headline {
+  font-family: var(--font-heading);
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.studio-doodle {
+  color: var(--text-strong);
+}
+
+@media (max-width: 768px) {
+  .studio-header {
+    grid-template-columns: 1fr;
+  }
+  .studio-header-left {
+    border-right: none;
+    border-bottom: 2px solid var(--text-strong);
+    justify-content: flex-start;
+    padding: 16px 24px;
+  }
+  .studio-headline {
+    font-size: 48px;
+  }
+}
+
+/* Horizontal Sub-Nav Filters */
+.studio-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  background: var(--bg-icon);
-  border: 1px solid var(--border-soft);
-  border-radius: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 16px;
+  margin-bottom: 40px;
 }
 
-.status-label {
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-
-.status-value {
-  color: var(--text-strong);
-  font-weight: 600;
-}
-
-/* Filters */
-.explore-header {
+.studio-filters {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 16px;
+  gap: 32px;
 }
 
-.explore-filters {
-  display: flex;
-  gap: 8px;
-}
-
-.filter-btn {
+.studio-filter-btn {
   background: none;
-  border: 1px solid transparent;
+  border: none;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   color: var(--text-muted);
-  font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  position: relative;
+  transition: color 0.2s;
 }
 
-.filter-btn:hover {
+.studio-filter-btn:hover {
   color: var(--text-strong);
 }
 
-.filter-btn.active {
-  background: var(--bg-icon);
-  border-color: var(--border-soft);
+/* Hand-drawn underline for active state */
+.studio-filter-btn.active {
   color: var(--text-strong);
-  font-weight: 500;
 }
 
-/* Masonry Grid */
-.masonry-grid {
+.studio-filter-btn.active::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -4px;
+  width: calc(100% + 4px);
+  height: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q50,0 100,5' stroke='%23FF5722' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.studio-search {
+  color: var(--text-strong);
+  cursor: pointer;
+}
+
+/* 3-Column Masonry Grid */
+.studio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   align-items: start;
 }
 
-/* Base styling for masonry items is similar to mini-bento-cards but structured to allow variable heights */
+@media (max-width: 900px) {
+  .studio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-filters {
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+}
+
+/* Base Card Styling */
 .masonry-item {
   display: flex;
   flex-direction: column;
   padding: 32px 24px;
   background: var(--bg-surface);
-  border: 1px solid var(--border-soft);
-  border-radius: 12px;
+  border: 2px solid var(--text-strong);
   text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.2s;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   will-change: transform;
+  position: relative;
+  overflow: hidden;
 }
 
 .masonry-item:hover {
-  border-color: var(--text-muted);
-  /* The actual magnetic effect is handled by JS */
+  transform: translateY(-4px);
+}
+
+.card-squiggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.masonry-content {
+  position: relative;
+  z-index: 1;
 }
 
 .masonry-eyebrow {
@@ -126,9 +224,36 @@
   line-height: 1.6;
 }
 
-/* Distinct styling for "Thoughts" cards */
+/* Thoughts and Status styling */
 .masonry-item.thoughts {
   padding: 40px 32px;
+}
+
+.status-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-icon);
+  border: 1px solid var(--border-soft);
+  font-family: 'Courier New', monospace;
+}
+
+.status-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.status-value {
+  color: var(--text-strong);
+  font-weight: 600;
 }
 
 /* GSAP Filter state classes */
