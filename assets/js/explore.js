@@ -73,38 +73,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".studio-filter-btn");
   const masonryItems = document.querySelectorAll(".masonry-item");
 
+  let currentFilter = document.querySelector(".studio-filter-btn.active")?.getAttribute("data-filter") || "home";
+
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      // Toggle active class
+      const filterValue = btn.getAttribute("data-filter");
+      if (filterValue === currentFilter) return;
+      currentFilter = filterValue;
+
       filterBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
-      const filterValue = btn.getAttribute("data-filter");
+      const grid = document.querySelector(".masonry-grid");
+      
+      // 1. Record starting height
+      const startHeight = grid.offsetHeight;
 
+      // 2. Instantly swap states to calculate new layout
       masonryItems.forEach(item => {
-        const isMatch = item.classList.contains(filterValue);
-        
-        if (isMatch) {
-          gsap.to(item, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            display: "flex",
-            ease: "back.out(1.5)"
-          });
-          item.classList.remove("filtering-out");
+        gsap.killTweensOf(item);
+        if (item.classList.contains(filterValue)) {
+          gsap.set(item, { display: "flex", opacity: 0, scale: 0.9 });
         } else {
-          item.classList.add("filtering-out");
-          gsap.to(item, {
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.3,
-            ease: "power2.inOut",
-            onComplete: () => {
-              gsap.set(item, { display: "none" });
-            }
-          });
+          gsap.set(item, { display: "none" });
         }
+      });
+
+      // 3. Record ending height
+      const endHeight = grid.offsetHeight;
+
+      // 4. Animate the grid container's height so the footer slides perfectly
+      gsap.fromTo(grid, 
+        { height: startHeight },
+        { height: endHeight, duration: 0.4, ease: "power2.out", clearProps: "height" }
+      );
+
+      // 5. Animate the incoming items popping in
+      const incoming = Array.from(masonryItems).filter(item => item.classList.contains(filterValue));
+      gsap.to(incoming, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: "back.out(1.5)",
+        stagger: 0.03
       });
     });
   });
