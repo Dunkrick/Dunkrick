@@ -1,0 +1,28 @@
+# Rithwick Gurram
+
+> Engineer building complex systems and simple interfaces.
+
+## About
+Rithwick Gurram is a software engineer based in Chennai, India. He builds clean, robust backend systems, databases, and high-quality user interfaces. He focuses on understanding how complex systems work and crafting intentional digital experiences.
+
+## Links
+- **Website**: https://rithwick.me
+- **GitHub**: https://github.com/dunkrick
+- **LinkedIn**: https://www.linkedin.com/in/rithwick-gurram-599463304/
+- **Twitter**: https://twitter.com/RithwickGurram
+- **Email**: contact.rithwick@gmail.com
+
+## Current Focus
+- Backend Systems & Database Architectures (PostgreSQL, Relational Modeling)
+- TypeScript Migration Patterns
+- Networking (HTTP request lifecycle)
+- Creative WebGL & GSAP interactive experiences
+
+## Highlighted Projects
+1. **Dream-wall**: A complex system tracking day-to-day experiments, database explorations, and system architecture integrations.
+2. **GSAP Macbook Landing Page**: A highly interactive, 3D Apple-style product showcase built in 48 hours using WebGL and GSAP.
+3. **Happiclap E-commerce**: A UX/UI redesign of a gifting platform aimed at reducing bounce rates.
+4. **Mapping the Churn**: An analytics dashboard built to explore user retention.
+
+## Professional Ethos
+"I'm curious to understand how things work and build my own version. I believe in designing and coding with intent, ensuring that the best edits always feel like a necessary loss."
