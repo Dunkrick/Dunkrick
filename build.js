@@ -37,8 +37,8 @@ function wrapEPCallouts(html) {
 // ── Page Metadata ──
 const pageMeta = {
   'index.html': { 
-    title: 'Rithwick Gurram - Product Engineer', 
-    description: 'Product Engineer building complex systems and simple interfaces.', 
+    title: 'Rithwick Gurram', 
+    description: 'Engineer building complex systems and simple interfaces.', 
     url: '', 
     id: '',
     progress: '',
@@ -54,8 +54,8 @@ const pageMeta = {
   </script>`
   },
   'work.html': { 
-    title: 'Rithwick Gurram - Product Engineer', 
-    description: 'Product Engineer building complex systems and simple interfaces.', 
+    title: 'Rithwick Gurram', 
+    description: 'Engineer building complex systems and simple interfaces.', 
     url: 'work.html', 
     id: '',
     progress: '',
@@ -64,7 +64,7 @@ const pageMeta = {
   },
   'project.html': { 
     title: 'Rithwick Gurram - Case Study', 
-    description: 'Product Engineer building complex systems and simple interfaces.', 
+    description: 'Engineer building complex systems and simple interfaces.', 
     url: 'project.html', 
     id: 'project-container',
     progress: '',
