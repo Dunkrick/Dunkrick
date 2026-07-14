@@ -80,6 +80,16 @@ const pageMeta = {
     progress: '<div class="reading-progress" id="reading-progress"></div>',
     cta: '',
     extraHead: ''
+  },
+  'explore.html': { 
+    title: 'Explore - Rithwick Gurram', 
+    description: 'A visual archive of experiments, thoughts, and creative work.', 
+    url: 'explore.html', 
+    id: 'explore-page',
+    progress: '',
+    cta: '',
+    extraHead: '',
+    extraScripts: '<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script><script defer src="assets/js/explore.js"></script>'
   }
 };
 

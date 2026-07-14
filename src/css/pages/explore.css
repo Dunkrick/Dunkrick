@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Explore Page Styles
+   ========================================================================== */
+
+.explore-hero {
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+
+/* Actions Dashboard */
+.status-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-icon);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.status-label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.status-value {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+/* Filters */
+.explore-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.explore-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  color: var(--text-strong);
+}
+
+.filter-btn.active {
+  background: var(--bg-icon);
+  border-color: var(--border-soft);
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+/* Masonry Grid */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+/* Base styling for masonry items is similar to mini-bento-cards but structured to allow variable heights */
+.masonry-item {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.2s;
+  will-change: transform;
+}
+
+.masonry-item:hover {
+  border-color: var(--text-muted);
+  /* The actual magnetic effect is handled by JS */
+}
+
+.masonry-eyebrow {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.masonry-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+}
+
+.masonry-desc {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Distinct styling for "Thoughts" cards */
+.masonry-item.thoughts {
+  padding: 40px 32px;
+}
+
+/* GSAP Filter state classes */
+.masonry-item.filtering-out {
+  pointer-events: none;
+}
