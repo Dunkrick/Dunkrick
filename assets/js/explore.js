@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.from(".masonry-item", {
     y: 50,
     opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
+    duration: 0.5,
+    stagger: 0.05,
     ease: "power3.out",
     scrollTrigger: {
       trigger: ".masonry-grid",
