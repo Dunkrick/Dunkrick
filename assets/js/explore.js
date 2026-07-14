@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const filterValue = btn.getAttribute("data-filter");
 
       masonryItems.forEach(item => {
-        const isMatch = filterValue === "all" || item.classList.contains(filterValue);
+        const isMatch = item.classList.contains(filterValue);
         
         if (isMatch) {
           gsap.to(item, {
@@ -108,6 +108,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // Initialize the grid with the currently active filter
+  const activeBtn = document.querySelector(".studio-filter-btn.active");
+  if (activeBtn) {
+    const filterValue = activeBtn.getAttribute("data-filter");
+    masonryItems.forEach(item => {
+      if (!item.classList.contains(filterValue)) {
+        item.classList.add("filtering-out");
+        gsap.set(item, { scale: 0.8, opacity: 0, display: "none" });
+      }
+    });
+  }
 
   // 4. SCROLLTRIGGER STAGGER REVEAL FOR MASONRY ITEMS
   gsap.from(".masonry-item", {

@@ -198,7 +198,7 @@ for (const page of pages) {
   finalHtml = finalHtml.replace(/\{\{TITLE\}\}/g, meta.title);
   finalHtml = finalHtml.replace(/\{\{DESCRIPTION\}\}/g, meta.description);
   finalHtml = finalHtml.replace(/\{\{URL\}\}/g, meta.url);
-  finalHtml = finalHtml.replace(/\{\{MAIN_ID\}\}/g, meta.id ? `id="${meta.id}" ` : '');
+  finalHtml = finalHtml.replace(/\{\{MAIN_ID\}\}/g, meta.id || '');
   finalHtml = finalHtml.replace(/\{\{PROGRESS_BAR\}\}/g, meta.progress);
   finalHtml = finalHtml.replace(/\{\{FOOTER_CTA\}\}/g, meta.cta);
   finalHtml = finalHtml.replace(/\{\{EXTRA_HEAD\}\}/g, meta.extraHead || '');
