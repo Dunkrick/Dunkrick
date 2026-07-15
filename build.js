@@ -236,6 +236,12 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://rithwick.me/explore.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
 `;
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapXml, 'utf8');
