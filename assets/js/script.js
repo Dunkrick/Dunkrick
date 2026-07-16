@@ -374,7 +374,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── 13. CTA BUTTON RAINBOW POP ──
+  // ── 13. MAGNETIC UI ELEMENTS ──
+  const magnetics = document.querySelectorAll('.magnetic');
+  
+  if (magnetics.length > 0 && typeof gsap !== 'undefined') {
+    magnetics.forEach(btn => {
+      const xTo = gsap.quickTo(btn, "x", {duration: 0.4, ease: "power3"});
+      const yTo = gsap.quickTo(btn, "y", {duration: 0.4, ease: "power3"});
+      
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        
+        xTo(relX * 0.3);
+        yTo(relY * 0.3);
+      });
+      
+      btn.addEventListener("mouseleave", () => {
+        xTo(0);
+        yTo(0);
+      });
+    });
+  }
+
+  // ── 14. CTA BUTTON RAINBOW POP ──
   const ctaBtn = document.querySelector('.hero-cta-btn');
   if (ctaBtn) {
     ctaBtn.addEventListener('click', function(e) {
