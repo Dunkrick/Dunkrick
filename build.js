@@ -90,6 +90,15 @@ const pageMeta = {
     cta: '',
     extraHead: '',
     extraScripts: '<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script><script defer src="assets/js/explore.js"></script>'
+  },
+  'happiclap-case-study.html': {
+    title: 'Happiclap - Case Study · Rithwick Gurram',
+    description: 'Redesigned the homepage of a gifting platform to reduce bounce rates and streamline product discovery.',
+    url: 'happiclap-case-study.html',
+    id: 'happiclap-case-study',
+    progress: '',
+    cta: '',
+    extraHead: '<meta name="theme-color" content="#fafafa" />'
   }
 };
 
@@ -133,7 +142,7 @@ for (const page of pages) {
           <div class="act-break-rule"></div>
           <div class="act-break-content">
             <span class="act-break-status">Completed</span>
-            <h3 class="act-break-title">v2.5.0 — Production Ready</h3>
+            <h3 class="act-break-title">v2.5.0 - Production Ready</h3>
             <p class="act-break-desc">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
           </div>
           <div class="act-break-rule"></div>
@@ -148,7 +157,7 @@ for (const page of pages) {
           <div class="act-break-rule"></div>
           <div class="act-break-content">
             <span class="act-break-status">Completed</span>
-            <h3 class="act-break-title">v1.0 — Core Foundation</h3>
+            <h3 class="act-break-title">v1.0 - Core Foundation</h3>
             <p class="act-break-desc">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
           </div>
           <div class="act-break-rule"></div>
@@ -241,6 +250,12 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rithwick.me/happiclap-case-study.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
 `;
