@@ -35,72 +35,36 @@ function wrapEPCallouts(html) {
 }
 
 // ── Page Metadata ──
-const pageMeta = {
-  'index.html': { 
-    title: 'Rithwick Gurram', 
-    description: 'Engineer building complex systems and simple interfaces.', 
-    url: '', 
-    id: '',
-    progress: '',
-    cta: '',
-    extraHead: `<!-- Structured Data for Google Search (Logo & Site Name) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Rithwick Gurram",
-    "url": "https://rithwick.me"
+const PAGE_CONFIG = path.join(__dirname, 'src', 'config', 'pages.json');
+const pageMeta = JSON.parse(fs.readFileSync(PAGE_CONFIG, 'utf8'));
+
+// ── Build CSS Bundle ──
+const cssFiles = [
+  'src/css/globals/globals.css',
+  'src/css/globals/layout.css',
+  'src/css/components/components.css',
+  'src/css/pages/pages.css',
+  'src/css/pages/devlog.css',
+  'src/css/pages/explore.css',
+  'src/css/pages/happiclap.css'
+];
+
+let bundledCSS = '';
+for (const file of cssFiles) {
+  const filePath = path.join(__dirname, file);
+  if (fs.existsSync(filePath)) {
+    bundledCSS += fs.readFileSync(filePath, 'utf8') + '\n';
+  } else {
+    console.warn(`Warning: CSS file not found: ${file}`);
   }
-  </script>`
-  },
-  'work.html': { 
-    title: 'Rithwick Gurram', 
-    description: 'Engineer building complex systems and simple interfaces.', 
-    url: 'work.html', 
-    id: '',
-    progress: '',
-    cta: '',
-    extraHead: ''
-  },
-  'project.html': { 
-    title: 'Rithwick Gurram - Case Study', 
-    description: 'Engineer building complex systems and simple interfaces.', 
-    url: 'project.html', 
-    id: 'project-container',
-    progress: '',
-    cta: '',
-    extraHead: '',
-    extraScripts: '<script type="module" src="assets/js/project.js"></script>'
-  },
-  'dream-wall.html': { 
-    title: 'Building Dream-wall (Devlog) - Rithwick Gurram', 
-    description: 'The unfiltered process of building a complex system.', 
-    url: 'dream-wall.html', 
-    id: '',
-    progress: '<div class="reading-progress" id="reading-progress"></div>',
-    cta: '',
-    extraHead: ''
-  },
-  'explore.html': { 
-    title: 'Explore - Rithwick Gurram', 
-    description: 'A visual archive of experiments, thoughts, and creative work.', 
-    url: 'explore.html', 
-    id: 'explore-page',
-    progress: '',
-    cta: '',
-    extraHead: '',
-    extraScripts: '<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script><script defer src="assets/js/explore.js"></script>'
-  },
-  'happiclap-case-study.html': {
-    title: 'Happiclap - Case Study · Rithwick Gurram',
-    description: 'Redesigned the homepage of a gifting platform to reduce bounce rates and streamline product discovery.',
-    url: 'happiclap-case-study.html',
-    id: 'happiclap-case-study',
-    progress: '',
-    cta: '',
-    extraHead: '<meta name="theme-color" content="#fafafa" />'
-  }
-};
+}
+// Clean up minimal whitespace / minification (optional but keeps it cleaner)
+bundledCSS = bundledCSS.replace(/\/\*[\s\S]*?\*\//g, ''); // strip block comments
+bundledCSS = bundledCSS.replace(/\n\s*\n/g, '\n'); // strip empty lines
+
+const BUNDLE_OUT = path.join(__dirname, 'assets', 'css', 'bundle.css');
+fs.writeFileSync(BUNDLE_OUT, bundledCSS, 'utf8');
+console.log('Built bundle.css');
 
 // ── Build Pages ──
 

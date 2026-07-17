@@ -1,0 +1,59 @@
+{
+  "index.html": {
+    "title": "Rithwick Gurram",
+    "description": "Engineer building complex systems and simple interfaces.",
+    "url": "",
+    "id": "",
+    "progress": "",
+    "cta": "",
+    "extraHead": "<!-- Structured Data for Google Search (Logo & Site Name) -->\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"WebSite\",\n    \"name\": \"Rithwick Gurram\",\n    \"url\": \"https://rithwick.me\"\n  }\n  </script>"
+  },
+  "work.html": {
+    "title": "Rithwick Gurram",
+    "description": "Engineer building complex systems and simple interfaces.",
+    "url": "work.html",
+    "id": "",
+    "progress": "",
+    "cta": "",
+    "extraHead": ""
+  },
+  "project.html": {
+    "title": "Rithwick Gurram - Case Study",
+    "description": "Engineer building complex systems and simple interfaces.",
+    "url": "project.html",
+    "id": "project-container",
+    "progress": "",
+    "cta": "",
+    "extraHead": "",
+    "extraScripts": "<script type=\"module\" src=\"assets/js/project.js\"></script>"
+  },
+  "dream-wall.html": {
+    "title": "Building Dream-wall (Devlog) - Rithwick Gurram",
+    "description": "The unfiltered process of building a complex system.",
+    "url": "dream-wall.html",
+    "id": "",
+    "progress": "<div class=\"reading-progress\" id=\"reading-progress\"></div>",
+    "cta": "",
+    "extraHead": ""
+  },
+  "explore.html": {
+    "title": "Explore - Rithwick Gurram",
+    "description": "A visual archive of experiments, thoughts, and creative work.",
+    "url": "explore.html",
+    "id": "explore-page",
+    "progress": "",
+    "cta": "",
+    "extraHead": "",
+    "extraScripts": "<script defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js\"></script><script defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js\"></script><script defer src=\"assets/js/explore.js\"></script>"
+  },
+  "happiclap-case-study.html": {
+    "title": "Happiclap - Case Study · Rithwick Gurram",
+    "description": "Redesigned the homepage of a gifting platform to reduce bounce rates and streamline product discovery.",
+    "url": "happiclap-case-study.html",
+    "id": "happiclap-case-study",
+    "progress": "",
+    "cta": "",
+    "extraHead": "<meta name=\"theme-color\" content=\"#fafafa\" />",
+    "extraScripts": "<script defer src=\"assets/js/happiclap.js\"></script>"
+  }
+}
