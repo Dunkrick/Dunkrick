@@ -6,7 +6,7 @@
     "id": "",
     "progress": "",
     "cta": "",
-    "extraHead": "<!-- Structured Data for Google Search (Logo & Site Name) -->\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"WebSite\",\n    \"name\": \"Rithwick Gurram\",\n    \"url\": \"https://rithwick.me\"\n  }\n  </script>"
+    "extraHead": "<!-- Structured Data for Google Search (Logo & Site Name) -->\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"WebSite\",\n    \"name\": \"Rithwick Gurram\",\n    \"url\": \"https://rithwick.me\"\n  }\n  </script>\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Person\",\n    \"name\": \"Rithwick Gurram\",\n    \"url\": \"https://rithwick.me\",\n    \"jobTitle\": \"Engineer\",\n    \"image\": \"https://rithwick.me/assets/images/rithwick-plaid.png\",\n    \"logo\": \"https://rithwick.me/assets/images/favicon-main-192.png\",\n    \"sameAs\": [\n      \"https://github.com/dunkrick\",\n      \"https://www.linkedin.com/in/rithwick-gurram-599463304/\",\n      \"https://twitter.com/RithwickGurram\",\n      \"https://leetcode.com/u/rithwickgurram/\", \n      \"https://www.instagram.com/rithwick.gurram/\",\n      \"https://www.youtube.com/@rithwickgurram\",\n      \"https://www.quora.com/profile/Rithwick-Gurram\"\n    ]\n  }\n  </script>"
   },
   "work.html": {
     "title": "Rithwick Gurram",
