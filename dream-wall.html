@@ -8,9 +8,9 @@
   <meta name="description" content="The unfiltered process of building a complex system." />
 
   <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon-main.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-main-192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-main-32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon-main.png">
 
   
@@ -52,6 +52,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Rithwick Gurram",
+    "alternateName": "Dunkrick",
     "url": "https://rithwick.me"
   }
   </script>
@@ -60,10 +61,18 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Rithwick Gurram",
+    "alternateName": "Dunkrick",
     "url": "https://rithwick.me",
-    "jobTitle": "Engineer",
+    "jobTitle": "Product Engineer",
+    "description": "Product Engineer building complex backend systems, databases, and simple interfaces.",
+    "knowsAbout": [
+      "Product Engineering",
+      "Backend Systems",
+      "Complex Systems",
+      "System Architecture"
+    ],
     "image": "https://rithwick.me/assets/images/rithwick-plaid.png",
-    "logo": "https://rithwick.me/assets/images/favicon-main-192.png",
+    "logo": "https://rithwick.me/favicon-32.png",
     "sameAs": [
       "https://github.com/dunkrick",
       "https://www.linkedin.com/in/rithwick-gurram-599463304/",
@@ -135,7 +144,7 @@
 
         <div class="devlog-stats fade-up">
           <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-days="14">10</span>
+            <span class="devlog-stat-value" data-stat-days="15">10</span>
             <span class="devlog-stat-label">Days</span>
           </div>
           <div class="devlog-stat-divider"></div>
@@ -458,7 +467,45 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
             </div>
           </article>
 
-          <article class="timeline-entry ">
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
+            <div class="timeline-meta">
+              <time class="timeline-date">undefined</time>
+              <span class="timeline-tag">undefined</span>
+              <span class="timeline-reading-time">2 min read</span>
+            </div>
+            <h2 class="timeline-title">undefined</h2>
+            <div class="timeline-content">
+              <h1>Engineering Lessons from Today</h1>
+<p>I&#39;ve realized that the main difference between a product that feels alive and one that feels rigid and &quot;dead&quot; comes down to one thing: timing.</p>
+<p>Everything that happens in a user interface has a duration. A reaction time of 0ms feels instant, digital, and robotic. On the other hand, 150ms–300ms feels human and physical. </p>
+<p>Every CSS transition added isn&#39;t just an afterthought; it&#39;s the process of intentionally slowing down from machine speed to human speed. It&#39;s not a performance cost—it&#39;s a core feature of the experience.</p>
+<p>Here&#39;s a breakdown of today&#39;s progress:</p>
+<h3>Moving Beyond Hardcoded Pixels</h3>
+<p>I initially started by positioning elements with hardcoded pixels. The issue? Using <code>left: 900px</code> means exactly 900 pixels from the left edge. On a large MacBook Pro, that looks perfectly fine. But on a 768px tablet screen, 900px is completely off-screen, causing the card to disappear entirely.</p>
+<p><strong>The Fix:</strong> Transitioning to CSS percentages for horizontal positioning. 
+By using <code>left: 60%</code>, we&#39;re asking for 60% of the wall container&#39;s width. On a 1400px screen, that translates to 840px. On a smaller 768px screen, it scales down to 461px. Now, the cards stay on screen automatically, no matter the device.</p>
+<h3>Breathing Life into Card Animations</h3>
+<p>I spent a good chunk of time fine-tuning the card animations to make them feel natural:</p>
+<ul>
+<li>Implemented a staggered animation and keyframes for a satisfying &quot;pop-in&quot; effect.</li>
+<li><strong>The Toolkit:</strong><ul>
+<li><code>@keyframes</code> to script the core animation logic.</li>
+<li><code>cubic-bezier()</code> using a spring curve to give the cards a physical, tangible weight.</li>
+<li><code>animation-delay</code> mapped to the item&#39;s index to create a cascading stagger effect.</li>
+<li><code>animation-fill-mode: both</code> to ensure delayed cards don&#39;t awkwardly flash before appearing.</li>
+<li>The CSS <code>rotate</code> property (kept separate from <code>transform</code>) so that the hover scale effect and the card&#39;s natural tilt don&#39;t conflict with one another.</li>
+</ul>
+</li>
+</ul>
+<h3>Wrapping Up</h3>
+<p>We&#39;ve also successfully finished building out the empty state!</p>
+<p><strong>Tomorrow&#39;s Focus:</strong> Refactoring the Home layout. The plan is to expand the Wall to take up the full viewport and elegantly float the header/input form directly over the center.</p>
+
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
+          </article>
+
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
             <div class="timeline-meta">
               <time class="timeline-date">undefined</time>
               <span class="timeline-tag">undefined</span>
@@ -466,17 +513,20 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
             </div>
             <h2 class="timeline-title">undefined</h2>
             <div class="timeline-content">
-              <p>Task of the day - Replace the vertical list with a true wall canvas while keeping every existing feature working.</p>
-<p>The user no longer sees a list. They see a wall.</p>
-<p>Scoped things</p>
+              <h1>Focusing on Interaction Design</h1>
+<p>I wanted to deliver something that feels like more than just another CRUD app.</p>
+<p>The mission for today: completely replace the standard vertical list with a free-flowing, true &quot;wall&quot; canvas—all without breaking a single existing feature.</p>
+<p>The goal is to shift the user&#39;s perspective. They shouldn&#39;t feel like they&#39;re looking at a rigid list anymore; they should feel like they&#39;re looking at a physical wall.</p>
+<p>Here&#39;s the scope for today&#39;s transition:</p>
 <ul>
-<li>User sees a wall</li>
-<li>Cards are positioned to work</li>
-<li>Beautiful empty state</li>
-<li>Same authentication</li>
+<li><strong>The Wall Experience:</strong> Users immediately see an expansive, immersive canvas.</li>
+<li><strong>Card Positioning:</strong> Cards need to be naturally placed and fully functional.</li>
+<li><strong>Empty State:</strong> Crafting a beautiful, welcoming empty state for first-time visitors.</li>
+<li><strong>Under the Hood:</strong> Keeping the exact same authentication flow intact.</li>
 </ul>
 
             </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
         <!-- DEVLOG_ENTRIES_END -->
         </div>
