@@ -2,7 +2,6 @@
 title: "Day 18: Bangalore, Builders, and the Product Craft"
 date: "July 10, 2026"
 tag: Product
-active: true
 ---
 
 I spent today in Bangalore. Sometimes, getting out of your physical workspace is the fastest way to expand your mental one. I was there talking about a product admin role at a company called Lightforms—a conversation that quickly turned into a broader discussion about building, learning, and the product craft.

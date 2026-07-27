@@ -1,3 +1,9 @@
+---
+title: "Focusing on Interaction Design"
+date: "July 21, 2026"
+tag: Engineering
+---
+
 # Focusing on Interaction Design
 
 I wanted to deliver something that feels like more than just another CRUD app.

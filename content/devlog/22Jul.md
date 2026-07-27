@@ -1,3 +1,10 @@
+---
+title: "Engineering Lessons from Today"
+date: "July 22, 2026"
+tag: Engineering
+active: true
+---
+
 # Engineering Lessons from Today
 
 I've realized that the main difference between a product that feels alive and one that feels rigid and "dead" comes down to one thing: timing.
