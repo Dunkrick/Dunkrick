@@ -142,7 +142,7 @@
 
         <div class="devlog-stats fade-up">
           <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-days="15">10</span>
+            <span class="devlog-stat-value" data-stat-days="16">10</span>
             <span class="devlog-stat-label">Days</span>
           </div>
           <div class="devlog-stat-divider"></div>
@@ -464,6 +464,23 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>The goal here isn&#39;t to over-engineer on day one. It&#39;s to get the skeleton standing. A clean project structure, a working dev environment, a server that starts. Nothing flashy. But it&#39;s <em>my</em> skeleton, and everything that comes after will grow from it.</p>
 
             </div>
+          </article>
+
+          <article class="timeline-entry  entry-collapsible entry-collapsed">
+            <div class="timeline-meta">
+              <time class="timeline-date">July 29, 2026</time>
+              <span class="timeline-tag">Engineering</span>
+              <span class="timeline-reading-time">1 min read</span>
+            </div>
+            <h2 class="timeline-title">Moving to Neon Postgres</h2>
+            <div class="timeline-content">
+              <h1>Moving to Neon Postgres</h1>
+<p>Changed the infrastructure today — migrated the Postgres database from a Render DB instance over to Neon Postgres.</p>
+<p>To verify the migration, I walked through the full CRUD cycle: registered a new test user, logged in, created a dream, fetched it, updated it, and deleted it. Everything held up cleanly.</p>
+<p>The key insight from today: the application was never coupled to Render PostgreSQL. It was coupled to the PostgreSQL <em>interface</em>. Swapping the host was just config.</p>
+
+            </div>
+            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
           </article>
 
           <article class="timeline-entry entry-active">
