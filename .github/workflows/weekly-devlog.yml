@@ -1,0 +1,42 @@
+name: Weekly Devlog Automation
+
+on:
+  schedule:
+    # Runs at 00:00 every Friday
+    - cron: '0 0 * * 5'
+  workflow_dispatch: # Allows manual trigger from UI
+
+jobs:
+  update-devlog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to commit back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Fetch and format weekly activity
+        env:
+          # Uses the default token to fetch activity
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # In the future, you can add LLM_API_KEY to your repo secrets and pass it here
+          # LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: node scripts/fetch-weekly-activity.js
+
+      - name: Rebuild Site
+        run: node build.js
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update weekly devlog timeline [skip ci]"
+          file_pattern: "content/timeline.json *.html"

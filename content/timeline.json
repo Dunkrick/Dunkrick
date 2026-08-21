@@ -1,0 +1,147 @@
+[
+  {
+    "filename": "day-18.md",
+    "attributes": {
+      "title": "Day 18: Bangalore, Builders, and the Product Craft",
+      "date": "July 10, 2026",
+      "tag": "Product"
+    },
+    "body": "I spent today in Bangalore. Sometimes, getting out of your physical workspace is the fastest way to expand your mental one. I was there talking about a product admin role at a company called Lightforms—a conversation that quickly turned into a broader discussion about building, learning, and the product craft.\n\nMeeting Tanuj Arora was refreshing. In an industry that often indexes heavily on rigid years of experience, he was genuinely excited about listening to fresh talent, learning from new perspectives, and understanding how the next generation of builders thinks. It was a reminder that the best builders don't build in an echo chamber; they remain perpetually curious.\n\n*EP-016: Great products are built by listening, not just directing.*\n\nIt reinforced exactly what I’ve been reflecting on recently: shipping features is only half the battle. The real work is in understanding people, aligning systems to support them, and keeping that curiosity alive. Getting to talk shop, trade ideas, and see how other teams approach product operations was the perfect energy boost. \n\nHoping for the best on this front, but regardless of the outcome, today was a great validation of stepping into the product world.\n"
+  },
+  {
+    "filename": "day-12-to-day-17.md",
+    "attributes": {
+      "title": "Days 12–17: The Reality Check",
+      "date": "July 7, 2026",
+      "tag": "Product"
+    },
+    "body": "I've stepped away from the codebase for the last few days. It's dangerously easy to get trapped in the momentum of shipping — building feature after feature, refining the architecture, tweaking the design. But building for the sake of building leads to products that look great on a shelf but never get used. \n\nI took this time for a deep retrospection, completely immersing myself in real user needs. I had to remind myself that my core identity here isn't just \"developer.\" I am a **product person**. \n\n*EP-015: Fall in love with the problem, not the architecture.*\n\nThe business side of Dream Wall demands as much rigor as the engineering side. Solving real problems means understanding exactly who this is for and why they need it. \n\nSimultaneously, we've hit an infrastructure ceiling. The free tier of Render has started to bottleneck our growth — blocking custom domains, custom emails, and restricting database capabilities. While I hear they are rolling out updates to their Hobby tier soon, these constraints are forcing a broader conversation about our long-term deployment strategy. \n\nSometimes, the most productive thing you can do for a system is to stop typing and start thinking."
+  },
+  {
+    "filename": "day-11.md",
+    "attributes": {
+      "title": "Day 11: Shipping v3.0.0",
+      "date": "July 3, 2026",
+      "tag": "Product"
+    },
+    "body": "I started the day away from the code. Before writing another line, I wanted to ground myself in real user problems — scraping forums, reading threads, understanding the actual pain points people share online. It's easy to get lost in architecture and forget that systems exist to serve humans.\n\nThat research clarified something I'd been feeling for a while. Dream Wall started as a physical wall inside my room — sticky notes, scribbled ideas, things I wanted to see every day. The digital version should honor that origin. Not a task manager. Not a notes app. **A visual wall for the ideas and dreams you want to see often.**\n\n*EP-014: Build for the human on the other side of the screen.*\n\nWith that direction locked in, I moved to design. I used Claude to rapidly scaffold an MVP design foundation — colors, typography, spacing, component patterns. Having an AI pair for design is a genuine game changer. What would normally take days of iteration compressed into hours.\n\nThen came the final push to ship. The entire day funneled into getting **v3.0.0** live. And of course, the last boss before deployment was an old nemesis: CORS. The same class of error that bit me on Day 10, but this time with a twist — trailing slashes on the API URL were causing the preflight requests to fail silently on Render. A quick, clever fix to normalize the URLs, and the deploy went through.\n\nv3.0.0 is live and working. The system is secure, the architecture is clean, and for the first time, it actually *looks* like a product someone would want to use."
+  },
+  {
+    "filename": "day-10.md",
+    "attributes": {
+      "title": "Day 10: Wiring It All Together",
+      "date": "July 2, 2026",
+      "tag": "Integration"
+    },
+    "body": "Yesterday, React was just a mental model. Today, I needed to prove it works. I gave myself one goal for the day: one complete user journey. Open the app, log in, see the home page, log out. No shortcuts, no mocks.\n\nI started by building out the frontend's service layer — `api.ts` and `auth.ts`. And immediately, a pattern I've been feeling all project long finally crystallized. `api.ts` is to the frontend what Prisma is to the backend. It's a data access layer. It shouldn't know about business logic, it shouldn't know about UI state. It should only know how to make HTTP requests. Same principle, different side of the stack.\n\n*EP-013: Things that change together should live together.*\n\nThat's cohesion. When I noticed the token logic was scattered between `api.ts` and `auth.ts`, I extracted it into its own `storage.ts` module. One place that knows about `localStorage`. One place to change if we ever swap the storage mechanism. Things that change together, live together.\n\nThen came the wall. I wired the Login page to the backend, hit submit, and... CORS. The browser just silently refused to talk to my own server. The error message didn't scream \"you need a cors package.\" It just looked like the request vanished. It took me longer than I'd like to admit to trace it back to a missing middleware on the Express side. A one-line fix after a not-so-one-line debugging session.\n\nBut once CORS was resolved, something quietly remarkable happened. I typed in an email, entered a password, clicked Login — and the app navigated to the home page. A real JWT, stored in the browser, issued by my own backend, validated by my own middleware. For the first time, a user can actually *use* this thing end-to-end.\n\nI closed the loop with a logout button, then paused. The engineering is solid. The architecture is clean. But staring at the raw, unstyled React pages, I realized something: *nobody cares how clean your code is if the product doesn't feel real.* I started sketching out an MVP Design System. It's time to stop building only for the compiler and start building for the human on the other side of the screen."
+  },
+  {
+    "filename": "day-09.md",
+    "attributes": {
+      "title": "Day 09: The React Migration",
+      "date": "July 1, 2026",
+      "tag": "Architecture"
+    },
+    "body": "The frontend has been running on vanilla HTML, CSS, and JS since v1.0. It worked, but there was a fundamental friction I couldn't ignore any longer.\n\nWith plain HTML, you're constantly *telling* the browser what to change. \"Update this div. Remove that element. Append this child.\" It's imperative, and it's exhausting. With **React**, you simply *describe* how the UI should look, and React figures out what to change. It's the difference between micromanaging and delegating.\n\n*EP-012: Declare intent, don't dictate steps.*\n\nToday, I initiated the React architecture. The first thing that clicked was that React components are just **functions that return UI**. That's it. No magic. And once I saw it that way, a symmetry with the backend became impossible to unsee:\n\n```text\nBackend:  Input (Request)  →  Function (Route)     →  Output (JSON)\nFrontend: Input (Props)    →  Function (Component)  →  Output (HTML)\n```\n\nBoth sides of the stack are just functions that transform inputs into outputs. The shapes are different, but the *pattern* is identical.\n\nEven the orchestration mirrors itself. On the backend, the **Server** orchestrates and the **Routes** implement. On the frontend, the **App** orchestrates and the **Pages** implement. Same architecture, different rendering target.\n\nThe migration is just getting started, but the mental model already feels right. And when the mental model feels right, the code tends to follow.\n"
+  },
+  {
+    "filename": "day-08.md",
+    "attributes": {
+      "title": "Day 08: Identity & Ownership (v3.0.0)",
+      "date": "June 29, 2026",
+      "tag": "Engineering"
+    },
+    "body": "We've officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.\n\nWhile building this, the distinction between two often-confused concepts became impossible to mix up — because the code forces them apart:\n- **Authentication** asks: *\"Who are you?\"* (Handled by the `/auth/login` route generating a token).\n- **Authorization** asks: *\"Does this resource belong to you?\"* (Handled by strict Prisma queries tying dreams to a specific `userId`).\n\nTo enforce this, I wrote an `authenticate` middleware. Here's how the protected data flow looks now:\n\n```text\n[ Browser ] \n    │ (Bearer Token)\n    ▼\n[ Authorization Header ]\n    │\n    ▼\n[ authenticate Middleware ] ── (Validates JWT)\n    │\n    ▼\n[ req.user.id ] ── (Injects Identity)\n    │\n    ▼\n[ Route ] ── (Extracts req.body & req.user.id)\n    │\n    ▼\n[ Service ] ── (Business Logic)\n    │\n    ▼\n[ Prisma ORM ] ── (where: { id, userId })\n    │\n    ▼\n[ PostgreSQL Database ]\n```\n\nBy passing `userId` all the way down to the database layer, we guarantee that users can only ever touch their own dreams. Not through permission checks in the UI, not through frontend validation — through the query itself. The system isn't just functional anymore; it's secure by design."
+  },
+  {
+    "filename": "day-07.md",
+    "attributes": {
+      "title": "Day 07: v2.5.0 — Production Ready",
+      "date": "June 27, 2026",
+      "tag": "Engineering"
+    },
+    "body": "We've reached v2.5.0. The goal was never just to add features — it was to build a system the *right* way.\n\nToday, I implemented a global Error Handling middleware and strict route validation. Before this, a malformed request could slip through and cause cryptic failures deep in the service layer. Now, bad input gets caught at the door.\n\n*EP-011: Code should be optimistic. Infrastructure should be defensive.*\n\nThe application code trusts its inputs — because the middleware has already validated them. The infrastructure assumes the worst — because users and networks are unpredictable. It's a clean separation of optimism and paranoia.\n\nI also took time to write out Architectural Decision Records (ADRs) to document *why* these systems were built this way. Not just what I chose, but what I considered and rejected. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend.\n\nOnwards to v3.\n"
+  },
+  {
+    "filename": "day-06.md",
+    "attributes": {
+      "title": "Day 06: Prisma ORM & End-to-End Type Safety",
+      "date": "June 26, 2026",
+      "tag": "Integration"
+    },
+    "body": "Writing raw SQL strings inside TypeScript felt like wearing a seatbelt with the buckle undone. You have type safety everywhere *except* the most dangerous part — the database boundary.\n\n*EP-004: Depend on abstractions, not implementations.*\n\nToday, I migrated every database read and write to **Prisma**. Prisma acts as an abstraction over PostgreSQL, and now every single query is fully type-checked. If I misspell a column name, the app won't even compile. That's not just convenient — it's a fundamentally different relationship with your data layer.\n\nWith this, the complete migration from JavaScript to TypeScript is done. Every raw PostgreSQL call has been replaced. The backend is now strictly typed from the route handler all the way down to the database. No gaps, no escape hatches.\n"
+  },
+  {
+    "filename": "day-05.md",
+    "attributes": {
+      "title": "Day 05: Clean Architecture & The Service Layer",
+      "date": "June 25, 2026",
+      "tag": "Architecture"
+    },
+    "body": "As the backend grew, the route files started doing too much. They were parsing requests, writing database queries, and handling responses — all in the same function. Every time I touched one thing, I risked breaking something else.\n\n*EP-003: Organize by feature, not by generic names.*\n\nI introduced a dedicated **Service Layer**. The route files now strictly handle the HTTP context — extracting `req.body`, setting status codes, sending responses. Everything else gets passed down to the services, which own the actual business logic.\n\nIt's the kind of refactor that doesn't change what the app *does*, but fundamentally changes how it *feels* to work on. The code reads like clear responsibilities now, not tangled spaghetti. And for the first time, I can look at a route and know exactly where to find the logic it depends on.\n"
+  },
+  {
+    "filename": "day-04.md",
+    "attributes": {
+      "title": "Day 04: The Shift to TypeScript & PostgreSQL",
+      "date": "June 24, 2026",
+      "tag": "Architecture"
+    },
+    "body": "The honeymoon phase of v1.0 is over. It's time to get serious.\n\nIf this were a production system — the kind that handles real users, real data, real stakes — JavaScript's dynamic typing and SQLite's file-based locking wouldn't cut it. I've been putting off this migration because everything \"works.\" But \"works\" and \"works correctly under pressure\" are two very different standards.\n\nToday, I began the great migration. First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. There's a specific kind of relief that comes from catching a misspelled property name at compile-time instead of discovering it in a 2 AM production bug.\n\nThen, I ripped out SQLite and connected the app to PostgreSQL. The code is getting stricter, and the infrastructure is getting stronger. It feels less like a side project now and more like a real system.\n"
+  },
+  {
+    "filename": "day-03.md",
+    "attributes": {
+      "title": "Day 03: The Cozy Frontend & v1.0 Launch",
+      "date": "June 19, 2026",
+      "tag": "Product"
+    },
+    "body": "I spent today doing something that doesn't feel like \"real engineering\" but absolutely is — polishing the interface. No heavy frameworks, just vanilla HTML, CSS, and JS. I wanted the app to feel cozy and minimal, like a journal you actually want to open.\n\nWith the frontend connected to the SQLite backend, Version 1.0 of Dream Wall is officially complete.\n\nIt's a huge milestone. The app works, it's deployed, and it solves the problem it was meant to solve. But there's this nagging feeling I can't shake. The entire backend lives in one monolithic `server.js` file. It works *today*, but my \"systems builder\" brain is already running scenarios — what happens when I add authentication? What happens when I need to test one route without booting the whole server? The architecture needs to evolve. But that's a problem for future me.\n"
+  },
+  {
+    "filename": "day-02.md",
+    "attributes": {
+      "title": "Day 02: SQLite Database Initialization & Schema",
+      "date": "June 14, 2026",
+      "tag": "Integration"
+    },
+    "body": "Today was all about giving the dreams a place to live. I wired up a lightweight Express.js API and hooked it into SQLite.\n\nThe first thing I wrote was an auto-creation sequence in `db.js` — a small script that initializes the database cleanly on startup, no manual setup required.\n\n```javascript\ndb.run(`\n  CREATE TABLE IF NOT EXISTS dreams (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    text TEXT NOT NULL\n  )\n`);\n```\n\nIt's a small detail, but it makes a real difference. Anyone who clones this repo gets a working database on the first `npm start`. No README steps to miss, no \"did you run the migration?\" messages in Slack.\n\nThere's something deeply satisfying about watching your first `POST` request land and knowing the data is safely persisted. The dreams have a home now.\n"
+  },
+  {
+    "filename": "day-01.md",
+    "attributes": {
+      "title": "Day 01: ED-001 — Standardizing on Node.js",
+      "date": "June 9, 2026",
+      "tag": "Architecture"
+    },
+    "body": "Every complex system starts with a single decision. For Dream Wall, the first architectural decision (ED-001) was choosing the foundation.\n\nI went with Node.js. Not because it's the fastest runtime or the trendiest choice, but because it lets me think in one language across the entire stack. Frontend and backend, same mental model. When you're building something alone, that consistency isn't a luxury — it's survival.\n\nThe goal here isn't to over-engineer on day one. It's to get the skeleton standing. A clean project structure, a working dev environment, a server that starts. Nothing flashy. But it's *my* skeleton, and everything that comes after will grow from it.\n"
+  },
+  {
+    "filename": "29Jul.md",
+    "attributes": {
+      "title": "Moving to Neon Postgres",
+      "date": "July 29, 2026",
+      "tag": "Engineering"
+    },
+    "body": "# Moving to Neon Postgres\n\nChanged the infrastructure today — migrated the Postgres database from a Render DB instance over to Neon Postgres.\n\nTo verify the migration, I walked through the full CRUD cycle: registered a new test user, logged in, created a dream, fetched it, updated it, and deleted it. Everything held up cleanly.\n\nThe key insight from today: the application was never coupled to Render PostgreSQL. It was coupled to the PostgreSQL *interface*. Swapping the host was just config."
+  },
+  {
+    "filename": "22Jul.md",
+    "attributes": {
+      "title": "Engineering Lessons from Today",
+      "date": "July 22, 2026",
+      "tag": "Engineering",
+      "active": true
+    },
+    "body": "# Engineering Lessons from Today\n\nI've realized that the main difference between a product that feels alive and one that feels rigid and \"dead\" comes down to one thing: timing.\n\nEverything that happens in a user interface has a duration. A reaction time of 0ms feels instant, digital, and robotic. On the other hand, 150ms–300ms feels human and physical. \n\nEvery CSS transition added isn't just an afterthought; it's the process of intentionally slowing down from machine speed to human speed. It's not a performance cost—it's a core feature of the experience.\n\nHere's a breakdown of today's progress:\n\n### Moving Beyond Hardcoded Pixels\nI initially started by positioning elements with hardcoded pixels. The issue? Using `left: 900px` means exactly 900 pixels from the left edge. On a large MacBook Pro, that looks perfectly fine. But on a 768px tablet screen, 900px is completely off-screen, causing the card to disappear entirely.\n\n**The Fix:** Transitioning to CSS percentages for horizontal positioning. \nBy using `left: 60%`, we're asking for 60% of the wall container's width. On a 1400px screen, that translates to 840px. On a smaller 768px screen, it scales down to 461px. Now, the cards stay on screen automatically, no matter the device.\n\n### Breathing Life into Card Animations\nI spent a good chunk of time fine-tuning the card animations to make them feel natural:\n- Implemented a staggered animation and keyframes for a satisfying \"pop-in\" effect.\n- **The Toolkit:**\n  - `@keyframes` to script the core animation logic.\n  - `cubic-bezier()` using a spring curve to give the cards a physical, tangible weight.\n  - `animation-delay` mapped to the item's index to create a cascading stagger effect.\n  - `animation-fill-mode: both` to ensure delayed cards don't awkwardly flash before appearing.\n  - The CSS `rotate` property (kept separate from `transform`) so that the hover scale effect and the card's natural tilt don't conflict with one another.\n\n### Wrapping Up\nWe've also successfully finished building out the empty state!\n\n**Tomorrow's Focus:** Refactoring the Home layout. The plan is to expand the Wall to take up the full viewport and elegantly float the header/input form directly over the center."
+  },
+  {
+    "filename": "21Jul.md",
+    "attributes": {
+      "title": "Focusing on Interaction Design",
+      "date": "July 21, 2026",
+      "tag": "Engineering"
+    },
+    "body": "# Focusing on Interaction Design\n\nI wanted to deliver something that feels like more than just another CRUD app.\n\nThe mission for today: completely replace the standard vertical list with a free-flowing, true \"wall\" canvas—all without breaking a single existing feature.\n\nThe goal is to shift the user's perspective. They shouldn't feel like they're looking at a rigid list anymore; they should feel like they're looking at a physical wall.\n\nHere's the scope for today's transition:\n- **The Wall Experience:** Users immediately see an expansive, immersive canvas.\n- **Card Positioning:** Cards need to be naturally placed and fully functional.\n- **Empty State:** Crafting a beautiful, welcoming empty state for first-time visitors.\n- **Under the Hood:** Keeping the exact same authentication flow intact."
+  }
+]

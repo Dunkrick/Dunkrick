@@ -76,17 +76,16 @@ for (const page of pages) {
 
   // Special processing for devlog
   if (page === 'dream-wall.html') {
-    const files = fs.readdirSync(CONTENT_DIR).filter(file => file.endsWith('.md'));
-    const entries = files.map(file => {
-      const parsedContent = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8');
-      const parsed = fm(parsedContent);
-      const htmlBody = wrapEPCallouts(marked.parse(parsed.body));
+    const TIMELINE_FILE = path.join(__dirname, 'content', 'timeline.json');
+    const rawEntries = JSON.parse(fs.readFileSync(TIMELINE_FILE, 'utf8'));
+    const entries = rawEntries.map(entry => {
+      const htmlBody = wrapEPCallouts(marked.parse(entry.body));
       return {
-        filename: file,
-        attributes: parsed.attributes,
+        filename: entry.filename,
+        attributes: entry.attributes,
         body: htmlBody,
-        rawBody: parsed.body,
-        readingTime: estimateReadingTime(parsed.body),
+        rawBody: entry.body,
+        readingTime: estimateReadingTime(entry.body),
         epCount: countEPs(htmlBody)
       };
     });
