@@ -9,8 +9,8 @@
     "extraHead": ""
   },
   "work.html": {
-    "title": "Work - Rithwick Gurram",
-    "description": "Rithwick Gurram is a Product Engineer building complex backend systems, databases, and simple interfaces.",
+    "title": "Build — Rithwick Gurram",
+    "description": "Product engineering work by Rithwick Gurram: Go URL Shortener, Nook, Dream-wall, Happiclap UX audit.",
     "url": "work.html",
     "id": "",
     "progress": "",
@@ -37,18 +37,18 @@
     "extraHead": ""
   },
   "explore.html": {
-    "title": "Explore - Rithwick Gurram",
-    "description": "A visual archive of experiments, thoughts, and creative work.",
+    "title": "Studio — Rithwick Gurram",
+    "description": "Creative work, experiments, and visual explorations by Rithwick Gurram.",
     "url": "explore.html",
     "id": "explore-page",
     "progress": "",
     "cta": "",
     "extraHead": "",
-    "extraScripts": "<script defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js\"></script><script defer src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js\"></script><script defer src=\"assets/js/explore.js\"></script>"
+    "extraScripts": "<script defer src=\"assets/js/explore.js\"></script>"
   },
   "happiclap-case-study.html": {
-    "title": "Happiclap - Case Study · Rithwick Gurram",
-    "description": "Redesigned the homepage of a gifting platform to reduce bounce rates and streamline product discovery.",
+    "title": "Happiclap Case Study · Rithwick Gurram",
+    "description": "External UX audit of Happiclap, a gifting e-commerce platform. Heuristic evaluation, review analysis, and proposed improvements.",
     "url": "happiclap-case-study.html",
     "id": "happiclap-case-study",
     "progress": "",

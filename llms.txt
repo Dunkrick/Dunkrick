@@ -1,9 +1,9 @@
 # Rithwick Gurram
 
-> Engineer building complex systems and simple interfaces.
+> Product Engineer building complex backend systems and simple interfaces.
 
 ## About
-Rithwick Gurram is a software engineer based in Chennai, India. He builds clean, robust backend systems, databases, and high-quality user interfaces. He focuses on understanding how complex systems work and crafting intentional digital experiences.
+Rithwick Gurram is a software engineer based in Chennai, India. He builds robust backend systems, databases, and intentional user interfaces. His focus is on understanding how complex systems work and shipping real products.
 
 ## Links
 - **Website**: https://rithwick.me
@@ -13,16 +13,21 @@ Rithwick Gurram is a software engineer based in Chennai, India. He builds clean,
 - **Email**: contact.rithwick@gmail.com
 
 ## Current Focus
-- Backend Systems & Database Architectures (PostgreSQL, Relational Modeling)
-- TypeScript Migration Patterns
-- Networking (HTTP request lifecycle)
-- Creative WebGL & GSAP interactive experiences
+- Go: concurrency patterns and HTTP internals
+- Distributed systems: caching, rate limiting, load testing
+- PostgreSQL: query planning and relational modeling
+- Creative development: GSAP and WebGL visual systems
 
-## Highlighted Projects
-1. **Dream-wall**: A complex system tracking day-to-day experiments, database explorations, and system architecture integrations.
-2. **GSAP Macbook Landing Page**: A highly interactive, 3D Apple-style product showcase built in 48 hours using WebGL and GSAP.
-3. **Happiclap E-commerce**: A UX/UI redesign of a gifting platform aimed at reducing bounce rates.
-4. **Mapping the Churn**: An analytics dashboard built to explore user retention.
+## Verified Projects (BUILD)
+1. **Go URL Shortener**: Go + PostgreSQL + Redis + Cloud Run + k6. 154.3 req/s, p95 76.1 ms, Redis fixed-window rate limiting. Documented system design.
+2. **Nook**: TypeScript full-stack workspace app. JWT auth, workspace/artifact ownership, PostgreSQL, Google Cloud Storage signed URLs, Docker, GitHub Actions, Cloud Run. Frontend + backend tests.
+3. **Dream-wall**: Active engineering devlog. Node.js, PostgreSQL, Prisma, TypeScript, React. Multiple architecture iterations documented in public.
+4. **Happiclap**: External UX audit of a gifting e-commerce platform. Heuristic evaluation against 40+ public reviews. Proposed improvements — not a shipped internal redesign.
+5. **meow-starter (Open Source)**: Upstream PR adding regression tests for mobile module filtering. 103 tests passing.
+
+## Studio (Creative Work)
+- GSAP Macbook Landing Page: 3D scroll-driven landing page. React, TypeScript, Three.js, GSAP.
+- Cinematography: Ongoing film work on YouTube.
 
 ## Professional Ethos
-"I'm curious to understand how things work and build my own version. I believe in designing and coding with intent, ensuring that the best edits always feel like a necessary loss."
+"I'm curious to understand how things work and build my own version."

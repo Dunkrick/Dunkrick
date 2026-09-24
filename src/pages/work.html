@@ -2,13 +2,16 @@
   <div id="cursor-img-reveal" class="cursor-img-reveal"></div>
 
   <div class="project-showcase">
-    <a href="#" class="project-row" data-image="assets/images/mockup-happiclap.png">
+    <!-- BUILD: URL Shortener — featured first -->
+    <a href="project.html?id=url-shortener" class="project-row" data-image="assets/images/mockup-url-shortener.png">
       <div class="project-info">
-        <h2 class="project-title">Happiclap Redesign</h2>
-        <p class="project-desc">A modern, vibrant mobile experience redefining mental wellness tracking.</p>
+        <h2 class="project-title">Go URL Shortener</h2>
+        <p class="project-desc">High-throughput URL shortener built in Go with PostgreSQL, Redis caching, and rate limiting. Load-tested with k6: 154 req/s, p95 76 ms.</p>
         <div class="project-tags">
-          <span class="tag">Product Design</span>
-          <span class="tag">UI/UX</span>
+          <span class="tag">Go</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">System Design</span>
         </div>
       </div>
       <div class="project-arrow">
@@ -19,13 +22,16 @@
       </div>
     </a>
 
-    <a href="#" class="project-row" data-image="assets/images/mockup-gsap.png">
+    <!-- BUILD: Nook -->
+    <a href="project.html?id=nook" class="project-row" data-image="assets/images/mockup-nook.png">
       <div class="project-info">
-        <h2 class="project-title">GSAP Macbook Landing</h2>
-        <p class="project-desc">A dark mode 3D landing page with sleek animations and glowing neon accents.</p>
+        <h2 class="project-title">Nook</h2>
+        <p class="project-desc">Full-stack TypeScript workspace application with JWT auth, workspace and artifact ownership, Google Cloud Storage signed URLs, Docker, and GitHub Actions CI/CD.</p>
         <div class="project-tags">
-          <span class="tag">Frontend Engineering</span>
-          <span class="tag">Animation</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Cloud Run</span>
+          <span class="tag">Fullstack</span>
         </div>
       </div>
       <div class="project-arrow">
@@ -36,30 +42,54 @@
       </div>
     </a>
 
-    <a href="project.html?id=macbook-landing" class="project-row" data-image="assets/images/mockup-macbook.png">
-      <div class="project-info">
-        <h2 class="project-title">GSAP Macbook Landing Page</h2>
-        <p class="project-desc">Building a highly interactive Apple-style landing page using GSAP and scroll-driven animations. (Private Repo)</p>
-        <div class="project-tags">
-          <span class="tag">Creative Dev</span>
-          <span class="tag">GSAP</span>
-        </div>
-      </div>
-      <div class="project-arrow">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </div>
-    </a>
-
-    <a href="#" class="project-row" data-image="assets/images/mockup-dreamwall.png">
+    <!-- BUILD: Dream-wall — active devlog -->
+    <a href="dream-wall.html" class="project-row" data-image="assets/images/mockup-dreamwall.png">
       <div class="project-info">
         <h2 class="project-title">Dream-wall</h2>
-        <p class="project-desc">A cozy, minimalistic devlog and blogging web app with a robust backend architecture.</p>
+        <p class="project-desc">A living devlog for an evolving full-stack application. Node.js, PostgreSQL, Prisma, TypeScript, React — architecture evolving in public.</p>
         <div class="project-tags">
-          <span class="tag">Fullstack Engineering</span>
+          <span class="tag">Active Build</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">System Design</span>
+        </div>
+      </div>
+      <div class="project-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </div>
+    </a>
+
+    <!-- BUILD: Happiclap — UX audit / case study -->
+    <a href="happiclap-case-study.html" class="project-row" data-image="assets/images/mockup-happiclap.png">
+      <div class="project-info">
+        <h2 class="project-title">Happiclap</h2>
+        <p class="project-desc">External UX audit and redesign of a gifting e-commerce platform. Heuristic evaluation against 40+ public reviews, with documented proposed improvements.</p>
+        <div class="project-tags">
+          <span class="tag">UX Audit</span>
+          <span class="tag">Product Design</span>
+          <span class="tag">Case Study</span>
+        </div>
+      </div>
+      <div class="project-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </div>
+    </a>
+
+    <!-- BUILD: meow-starter open source contribution -->
+    <a href="https://github.com/nicholasgasior/meow-starter" target="_blank" class="project-row" data-image="assets/images/mockup-opensource.png">
+      <div class="project-info">
+        <h2 class="project-title">Open Source: meow-starter</h2>
+        <p class="project-desc">Upstream PR adding regression tests for mobile module filtering. 103 tests passing across the test suite.</p>
+        <div class="project-tags">
+          <span class="tag">Open Source</span>
+          <span class="tag">Testing</span>
+          <span class="tag">JavaScript</span>
         </div>
       </div>
       <div class="project-arrow">

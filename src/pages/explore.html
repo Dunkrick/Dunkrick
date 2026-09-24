@@ -13,7 +13,7 @@
     <div class="studio-header-right">
       <div class="studio-title-wrapper">
         <h1 class="studio-headline">Studio</h1>
-        <!-- Playful SVG Doodle (Inspired by The Studio banner) -->
+        <!-- Playful SVG Doodle -->
         <svg class="studio-doodle" width="120" height="80" viewBox="0 0 120 80" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <!-- Abstract person/camera scribble -->
@@ -31,7 +31,7 @@
   <!-- Filter Navigation (Horizontal Sub-nav) -->
   <nav class="studio-nav fade-up">
     <div class="studio-filters">
-      <button class="studio-filter-btn active" data-filter="home">HOME</button>
+      <button class="studio-filter-btn active" data-filter="home">ALL</button>
       <button class="studio-filter-btn" data-filter="engineering">ENGINEERING</button>
       <button class="studio-filter-btn" data-filter="creative">CREATIVE</button>
     </div>
@@ -48,9 +48,49 @@
   <section class="explore-work fade-up" style="margin-top: 40px;">
     <div class="masonry-grid studio-grid">
 
-      <!-- Item 1: MacBook Landing -->
-      <a href="https://github.com/Dunkrick/gsap_macbook_landing" target="_blank"
+      <!-- Item 1: URL Shortener -->
+      <a href="project.html?id=url-shortener"
         class="masonry-item engineering magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M10,30 Q30,10 50,50 T90,70" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">Go + Redis + k6</div>
+          <h3 class="masonry-title">URL Shortener</h3>
+          <p class="masonry-desc">154 req/s, p95 76 ms. Redis caching and rate limiting. Documented system design.</p>
+        </div>
+      </a>
+
+      <!-- Item 2: Nook -->
+      <a href="project.html?id=nook" class="masonry-item engineering magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">TypeScript Fullstack</div>
+          <h3 class="masonry-title">Nook</h3>
+          <p class="masonry-desc">Workspace app with JWT auth, GCS signed URLs, Docker, CI/CD, Cloud Run.</p>
+        </div>
+      </a>
+
+      <!-- Item 3: Happiclap -->
+      <a href="happiclap-case-study.html" class="masonry-item engineering magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">UX Audit / Case Study</div>
+          <h3 class="masonry-title">Happiclap</h3>
+          <p class="masonry-desc">Heuristic evaluation against 40+ public reviews. Proposed improvements documented.</p>
+        </div>
+      </a>
+
+      <!-- Item 4: MacBook Landing — creative -->
+      <a href="project.html?id=macbook-landing" target="_blank"
+        class="masonry-item creative magnetic-wrap">
         <!-- Playful Squiggle SVG Background -->
         <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
           stroke-width="2" stroke-linecap="round">
@@ -58,25 +98,12 @@
         </svg>
         <div class="masonry-content">
           <div class="masonry-eyebrow">[ 48 Hours ] WebGL</div>
-          <h3 class="masonry-title">Interactive Showcase</h3>
+          <h3 class="masonry-title">GSAP Macbook</h3>
           <p class="masonry-desc">High-fidelity 3D rendering with scroll-linked GSAP animations. Pure visual craft.</p>
         </div>
       </a>
 
-      <!-- Item 2: Happiclap -->
-      <a href="https://happiclap-ebon.vercel.app" target="_blank" class="masonry-item engineering magnetic-wrap">
-        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
-          stroke-width="2" stroke-linecap="round">
-          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
-        </svg>
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">UX/UI Redesign</div>
-          <h3 class="masonry-title">Happiclap E-commerce</h3>
-          <p class="masonry-desc">Redesigned the homepage of a gifting platform to reduce bounce rates.</p>
-        </div>
-      </a>
-
-      <!-- Item 3: Film -->
+      <!-- Item 5: Film — creative -->
       <a href="https://www.youtube.com/@DunkRick" target="_blank" class="masonry-item creative magnetic-wrap">
         <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
           stroke-width="2" stroke-linecap="round">
@@ -89,7 +116,7 @@
         </div>
       </a>
 
-      <!-- Item 4: Thoughts snippet -->
+      <!-- Item 6: Thoughts snippet -->
       <div class="masonry-item thoughts home magnetic-wrap" style="background: var(--text-strong); color: var(--page);">
         <div class="masonry-content">
           <p class="rotated-quote"
@@ -101,25 +128,14 @@
         </div>
       </div>
 
-      <!-- Item 5: Growth Analytics -->
-      <a href="https://github.com/Dunkrick/growth-analytics" target="_blank"
-        class="masonry-item engineering magnetic-wrap">
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">Data Systems</div>
-          <h3 class="masonry-title">Mapping the Churn</h3>
-          <p class="masonry-desc">Analytics dashboard exploring user retention.</p>
-        </div>
-      </a>
-
-      <!-- Actions Section moved into a grid item to save space and integrate -->
+      <!-- Item 7: Terminal Status -->
       <div class="masonry-item status-block home magnetic-wrap">
         <div class="masonry-content">
           <div class="masonry-eyebrow">Terminal Status</div>
           <div class="status-dashboard" style="margin-top: 16px;">
             <div class="status-item" style="padding: 12px; margin-bottom: 8px;">
               <span class="status-label" style="font-size: 10px;">Building</span>
-              <span class="status-value scramble-text" data-text="Dream-wall V4" style="font-size: 12px;">Dream-wall
-                V4</span>
+              <span class="status-value scramble-text" data-text="Dream-wall" style="font-size: 12px;">Dream-wall</span>
             </div>
             <div class="status-item" style="padding: 12px; margin-bottom: 8px;">
               <span class="status-label" style="font-size: 10px;">Learning</span>

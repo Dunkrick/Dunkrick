@@ -91,6 +91,8 @@
     <div class="nav-container">
       <div class="nav-right">
         <ul class="nav-links">
+          <li><a href="work.html">Build</a></li>
+          <li><a href="explore.html">Studio</a></li>
           <li><a href="assets/docs/resume.pdf" target="_blank">Resume</a></li>
           <li>
             <button id="nav-cmd-trigger" class="nav-cmd-btn" aria-label="Open Command Palette">
@@ -146,7 +148,7 @@
     </p>
 
     <div class="hero-cta fade-up">
-      <a href="explore.html" class="hero-cta-btn">See my work →</a>
+      <a href="work.html" class="hero-cta-btn">See my work →</a>
     </div>
   </div>
 </section>
@@ -159,39 +161,38 @@
     <h2 class="section-title fade-up">Currently Building</h2>
 
     <div class="mini-bento-stack">
-      <!-- Project 01 (Active Build) -->
-      <a href="dream-wall.html" class="mini-bento-card fade-up">
+      <!-- Project 01: URL Shortener — featured first -->
+      <a href="project.html?id=url-shortener" class="mini-bento-card fade-up">
         <div class="card-content">
-          <span class="card-eyebrow" style="display: flex; align-items: center; gap: 4px;">
-            <span class="pulse-dot"></span> Active Devlog
-          </span>
-          <h3 class="card-title">Building Dream-wall</h3>
-          <p class="card-desc">A log tracking day-to-day experiments, database explorations, and system architecture
-            integrations in real time.</p>
-        </div>
-        <div class="card-meta">
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-      <!-- Project 02 -->
-      <a href="project.html?id=macbook-landing" class="mini-bento-card fade-up">
-        <div class="card-content">
-          <span class="card-eyebrow">Creative Development</span>
-          <h3 class="card-title">GSAP Macbook Landing Page</h3>
-          <p class="card-desc">Building a highly interactive landing page using GSAP and scroll-driven animations.</p>
+          <span class="card-eyebrow">Backend Engineering</span>
+          <h3 class="card-title">Go URL Shortener</h3>
+          <p class="card-desc">High-throughput shortener in Go. PostgreSQL + Redis. Load-tested: 154 req/s, p95 76 ms.</p>
         </div>
         <div class="card-meta">
           <span class="card-arrow">→</span>
         </div>
       </a>
 
-      <!-- Project 03 -->
-      <a href="happiclap-case-study.html" class="mini-bento-card fade-up">
+      <!-- Project 02: Nook -->
+      <a href="project.html?id=nook" class="mini-bento-card fade-up">
         <div class="card-content">
-          <span class="card-eyebrow">UX/UI Redesign</span>
-          <h3 class="card-title">Happiclap E-commerce</h3>
-          <p class="card-desc">Redesigned the homepage of a gifting platform to reduce bounce rates and streamline
-            product discovery.</p>
+          <span class="card-eyebrow">Fullstack</span>
+          <h3 class="card-title">Nook</h3>
+          <p class="card-desc">TypeScript workspace app with JWT auth, GCS signed URLs, Docker, and GitHub Actions CI/CD.</p>
+        </div>
+        <div class="card-meta">
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Project 03: Dream-wall active devlog -->
+      <a href="dream-wall.html" class="mini-bento-card fade-up">
+        <div class="card-content">
+          <span class="card-eyebrow" style="display: flex; align-items: center; gap: 4px;">
+            <span class="pulse-dot"></span> Active Devlog
+          </span>
+          <h3 class="card-title">Dream-wall</h3>
+          <p class="card-desc">A living devlog for an evolving full-stack app — architecture decisions in public.</p>
         </div>
         <div class="card-meta">
           <span class="card-arrow">→</span>
@@ -211,15 +212,15 @@
     <div class="learning-list">
       <div class="learning-item">
         <span class="learning-arrow">→</span>
-        <span>TypeScript migration patterns</span>
+        <span>Go: concurrency patterns and HTTP internals</span>
       </div>
       <div class="learning-item">
         <span class="learning-arrow">→</span>
-        <span>PostgreSQL & relational data modeling</span>
+        <span>Distributed systems: caching, rate limiting, load testing</span>
       </div>
       <div class="learning-item">
         <span class="learning-arrow">→</span>
-        <span>How HTTP requests actually travel through the stack</span>
+        <span>PostgreSQL: query planning and relational modeling</span>
       </div>
     </div>
   </div>
@@ -311,16 +312,19 @@
       <div class="cmd-results">
         <div class="cmd-group-label">Navigation</div>
         <ul class="cmd-list">
-          <li><a href="index.html#work" class="cmd-link">Go to Work</a></li>
-          <li><a href="index.html#about" class="cmd-link">Go to Connect</a></li>
+          <li><a href="work.html" class="cmd-link">Go to Build</a></li>
+          <li><a href="explore.html" class="cmd-link">Go to Studio</a></li>
+          <li><a href="index.html#contact" class="cmd-link">Go to Contact</a></li>
           <li><a href="assets/docs/resume.pdf" target="_blank" class="cmd-link">View Resume</a></li>
           <li><a href="mailto:contact.rithwick@gmail.com" class="cmd-link">Send Email</a></li>
         </ul>
         <div class="cmd-group-label">Projects</div>
         <ul class="cmd-list">
-          <li><a href="project.html?id=macbook-landing" class="cmd-link">View GSAP Landing Page</a></li>
-          <li><a href="project.html?id=happiclap" class="cmd-link">View Happiclap Redesign</a></li>
+          <li><a href="project.html?id=url-shortener" class="cmd-link">View Go URL Shortener</a></li>
+          <li><a href="project.html?id=nook" class="cmd-link">View Nook</a></li>
+          <li><a href="happiclap-case-study.html" class="cmd-link">View Happiclap Case Study</a></li>
           <li><a href="dream-wall.html" class="cmd-link">View Dream-wall Devlog</a></li>
+          <li><a href="project.html?id=macbook-landing" class="cmd-link">View GSAP Macbook (Studio)</a></li>
         </ul>
         <div class="cmd-group-label">System</div>
         <ul class="cmd-list">

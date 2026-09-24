@@ -18,12 +18,20 @@ async function loadProject() {
   let error = null;
 
   if (projectId === 'happiclap') {
+    // Redirect to the dedicated case study page
+    window.location.replace('happiclap-case-study.html');
+    return;
+  } else if (projectId === 'url-shortener') {
     data = {
-      title: "Happiclap: E-commerce Redesign",
-      role: "UX/UI Redesign",
-      description: "Redesigned the homepage of a gifting platform to reduce bounce rates, establish clear visual hierarchy, and streamline product discovery.",
-      project_url: "https://app.notion.com/p/Happiclap-Homepage-Redesign-3489d1ca459680c9b198cbea438954cb",
-      live_url: "https://happiclap-ebon.vercel.app"
+      title: "Go URL Shortener",
+      role: "Backend Engineering / System Design",
+      description: "A high-throughput URL shortener built in Go with PostgreSQL for persistence, Redis for caching and fixed-window rate limiting. Load-tested with k6."
+    };
+  } else if (projectId === 'nook') {
+    data = {
+      title: "Nook",
+      role: "Fullstack Engineering",
+      description: "A TypeScript full-stack workspace application. Features JWT authentication, workspace and artifact ownership model, PostgreSQL, Google Cloud Storage signed URLs, Docker, GitHub Actions CI/CD, and Cloud Run deployment."
     };
   } else if (projectId === 'macbook-landing') {
     data = {
@@ -84,7 +92,62 @@ async function loadProject() {
 
   const contentContainer = document.querySelector('.case-study-content');
 
-  if (projectId === 'happiclap') {
+  if (projectId === 'url-shortener') {
+    contentContainer.innerHTML = `
+      <div class="content-section">
+        <h3>1. The Problem</h3>
+        <p>Build a URL shortener that stays performant under load, with a documented system design and measurable results.</p>
+      </div>
+      <div class="content-section">
+        <h3>2. The Architecture</h3>
+        <p>Go handles the HTTP layer. PostgreSQL stores all URL mappings. Redis sits in front for caching hot redirects and enforcing fixed-window rate limiting per IP.</p>
+      </div>
+      <div class="content-section">
+        <h3>3. Load Test Results</h3>
+        <p>k6 load test: <strong>135.5 req/s</strong> with 0% errors before Redis cache. After caching: <strong>154.3 req/s</strong>. p95 latency dropped from <strong>99.5 ms to 76.1 ms</strong>.</p>
+      </div>
+      <details class="arch-dropdown" style="margin-top: 32px;">
+        <summary class="persuasive-click">View Tech Stack</summary>
+        <div class="arch-content">
+<pre><code>[Stack]
+- Go
+- PostgreSQL
+- Redis (caching + rate limiting)
+- Google Cloud Run
+- k6 (load testing)
+- System Design documentation</code></pre>
+        </div>
+      </details>
+    `;
+  } else if (projectId === 'nook') {
+    contentContainer.innerHTML = `
+      <div class="content-section">
+        <h3>1. What It Is</h3>
+        <p>Nook is a workspace application where users can create workspaces, own artifacts, and collaborate. The full-stack TypeScript codebase covers both a backend API and a frontend client.</p>
+      </div>
+      <div class="content-section">
+        <h3>2. Key Engineering Decisions</h3>
+        <p>JWT authentication with workspace-scoped ownership. Google Cloud Storage signed URLs for secure artifact access. PostgreSQL for relational data modeling.</p>
+      </div>
+      <div class="content-section">
+        <h3>3. Infrastructure</h3>
+        <p>Docker for local development parity. GitHub Actions CI/CD pipeline. Deployed to Cloud Run.</p>
+      </div>
+      <details class="arch-dropdown" style="margin-top: 32px;">
+        <summary class="persuasive-click">View Tech Stack</summary>
+        <div class="arch-content">
+<pre><code>[Stack]
+- TypeScript (frontend + backend)
+- PostgreSQL
+- Google Cloud Storage (signed URLs)
+- Docker
+- GitHub Actions
+- Cloud Run
+- JWT authentication</code></pre>
+        </div>
+      </details>
+    `;
+  } else if (projectId === 'happiclap') {
     contentContainer.innerHTML = `
       <div class="content-section">
         <h3>1. The Friction</h3>
