@@ -14,6 +14,23 @@ const PAGES_DIR = path.join(__dirname, 'src', 'pages');
 const LAYOUT_FILE = path.join(TEMPLATES_DIR, 'layout.html');
 const layoutHtml = fs.readFileSync(LAYOUT_FILE, 'utf8');
 
+// ── Build-time GitHub Contributions Fetch ──
+async function fetchGitHubContributions() {
+  try {
+    const res = await fetch('https://github-contributions-api.jogruber.de/v4/dunkrick?y=last');
+    const data = await res.json();
+    if (data && data.total && data.total.lastYear !== undefined) {
+      return String(data.total.lastYear);
+    }
+  } catch (e) {
+    console.warn('GitHub contributions API failed, using fallback');
+  }
+  return '259'; // Fallback
+}
+
+const GH_CONTRIBUTIONS = await fetchGitHubContributions();
+console.log(`GitHub contributions (last year): ${GH_CONTRIBUTIONS}`);
+
 // ── Helpers ──
 
 function estimateReadingTime(text) {
@@ -176,6 +193,11 @@ for (const page of pages) {
   finalHtml = finalHtml.replace(/\{\{EXTRA_HEAD\}\}/g, meta.extraHead || '');
   finalHtml = finalHtml.replace(/\{\{EXTRA_SCRIPTS\}\}/g, meta.extraScripts || '');
   finalHtml = finalHtml.replace(/\{\{CONTENT\}\}/g, content);
+  // Inject GitHub contributions count (build-time)
+  finalHtml = finalHtml.replace(
+    /<span id="gh-contributions-count"[^>]*>[^<]*<\/span>/,
+    `<span id="gh-contributions-count" style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--text-strong);">${GH_CONTRIBUTIONS}</span>`
+  );
 
   fs.writeFileSync(path.join(__dirname, page), finalHtml, 'utf8');
   console.log(`Built ${page}`);

@@ -1,10 +1,3 @@
-// Supabase setup
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-const SUPABASE_URL = 'https://cadazfnomibslxomgnnz.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_1WZ0O5UKoFqeKslq1nmOpQ_EySifkQm';
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
 async function loadProject() {
   const urlParams = new URLSearchParams(window.location.search);
   const projectId = urlParams.get('id');
@@ -14,56 +7,42 @@ async function loadProject() {
     return;
   }
 
-  let data = null;
-  let error = null;
-
-  if (projectId === 'happiclap') {
-    // Redirect to the dedicated case study page
-    window.location.replace('happiclap-case-study.html');
-    return;
-  } else if (projectId === 'url-shortener') {
-    data = {
+  const projects = {
+    'url-shortener': {
       title: "Go URL Shortener",
       role: "Backend Engineering / System Design",
-      description: "A high-throughput URL shortener built in Go with PostgreSQL for persistence, Redis for caching and fixed-window rate limiting. Load-tested with k6."
-    };
-  } else if (projectId === 'nook') {
-    data = {
+      description: "A high-throughput URL shortener built in Go with PostgreSQL for persistence, Redis for caching and fixed-window rate limiting. Load-tested with k6.",
+      project_url: "https://github.com/Dunkrick/url-shortener"
+    },
+    'nook': {
       title: "Nook",
       role: "Fullstack Engineering",
-      description: "A TypeScript full-stack workspace application. Features JWT authentication, workspace and artifact ownership model, PostgreSQL, Google Cloud Storage signed URLs, Docker, GitHub Actions CI/CD, and Cloud Run deployment."
-    };
-  } else if (projectId === 'macbook-landing') {
-    data = {
+      description: "A TypeScript full-stack workspace application. Features JWT authentication, workspace and artifact ownership model, PostgreSQL, Google Cloud Storage signed URLs, Docker, GitHub Actions CI/CD, and Cloud Run deployment.",
+      project_url: "https://github.com/Dunkrick/nook"
+    },
+    'macbook-landing': {
       title: "M3 Pro: One Machine. Everything.",
       role: "Creative Development / GSAP",
       description: "A highly personalized, Suburbia Skateboards-inspired brutalist landing page built as a creative showcase. Features interactive 3D MacBook Pro model rendering, scroll-bound typography reveals, and exploded component animations.",
       project_url: "https://github.com/Dunkrick/gsap_macbook_landing",
       live_url: "https://gsap-macbook-landing-tan-five.vercel.app/"
-    };
-  } else if (projectId === 'meow-starter') {
-    data = {
+    },
+    'meow-starter': {
       title: "Open Source: meow-starter",
       role: "Open Source Contribution",
       description: "Upstream PR adding regression tests for mobile module filtering. 103 tests passing across the test suite.",
-      project_url: "https://github.com/nicholasgasior/meow-starter/pull/XX"
-    };
-  } else {
-    try {
-      const result = await supabase
-        .from('portfolio_projects')
-        .select('*')
-        .eq('id', projectId)
-        .single();
-      data = result.data;
-      error = result.error;
-    } catch (e) {
-      error = e;
+      project_url: "https://github.com/nicholasgasior/meow-starter"
     }
+  };
+
+  let data = projects[projectId];
+
+  if (projectId === 'happiclap') {
+    window.location.replace('happiclap-case-study.html');
+    return;
   }
 
-  if (error || !data) {
-    console.error("Error fetching project:", error);
+  if (!data) {
     document.getElementById('loading-state').innerHTML = '<p>Could not load project details. <a href="index.html#work">Return to work</a>.</p>';
     return;
   }

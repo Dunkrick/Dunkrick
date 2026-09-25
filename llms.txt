@@ -21,7 +21,7 @@ Rithwick Gurram is a software engineer based in Chennai, India. He builds robust
 ## Verified Projects (BUILD)
 1. **Go URL Shortener**: Go + PostgreSQL + Redis + Cloud Run + k6. 154.3 req/s, p95 76.1 ms, Redis fixed-window rate limiting. Documented system design.
 2. **Nook**: TypeScript full-stack workspace app. JWT auth, workspace/artifact ownership, PostgreSQL, Google Cloud Storage signed URLs, Docker, GitHub Actions, Cloud Run. Frontend + backend tests.
-3. **Dream-wall**: Active engineering devlog. Node.js, PostgreSQL, Prisma, TypeScript, React. Multiple architecture iterations documented in public.
+3. **Building Nook (devlog)**: Active engineering devlog. Node.js, PostgreSQL, Prisma, TypeScript, React. Multiple architecture iterations documented in public.
 4. **Happiclap**: External UX audit of a gifting e-commerce platform. Heuristic evaluation against 40+ public reviews. Proposed improvements — not a shipped internal redesign.
 5. **meow-starter (Open Source)**: Upstream PR adding regression tests for mobile module filtering. 103 tests passing.
 

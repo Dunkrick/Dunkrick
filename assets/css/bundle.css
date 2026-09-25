@@ -2,14 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @font-face {
   font-family: 'SF Pro Rounded';
-  src: url('../fonts/SF-Pro-Rounded-Medium.woff') format('woff');
+  src: url('../../assets/fonts/SF-Pro-Rounded-Medium.woff') format('woff');
   font-weight: 400 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'SF Pro Rounded';
-  src: url('../fonts/SF-Pro-Rounded-Semibold.woff') format('woff');
+  src: url('../../assets/fonts/SF-Pro-Rounded-Semibold.woff') format('woff');
   font-weight: 600 700;
   font-style: normal;
   font-display: swap;
@@ -1409,14 +1409,14 @@ body.wireframe-mode .connect-dock {
 @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
   @font-face {
     font-family: 'SF Pro Rounded';
-    src: url('assets/fonts/SF-Pro-Rounded-Medium.woff') format('woff');
+    src: url('../fonts/SF-Pro-Rounded-Medium.woff') format('woff');
     font-weight: 400 500;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'SF Pro Rounded';
-    src: url('assets/fonts/SF-Pro-Rounded-Semibold.woff') format('woff');
+    src: url('../fonts/SF-Pro-Rounded-Semibold.woff') format('woff');
     font-weight: 600 700;
     font-style: normal;
     font-display: swap;

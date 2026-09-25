@@ -79,27 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener('click', () => toggleCmdPalette(false));
   });
 
-  // ── 4. MOBILE MENU LOGIC ──
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-
-  if (mobileMenuBtn && mobileMenuOverlay) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenuBtn.classList.toggle('active');
-      mobileMenuOverlay.classList.toggle('active');
-      document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
-    });
-
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
   // ── 5. THEME TOGGLE ──
   const themeToggle = document.getElementById('theme-toggle');
   const iconSun = document.querySelector('.theme-icon-sun');
@@ -230,77 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
       greeting = "Good afternoon";
     }
     greetingEl.textContent = greeting;
-  }
-
-  // ── 7. LIVE GITHUB CONTRIBUTIONS ──
-  const ghCountEl = document.getElementById('gh-contributions-count');
-  if (ghCountEl) {
-    // We use a community API to bypass GitHub's client-side CORS restriction for free
-    fetch('https://github-contributions-api.jogruber.de/v4/dunkrick?y=last')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.total && data.total.lastYear !== undefined) {
-          ghCountEl.textContent = data.total.lastYear;
-        } else {
-          ghCountEl.textContent = "259";
-        }
-      })
-      .catch(() => {
-        ghCountEl.textContent = "259"; // Fallback if API fails
-      });
-  }
-
-  // ── 8. CURSOR IMAGE REVEAL (WORK PAGE) ──
-  const cursorImg = document.getElementById('cursor-img-reveal');
-  const projectRows = document.querySelectorAll('.project-row');
-
-  if (cursorImg && projectRows.length > 0) {
-    let isHovering = false;
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      if (isHovering) {
-        targetX = e.clientX;
-        targetY = e.clientY;
-      }
-    });
-
-    function animateCursor() {
-      if (isHovering) {
-        currentX += (targetX - currentX) * 0.15;
-        currentY += (targetY - currentY) * 0.15;
-        cursorImg.style.left = currentX + 'px';
-        cursorImg.style.top = currentY + 'px';
-      }
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    projectRows.forEach(row => {
-      row.addEventListener('mouseenter', (e) => {
-        isHovering = true;
-        const imgPath = row.getAttribute('data-image');
-        if (imgPath) {
-          cursorImg.style.backgroundImage = `url(${imgPath})`;
-        }
-        cursorImg.classList.add('active');
-        
-        currentX = e.clientX;
-        currentY = e.clientY;
-        targetX = e.clientX;
-        targetY = e.clientY;
-        cursorImg.style.left = currentX + 'px';
-        cursorImg.style.top = currentY + 'px';
-      });
-      
-      row.addEventListener('mouseleave', () => {
-        isHovering = false;
-        cursorImg.classList.remove('active');
-      });
-    });
   }
 
   // ── 9. READING PROGRESS BAR (devlog page only) ──
