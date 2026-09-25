@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterBtns = document.querySelectorAll(".studio-filter-btn");
   const masonryItems = document.querySelectorAll(".masonry-item");
 
-  let currentFilter = document.querySelector(".studio-filter-btn.active")?.getAttribute("data-filter") || "home";
+  let currentFilter = document.querySelector(".studio-filter-btn.active")?.getAttribute("data-filter") || "all";
 
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -92,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 2. Instantly swap states to calculate new layout
       masonryItems.forEach(item => {
         gsap.killTweensOf(item);
-        if (item.classList.contains(filterValue)) {
+        const shouldShow = filterValue === "all" || item.classList.contains(filterValue);
+        if (shouldShow) {
           gsap.set(item, { display: "flex", opacity: 0, scale: 0.9 });
         } else {
           gsap.set(item, { display: "none" });
@@ -109,7 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       // 5. Animate the incoming items popping in
-      const incoming = Array.from(masonryItems).filter(item => item.classList.contains(filterValue));
+      const incoming = Array.from(masonryItems).filter(item => 
+        filterValue === "all" || item.classList.contains(filterValue)
+      );
       gsap.to(incoming, {
         scale: 1,
         opacity: 1,
@@ -120,16 +123,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initialize the grid with the currently active filter
+  // Initialize the grid with the currently active filter ("all" shows everything)
   const activeBtn = document.querySelector(".studio-filter-btn.active");
   if (activeBtn) {
     const filterValue = activeBtn.getAttribute("data-filter");
-    masonryItems.forEach(item => {
-      if (!item.classList.contains(filterValue)) {
-        item.classList.add("filtering-out");
-        gsap.set(item, { scale: 0.8, opacity: 0, display: "none" });
-      }
-    });
+    if (filterValue !== "all") {
+      masonryItems.forEach(item => {
+        if (!item.classList.contains(filterValue)) {
+          item.classList.add("filtering-out");
+          gsap.set(item, { scale: 0.8, opacity: 0, display: "none" });
+        }
+      });
+    }
   }
 
   // 4. SCROLLTRIGGER STAGGER REVEAL FOR MASONRY ITEMS

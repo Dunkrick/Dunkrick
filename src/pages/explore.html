@@ -28,12 +28,15 @@
     </div>
   </section>
 
-  <!-- Filter Navigation (Horizontal Sub-nav) -->
+  <!-- Filter Navigation (Creative Collections) -->
   <nav class="studio-nav fade-up">
     <div class="studio-filters">
-      <button class="studio-filter-btn active" data-filter="home">ALL</button>
-      <button class="studio-filter-btn" data-filter="engineering">ENGINEERING</button>
-      <button class="studio-filter-btn" data-filter="creative">CREATIVE</button>
+      <button class="studio-filter-btn active" data-filter="all">ALL</button>
+      <button class="studio-filter-btn" data-filter="film">FILM</button>
+      <button class="studio-filter-btn" data-filter="motion">MOTION</button>
+      <button class="studio-filter-btn" data-filter="creative-code">CREATIVE CODE</button>
+      <button class="studio-filter-btn" data-filter="visual-systems">VISUAL SYSTEMS</button>
+      <button class="studio-filter-btn" data-filter="experiments">EXPERIMENTS</button>
     </div>
     <div class="studio-search">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -44,92 +47,98 @@
     </div>
   </nav>
 
-  <!-- Work Section (Strict 3-Column Grid) -->
+  <!-- Work Section (Creative Collections Grid) -->
   <section class="explore-work fade-up" style="margin-top: 40px;">
     <div class="masonry-grid studio-grid">
 
-      <!-- Item 1: URL Shortener -->
-      <a href="project.html?id=url-shortener"
-        class="masonry-item engineering magnetic-wrap">
-        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
-          stroke-width="2" stroke-linecap="round">
-          <path d="M10,30 Q30,10 50,50 T90,70" opacity="0.3" />
-        </svg>
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">Go + Redis + k6</div>
-          <h3 class="masonry-title">URL Shortener</h3>
-          <p class="masonry-desc">154 req/s, p95 76 ms. Redis caching and rate limiting. Documented system design.</p>
-        </div>
-      </a>
-
-      <!-- Item 2: Nook -->
-      <a href="project.html?id=nook" class="masonry-item engineering magnetic-wrap">
-        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
-          stroke-width="2" stroke-linecap="round">
-          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
-        </svg>
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">TypeScript Fullstack</div>
-          <h3 class="masonry-title">Nook</h3>
-          <p class="masonry-desc">Workspace app with JWT auth, GCS signed URLs, Docker, CI/CD, Cloud Run.</p>
-        </div>
-      </a>
-
-      <!-- Item 3: Happiclap -->
-      <a href="happiclap-case-study.html" class="masonry-item engineering magnetic-wrap">
-        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
-          stroke-width="2" stroke-linecap="round">
-          <path d="M20,70 Q40,90 60,30 T80,50" opacity="0.3" />
-        </svg>
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">UX Audit / Case Study</div>
-          <h3 class="masonry-title">Happiclap</h3>
-          <p class="masonry-desc">Heuristic evaluation against 40+ public reviews. Proposed improvements documented.</p>
-        </div>
-      </a>
-
-      <!-- Item 4: MacBook Landing — creative -->
-      <a href="project.html?id=macbook-landing" target="_blank"
-        class="masonry-item creative magnetic-wrap">
-        <!-- Playful Squiggle SVG Background -->
-        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
-          stroke-width="2" stroke-linecap="round">
-          <path d="M10,30 Q30,10 50,50 T90,70" opacity="0.3" />
-        </svg>
-        <div class="masonry-content">
-          <div class="masonry-eyebrow">[ 48 Hours ] WebGL</div>
-          <h3 class="masonry-title">GSAP Macbook</h3>
-          <p class="masonry-desc">High-fidelity 3D rendering with scroll-linked GSAP animations. Pure visual craft.</p>
-        </div>
-      </a>
-
-      <!-- Item 5: Film — creative -->
-      <a href="https://www.youtube.com/@DunkRick" target="_blank" class="masonry-item creative magnetic-wrap">
+      <!-- FILM -->
+      <!-- Item 1: Short Film / Cinematography -->
+      <a href="https://www.youtube.com/@DunkRick" target="_blank"
+        class="masonry-item film magnetic-wrap">
         <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
           stroke-width="2" stroke-linecap="round">
           <path d="M10,50 Q20,20 50,50 T90,30" opacity="0.3" />
         </svg>
         <div class="masonry-content">
           <div class="masonry-eyebrow">[ Ongoing ] Film</div>
-          <h3 class="masonry-title">Cinematography</h3>
-          <p class="masonry-desc">Directing taught me that the best edit is always a cut, never a fade.</p>
+          <h3 class="masonry-title">Cinematography & Direction</h3>
+          <p class="masonry-desc">Short films, music videos, and visual storytelling. Directing taught me that the best edit is always a cut, never a fade.</p>
         </div>
       </a>
 
-      <!-- Item 6: Thoughts snippet -->
-      <div class="masonry-item thoughts home magnetic-wrap" style="background: var(--text-strong); color: var(--page);">
+      <!-- Item 2: Behind the Scenes / Process -->
+      <a href="#" class="masonry-item film magnetic-wrap" style="pointer-events: none; opacity: 0.6;">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M20,30 Q50,10 80,50 T90,80" opacity="0.3" />
+        </svg>
         <div class="masonry-content">
-          <p class="rotated-quote"
-            style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.4; margin-top: 12px; font-style: italic;">
-            "Why does the best edit always feel like loss and why is that the right feeling?"
-          </p>
-          <div class="masonry-eyebrow" style="color: var(--page); opacity: 0.7; margin-top: 32px;">Note / July 2026
-          </div>
+          <div class="masonry-eyebrow">[ In Progress ] Film</div>
+          <h3 class="masonry-title">Untitled Short — Pre-production</h3>
+          <p class="masonry-desc">Writing, storyboarding, and location scouting for a narrative short. The process is the project.</p>
         </div>
-      </div>
+      </a>
 
-      <!-- Item 7: Terminal Status -->
-      <div class="masonry-item status-block home magnetic-wrap">
+      <!-- MOTION -->
+      <!-- Item 3: GSAP Macbook Landing -->
+      <a href="project.html?id=macbook-landing" target="_blank"
+        class="masonry-item motion magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M10,30 Q30,10 50,50 T90,70" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">[ 48 Hours ] WebGL</div>
+          <h3 class="masonry-title">GSAP Macbook Landing</h3>
+          <p class="masonry-desc">High-fidelity 3D rendering with scroll-linked GSAP animations. Exploded component scroll, interactive customizer, image scatter. Suburbia Skateboards-inspired brutalist aesthetic.</p>
+        </div>
+      </a>
+
+      <!-- CREATIVE CODE -->
+      <!-- Item 4: Creative Coding Experiments -->
+      <a href="https://github.com/Dunkrick" target="_blank"
+        class="masonry-item creative-code magnetic-wrap">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M50,10 L50,90 M10,50 L90,50" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">[ Ongoing ] Canvas / WebGL</div>
+          <h3 class="masonry-title">Creative Coding Sketches</h3>
+          <p class="masonry-desc">Generative art, particle systems, and shader experiments. Code as a medium for visual exploration, not utility.</p>
+        </div>
+      </a>
+
+      <!-- Item 5: Three.js / R3F Experiments -->
+      <a href="#" class="masonry-item creative-code magnetic-wrap" style="pointer-events: none; opacity: 0.6;">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M30,30 L70,70 M70,30 L30,70" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">[ Planned ] Three.js</div>
+          <h3 class="masonry-title">Interactive 3D Compositions</h3>
+          <p class="masonry-desc">Exploring React Three Fiber for immersive web experiences. Post-processing, custom shaders, physics.</p>
+        </div>
+      </a>
+
+      <!-- VISUAL SYSTEMS -->
+      <!-- Item 6: Design Systems / Visual Identity -->
+      <a href="#" class="masonry-item visual-systems magnetic-wrap" style="pointer-events: none; opacity: 0.6;">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M20,20 L80,20 L80,80 L20,80 Z M40,40 L60,60 M60,40 L40,60" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">[ In Progress ] Design</div>
+          <h3 class="masonry-title">Personal Visual System</h3>
+          <p class="masonry-desc">Developing a cohesive visual language across portfolio, motion, and film. Typography scales, color systems, motion tokens.</p>
+        </div>
+      </a>
+
+      <!-- EXPERIMENTS -->
+      <!-- Item 7: Terminal Status (Living) -->
+      <div class="masonry-item experiments home magnetic-wrap">
         <div class="masonry-content">
           <div class="masonry-eyebrow">Terminal Status</div>
           <div class="status-dashboard" style="margin-top: 16px;">
@@ -152,6 +161,70 @@
         </div>
       </div>
 
+      <!-- Item 8: Thoughts / Reflection -->
+      <div class="masonry-item experiments thoughts home magnetic-wrap" style="background: var(--text-strong); color: var(--page);">
+        <div class="masonry-content">
+          <p class="rotated-quote"
+            style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.4; margin-top: 12px; font-style: italic;">
+            "Why does the best edit always feel like loss and why is that the right feeling?"
+          </p>
+          <div class="masonry-eyebrow" style="color: var(--page); opacity: 0.7; margin-top: 32px;">Note / July 2026
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9: Future / Blender -->
+      <a href="#" class="masonry-item experiments magnetic-wrap" style="pointer-events: none; opacity: 0.6;">
+        <svg class="card-squiggle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" stroke="#FF5722"
+          stroke-width="2" stroke-linecap="round">
+          <path d="M50,10 Q80,30 70,60 Q60,90 30,80 Q10,70 20,40 Z" opacity="0.3" />
+        </svg>
+        <div class="masonry-content">
+          <div class="masonry-eyebrow">[ Planned ] Blender</div>
+          <h3 class="masonry-title">3D Motion Studies</h3>
+          <p class="masonry-desc">Exploring Cinema 4D / Blender for abstract motion design. Materials, lighting, simulation, render pipelines.</p>
+        </div>
+      </a>
+
     </div>
   </section>
+
+  <!-- Collection Descriptions -->
+  <section class="studio-collections fade-up" style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border-soft);">
+    <h2 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--text-strong);">Collections</h2>
+    <div class="studio-collection-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      
+      <div class="collection-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 12px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">FILM</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Cinematography & Direction</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Short films, music videos, visual storytelling. The discipline of narrative through image and time.</p>
+      </div>
+
+      <div class="collection-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 12px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">MOTION</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Animation & Interaction</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">GSAP, Framer Motion, scroll-linked narratives. Movement as communication, not decoration.</p>
+      </div>
+
+      <div class="collection-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 12px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">CREATIVE CODE</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Generative & Interactive</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Canvas, WebGL, shaders. Code as a creative medium. Beauty in algorithms.</p>
+      </div>
+
+      <div class="collection-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 12px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">VISUAL SYSTEMS</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Design Language</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Typography, color, spacing, motion tokens. Cohesion across mediums.</p>
+      </div>
+
+      <div class="collection-card" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 12px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">EXPERIMENTS</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Playground</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Unfinished, unpolished, in-progress. The terminal status, sketches, and things that might become something.</p>
+      </div>
+
+    </div>
+  </section>
+
 </div>
