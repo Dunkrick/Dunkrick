@@ -10,7 +10,7 @@
   },
   "work.html": {
     "title": "Build — Rithwick Gurram",
-    "description": "Product engineering work by Rithwick Gurram: Go URL Shortener, Nook, Dream-wall, Happiclap UX audit.",
+    "description": "Product engineering work by Rithwick Gurram: Go URL Shortener, Nook, Building Nook devlog, Happiclap UX audit.",
     "url": "work.html",
     "id": "",
     "progress": "",
@@ -28,8 +28,8 @@
     "extraScripts": "<script type=\"module\" src=\"assets/js/project.js\"></script>"
   },
   "dream-wall.html": {
-    "title": "Building Dream-wall - Rithwick Gurram",
-    "description": "The unfiltered process of building a complex system.",
+    "title": "Building Nook - Rithwick Gurram",
+    "description": "The unfiltered process of building Nook — from a 50-line script to a production-grade full-stack app.",
     "url": "dream-wall.html",
     "id": "",
     "progress": "<div class=\"reading-progress\" id=\"reading-progress\"></div>",
