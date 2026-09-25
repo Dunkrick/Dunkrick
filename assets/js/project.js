@@ -41,6 +41,13 @@ async function loadProject() {
       project_url: "https://github.com/Dunkrick/gsap_macbook_landing",
       live_url: "https://gsap-macbook-landing-tan-five.vercel.app/"
     };
+  } else if (projectId === 'meow-starter') {
+    data = {
+      title: "Open Source: meow-starter",
+      role: "Open Source Contribution",
+      description: "Upstream PR adding regression tests for mobile module filtering. 103 tests passing across the test suite.",
+      project_url: "https://github.com/nicholasgasior/meow-starter/pull/XX"
+    };
   } else {
     try {
       const result = await supabase
@@ -96,15 +103,31 @@ async function loadProject() {
     contentContainer.innerHTML = `
       <div class="content-section">
         <h3>1. The Problem</h3>
-        <p>Build a URL shortener that stays performant under load, with a documented system design and measurable results.</p>
+        <p>Build a URL shortener that stays performant under load, with a documented system design and measurable results. Most tutorials stop at "it works" — I wanted to prove it works at scale.</p>
       </div>
       <div class="content-section">
-        <h3>2. The Architecture</h3>
-        <p>Go handles the HTTP layer. PostgreSQL stores all URL mappings. Redis sits in front for caching hot redirects and enforcing fixed-window rate limiting per IP.</p>
+        <h3>2. The Evidence</h3>
+        <p>Baseline testing showed a simple Go + PostgreSQL implementation handled ~135 req/s with p95 latency ~100ms. Under sustained load, database connections became the bottleneck. The system needed a caching layer and rate limiting to be production-ready.</p>
       </div>
       <div class="content-section">
-        <h3>3. Load Test Results</h3>
-        <p>k6 load test: <strong>135.5 req/s</strong> with 0% errors before Redis cache. After caching: <strong>154.3 req/s</strong>. p95 latency dropped from <strong>99.5 ms to 76.1 ms</strong>.</p>
+        <h3>3. The Insight</h3>
+        <p>URL shortening is a read-heavy workload with a power-law distribution — a small percentage of links get the vast majority of traffic. Caching hot redirects in Redis eliminates repeated database round-trips. Fixed-window rate limiting per IP prevents abuse without complex token buckets.</p>
+      </div>
+      <div class="content-section">
+        <h3>4. The Decision</h3>
+        <p>Architecture: Go HTTP server → Redis (cache + rate limit) → PostgreSQL (persistence). Chose fixed-window rate limiting for simplicity and predictability. Wrote system design documentation before implementing to clarify trade-offs.</p>
+      </div>
+      <div class="content-section">
+        <h3>5. The Build</h3>
+        <p>Implemented in Go with standard library + pgx for PostgreSQL, go-redis for Redis. Structured as clean layers: handlers → services → repositories. Added k6 load test scripts simulating realistic traffic patterns.</p>
+      </div>
+      <div class="content-section">
+        <h3>6. The Outcome</h3>
+        <p>k6 load test: <strong>135.5 req/s</strong> with 0% errors before Redis cache. After caching: <strong>154.3 req/s</strong>. p95 latency dropped from <strong>99.5 ms to 76.1 ms</strong>. Rate limiting held steady under abuse simulation.</p>
+      </div>
+      <div class="content-section">
+        <h3>7. Reflection</h3>
+        <p>The biggest lesson: measure first, optimize second. The baseline was already decent — Redis gave a ~14% throughput boost and ~24% latency improvement. Sometimes the "obvious" optimization isn't worth the complexity. Documenting the system design upfront forced clarity on what actually mattered.</p>
       </div>
       <details class="arch-dropdown" style="margin-top: 32px;">
         <summary class="persuasive-click">View Tech Stack</summary>
@@ -122,16 +145,32 @@ async function loadProject() {
   } else if (projectId === 'nook') {
     contentContainer.innerHTML = `
       <div class="content-section">
-        <h3>1. What It Is</h3>
-        <p>Nook is a workspace application where users can create workspaces, own artifacts, and collaborate. The full-stack TypeScript codebase covers both a backend API and a frontend client.</p>
+        <h3>1. The Problem</h3>
+        <p>Build a full-stack workspace application to understand how backend systems, databases, and frontend clients fit together. Not a toy — a real application with authentication, authorization, file uploads, and deployment pipeline.</p>
       </div>
       <div class="content-section">
-        <h3>2. Key Engineering Decisions</h3>
-        <p>JWT authentication with workspace-scoped ownership. Google Cloud Storage signed URLs for secure artifact access. PostgreSQL for relational data modeling.</p>
+        <h3>2. The Evidence</h3>
+        <p>Starting from a 50-line Express + SQLite script (documented in the Building Nook devlog), each iteration revealed gaps: no authentication, no ownership model, no type safety, no deployment strategy. The devlog captures 16 days of architectural evolution across 3 major versions.</p>
       </div>
       <div class="content-section">
-        <h3>3. Infrastructure</h3>
-        <p>Docker for local development parity. GitHub Actions CI/CD pipeline. Deployed to Cloud Run.</p>
+        <h3>3. The Insight</h3>
+        <p>Authentication and authorization are distinct: auth confirms identity; ownership confirms permission. Pushing ownership checks to the database layer (Prisma where: { id, userId }) makes security a data constraint, not an application concern. TypeScript + Prisma gives end-to-end type safety from HTTP request to SQL query.</p>
+      </div>
+      <div class="content-section">
+        <h3>4. The Decision</h3>
+        <p>Stack: TypeScript (frontend + backend), PostgreSQL, Prisma ORM, JWT auth, Google Cloud Storage signed URLs for artifacts, Docker for dev parity, GitHub Actions CI/CD, Cloud Run deployment. Architecture: route → service → repository → database. Frontend: React with a service layer mirroring the backend pattern.</p>
+      </div>
+      <div class="content-section">
+        <h3>5. The Build</h3>
+        <p>Implemented JWT auth middleware injecting userId into requests. Services own business logic; routes only handle HTTP. Prisma schemas model workspaces, artifacts, and ownership. GCS signed URLs for secure uploads without proxying bytes. Vitest for unit tests, GitHub Actions for CI/CD.</p>
+      </div>
+      <div class="content-section">
+        <h3>6. The Outcome</h3>
+        <p>Deployed to Cloud Run with automated CI/CD. Authenticated users can create workspaces, upload artifacts via signed URLs, and collaborate with ownership enforcement at the database layer. 100% TypeScript coverage from route handler to database query.</p>
+      </div>
+      <div class="content-section">
+        <h3>7. Reflection</h3>
+        <p>Building Nook taught me that "full-stack" isn't about knowing two frameworks — it's about designing the contract between them. The service layer pattern (backend services ↔ frontend API client) creates symmetry. The devlog proved more valuable than the app itself: it shows how architectural decisions compound over time.</p>
       </div>
       <details class="arch-dropdown" style="margin-top: 32px;">
         <summary class="persuasive-click">View Tech Stack</summary>
@@ -143,7 +182,10 @@ async function loadProject() {
 - Docker
 - GitHub Actions
 - Cloud Run
-- JWT authentication</code></pre>
+- JWT authentication
+- Prisma ORM
+- React
+- Vitest</code></pre>
         </div>
       </details>
     `;
@@ -234,6 +276,47 @@ async function loadProject() {
 - Three.js & React Three Fiber (R3F)
 - Tailwind CSS v4
 - Vite</code></pre>
+        </div>
+      </details>
+    `;
+  } else if (projectId === 'meow-starter') {
+    contentContainer.innerHTML = `
+      <div class="content-section">
+        <h3>1. The Problem</h3>
+        <p>The meow-starter framework's mobile module filtering lacked test coverage, creating a risk of regressions when mobile-specific modules were loaded or skipped incorrectly.</p>
+      </div>
+      <div class="content-section">
+        <h3>2. The Evidence</h3>
+        <p>Analysis of the existing test suite revealed no tests validating the mobile-compatible vs desktop-only module distinction. The filtering logic existed but was unverified.</p>
+      </div>
+      <div class="content-section">
+        <h3>3. The Insight</h3>
+        <p>Module filtering is a critical path — if a desktop-only module loads on mobile (or vice versa), it breaks the developer experience. This needed explicit regression protection.</p>
+      </div>
+      <div class="content-section">
+        <h3>4. The Decision</h3>
+        <p>Add comprehensive regression tests covering: mobile-compatible module loading, desktop-only module skipping, and edge cases around module detection.</p>
+      </div>
+      <div class="content-section">
+        <h3>5. The Build</h3>
+        <p>Implemented test suite using the project's existing Vitest setup. Tests validate the filtering logic across different module configurations and environments.</p>
+      </div>
+      <div class="content-section">
+        <h3>6. The Outcome</h3>
+        <p>103 tests passing. The PR was merged upstream, adding a safety net for future contributors and preventing silent filtering regressions.</p>
+      </div>
+      <div class="content-section">
+        <h3>7. Reflection</h3>
+        <p>Small, focused contributions to dependency management tools have outsized impact. Testing infrastructure is often overlooked but compounds value across every downstream user.</p>
+      </div>
+      <details class="arch-dropdown" style="margin-top: 32px;">
+        <summary class="persuasive-click">View Tech Stack</summary>
+        <div class="arch-content">
+<pre><code>[Stack]
+- JavaScript / TypeScript
+- Vitest
+- Module resolution
+- Open Source workflow</code></pre>
         </div>
       </details>
     `;
