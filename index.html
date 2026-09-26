@@ -154,10 +154,46 @@
 
 <div class="divider fade-up"></div>
 
-<!-- Currently Building -->
-<section id="work" class="work-section">
+<!-- Proof -->
+<section id="proof" class="work-section">
+  <div class="container fade-up">
+    <h2 class="section-title">Proof</h2>
+
+    <div class="gh-graph-wrapper">
+      <div style="margin-bottom: 16px; display: flex; align-items: baseline; gap: 8px;">
+        <span id="gh-contributions-count" style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--text-strong);">725</span>
+        <span style="font-size: 14px; color: var(--text-muted);">Contributions in the last year</span>
+      </div>
+      <img src="https://ghchart.rshah.org/dunkrick" alt="GitHub Contribution Graph" class="gh-graph-img" loading="lazy" decoding="async"
+        style="max-width: 100%; border-radius: 4px; display: block;" />
+    </div>
+
+    <div class="proof-highlights" style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+      <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Shipped Systems</div>
+        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">5</div>
+        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Production-grade projects with documented architecture</div>
+      </div>
+      <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Open Source</div>
+        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">1</div>
+        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Upstream PR merged (meow-starter, 103 tests)</div>
+      </div>
+      <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Load Tested</div>
+        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">154 req/s</div>
+        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">p95 76ms (Go URL Shortener, k6)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider fade-up"></div>
+
+<!-- Build -->
+<section id="build" class="work-section">
   <div class="container">
-    <h2 class="section-title fade-up">Currently Building</h2>
+    <h2 class="section-title fade-up">Build</h2>
 
     <div class="mini-bento-stack">
       <!-- Project 01: URL Shortener — featured first -->
@@ -197,29 +233,70 @@
           <span class="card-arrow">→</span>
         </div>
       </a>
+
+      <!-- Project 04: Happiclap — UX audit / case study -->
+      <a href="happiclap-case-study.html" class="mini-bento-card fade-up">
+        <div class="card-content">
+          <span class="card-eyebrow">Product Design</span>
+          <h3 class="card-title">Happiclap</h3>
+          <p class="card-desc">External UX audit of a gifting e-commerce platform. Heuristic evaluation against 40+ public reviews.</p>
+        </div>
+        <div class="card-meta">
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Project 05: Open Source -->
+      <a href="project.html?id=meow-starter" class="mini-bento-card fade-up">
+        <div class="card-content">
+          <span class="card-eyebrow">Open Source</span>
+          <h3 class="card-title">meow-starter</h3>
+          <p class="card-desc">Upstream PR adding regression tests for mobile module filtering. 103 tests passing.</p>
+        </div>
+        <div class="card-meta">
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="work.html" class="hero-cta-btn" style="background: transparent; color: var(--text-strong); border: 1px solid var(--border-soft);">View all work →</a>
     </div>
   </div>
 </section>
 
 <div class="divider fade-up"></div>
 
-<!-- What I'm Learning -->
-<section id="learning" class="work-section">
+<!-- Method -->
+<section id="method" class="work-section">
   <div class="container fade-up">
-    <h2 class="section-title">What I'm Learning</h2>
+    <h2 class="section-title">Method</h2>
 
-    <div class="learning-list">
-      <div class="learning-item">
-        <span class="learning-arrow">→</span>
-        <span>Go: concurrency patterns and HTTP internals</span>
+    <div class="method-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+      <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">01</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Find the Friction</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Observe where systems break — for users, for developers, for the business. The best signal is pain.</p>
       </div>
-      <div class="learning-item">
-        <span class="learning-arrow">→</span>
-        <span>Distributed systems: caching, rate limiting, load testing</span>
+      <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">02</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Model the System</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Draw the boundaries. Name the components. Understand the data flows. Make the implicit explicit.</p>
       </div>
-      <div class="learning-item">
-        <span class="learning-arrow">→</span>
-        <span>PostgreSQL: query planning and relational modeling</span>
+      <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">03</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Simplify Relentlessly</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Cut scope. Merge concepts. Push complexity down. The best architecture is the one you don't need.</p>
+      </div>
+      <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">04</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Build to Learn</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Ship the thinnest slice that proves the model. Measure. Reflect. The devlog is the artifact.</p>
+      </div>
+      <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">05</div>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Engineer the Elimination</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Automate the fix. Codify the pattern. Make the next friction impossible. Then find the next one.</p>
       </div>
     </div>
   </div>
@@ -227,18 +304,125 @@
 
 <div class="divider fade-up"></div>
 
-<!-- Open Source Activity -->
-<section id="proof" class="work-section">
+<!-- Studio Preview -->
+<section id="studio-preview" class="work-section">
   <div class="container fade-up">
-    <h2 class="section-title">GitHub Activity</h2>
+    <h2 class="section-title">Studio Preview</h2>
 
-    <div class="gh-graph-wrapper">
-      <div style="margin-bottom: 16px; display: flex; align-items: baseline; gap: 8px;">
-        <span id="gh-contributions-count" style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--text-strong);">719</span>
-        <span style="font-size: 14px; color: var(--text-muted);">Contributions in the last year</span>
+    <div class="studio-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      <a href="explore.html" class="studio-preview-card" style="display: block; padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.2s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--text-strong); display: flex; align-items: center; justify-content: center; color: var(--page);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase;">FILM</div>
+            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong);">Cinematography & Direction</div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Short films, music videos, visual storytelling. The discipline of narrative through image and time.</p>
+      </a>
+
+      <a href="explore.html" class="studio-preview-card" style="display: block; padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.2s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--text-strong); display: flex; align-items: center; justify-content: center; color: var(--page);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase;">MOTION</div>
+            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong);">GSAP Macbook Landing</div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">3D scroll-driven landing page. React, TypeScript, Three.js, GSAP. 48-hour build.</p>
+      </a>
+
+      <a href="explore.html" class="studio-preview-card" style="display: block; padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.2s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--text-strong); display: flex; align-items: center; justify-content: center; color: var(--page);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase;">CREATIVE CODE</div>
+            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong);">Generative Sketches</div>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Canvas, WebGL, shader experiments. Code as a creative medium, not a utility.</p>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="explore.html" class="hero-cta-btn" style="background: transparent; color: var(--text-strong); border: 1px solid var(--border-soft);">Explore Studio →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider fade-up"></div>
+
+<!-- About -->
+<section id="about" class="about-section">
+  <div class="container fade-up">
+    <h2 class="section-title">About</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <div>
+        <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--text); line-height: 1.7;">
+          I'm Rithwick Gurram — a Product Engineer based in Chennai. I build products with the discipline of an engineer and explore ideas with the curiosity of an artist.
+        </p>
+        <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--text); line-height: 1.7;">
+          My professional track is <strong>BUILD</strong>: backend systems, databases, full-stack applications, and the craft of shipping real software. I enjoy understanding how complex systems work and then making them work better — breaking complexity into simple chunks, thinking from first principles, and learning by building.
+        </p>
+        <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--text); line-height: 1.7;">
+          My creative track is <strong>STUDIO</strong>: filmmaking, motion design, creative coding, and visual systems. It keeps me honest — the same principles that make a good film (pacing, clarity, intent) make good software.
+        </p>
+        <p style="margin: 0; font-size: 16px; color: var(--text); line-height: 1.7;">
+          Currently: deep into Go concurrency, distributed systems (caching, rate limiting), PostgreSQL query planning, and GSAP/WebGL visual systems.
+        </p>
       </div>
-      <img src="https://ghchart.rshah.org/dunkrick" alt="GitHub Contribution Graph" class="gh-graph-img" loading="lazy" decoding="async"
-        style="max-width: 100%; border-radius: 4px; display: block;" />
+
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--text-strong); margin-bottom: 16px;">Currently</h3>
+        <ul style="list-style: none; padding: 0; margin: 0 0 32px 0;">
+          <li style="padding: 12px 0; border-bottom: 1px solid var(--border-soft); font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);">🔨</span>
+            Building Nook (devlog)
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid var(--border-soft); font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);">📚</span>
+            Learning: Go internals, distributed systems
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid var(--border-soft); font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);">🎬</span>
+            Exploring: Blender, Cavalry for motion
+          </li>
+        </ul>
+
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--text-strong); margin-bottom: 16px;">Background</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">CS</span>
+            Computer Science undergraduate
+          </li>
+          <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Loc</span>
+            Chennai, India
+          </li>
+          <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Focus</span>
+            Product Engineering
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
