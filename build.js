@@ -179,6 +179,51 @@ for (const page of pages) {
       content = before + '\n' + htmlOutput + '        ' + after;
     }
     
+    // Generate Blog structured data for devlog
+    let devlogStructuredData = '';
+    entries.forEach((entry, index) => {
+      const date = entry.attributes.date;
+      const title = entry.attributes.title;
+      const firstPara = entry.rawBody.trim().split('\n\n')[0].replace(/\*/g, '').substring(0, 300);
+      
+      devlogStructuredData += `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "${title}",
+    "description": "${firstPara}...",
+    "datePublished": "${new Date(entry.attributes.date).toISOString().split('T')[0]}",
+    "dateModified": "${new Date(entry.attributes.date).toISOString().split('T')[0]}",
+    "author": {
+      "@type": "Person",
+      "name": "Rithwick Gurram",
+      "url": "https://rithwick.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Rithwick Gurram",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rithwick.me/assets/images/favicon-main-192.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rithwick.me/dream-wall.html#entry-${index}"
+    },
+    "articleSection": "Engineering Devlog",
+    "keywords": "engineering, architecture, product, systems, devlog"
+  }
+  </script>`;
+    });
+    
+    // Inject BlogPosting structured data after devlog content
+    content = content.replace(
+      '<!-- DEVLOG_ENTRIES_END -->',
+      devlogStructuredData + '\n        <!-- DEVLOG_ENTRIES_END -->'
+    );
+    
     console.log(`[dream-wall] -> ${totalDays} entries, ${totalVersions} versions, ${totalEPs} EPs`);
   }
 
@@ -200,6 +245,47 @@ for (const page of pages) {
     
     // Sort by date (newest first)
     entries.sort((a, b) => new Date(b.attributes.date) - new Date(a.attributes.date));
+    
+    // Generate BlogPosting structured data for notes
+    let notesStructuredData = '';
+    entries.forEach((entry, index) => {
+      const noteNumber = String(index + 1).padStart(3, '0');
+      const date = entry.attributes.date;
+      const title = entry.attributes.title;
+      // Extract first paragraph as description
+      const firstPara = entry.rawBody.trim().split('\n\n')[0].replace(/\*/g, '').substring(0, 300);
+      
+      notesStructuredData += `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "${title}",
+    "description": "${firstPara}...",
+    "datePublished": "${new Date(entry.attributes.date).toISOString().split('T')[0]}",
+    "dateModified": "${new Date(entry.attributes.date).toISOString().split('T')[0]}",
+    "author": {
+      "@type": "Person",
+      "name": "Rithwick Gurram",
+      "url": "https://rithwick.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Rithwick Gurram",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rithwick.me/assets/images/favicon-main-192.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rithwick.me/notes.html#note-${noteNumber}"
+    },
+    "articleSection": "Engineering",
+    "keywords": "engineering, architecture, product, systems"
+  }
+  </script>`;
+    });
     
     let htmlOutput = '';
     entries.forEach((entry, index) => {
@@ -235,6 +321,12 @@ for (const page of pages) {
       const after = content.substring(endIndex);
       content = before + '\n' + htmlOutput + '      ' + after;
     }
+    
+    // Inject BlogPosting structured data after notes content
+    content = content.replace(
+      '<!-- MARKER: NOTES_END -->',
+      notesStructuredData + '\n      <!-- MARKER: NOTES_END -->'
+    );
     
     console.log(`[notes] -> ${entries.length} notes`);
   }
