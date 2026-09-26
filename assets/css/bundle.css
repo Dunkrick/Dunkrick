@@ -1451,6 +1451,279 @@ body.wireframe-mode .connect-dock {
 .masonry-item.filtering-out {
   pointer-events: none;
 }
+.studio-hero {
+  text-align: center;
+  padding: 80px 0 40px;
+}
+.studio-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.studio-headline {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.studio-tagline {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.studio-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 16px;
+  margin-bottom: 40px;
+}
+.studio-filters {
+  display: flex;
+  gap: 32px;
+}
+.studio-filter-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+.studio-filter-btn:hover {
+  color: var(--text-strong);
+}
+.studio-filter-btn.active {
+  color: var(--text-strong);
+}
+.studio-filter-btn.active::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -4px;
+  width: calc(100% + 4px);
+  height: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg preserveAspectRatio='none' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q50,0 100,5' stroke='%23FF5722' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+.studio-search {
+  color: var(--text-strong);
+  cursor: pointer;
+}
+.collection-section {
+  margin-bottom: 80px;
+}
+.collection-header {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.collection-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.collection-label {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-strong);
+  text-transform: uppercase;
+}
+.collection-count {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.collection-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.collection-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-filters {
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+}
+.masonry-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.masonry-link {
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: var(--text-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+.masonry-link:hover {
+  opacity: 0.7;
+}
+.masonry-status {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-icon);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.masonry-item.upcoming {
+  border-style: dashed;
+  border-color: var(--border-soft);
+  background: var(--bg-icon);
+}
+.masonry-item.upcoming .masonry-title {
+  color: var(--text-muted);
+}
+.masonry-item.upcoming .masonry-desc {
+  color: var(--text-muted);
+}
+.studio-about {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 60px;
+  margin-top: 40px;
+}
+.studio-about h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.studio-about > div > div {
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.studio-about > div > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+.studio-about .collection-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.studio-about h3 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+}
+.studio-about p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.studio-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--text-strong);
+  margin-top: 120px;
+  margin-bottom: 32px;
+  min-height: 200px;
+  background: var(--bg-surface);
+}
+.studio-header-left {
+  border-right: 2px solid var(--text-strong);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 0;
+  color: var(--text-strong);
+}
+.studio-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.studio-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.studio-doodle {
+  color: var(--text-strong);
+}
+@media (max-width: 768px) {
+  .studio-header {
+    grid-template-columns: 1fr;
+  }
+  .studio-header-left {
+    border-right: none;
+    border-bottom: 2px solid var(--text-strong);
+    justify-content: flex-start;
+    padding: 16px 24px;
+  }
+  .studio-headline {
+    font-size: 48px;
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
   @font-face {
     font-family: 'SF Pro Rounded';
