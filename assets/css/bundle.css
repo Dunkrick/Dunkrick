@@ -1312,6 +1312,93 @@ body.wireframe-mode .connect-dock {
     font-size: 48px;
   }
 }
+.notes-hero {
+  text-align: center;
+  padding: 100px 0 60px;
+}
+.notes-label {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.notes-headline {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.notes-tagline {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.notes-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.note-row {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-soft);
+  transition: border-color 0.3s;
+}
+.note-row:hover {
+  border-color: var(--text-muted);
+}
+.note-date {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.note-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.note-content {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.note-content p {
+  margin-bottom: 16px;
+}
+.note-content p:last-child {
+  margin-bottom: 0;
+}
+.note-content a {
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.note-content a:hover {
+  color: var(--text);
+}
+@media (max-width: 600px) {
+  .notes-headline {
+    font-size: 48px;
+  }
+  .note-title {
+    font-size: 20px;
+  }
+}
 .studio-nav {
   display: flex;
   justify-content: space-between;
@@ -1722,6 +1809,93 @@ body.wireframe-mode .connect-dock {
   }
   .studio-headline {
     font-size: 48px;
+  }
+}
+.notes-hero {
+  text-align: center;
+  padding: 100px 0 60px;
+}
+.notes-label {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.notes-headline {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.notes-tagline {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.notes-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.note-row {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-soft);
+  transition: border-color 0.3s;
+}
+.note-row:hover {
+  border-color: var(--text-muted);
+}
+.note-date {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.note-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.note-content {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.note-content p {
+  margin-bottom: 16px;
+}
+.note-content p:last-child {
+  margin-bottom: 0;
+}
+.note-content a {
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.note-content a:hover {
+  color: var(--text);
+}
+@media (max-width: 600px) {
+  .notes-headline {
+    font-size: 48px;
+  }
+  .note-title {
+    font-size: 20px;
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');

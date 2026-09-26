@@ -55,5 +55,14 @@
     "cta": "",
     "extraHead": "<meta name=\"theme-color\" content=\"#fafafa\" />",
     "extraScripts": "<script defer src=\"assets/js/happiclap.js\"></script>"
+  },
+  "notes.html": {
+    "title": "Notes — Rithwick Gurram",
+    "description": "Engineering reflections, architectural decisions, and design observations. Thinking in public.",
+    "url": "notes.html",
+    "id": "",
+    "progress": "",
+    "cta": "",
+    "extraHead": ""
   }
 }

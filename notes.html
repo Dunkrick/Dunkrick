@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building Nook - Rithwick Gurram</title>
-  <meta name="description" content="The unfiltered process of building Nook — from a 50-line script to a production-grade full-stack app." />
+  <title>Notes — Rithwick Gurram</title>
+  <meta name="description" content="Engineering reflections, architectural decisions, and design observations. Thinking in public." />
 
   <!-- Site icon: one stable, square URL for Google Search. -->
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-main-192.png">
@@ -26,22 +26,22 @@
   <meta name="ICBM" content="12.8387, 80.1506" />
 
   <!-- SEO & Open Graph -->
-  <link rel="canonical" href="https://rithwick.me/dream-wall.html" />
+  <link rel="canonical" href="https://rithwick.me/notes.html" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Rithwick Gurram" />
 
-  <meta property="og:title" content="Building Nook - Rithwick Gurram" />
-  <meta property="og:description" content="The unfiltered process of building Nook — from a 50-line script to a production-grade full-stack app." />
+  <meta property="og:title" content="Notes — Rithwick Gurram" />
+  <meta property="og:description" content="Engineering reflections, architectural decisions, and design observations. Thinking in public." />
   <meta property="og:image" content="https://rithwick.me/assets/images/rithwick-plaid.png" />
-  <meta property="og:url" content="https://rithwick.me/dream-wall.html" />
+  <meta property="og:url" content="https://rithwick.me/notes.html" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@RithwickGurram" />
   <meta name="twitter:creator" content="@RithwickGurram" />
-  <meta name="twitter:title" content="Building Nook - Rithwick Gurram" />
-  <meta name="twitter:description" content="The unfiltered process of building Nook — from a 50-line script to a production-grade full-stack app." />
+  <meta name="twitter:title" content="Notes — Rithwick Gurram" />
+  <meta name="twitter:description" content="Engineering reflections, architectural decisions, and design observations. Thinking in public." />
   <meta name="twitter:image" content="https://rithwick.me/assets/images/rithwick-plaid.png" />
 
   <!-- Structured Data for Google Search -->
@@ -84,7 +84,7 @@
 
 <body>
 
-  <div class="reading-progress" id="reading-progress"></div>
+  
 
   <!-- Nav -->
   <nav id="nav" class="nav">
@@ -125,121 +125,162 @@
   </nav>
 
   <main id="" class="site-main">
-    <section id="devlog" style="padding-bottom: 80px;">
-      <div class="container stack">
-        <div class="case-study-meta fade-up">
-          <span style="display: flex; align-items: center; gap: 4px;">
-            <span class="pulse-dot"></span> Active Build
-          </span>
-          <span>·</span>
-          <span>Systems & Architecture</span>
-        </div>
+    <!-- Notes Hero -->
+<section id="notes-hero" class="notes-hero fade-up">
+  <div class="container">
+    <p class="notes-label">Field Notes</p>
+    <h1 class="notes-headline">Observations.</h1>
+    <p class="notes-tagline">Engineering reflections, architectural decisions, and design observations. Thinking in public.</p>
+  </div>
+</section>
 
-        <h1 class="case-study-title fade-up">Building Nook</h1>
-        <p class="case-study-description devlog-hero-desc fade-up">
-          Every system starts as a single decision. This is the story of how Nook evolved from a 50-line script into a production-grade, authenticated application — and everything I learned along the way.
-        </p>
+<div class="divider fade-up"></div>
 
-        <div class="devlog-stats fade-up">
-          <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-days="16">10</span>
-            <span class="devlog-stat-label">Days</span>
+<!-- Notes List -->
+<section id="notes-list" class="work-section">
+  <div class="container">
+    <div class="notes-container" id="notes-container">
+      <!-- Notes injected by build.js from content/timeline.json -->
+      <!-- MARKER: NOTES_START -->
+
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            001 // July 29, 2026
           </div>
-          <div class="devlog-stat-divider"></div>
-          <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-versions="3">3</span>
-            <span class="devlog-stat-label">Versions</span>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Moving to Neon Postgres
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <h1>Moving to Neon Postgres</h1>
+<p>Changed the infrastructure today — migrated the Postgres database from a Render DB instance over to Neon Postgres.</p>
+<p>To verify the migration, I walked through the full CRUD cycle: registered a new test user, logged in, created a dream, fetched it, updated it, and deleted it. Everything held up cleanly.</p>
+<p>The key insight from today: the application was never coupled to Render PostgreSQL. It was coupled to the PostgreSQL <em>interface</em>. Swapping the host was just config.</p>
+
           </div>
-          <div class="devlog-stat-divider"></div>
-          <div class="devlog-stat">
-            <span class="devlog-stat-value" data-stat-eps="8">5</span>
-            <span class="devlog-stat-label">Engineering Principles</span>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            002 // July 22, 2026
           </div>
-        </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Engineering Lessons from Today
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <h1>Engineering Lessons from Today</h1>
+<p>I&#39;ve realized that the main difference between a product that feels alive and one that feels rigid and &quot;dead&quot; comes down to one thing: timing.</p>
+<p>Everything that happens in a user interface has a duration. A reaction time of 0ms feels instant, digital, and robotic. On the other hand, 150ms–300ms feels human and physical. </p>
+<p>Every CSS transition added isn&#39;t just an afterthought; it&#39;s the process of intentionally slowing down from machine speed to human speed. It&#39;s not a performance cost—it&#39;s a core feature of the experience.</p>
+<p>Here&#39;s a breakdown of today&#39;s progress:</p>
+<h3>Moving Beyond Hardcoded Pixels</h3>
+<p>I initially started by positioning elements with hardcoded pixels. The issue? Using <code>left: 900px</code> means exactly 900 pixels from the left edge. On a large MacBook Pro, that looks perfectly fine. But on a 768px tablet screen, 900px is completely off-screen, causing the card to disappear entirely.</p>
+<p><strong>The Fix:</strong> Transitioning to CSS percentages for horizontal positioning. 
+By using <code>left: 60%</code>, we&#39;re asking for 60% of the wall container&#39;s width. On a 1400px screen, that translates to 840px. On a smaller 768px screen, it scales down to 461px. Now, the cards stay on screen automatically, no matter the device.</p>
+<h3>Breathing Life into Card Animations</h3>
+<p>I spent a good chunk of time fine-tuning the card animations to make them feel natural:</p>
+<ul>
+<li>Implemented a staggered animation and keyframes for a satisfying &quot;pop-in&quot; effect.</li>
+<li><strong>The Toolkit:</strong><ul>
+<li><code>@keyframes</code> to script the core animation logic.</li>
+<li><code>cubic-bezier()</code> using a spring curve to give the cards a physical, tangible weight.</li>
+<li><code>animation-delay</code> mapped to the item&#39;s index to create a cascading stagger effect.</li>
+<li><code>animation-fill-mode: both</code> to ensure delayed cards don&#39;t awkwardly flash before appearing.</li>
+<li>The CSS <code>rotate</code> property (kept separate from <code>transform</code>) so that the hover scale effect and the card&#39;s natural tilt don&#39;t conflict with one another.</li>
+</ul>
+</li>
+</ul>
+<h3>Wrapping Up</h3>
+<p>We&#39;ve also successfully finished building out the empty state!</p>
+<p><strong>Tomorrow&#39;s Focus:</strong> Refactoring the Home layout. The plan is to expand the Wall to take up the full viewport and elegantly float the header/input form directly over the center.</p>
 
-        <div class="fade-up" style="margin-bottom: 48px;">
-          <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">View Repository ↗</a>
-        </div>
-
-        <!-- VERSION 3.0.0 -->
-        <div class="act-break fade-up">
-          <div class="act-break-rule"></div>
-          <div class="act-break-content">
-            <span class="act-break-status"><span class="pulse-dot"></span> Active Build</span>
-            <h3 class="act-break-title">v3.0.0 — Identity & Ownership</h3>
-            <p class="act-break-desc">Implementing full JWT authentication and authorization. Refactoring the architecture so every dream belongs to a specific user, making the system secure and multi-tenant ready.</p>
           </div>
-          <div class="act-break-rule"></div>
-        </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            003 // July 21, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Focusing on Interaction Design
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <h1>Focusing on Interaction Design</h1>
+<p>I wanted to deliver something that feels like more than just another CRUD app.</p>
+<p>The mission for today: completely replace the standard vertical list with a free-flowing, true &quot;wall&quot; canvas—all without breaking a single existing feature.</p>
+<p>The goal is to shift the user&#39;s perspective. They shouldn&#39;t feel like they&#39;re looking at a rigid list anymore; they should feel like they&#39;re looking at a physical wall.</p>
+<p>Here&#39;s the scope for today&#39;s transition:</p>
+<ul>
+<li><strong>The Wall Experience:</strong> Users immediately see an expansive, immersive canvas.</li>
+<li><strong>Card Positioning:</strong> Cards need to be naturally placed and fully functional.</li>
+<li><strong>Empty State:</strong> Crafting a beautiful, welcoming empty state for first-time visitors.</li>
+<li><strong>Under the Hood:</strong> Keeping the exact same authentication flow intact.</li>
+</ul>
 
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-          <!-- DEVLOG_ENTRIES_START -->
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 10, 2026</time>
-              <span class="timeline-tag">Product</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 18: Bangalore, Builders, and the Product Craft</h2>
-            <div class="timeline-content">
-              <p>I spent today in Bangalore. Sometimes, getting out of your physical workspace is the fastest way to expand your mental one. I was there talking about a product admin role at a company called Lightforms—a conversation that quickly turned into a broader discussion about building, learning, and the product craft.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            004 // July 10, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 18: Bangalore, Builders, and the Product Craft
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>I spent today in Bangalore. Sometimes, getting out of your physical workspace is the fastest way to expand your mental one. I was there talking about a product admin role at a company called Lightforms—a conversation that quickly turned into a broader discussion about building, learning, and the product craft.</p>
 <p>Meeting Tanuj Arora was refreshing. In an industry that often indexes heavily on rigid years of experience, he was genuinely excited about listening to fresh talent, learning from new perspectives, and understanding how the next generation of builders thinks. It was a reminder that the best builders don&#39;t build in an echo chamber; they remain perpetually curious.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-016: Great products are built by listening, not just directing.</span></blockquote>
 <p>It reinforced exactly what I’ve been reflecting on recently: shipping features is only half the battle. The real work is in understanding people, aligning systems to support them, and keeping that curiosity alive. Getting to talk shop, trade ideas, and see how other teams approach product operations was the perfect energy boost. </p>
 <p>Hoping for the best on this front, but regardless of the outcome, today was a great validation of stepping into the product world.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 7, 2026</time>
-              <span class="timeline-tag">Product</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Days 12–17: The Reality Check</h2>
-            <div class="timeline-content">
-              <p>I&#39;ve stepped away from the codebase for the last few days. It&#39;s dangerously easy to get trapped in the momentum of shipping — building feature after feature, refining the architecture, tweaking the design. But building for the sake of building leads to products that look great on a shelf but never get used. </p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            005 // July 7, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Days 12–17: The Reality Check
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>I&#39;ve stepped away from the codebase for the last few days. It&#39;s dangerously easy to get trapped in the momentum of shipping — building feature after feature, refining the architecture, tweaking the design. But building for the sake of building leads to products that look great on a shelf but never get used. </p>
 <p>I took this time for a deep retrospection, completely immersing myself in real user needs. I had to remind myself that my core identity here isn&#39;t just &quot;developer.&quot; I am a <strong>product person</strong>. </p>
 <blockquote class="ep-callout"><span class="ep-label">EP-015: Fall in love with the problem, not the architecture.</span></blockquote>
 <p>The business side of Dream Wall demands as much rigor as the engineering side. Solving real problems means understanding exactly who this is for and why they need it. </p>
 <p>Simultaneously, we&#39;ve hit an infrastructure ceiling. The free tier of Render has started to bottleneck our growth — blocking custom domains, custom emails, and restricting database capabilities. While I hear they are rolling out updates to their Hobby tier soon, these constraints are forcing a broader conversation about our long-term deployment strategy. </p>
 <p>Sometimes, the most productive thing you can do for a system is to stop typing and start thinking.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 3, 2026</time>
-              <span class="timeline-tag">Product</span>
-              <span class="timeline-reading-time">2 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 11: Shipping v3.0.0</h2>
-            <div class="timeline-content">
-              <p>I started the day away from the code. Before writing another line, I wanted to ground myself in real user problems — scraping forums, reading threads, understanding the actual pain points people share online. It&#39;s easy to get lost in architecture and forget that systems exist to serve humans.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            006 // July 3, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 11: Shipping v3.0.0
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>I started the day away from the code. Before writing another line, I wanted to ground myself in real user problems — scraping forums, reading threads, understanding the actual pain points people share online. It&#39;s easy to get lost in architecture and forget that systems exist to serve humans.</p>
 <p>That research clarified something I&#39;d been feeling for a while. Dream Wall started as a physical wall inside my room — sticky notes, scribbled ideas, things I wanted to see every day. The digital version should honor that origin. Not a task manager. Not a notes app. <strong>A visual wall for the ideas and dreams you want to see often.</strong></p>
 <blockquote class="ep-callout"><span class="ep-label">EP-014: Build for the human on the other side of the screen.</span></blockquote>
 <p>With that direction locked in, I moved to design. I used Claude to rapidly scaffold an MVP design foundation — colors, typography, spacing, component patterns. Having an AI pair for design is a genuine game changer. What would normally take days of iteration compressed into hours.</p>
 <p>Then came the final push to ship. The entire day funneled into getting <strong>v3.0.0</strong> live. And of course, the last boss before deployment was an old nemesis: CORS. The same class of error that bit me on Day 10, but this time with a twist — trailing slashes on the API URL were causing the preflight requests to fail silently on Render. A quick, clever fix to normalize the URLs, and the deploy went through.</p>
 <p>v3.0.0 is live and working. The system is secure, the architecture is clean, and for the first time, it actually <em>looks</em> like a product someone would want to use.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 2, 2026</time>
-              <span class="timeline-tag">Integration</span>
-              <span class="timeline-reading-time">2 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 10: Wiring It All Together</h2>
-            <div class="timeline-content">
-              <p>Yesterday, React was just a mental model. Today, I needed to prove it works. I gave myself one goal for the day: one complete user journey. Open the app, log in, see the home page, log out. No shortcuts, no mocks.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            007 // July 2, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 10: Wiring It All Together
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>Yesterday, React was just a mental model. Today, I needed to prove it works. I gave myself one goal for the day: one complete user journey. Open the app, log in, see the home page, log out. No shortcuts, no mocks.</p>
 <p>I started by building out the frontend&#39;s service layer — <code>api.ts</code> and <code>auth.ts</code>. And immediately, a pattern I&#39;ve been feeling all project long finally crystallized. <code>api.ts</code> is to the frontend what Prisma is to the backend. It&#39;s a data access layer. It shouldn&#39;t know about business logic, it shouldn&#39;t know about UI state. It should only know how to make HTTP requests. Same principle, different side of the stack.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-013: Things that change together should live together.</span></blockquote>
 <p>That&#39;s cohesion. When I noticed the token logic was scattered between <code>api.ts</code> and <code>auth.ts</code>, I extracted it into its own <code>storage.ts</code> module. One place that knows about <code>localStorage</code>. One place to change if we ever swap the storage mechanism. Things that change together, live together.</p>
@@ -247,19 +288,18 @@
 <p>But once CORS was resolved, something quietly remarkable happened. I typed in an email, entered a password, clicked Login — and the app navigated to the home page. A real JWT, stored in the browser, issued by my own backend, validated by my own middleware. For the first time, a user can actually <em>use</em> this thing end-to-end.</p>
 <p>I closed the loop with a logout button, then paused. The engineering is solid. The architecture is clean. But staring at the raw, unstyled React pages, I realized something: <em>nobody cares how clean your code is if the product doesn&#39;t feel real.</em> I started sketching out an MVP Design System. It&#39;s time to stop building only for the compiler and start building for the human on the other side of the screen.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 1, 2026</time>
-              <span class="timeline-tag">Architecture</span>
-              <span class="timeline-reading-time">2 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 09: The React Migration</h2>
-            <div class="timeline-content">
-              <p>The frontend has been running on vanilla HTML, CSS, and JS since v1.0. It worked, but there was a fundamental friction I couldn&#39;t ignore any longer.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            008 // July 1, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 09: The React Migration
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>The frontend has been running on vanilla HTML, CSS, and JS since v1.0. It worked, but there was a fundamental friction I couldn&#39;t ignore any longer.</p>
 <p>With plain HTML, you&#39;re constantly <em>telling</em> the browser what to change. &quot;Update this div. Remove that element. Append this child.&quot; It&#39;s imperative, and it&#39;s exhausting. With <strong>React</strong>, you simply <em>describe</em> how the UI should look, and React figures out what to change. It&#39;s the difference between micromanaging and delegating.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-012: Declare intent, don&#39;t dictate steps.</span></blockquote>
 <p>Today, I initiated the React architecture. The first thing that clicked was that React components are just <strong>functions that return UI</strong>. That&#39;s it. No magic. And once I saw it that way, a symmetry with the backend became impossible to unsee:</p>
@@ -270,19 +310,18 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>Even the orchestration mirrors itself. On the backend, the <strong>Server</strong> orchestrates and the <strong>Routes</strong> implement. On the frontend, the <strong>App</strong> orchestrates and the <strong>Pages</strong> implement. Same architecture, different rendering target.</p>
 <p>The migration is just getting started, but the mental model already feels right. And when the mental model feels right, the code tends to follow.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 29, 2026</time>
-              <span class="timeline-tag">Engineering</span>
-              <span class="timeline-reading-time">2 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 08: Identity & Ownership (v3.0.0)</h2>
-            <div class="timeline-content">
-              <p>We&#39;ve officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            009 // June 29, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 08: Identity & Ownership (v3.0.0)
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>We&#39;ve officially entered v3.0.0 territory. Today, I implemented a complete JWT-based authentication system from scratch using bcrypt and jsonwebtoken.</p>
 <p>While building this, the distinction between two often-confused concepts became impossible to mix up — because the code forces them apart:</p>
 <ul>
 <li><strong>Authentication</strong> asks: <em>&quot;Who are you?&quot;</em> (Handled by the <code>/auth/login</code> route generating a token).</li>
@@ -314,128 +353,99 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 </code></pre>
 <p>By passing <code>userId</code> all the way down to the database layer, we guarantee that users can only ever touch their own dreams. Not through permission checks in the UI, not through frontend validation — through the query itself. The system isn&#39;t just functional anymore; it&#39;s secure by design.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-        </div>
-        <div class="act-break fade-up">
-          <div class="act-break-rule"></div>
-          <div class="act-break-content">
-            <span class="act-break-status">Completed</span>
-            <h3 class="act-break-title">v2.5.0 - Production Ready</h3>
-            <p class="act-break-desc">Migrated to a robust PostgreSQL + Prisma stack with a clean 3-tier TypeScript architecture. Finalized with strict validation and error handling.</p>
           </div>
-          <div class="act-break-rule"></div>
-        </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 27, 2026</time>
-              <span class="timeline-tag">Engineering</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 07: v2.5.0 — Production Ready</h2>
-            <div class="timeline-content">
-              <p>We&#39;ve reached v2.5.0. The goal was never just to add features — it was to build a system the <em>right</em> way.</p>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            010 // June 27, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 07: v2.5.0 — Production Ready
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>We&#39;ve reached v2.5.0. The goal was never just to add features — it was to build a system the <em>right</em> way.</p>
 <p>Today, I implemented a global Error Handling middleware and strict route validation. Before this, a malformed request could slip through and cause cryptic failures deep in the service layer. Now, bad input gets caught at the door.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-011: Code should be optimistic. Infrastructure should be defensive.</span></blockquote>
 <p>The application code trusts its inputs — because the middleware has already validated them. The infrastructure assumes the worst — because users and networks are unpredictable. It&#39;s a clean separation of optimism and paranoia.</p>
 <p>I also took time to write out Architectural Decision Records (ADRs) to document <em>why</em> these systems were built this way. Not just what I chose, but what I considered and rejected. The monolithic v1.0 script has evolved into a beautifully layered, maintainable, production-ready backend.</p>
 <p>Onwards to v3.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 26, 2026</time>
-              <span class="timeline-tag">Integration</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 06: Prisma ORM & End-to-End Type Safety</h2>
-            <div class="timeline-content">
-              <p>Writing raw SQL strings inside TypeScript felt like wearing a seatbelt with the buckle undone. You have type safety everywhere <em>except</em> the most dangerous part — the database boundary.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            011 // June 26, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 06: Prisma ORM & End-to-End Type Safety
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>Writing raw SQL strings inside TypeScript felt like wearing a seatbelt with the buckle undone. You have type safety everywhere <em>except</em> the most dangerous part — the database boundary.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-004: Depend on abstractions, not implementations.</span></blockquote>
 <p>Today, I migrated every database read and write to <strong>Prisma</strong>. Prisma acts as an abstraction over PostgreSQL, and now every single query is fully type-checked. If I misspell a column name, the app won&#39;t even compile. That&#39;s not just convenient — it&#39;s a fundamentally different relationship with your data layer.</p>
 <p>With this, the complete migration from JavaScript to TypeScript is done. Every raw PostgreSQL call has been replaced. The backend is now strictly typed from the route handler all the way down to the database. No gaps, no escape hatches.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 25, 2026</time>
-              <span class="timeline-tag">Architecture</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 05: Clean Architecture & The Service Layer</h2>
-            <div class="timeline-content">
-              <p>As the backend grew, the route files started doing too much. They were parsing requests, writing database queries, and handling responses — all in the same function. Every time I touched one thing, I risked breaking something else.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            012 // June 25, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 05: Clean Architecture & The Service Layer
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>As the backend grew, the route files started doing too much. They were parsing requests, writing database queries, and handling responses — all in the same function. Every time I touched one thing, I risked breaking something else.</p>
 <blockquote class="ep-callout"><span class="ep-label">EP-003: Organize by feature, not by generic names.</span></blockquote>
 <p>I introduced a dedicated <strong>Service Layer</strong>. The route files now strictly handle the HTTP context — extracting <code>req.body</code>, setting status codes, sending responses. Everything else gets passed down to the services, which own the actual business logic.</p>
 <p>It&#39;s the kind of refactor that doesn&#39;t change what the app <em>does</em>, but fundamentally changes how it <em>feels</em> to work on. The code reads like clear responsibilities now, not tangled spaghetti. And for the first time, I can look at a route and know exactly where to find the logic it depends on.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 24, 2026</time>
-              <span class="timeline-tag">Architecture</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 04: The Shift to TypeScript & PostgreSQL</h2>
-            <div class="timeline-content">
-              <p>The honeymoon phase of v1.0 is over. It&#39;s time to get serious.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            013 // June 24, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 04: The Shift to TypeScript & PostgreSQL
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>The honeymoon phase of v1.0 is over. It&#39;s time to get serious.</p>
 <p>If this were a production system — the kind that handles real users, real data, real stakes — JavaScript&#39;s dynamic typing and SQLite&#39;s file-based locking wouldn&#39;t cut it. I&#39;ve been putting off this migration because everything &quot;works.&quot; But &quot;works&quot; and &quot;works correctly under pressure&quot; are two very different standards.</p>
 <p>Today, I began the great migration. First, I initialized the TypeScript compiler to bring end-to-end type safety to the backend. There&#39;s a specific kind of relief that comes from catching a misspelled property name at compile-time instead of discovering it in a 2 AM production bug.</p>
 <p>Then, I ripped out SQLite and connected the app to PostgreSQL. The code is getting stricter, and the infrastructure is getting stronger. It feels less like a side project now and more like a real system.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-        </div>
-        <div class="act-break fade-up">
-          <div class="act-break-rule"></div>
-          <div class="act-break-content">
-            <span class="act-break-status">Completed</span>
-            <h3 class="act-break-title">v1.0 - Core Foundation</h3>
-            <p class="act-break-desc">Built the fundamental mechanics. Set up the Node.js environment, Express API, SQLite persistence, and a vanilla JavaScript frontend.</p>
           </div>
-          <div class="act-break-rule"></div>
-        </div>
-        <div class="timeline-container fade-up" style="margin-bottom: 64px;">
-
-          <article class="timeline-entry ">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 19, 2026</time>
-              <span class="timeline-tag">Product</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 03: The Cozy Frontend & v1.0 Launch</h2>
-            <div class="timeline-content">
-              <p>I spent today doing something that doesn&#39;t feel like &quot;real engineering&quot; but absolutely is — polishing the interface. No heavy frameworks, just vanilla HTML, CSS, and JS. I wanted the app to feel cozy and minimal, like a journal you actually want to open.</p>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            014 // June 19, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 03: The Cozy Frontend & v1.0 Launch
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>I spent today doing something that doesn&#39;t feel like &quot;real engineering&quot; but absolutely is — polishing the interface. No heavy frameworks, just vanilla HTML, CSS, and JS. I wanted the app to feel cozy and minimal, like a journal you actually want to open.</p>
 <p>With the frontend connected to the SQLite backend, Version 1.0 of Dream Wall is officially complete.</p>
 <p>It&#39;s a huge milestone. The app works, it&#39;s deployed, and it solves the problem it was meant to solve. But there&#39;s this nagging feeling I can&#39;t shake. The entire backend lives in one monolithic <code>server.js</code> file. It works <em>today</em>, but my &quot;systems builder&quot; brain is already running scenarios — what happens when I add authentication? What happens when I need to test one route without booting the whole server? The architecture needs to evolve. But that&#39;s a problem for future me.</p>
 
-            </div>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 14, 2026</time>
-              <span class="timeline-tag">Integration</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 02: SQLite Database Initialization & Schema</h2>
-            <div class="timeline-content">
-              <p>Today was all about giving the dreams a place to live. I wired up a lightweight Express.js API and hooked it into SQLite.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            015 // June 14, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 02: SQLite Database Initialization & Schema
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>Today was all about giving the dreams a place to live. I wired up a lightweight Express.js API and hooked it into SQLite.</p>
 <p>The first thing I wrote was an auto-creation sequence in <code>db.js</code> — a small script that initializes the database cleanly on startup, no manual setup required.</p>
 <pre><code class="language-javascript">db.run(`
   CREATE TABLE IF NOT EXISTS dreams (
@@ -447,121 +457,43 @@ Frontend: Input (Props)    →  Function (Component)  →  Output (HTML)
 <p>It&#39;s a small detail, but it makes a real difference. Anyone who clones this repo gets a working database on the first <code>npm start</code>. No README steps to miss, no &quot;did you run the migration?&quot; messages in Slack.</p>
 <p>There&#39;s something deeply satisfying about watching your first <code>POST</code> request land and knowing the data is safely persisted. The dreams have a home now.</p>
 
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry ">
-            <div class="timeline-meta">
-              <time class="timeline-date">June 9, 2026</time>
-              <span class="timeline-tag">Architecture</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Day 01: ED-001 — Standardizing on Node.js</h2>
-            <div class="timeline-content">
-              <p>Every complex system starts with a single decision. For Dream Wall, the first architectural decision (ED-001) was choosing the foundation.</p>
+          </div>
+        </article>
+      
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            016 // June 9, 2026
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            Day 01: ED-001 — Standardizing on Node.js
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            <p>Every complex system starts with a single decision. For Dream Wall, the first architectural decision (ED-001) was choosing the foundation.</p>
 <p>I went with Node.js. Not because it&#39;s the fastest runtime or the trendiest choice, but because it lets me think in one language across the entire stack. Frontend and backend, same mental model. When you&#39;re building something alone, that consistency isn&#39;t a luxury — it&#39;s survival.</p>
 <p>The goal here isn&#39;t to over-engineer on day one. It&#39;s to get the skeleton standing. A clean project structure, a working dev environment, a server that starts. Nothing flashy. But it&#39;s <em>my</em> skeleton, and everything that comes after will grow from it.</p>
 
-            </div>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 29, 2026</time>
-              <span class="timeline-tag">Engineering</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Moving to Neon Postgres</h2>
-            <div class="timeline-content">
-              <h1>Moving to Neon Postgres</h1>
-<p>Changed the infrastructure today — migrated the Postgres database from a Render DB instance over to Neon Postgres.</p>
-<p>To verify the migration, I walked through the full CRUD cycle: registered a new test user, logged in, created a dream, fetched it, updated it, and deleted it. Everything held up cleanly.</p>
-<p>The key insight from today: the application was never coupled to Render PostgreSQL. It was coupled to the PostgreSQL <em>interface</em>. Swapping the host was just config.</p>
-
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-
-          <article class="timeline-entry entry-active">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 22, 2026</time>
-              <span class="timeline-tag">Engineering</span>
-              <span class="timeline-reading-time">2 min read</span>
-            </div>
-            <h2 class="timeline-title">Engineering Lessons from Today</h2>
-            <div class="timeline-content">
-              <h1>Engineering Lessons from Today</h1>
-<p>I&#39;ve realized that the main difference between a product that feels alive and one that feels rigid and &quot;dead&quot; comes down to one thing: timing.</p>
-<p>Everything that happens in a user interface has a duration. A reaction time of 0ms feels instant, digital, and robotic. On the other hand, 150ms–300ms feels human and physical. </p>
-<p>Every CSS transition added isn&#39;t just an afterthought; it&#39;s the process of intentionally slowing down from machine speed to human speed. It&#39;s not a performance cost—it&#39;s a core feature of the experience.</p>
-<p>Here&#39;s a breakdown of today&#39;s progress:</p>
-<h3>Moving Beyond Hardcoded Pixels</h3>
-<p>I initially started by positioning elements with hardcoded pixels. The issue? Using <code>left: 900px</code> means exactly 900 pixels from the left edge. On a large MacBook Pro, that looks perfectly fine. But on a 768px tablet screen, 900px is completely off-screen, causing the card to disappear entirely.</p>
-<p><strong>The Fix:</strong> Transitioning to CSS percentages for horizontal positioning. 
-By using <code>left: 60%</code>, we&#39;re asking for 60% of the wall container&#39;s width. On a 1400px screen, that translates to 840px. On a smaller 768px screen, it scales down to 461px. Now, the cards stay on screen automatically, no matter the device.</p>
-<h3>Breathing Life into Card Animations</h3>
-<p>I spent a good chunk of time fine-tuning the card animations to make them feel natural:</p>
-<ul>
-<li>Implemented a staggered animation and keyframes for a satisfying &quot;pop-in&quot; effect.</li>
-<li><strong>The Toolkit:</strong><ul>
-<li><code>@keyframes</code> to script the core animation logic.</li>
-<li><code>cubic-bezier()</code> using a spring curve to give the cards a physical, tangible weight.</li>
-<li><code>animation-delay</code> mapped to the item&#39;s index to create a cascading stagger effect.</li>
-<li><code>animation-fill-mode: both</code> to ensure delayed cards don&#39;t awkwardly flash before appearing.</li>
-<li>The CSS <code>rotate</code> property (kept separate from <code>transform</code>) so that the hover scale effect and the card&#39;s natural tilt don&#39;t conflict with one another.</li>
-</ul>
-</li>
-</ul>
-<h3>Wrapping Up</h3>
-<p>We&#39;ve also successfully finished building out the empty state!</p>
-<p><strong>Tomorrow&#39;s Focus:</strong> Refactoring the Home layout. The plan is to expand the Wall to take up the full viewport and elegantly float the header/input form directly over the center.</p>
-
-            </div>
-          </article>
-
-          <article class="timeline-entry  entry-collapsible entry-collapsed">
-            <div class="timeline-meta">
-              <time class="timeline-date">July 21, 2026</time>
-              <span class="timeline-tag">Engineering</span>
-              <span class="timeline-reading-time">1 min read</span>
-            </div>
-            <h2 class="timeline-title">Focusing on Interaction Design</h2>
-            <div class="timeline-content">
-              <h1>Focusing on Interaction Design</h1>
-<p>I wanted to deliver something that feels like more than just another CRUD app.</p>
-<p>The mission for today: completely replace the standard vertical list with a free-flowing, true &quot;wall&quot; canvas—all without breaking a single existing feature.</p>
-<p>The goal is to shift the user&#39;s perspective. They shouldn&#39;t feel like they&#39;re looking at a rigid list anymore; they should feel like they&#39;re looking at a physical wall.</p>
-<p>Here&#39;s the scope for today&#39;s transition:</p>
-<ul>
-<li><strong>The Wall Experience:</strong> Users immediately see an expansive, immersive canvas.</li>
-<li><strong>Card Positioning:</strong> Cards need to be naturally placed and fully functional.</li>
-<li><strong>Empty State:</strong> Crafting a beautiful, welcoming empty state for first-time visitors.</li>
-<li><strong>Under the Hood:</strong> Keeping the exact same authentication flow intact.</li>
-</ul>
-
-            </div>
-            <button class="entry-expand-btn" aria-label="Expand entry">Continue reading</button>
-          </article>
-        <!-- DEVLOG_ENTRIES_END -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Narrative Closing CTA -->
-    <section class="devlog-closing fade-up">
-      <div class="container">
-        <div class="devlog-closing-content">
-          <p class="devlog-closing-text">The story is still being written.</p>
-          <p class="devlog-closing-subtext">Follow along as Nook evolves from a side project into a production system.</p>
-          <div class="devlog-closing-actions">
-            <a href="https://github.com/dunkrick/dream-wall" target="_blank" class="case-study-link">View on GitHub ↗</a>
-            <span class="devlog-closing-divider">·</span>
-            <a href="index.html" class="case-study-link">Back to Portfolio</a>
           </div>
-        </div>
-      </div>
-    </section>
+        </article>
+            <!-- MARKER: NOTES_END -->
+    </div>
+  </div>
+</section>
+
+<div class="divider fade-up"></div>
+
+<!-- Newsletter / Connect -->
+<section id="notes-connect" class="about-section">
+  <div class="container fade-up">
+    <h2 class="section-title">Stay Curious</h2>
+    <p style="margin: 16px 0 0 0; font-size: 15px; color: var(--text-muted); line-height: 1.7;">
+      These notes are sporadic — no schedule, no fluff. Just observations when they crystallize.
+      <br><br>
+      If you'd like to continue the conversation, the best way is email:
+      <a href="mailto:contact.rithwick@gmail.com" class="hover-reveal-trigger" style="color: var(--text-strong);">contact.rithwick@gmail.com</a>.
+      Or find me on <a href="https://www.linkedin.com/in/rithwick-gurram-599463304/" target="_blank" class="hover-reveal-trigger" style="color: var(--text-strong);">LinkedIn</a> and <a href="https://twitter.com/RithwickGurram" target="_blank" class="hover-reveal-trigger" style="color: var(--text-strong);">Twitter</a>.
+    </p>
+  </div>
+</section>
   </main>
 
   

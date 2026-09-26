@@ -182,6 +182,63 @@ for (const page of pages) {
     console.log(`[dream-wall] -> ${totalDays} entries, ${totalVersions} versions, ${totalEPs} EPs`);
   }
 
+  // Special processing for notes
+  if (page === 'notes.html') {
+    const TIMELINE_FILE = path.join(__dirname, 'content', 'timeline.json');
+    const rawEntries = JSON.parse(fs.readFileSync(TIMELINE_FILE, 'utf8'));
+    const entries = rawEntries.map(entry => {
+      const htmlBody = wrapEPCallouts(marked.parse(entry.body));
+      return {
+        filename: entry.filename,
+        attributes: entry.attributes,
+        body: htmlBody,
+        rawBody: entry.body,
+        readingTime: estimateReadingTime(entry.body),
+        epCount: countEPs(htmlBody)
+      };
+    });
+    
+    // Sort by date (newest first)
+    entries.sort((a, b) => new Date(b.attributes.date) - new Date(a.attributes.date));
+    
+    let htmlOutput = '';
+    entries.forEach((entry, index) => {
+      const noteNumber = String(index + 1).padStart(3, '0');
+      const date = entry.attributes.date;
+      const tag = entry.attributes.tag;
+      const title = entry.attributes.title;
+      const body = entry.body;
+      const readingTime = entry.readingTime;
+      
+      htmlOutput += `
+        <article class="note-row fade-up" style="padding: 60px 0; border-bottom: 1px solid var(--border-soft); transition: border-color 0.3s;">
+          <div class="note-date" style="font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">
+            ${noteNumber} // ${date}
+          </div>
+          <h2 class="note-title" style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-strong); margin-bottom: 16px; line-height: 1.3;">
+            ${title}
+          </h2>
+          <div class="note-content" style="font-size: 16px; color: var(--text); line-height: 1.7; opacity: 0.85;">
+            ${body}
+          </div>
+        </article>
+      `;
+    });
+    
+    const startMarker = '<!-- MARKER: NOTES_START -->';
+    const endMarker = '<!-- MARKER: NOTES_END -->';
+    const startIndex = content.indexOf(startMarker);
+    const endIndex = content.indexOf(endMarker);
+    
+    if (startIndex !== -1 && endIndex !== -1) {
+      const before = content.substring(0, startIndex + startMarker.length);
+      const after = content.substring(endIndex);
+      content = before + '\n' + htmlOutput + '      ' + after;
+    }
+    
+    console.log(`[notes] -> ${entries.length} notes`);
+  }
+
   // Inject into Layout
   let finalHtml = layoutHtml;
   finalHtml = finalHtml.replace(/\{\{TITLE\}\}/g, meta.title);
@@ -217,6 +274,12 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rithwick.me/notes.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rithwick.me/dream-wall.html</loc>
