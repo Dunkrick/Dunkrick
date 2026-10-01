@@ -25,7 +25,7 @@
     "progress": "",
     "cta": "",
     "extraHead": "",
-    "extraScripts": "<script type=\"module\" src=\"assets/js/project.js\"></script>"
+    "extraScripts": "<script src=\"assets/js/project.js\" defer></script>"
   },
   "dream-wall.html": {
     "title": "Building Nook - Rithwick Gurram",
