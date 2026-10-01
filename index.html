@@ -177,19 +177,9 @@
 
     <div class="proof-highlights" style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
       <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
-        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Shipped Systems</div>
-        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">4</div>
-        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Shipped projects with documented architecture</div>
-      </div>
-      <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
-        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Open Source</div>
-        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">1</div>
-        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Upstream PR merged (meow-starter, 103 tests)</div>
-      </div>
-      <div class="proof-highlight" style="padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px;">
         <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase;">Load Tested</div>
         <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--text-strong);">154 req/s</div>
-        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">p95 76ms (Go URL Shortener, k6)</div>
+        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">p95 76ms (URL Shortener, k6)</div>
       </div>
     </div>
   </div>
@@ -207,7 +197,7 @@
       <a href="project.html?id=url-shortener" class="mini-bento-card fade-up">
         <div class="card-content">
           <span class="card-eyebrow">Backend Engineering</span>
-          <h3 class="card-title">Go URL Shortener</h3>
+          <h3 class="card-title">URL Shortener</h3>
           <p class="card-desc">High-throughput shortener in Go. PostgreSQL + Redis. Load-tested: 154 req/s, p95 76 ms.</p>
         </div>
         <div class="card-meta">
@@ -256,7 +246,7 @@
       <!-- Project 05: Open Source -->
       <a href="project.html?id=meow-starter" class="mini-bento-card fade-up">
         <div class="card-content">
-          <span class="card-eyebrow">Open Source</span>
+          <span class="card-eyebrow">Contribution</span>
           <h3 class="card-title">meow-starter</h3>
           <p class="card-desc">Upstream PR adding regression tests for mobile module filtering. 103 tests passing.</p>
         </div>
@@ -283,27 +273,27 @@
       <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
         <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">01</div>
         <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Find the Friction</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Observe where systems break — for users, for developers, for the business. The best signal is pain.</p>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Find where the system costs more than it should — for users or for the codebase.</p>
       </div>
       <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
         <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">02</div>
         <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Model the System</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Draw the boundaries. Name the components. Understand the data flows. Make the implicit explicit.</p>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Map the components and data flows before writing a line of code.</p>
       </div>
       <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
         <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">03</div>
         <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Simplify Relentlessly</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Cut scope. Merge concepts. Push complexity down. The best architecture is the one you don't need.</p>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Remove everything that does not need to exist.</p>
       </div>
       <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
         <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">04</div>
         <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Build to Learn</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Ship the thinnest slice that proves the model. Measure. Reflect. The devlog is the artifact.</p>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Ship the smallest version that tests the assumption; then reflect on what it revealed.</p>
       </div>
       <div class="method-step" style="padding: 24px; background: var(--bg-surface); border: 1px solid var(--border-soft); border-radius: 10px; text-align: center;">
         <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">05</div>
-        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Engineer the Elimination</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Automate the fix. Codify the pattern. Make the next friction impossible. Then find the next one.</p>
+        <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px;">Close the Loop</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Automate the fix; document the decision; move to the next problem.</p>
       </div>
     </div>
   </div>
@@ -323,10 +313,10 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
       <div>
         <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--text); line-height: 1.7;">
-          I'm Rithwick Gurram — a Product Engineer based in Chennai. I build backend systems and ship full-stack applications.
+          I'm Rithwick Gurram — a Product Engineer. I build backend systems and ship full-stack applications.
         </p>
         <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--text); line-height: 1.7;">
-          My professional track is <strong>BUILD</strong>: backend systems, databases, full-stack applications, and the craft of shipping real software. I enjoy understanding how complex systems work and then making them work better — breaking complexity into simple chunks, thinking from first principles, and learning by building.
+          I focus on backend systems, databases, full-stack applications, and shipping software.
         </p>
         <p style="margin: 0; font-size: 16px; color: var(--text); line-height: 1.7;">
           Currently: deep into Go concurrency, distributed systems (caching, rate limiting), PostgreSQL query planning, and GSAP/WebGL visual systems.
@@ -337,11 +327,11 @@
         <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--text-strong); margin-bottom: 16px;">Currently</h3>
         <ul style="list-style: none; padding: 0; margin: 0 0 32px 0;">
           <li style="padding: 12px 0; border-bottom: 1px solid var(--border-soft); font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
-            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);">🔨</span>
+            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);"></span>
             Building Nook (devlog)
           </li>
           <li style="padding: 12px 0; border-bottom: 1px solid var(--border-soft); font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
-            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);">📚</span>
+            <span style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--text-strong);"></span>
             Learning: Go internals, distributed systems
           </li>
         </ul>
@@ -350,11 +340,7 @@
         <ul style="list-style: none; padding: 0; margin: 0;">
           <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
             <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">CS</span>
-            Computer Science undergraduate
-          </li>
-          <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Loc</span>
-            Chennai, India
+            undergraduate
           </li>
           <li style="padding: 8px 0; font-size: 15px; color: var(--text); display: flex; align-items: center; gap: 10px;">
             <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Focus</span>
@@ -373,7 +359,7 @@
   <div class="container fade-up">
     <h2 class="section-title">Contact</h2>
     <p style="margin: 16px 0 0 0; font-size: 15px; color: var(--text-muted); line-height: 1.7;">
-      Open to internships, collaborations, and conversations about backend systems or product engineering.
+      Open to internships and collaborations in backend engineering or product work.
       <br><br>
       Reach me at <a href="mailto:contact.rithwick@gmail.com"
         class="hover-reveal-trigger" style="color: var(--text-strong);">contact.rithwick@gmail.com</a> or on
@@ -437,7 +423,7 @@
         </ul>
         <div class="cmd-group-label">Projects</div>
         <ul class="cmd-list">
-          <li><a href="project.html?id=url-shortener" class="cmd-link">View Go URL Shortener</a></li>
+          <li><a href="project.html?id=url-shortener" class="cmd-link">View URL Shortener</a></li>
           <li><a href="project.html?id=nook" class="cmd-link">View Nook</a></li>
           <li><a href="happiclap-case-study.html" class="cmd-link">View Happiclap Case Study</a></li>
           <li><a href="dream-wall.html" class="cmd-link">View Building Nook Devlog</a></li>
