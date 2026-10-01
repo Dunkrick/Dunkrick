@@ -1,7 +1,7 @@
 {
   "index.html": {
     "title": "Rithwick Gurram",
-    "description": "Rithwick Gurram is a Product Engineer building complex backend systems, databases, and simple interfaces.",
+    "description": "Rithwick Gurram is a Product Engineer building full-stack systems and shipping software.",
     "url": "",
     "id": "",
     "progress": "",
@@ -10,7 +10,7 @@
   },
   "work.html": {
     "title": "Build — Rithwick Gurram",
-    "description": "Product engineering work by Rithwick Gurram: Go URL Shortener, Nook, Building Nook devlog, Happiclap UX audit.",
+    "description": "Selected software work by Rithwick Gurram: URL Shortener, Nook, and Happiclap UX audit.",
     "url": "work.html",
     "id": "",
     "progress": "",
