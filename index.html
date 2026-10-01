@@ -164,8 +164,16 @@
         <span id="gh-contributions-count" style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--text-strong);">725</span>
         <span style="font-size: 14px; color: var(--text-muted);">Contributions in the last year</span>
       </div>
-      <img src="https://ghchart.rshah.org/dunkrick" alt="GitHub Contribution Graph" class="gh-graph-img" loading="lazy" decoding="async"
+      <img id="github-chart" src="" alt="GitHub Contribution Graph" class="gh-graph-img" loading="lazy" decoding="async"
         style="max-width: 100%; border-radius: 4px; display: block;" />
+      <script>
+        (function() {
+          var chart = document.getElementById('github-chart');
+          if (chart) {
+            chart.src = 'https://ghchart.rshah.org/dunkrick?t=' + Date.now();
+          }
+        })();
+      </script>
     </div>
 
     <div class="proof-highlights" style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
